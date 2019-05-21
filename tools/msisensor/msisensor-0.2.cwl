@@ -40,7 +40,7 @@ requirements:
     dockerPull: mskcc/msisensor:0.2
   InlineJavascriptRequirement: {}
   ResourceRequirement:
-    ramMin: 16
+    ramMin: 16000
     coresMin: 2
 
 doc: |
