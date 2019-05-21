@@ -10,7 +10,7 @@ cwltoil --singularity --logFile toil_log.log \
     --stats \
     --debug  \
     --disableCaching  \
-    --preserve-environment PATH TMPDIR TOIL_LSF_ARGS SINGULARITY_PULLFOLDER PWD \
+    --preserve-environment PATH TMPDIR TOIL_LSF_ARGS SINGULARITY_PULLDIR PWD \
     --defaultMemory 8G  \
     --maxCores 16  \
     --maxDisk 128G  \
