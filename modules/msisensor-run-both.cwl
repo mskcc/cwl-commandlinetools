@@ -39,6 +39,7 @@ steps:
   msisensor_0.2:
     run: ../tools/msisensor/msisensor-0.2.cwl
     in:
+      output_prefix: output_prefix
       d: msi_file
       n: normal_bam
       t: tumor_bam
@@ -46,12 +47,13 @@ steps:
         valueFrom: ${ return inputs.output_prefix + "_0.2.txt"; }
     out: [ output ]
 
-  msisensor_0.5:
-    run: ../tools/msisensor/msisensor-0.5.cwl
+  msisensor_0.6:
+    run: ../tools/msisensor/msisensor-0.6.cwl
     in:
+      output_prefix: output_prefix
       d: msi_file
       n: normal_bam
       t: tumor_bam
       o:
-        valueFrom: ${ return inputs.output_prefix + "_0.5.txt"; }
+        valueFrom: ${ return inputs.output_prefix + "_0.6.txt"; }
     out: [ output ]
