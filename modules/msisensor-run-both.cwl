@@ -31,9 +31,9 @@ outputs:
     type: File
     outputSource: msisensor_0.2/output
 
-  msisensor_0.5_output:
+  msisensor_0.6_output:
     type: File
-    outputSource: msisensor_0.5/output
+    outputSource: msisensor_0.6/output
 
 steps:
   msisensor_0.2:
