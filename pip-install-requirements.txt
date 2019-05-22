@@ -1,4 +1,0 @@
-psutil==3.0.1
-requests==2.18.4
-subprocess32==3.5.2
-toil==3.19.0
