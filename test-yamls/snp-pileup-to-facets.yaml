@@ -1,4 +1,3 @@
-facets_vcf:
 bam_normal: {class: File, path: /juno/work/pi/cmopipeline/data/uncategorized/re-run/normal_sample.sorted.md.bqsr.bam}
 bam_tumor: {class: File, path: /juno/work/pi/cmopipeline/data/uncategorized/re-run/tumor_sample.sorted.md.bqsr.bam}
 tumor_sample_name: tumor_sample
