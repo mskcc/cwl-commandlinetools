@@ -1,0 +1,5 @@
+facets_vcf:
+bam_normal: {class: File, path: /juno/work/pi/cmopipeline/data/uncategorized/re-run/normal_sample.sorted.md.bqsr.bam}
+bam_tumor: {class: File, path: /juno/work/pi/cmopipeline/data/uncategorized/re-run/tumor_sample.sorted.md.bqsr.bam}
+tumor_sample_name: tumor_sample
+facets_vcf: {class: File, path: /juno/work/taylorlab/cmopipeline/mskcc-igenomes/igenomes/Homo_sapiens/GATK/b37/dbsnp_137.b37__RmDupsClean__plusPseudo50__DROP_SORT.vcf }
