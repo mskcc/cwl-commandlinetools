@@ -37,7 +37,7 @@ outputs:
 
 steps:
   msisensor_0.2:
-    run: ../tools/msisensor/msisensor-0.2.cwl
+    run: ../CommandLineTools/msisensor_0.2/msisensor-0.2.cwl
     in:
       output_prefix: output_prefix
       d: msi_file
@@ -48,7 +48,7 @@ steps:
     out: [ output ]
 
   msisensor_0.6:
-    run: ../tools/msisensor/msisensor-0.6.cwl
+    run: ../CommandLineTools/msisensor_0.6/msisensor-0.6.cwl
     in:
       output_prefix: output_prefix
       d: msi_file
