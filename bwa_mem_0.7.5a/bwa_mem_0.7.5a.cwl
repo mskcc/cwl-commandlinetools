@@ -147,7 +147,7 @@ inputs:
       prefix: '-k'
     doc: 'INT minimum seed length [19]'
   - id: output
-    type: string
+    type: string?
   - id: p
     type: boolean?
     inputBinding:
