@@ -1,5 +1,18 @@
 class: CommandLineTool
 cwlVersion: v1.0
+
+'dct:contributor':
+  'foaf:mbox': 'mailto:ayang@oicr.on.ca'
+  'foaf:name': Andy Yang
+'dct:creator':
+  '@id': 'http://orcid.org/0000-0001-9102-5681'
+  'foaf:mbox': 'mailto:Andrey.Kartashov@cchmc.org'
+  'foaf:name': Andrey Kartashov
+'dct:description': >-
+  Developed at Cincinnati Children���s Hospital Medical Center for the CWL
+  consortium http://commonwl.org/ Original URL:
+  https://github.com/common-workflow-language/workflows
+
 baseCommand:
   - samtools
   - view
@@ -117,6 +130,9 @@ inputs:
       only include reads with none of the bits set in INT set in FLAG [0]
   - id: readtagtostrip
     type: 'string[]?'
+    inputBinding:
+      position: 0
+      prefix: '-x'
     doc: |
       read tag to strip (repeatable) [null]
   - id: referencefasta
@@ -155,6 +171,31 @@ inputs:
       prefix: '-u'
     doc: |
       uncompressed BAM output (implies -b)
+  - id: samheaderonly
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: '-H'
+  - id: outputreadsnotselectedbyfilters
+    type: File?
+    inputBinding:
+      position: 0
+      prefix: '-U'
+  - id: listingreferencenamesandlengths
+    type: File?
+    inputBinding:
+      position: 0
+      prefix: '-t'
+  - id: readtagtostri
+    type: File?
+    inputBinding:
+      position: 0
+      prefix: '-x'
+  - id: output_format
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: '-O'
 outputs:
   - id: output_bam
     type: File
@@ -382,6 +423,9 @@ arguments:
   - position: 0
     prefix: '-o'
     valueFrom: '$(inputs.input.basename.replace(''sam'', ''bam''))'
+  - position: 0
+    prefix: '--threads'
+    valueFrom: $(runtime.cores)
 requirements:
   - class: ResourceRequirement
     ramMin: 32000
@@ -389,14 +433,3 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'quay.io/cancercollaboratory/dockstore-tool-samtools-view:1.0'
   - class: InlineJavascriptRequirement
-'dct:contributor':
-  'foaf:mbox': 'mailto:ayang@oicr.on.ca'
-  'foaf:name': Andy Yang
-'dct:creator':
-  '@id': 'http://orcid.org/0000-0001-9102-5681'
-  'foaf:mbox': 'mailto:Andrey.Kartashov@cchmc.org'
-  'foaf:name': Andrey Kartashov
-'dct:description': >-
-  Developed at Cincinnati Children���s Hospital Medical Center for the CWL
-  consortium http://commonwl.org/ Original URL:
-  https://github.com/common-workflow-language/workflows
