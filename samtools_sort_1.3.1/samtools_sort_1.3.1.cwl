@@ -1,5 +1,7 @@
 class: CommandLineTool
 cwlVersion: v1.0
+$namespaces:
+  sbg: 'https://www.sevenbridges.com/'
 baseCommand:
   - samtools
   - sort
@@ -31,12 +33,16 @@ inputs:
     doc: >-
       Sort by read names (i.e., the QNAME field) rather than by chromosomal
       coordinates.
-  - id: threads
-    type: int?
+  - id: reference
+    type: File?
     inputBinding:
       position: 0
-      prefix: '-@'
-    doc: 'Set number of sorting and compression threads [1]'
+      prefix: '--reference'
+  - id: output_format
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: '-O'
 outputs:
   - id: output_file
     type: File
@@ -104,6 +110,9 @@ arguments:
   - position: 0
     prefix: '-o'
     valueFrom: '$(inputs.input.basename.replace(''bam'', ''sorted.bam''))'
+  - position: 0
+    prefix: '-@'
+    valueFrom: $(runtime.cores)
 requirements:
   - class: ResourceRequirement
     ramMin: 32000
