@@ -39,7 +39,7 @@ outputs:
   - id: processed_fastq_2
     type: File?
     outputBinding:
-      glob: $('*/' + inputs.fastq2.basename.replace('_R1_', '_R2_'))
+      glob: '$(''*/'' + inputs.fastq2.basename.replace(''_R1_'', ''_R2_''))'
       outputEval: |-
         ${
             self[0].basename = inputs.add_rg_SM + '_R2.fastq.gz';
@@ -70,10 +70,7 @@ arguments:
     valueFrom: '-server'
   - position: 0
     prefix: ''
-    valueFrom: '-Xms8g'
-  - position: 0
-    prefix: ''
-    valueFrom: '-Xmx8g'
+    valueFrom: '-Xms$(parseInt(runtime.ram)/100 - 2)g -Xmx$(parseInt(runtime.ram)/100 - 2)g'
   - position: 0
     prefix: ''
     valueFrom: '-cp'
