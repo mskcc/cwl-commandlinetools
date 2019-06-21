@@ -4,7 +4,7 @@ $namespaces:
   sbg: 'https://www.sevenbridges.com/'
 id: marianas_process_loop_umi_cwl
 baseCommand:
-  - java8
+  - java
 inputs:
   - id: fastq1
     type: File?
@@ -18,12 +18,6 @@ inputs:
     type: int?
     inputBinding:
       position: 2
-  - id: input
-    type: File?
-  - id: output_project_folder
-    type: Directory?
-    inputBinding:
-      position: 3
   - id: add_rg_SM
     type: string?
 outputs:
@@ -67,23 +61,38 @@ label: marianas_process_loop_umi.cwl
 arguments:
   - position: 0
     prefix: ''
+    separate: false
     valueFrom: '-server'
   - position: 0
     prefix: ''
-    valueFrom: '-Xms$(parseInt(runtime.ram)/100 - 2)g -Xmx$(parseInt(runtime.ram)/100 - 2)g'
+    separate: false
+    valueFrom: '-Xms$(parseInt(runtime.ram)/1000 - 2)g'
   - position: 0
     prefix: ''
+    separate: false
+    valueFrom: '-Xmx$(parseInt(runtime.ram)/1000 - 2)g'
+  - position: 0
+    prefix: ''
+    separate: false
     valueFrom: '-cp'
   - position: 0
-    prefix: '-jar'
-    valueFrom: /bin/marianas.jar
+    prefix: ''
+    separate: false
+    valueFrom: /usr/bin/Marianas-1.8.0.jar
   - position: 0
     prefix: ''
+    separate: false
     valueFrom: org.mskcc.marianas.umi.duplex.fastqprocessing.ProcessLoopUMIFastq
+  - position: 3
+    prefix: ''
+    separate: false
+    valueFrom: .
 requirements:
   - class: ResourceRequirement
     ramMin: 10000
     coresMin: 1
+  - class: DockerRequirement
+    dockerPull: 'mskcc/marianas:0.1.0'
   - class: InitialWorkDirRequirement
     listing:
       - $(inputs.fastq1)
