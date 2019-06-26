@@ -126,8 +126,8 @@ outputs:
 label: trim_galore_0.6.2
 requirements:
   - class: ResourceRequirement
-    ramMin: 16
-    coresMin: 2
+    ramMin: 8000
+    coresMin: 1
   - class: DockerRequirement
     dockerPull: 'mskcc/trim_galore:0.0.1'
   - class: InlineJavascriptRequirement
