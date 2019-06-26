@@ -31,7 +31,7 @@ inputs:
       position: 999
     doc: READ1 of the paired-end run
   - id: fastq2
-    type: File?
+    type: File
     inputBinding:
       position: 1000
     doc: READ2 of the pair-end run
