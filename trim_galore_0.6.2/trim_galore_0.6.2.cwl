@@ -106,26 +106,30 @@ outputs:
   - id: clfastq1
     type: File
     outputBinding:
-      glob: '$(inputs.fastq1.basename.replace(''.fastq.gz'', ''_cl.fastq.gz''))'
+      glob: '$(inputs.fastq1.basename.replace(''.fastq.gz'', ''_val_1.fq.gz''))'
   - id: clfastq2
     type: File
     outputBinding:
-      glob: '$(inputs.fastq2.basename.replace(''.fastq.gz'', ''_cl.fastq.gz''))'
+      glob: '$(inputs.fastq2.basename.replace(''.fastq.gz'', ''_val_1.fq.gz''))'
   - id: clstats1
     type: File
     outputBinding:
-      glob: '$(inputs.fastq1.basename.replace(''.fastq.gz'', ''_cl.stats''))'
+      glob: >-
+        $(inputs.fastq1.basename.replace('.fastq.gz',
+        '.fastq.gz_trimming_report.txt'))
   - id: clstats2
     type: File
     outputBinding:
-      glob: '$(inputs.fastq1.basename.replace(''.fastq.gz'', ''_cl.stats''))'
-label: trim_galore_0.2.5a
+      glob: >-
+        $(inputs.fastq1.basename.replace('.fastq.gz',
+        '.fastq.gz_trimming_report.txt'))
+label: trim_galore_0.6.2
 requirements:
   - class: ResourceRequirement
     ramMin: 16
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'mskaccess/trim_galore:0.0.1'
+    dockerPull: 'mskcc/trim_galore:0.0.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
