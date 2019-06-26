@@ -35,8 +35,7 @@ inputs:
     inputBinding:
       position: 1000
     doc: READ2 of the pair-end run
-  - 'sbg:toolDefaultValue': '20'
-    id: length
+  - id: length
     type: int?
     inputBinding:
       position: 0
@@ -67,8 +66,7 @@ inputs:
     doc: >-
       Compress the output file with gzip. If the input files are gzip-compressed
       the output files will be automatically gzip compressed as well.
-  - 'sbg:toolDefaultValue': '20'
-    id: quality
+  - id: quality
     type: int?
     inputBinding:
       position: 0
@@ -81,8 +79,7 @@ inputs:
       INT from all qualities; compute partial sums from all indices to the end
       of the sequence; cut sequence at the index at which the sum is minimal).
       Default Phred score: 20.
-  - 'sbg:toolDefaultValue': '1'
-    id: stringency
+  - id: stringency
     type: int?
     inputBinding:
       position: 0
@@ -97,8 +94,7 @@ inputs:
       position: 0
       prefix: '--suppress_warn'
     doc: If specified any output to STDOUT or STDERR will be suppressed.
-  - 'sbg:toolDefaultValue': '0.1'
-    id: error_rate
+  - id: error_rate
     type: float?
     inputBinding:
       position: 0
