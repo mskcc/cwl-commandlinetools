@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: trim_galore_0_2_5a
+id: trim_galore_0.6.2
 baseCommand:
   - trim_galore
 inputs:
@@ -83,7 +83,7 @@ inputs:
     type: int?
     inputBinding:
       position: 0
-      prefix: '-s'
+      prefix: '--stringency'
     doc: >-
       Overlap with adapter sequence required to trim a sequence. Defaults to a
       very stringent setting of '1', i.e. even a single bp of overlapping
@@ -125,7 +125,7 @@ requirements:
     ramMin: 16
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'mskcc/trim_galore:0.2.5a'
+    dockerPull: 'mskaccess/trim_galore:0.0.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -144,7 +144,7 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': trim_galore
-    'doap:revision': 0.2.5
+    'doap:revision': 0.6.2
   - class: 'doap:Version'
     'doap:name': cwl-wrapper
     'doap:revision': 1.0.0
