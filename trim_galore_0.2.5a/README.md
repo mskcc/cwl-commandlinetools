@@ -1,4 +1,4 @@
-# CWL and Docker container for running Trim Galore
+# CWL and Dockerfile for running Trim Galore
 
 | Tool	| Version	| Location	|
 |---	|---	|---	|
