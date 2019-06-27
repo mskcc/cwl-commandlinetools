@@ -5,10 +5,27 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: trim_galore_0.6.2
+id: trim_galore_0_6_2
 baseCommand:
   - trim_galore
 inputs:
+  - id: memory_per_job
+    type: int
+    inputBinding:
+      positon: 0
+    doc: >- 
+        Memory per job in megabytes
+  - id: memory_overhead
+    type: int
+    inputBinding:
+      position: 0
+    doc: >-
+        Memory overhead per job in megabytes
+  - id: number_of_threads
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '--threads'
   - id: adapter
     type: string
     inputBinding:
@@ -126,10 +143,10 @@ outputs:
 label: trim_galore_0.6.2
 requirements:
   - class: ResourceRequirement
-    ramMin: 8000
-    coresMin: 1
+    ramMin: "{\r  if($job.inputs.memory_per_job && $job.inputs.memory_overhead) {\r   \r    return $job.inputs.memory_per_job + $job.inputs.memory_overhead\r  }\r  else if ($job.inputs.memory_per_job && !$job.inputs.memory_overhead){\r    \r   \treturn $job.inputs.memory_per_job + 2000\r  }\r  else if(!$job.inputs.memory_per_job && $job.inputs.memory_overhead){\r    \r    return 15000 + $job.inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}0"
+    coresMin: "{\r  if ($job.inputs.number_of_threads) {\r    \r   \treturn $job.inputs.number_of_threads \r  }\r  else {\r    \r    return 4\r  }\r}"
   - class: DockerRequirement
-    dockerPull: 'mskcc/trim_galore:0.0.1'
+    dockerPull: 'mskcc/trim_galore:0.1.0'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
