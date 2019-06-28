@@ -4,6 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 id: abra2_2_19
 baseCommand:
   - java
@@ -19,6 +20,107 @@ inputs:
     inputBinding:
       position: 1001
       prefix: '--threads'
+  - id: input_bams
+    type: 'File[]'
+    inputBinding:
+      position: 0
+      prefix: '--in'
+      itemSeparator: ','
+    doc: Required list of input sam or bam file (s) separated by comma
+    secondaryFiles:
+      - .bai
+  - id: patient_id
+    type: string
+  - id: working_directory
+    type: Directory
+    inputBinding:
+      position: 0
+      prefix: '--tmpdir'
+  - id: reference_fasta
+    type: string
+    inputBinding:
+      position: 0
+      prefix: '--ref'
+    doc: Genome reference location
+  - id: targets
+    type: File
+    inputBinding:
+      position: 0
+      prefix: '--targets'
+  - id: kmer
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: '--kmer'
+  - id: mad
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '--mad'
+  - id: soft_clip_contig
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: '--sc'
+    doc: >-
+      Soft clip contig args
+      [max_contigs,min_base_qual,frac_high_qual_bases,min_soft_clip_len]
+      (default:16,13,80,15)
+  - id: mmr
+    type: float?
+    inputBinding:
+      position: 0
+      prefix: '--mmr'
+  - id: scoring_gap_alignments
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: '--sga'
+    doc: >-
+      Scoring used for contig alignments(match,
+      mismatch_penalty,gap_open_penalty,gap_extend_penalty) (default:8,32,48,1)
+  - id: contig_anchor
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: '--ca'
+    doc: >-
+      Contig anchor [M_bases_at_contig_edge,max_mismatches_near_edge]
+      (default:10,2)
+  - id: window_size
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: '--ws'
+    doc: |-
+      Processing window size and overlap
+      (size,overlap) (default: 400,200)
+  - id: consensus_sequence
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: '--cons'
+    doc: Use positional consensus sequence when aligning high quality soft clipping
+  - id: out
+    type: 'File[]?'
+    inputBinding:
+      position: 0
+      prefix: '--out'
+      itemSeparator: ','
+    doc: Required list of output sam or bam file (s) separated by comma
+  - id: ignore_bad_assembly
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: '--ignore-bad-assembly'
+  - id: bam_index
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: '--index'
+    doc: >-
+      Enable BAM index generation when outputting sorted alignments (may require
+      additonal memory)
 outputs: []
 label: abra2_2.19
 arguments:
