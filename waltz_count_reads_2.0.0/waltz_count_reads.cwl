@@ -51,7 +51,7 @@ arguments:
     valueFrom: '-cp'
   - position: 0
     prefix: ''
-    valueFrom: /usr/local/bin/Waltz-2.0.jar
+    valueFrom: /usr/local/bin/Waltz.jar
   - position: 0
     prefix: ''
     valueFrom: org.mskcc.juber.waltz.countreads.CountReads
@@ -60,5 +60,5 @@ requirements:
     ramMin: 8000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskcc/waltz:1.0.1'
+    dockerPull: 'mskcc/waltz:1.0.0'
   - class: InlineJavascriptRequirement
