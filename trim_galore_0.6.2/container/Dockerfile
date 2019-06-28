@@ -1,11 +1,16 @@
-################## ARGUMENTS #######################
+################## ARGUMENTS/Environments ##########
 
 ARG BUILD_DATE
 ARG BUILD_VERSION
+ENV UBUNTU_VERSION 18.04
+ENV LICENSE "Apache-2.0"
+ENV CUTADAPT_VERSION 2.3
+ENV FASTQC_VERSION 0.11.8
+ENV TRIMGALORE_VERSION 0.6.2
 
 ################## BASE IMAGE ######################
 
-FROM ubuntu:18.04
+FROM ubuntu:${UBUNTU_VERSION}
 
 ################## METADATA ########################
 LABEL org.opencontainers.image.vendor="MSKCC"
@@ -13,25 +18,19 @@ LABEL org.opencontainers.image.authors="Ronak H Shah (shahr2@mskcc.org)"
 
 LABEL org.opencontainers.image.created=${BUILD_DATE} \ 
 	org.opencontainers.image.version=${BUILD_VERSION} \
-	org.opencontainers.image.licenses="Apache-2.0"\
-	org.opencontainers.image.version.trimgalore="0.6.2" \
-	org.opencontainers.image.version.cutadpt="2.3" \
-	org.opencontainers.image.version.fastqc="0.11.8" \
-	org.opencontainers.image.version.ubuntu="18.04" \
-	org.opencontainers.image.source.trimgalore="https://github.com/FelixKrueger/TrimGalore/archive/0.6.2.tar.gz" \
+	org.opencontainers.image.licenses=${LICENSE} \
+	org.opencontainers.image.version.trimgalore=${TRIMGALORE_VERSION} \
+	org.opencontainers.image.version.cutadpt=${CUTADAPT_VERSION} \
+	org.opencontainers.image.version.fastqc=${FASTQC_VERSION} \
+	org.opencontainers.image.version.ubuntu=${UBUNTU_VERSION} \
+	org.opencontainers.image.source.trimgalore="https://github.com/FelixKrueger/TrimGalore/archive/${TRIMGALORE_VERSION}.tar.gz" \
 	org.opencontainers.image.source.cutadapt="https://pypi.org/project/cutadapt/" \
-	org.opencontainers.image.source.fastqc="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.8.zip"
+	org.opencontainers.image.source.fastqc="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FASTQC_VERSION}.zip"
 
-LABEL org.opencontainers.image.description="This container uses ubuntu 18.04 as the base image to build \
-	cutadpat version 2.3, \
-	fastq version 0.11.8 and \ 
-	trim_galore version 0.6.2"
-
-################## ENVIRONMENT ######################
-
-ENV CUTADAPT_VERSION 2.3
-ENV FASTQC_VERSION 0.11.8
-ENV TRIMGALORE_VERSION 0.6.2
+LABEL org.opencontainers.image.description="This container uses ubuntu ${UBUNTU_VERSION} as the base image to build \
+	cutadpat version ${CUTADAPT_VERSION}, \
+	fastq version ${FASTQC_VERSION} and \ 
+	trim_galore version ${TRIMGALORE_VERSION}"
 
 ################## INSTALL ##########################
 
