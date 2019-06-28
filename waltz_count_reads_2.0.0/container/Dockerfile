@@ -1,22 +1,30 @@
+
+################## BASE IMAGE ######################
 FROM java:8
 
-LABEL maintainer='Shalabh Suman (sumans@mskcc.org)'
-
+################## ARGUMENTS #######################
 ARG BUILD_DATE
-
-# Labels
-LABEL org.label-schema.schema-version="1.0"
-LABEL org.label-schema.build-date=$BUILD_DATE
-LABEL org.label-schema.vcs-url = "https://github.com/juberpatel/Waltz/blob/master/Waltz-2.0.jar"
-LABEL org.label-schema.vcs-ref = "563f1ce"
-LABEL org.label-schema.name = "waltz"
-LABEL org.label-schema.description = "Syntax to build image: docker build --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') -t waltz_1.0.0 ."
-LABEL version.image='1.0.0' \
-	version.waltz='2.0.0'
-
+ARG BUILD_VERSION=1.0.0
 ARG WALTZ_VERSION_cmd=2.0
+
+
+################## LABELS #######################
+LABEL org.opencontainers.image.authors='Shalabh Suman (sumans@mskcc.org)'
+LABEL org.opencontainers.image.created=$BUILD_DATE
+#LABEL org.opencontainers.image.source = "https://github.com/juberpatel/Waltz/blob/master/Waltz-2.0.jar"
+LABEL org.opencontainers.image.source = "https://github.com/ionox0/temporary_waltz_repo/raw/master/Waltz-2.0.jar"
+LABEL org.opencontainers.image.revision = "563f1ce"
+LABEL org.opencontainers.image.title = "waltz"
+LABEL org.opencontainers.image.description = "Syntax to build image: docker build --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') -t waltz_1.0.0 ."
+LABEL org.opencontainers.image.version=${BUILD_VERSION}
+LABEL org.opencontainers.image.version.waltz=${WALTZ_VERSION_cmd}
+
+################## ENVIRONMENTS #######################
 ENV WALTZ_VERSION=${WALTZ_VERSION_cmd}
 
 # Install Waltz
-RUN wget https://github.com/juberpatel/Waltz/blob/master/Waltz-${WALTZ_VERSION}.jar
-RUN mv Waltz-${WALTZ_VERSION}.jar /usr/local/bin/Waltz-${WALTZ_VERSION}.jar
+#RUN wget https://github.com/juberpatel/Waltz/blob/master/Waltz-${WALTZ_VERSION}.jar
+RUN wget https://github.com/ionox0/temporary_waltz_repo/raw/master/Waltz-${WALTZ_VERSION}.jar
+RUN mv Waltz-${WALTZ_VERSION}.jar /usr/local/bin/Waltz.jar
+
+#ENV PATH=$PATH:/usr/local/bin/Waltz.jar
