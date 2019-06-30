@@ -1,4 +1,3 @@
----
 bam:
   class: File
   metadata: {}
