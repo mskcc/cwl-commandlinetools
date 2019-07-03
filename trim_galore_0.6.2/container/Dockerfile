@@ -50,9 +50,10 @@ RUN wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FAS
 	rm fastqc_v${FASTQC_VERSION}.zip && \
 	chmod a+x FastQC/fastqc
 
+ENV PATH=$PATH:/usr/src/FastQC/
+
 #trim galore
 RUN wget https://github.com/FelixKrueger/TrimGalore/archive/${TRIMGALORE_VERSION}.tar.gz && \
 	tar xvzf ${TRIMGALORE_VERSION}.tar.gz && \
-	rm ${TRIMGALORE_VERSION}.tar.gz
-
-ENV PATH=$PATH:/usr/src/FastQC/:/usr/src/TrimGalore-${TRIMGALORE_VERSION}/
+	rm ${TRIMGALORE_VERSION}.tar.gz && \
+	ln -s /usr/src/TrimGalore-${TRIMGALORE_VERSION}/trim_galore /usr/local/bin/trim_galore
