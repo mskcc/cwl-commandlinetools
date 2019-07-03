@@ -4,7 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: abra2_2.19
+id: abra2_2.17
 baseCommand:
   - java
 inputs:
@@ -162,7 +162,7 @@ outputs:
         *abra.bam
     secondaryFiles:
       - ^.bai
-label: abra2_2.19
+label: abra2_2.17
 arguments:
   - position: 0
     prefix: ''
@@ -194,7 +194,7 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': abra2
-    'doap:revision': 2.19
+    'doap:revision': 2.17
   - class: 'doap:Version'
     'doap:name': cwl-wrapper
     'doap:revision': 1.0.0
