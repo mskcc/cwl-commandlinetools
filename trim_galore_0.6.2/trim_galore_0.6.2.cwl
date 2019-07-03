@@ -6,7 +6,8 @@ $namespaces:
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
 id: trim_galore_0_6_2
-baseCommand: []
+baseCommand:
+  - trim_galore
 inputs:
   - id: memory_per_job
     type: int
@@ -142,10 +143,6 @@ outputs:
         $(inputs.fastq1.basename.replace('.fastq.gz',
         '.fastq.gz_trimming_report.txt'))
 label: trim_galore_0.6.2
-arguments:
-  - position: 0
-    prefix: ''
-    valueFrom: "${\r  if (inputs.path_to_trim_galore) {\r    \r   \treturn inputs.path_to_trim_galore \r  }\r  else {\r    \r    return '/usr/local/bin/trim_galore'\r  }\r}"
 requirements:
   - class: ResourceRequirement
     ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
