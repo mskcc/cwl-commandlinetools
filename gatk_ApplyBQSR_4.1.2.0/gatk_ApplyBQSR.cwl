@@ -1,8 +1,7 @@
 class: CommandLineTool
 cwlVersion: v1.0
-$namespaces:
-  sbg: 'https://www.sevenbridges.com/'
-id: gatk_print_reads
+
+id: gatk__apply_b_q_s_r
 baseCommand:
   - gatk
   - ApplyBQSR
@@ -44,6 +43,8 @@ outputs:
     type: File
     outputBinding:
       glob: '*bam'
+    secondaryFiles:
+      - '*.bai'
 label: gatk_print_reads
 requirements:
   - class: ResourceRequirement
