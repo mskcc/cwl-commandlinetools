@@ -28,6 +28,8 @@ inputs:
       position: 0
       prefix: '--in'
     doc: Required list of input sam or bam file (s) separated by comma
+    secondaryFiles:
+      - ^.bai
   - id: working_directory
     type: Directory?
     inputBinding:
@@ -133,9 +135,6 @@ inputs:
     doc: >-
       Enable BAM index generation when outputting sorted alignments (may require
       additonal memory)
-  - id: path_to_abra
-    type: File?
-    doc: Path to ABRA2 jar file
   - id: input_vcf
     type: File?
     inputBinding:
@@ -169,7 +168,7 @@ arguments:
     valueFrom: "${\n  if(inputs.memory_per_job && inputs.memory_overhead) {\n   \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if (inputs.memory_per_job && !inputs.memory_overhead){\n    \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if(!inputs.memory_per_job && inputs.memory_overhead){\n    \n    return \"-Xmx15G\"\n  }\n  else {\n    \n  \treturn \"-Xmx15G\"\n  }\n}"
   - position: 0
     prefix: '-jar'
-    valueFrom: "${\r  if (inputs.path_to_abra) {\r    \r   \treturn inputs.path_to_abra \r  }\r  else {\r    \r    return '/usr/local/bin/abra2.jar'\r  }\r}"
+    valueFrom: /usr/local/bin/abra2.jar
 requirements:
   - class: ResourceRequirement
     ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
