@@ -23,8 +23,7 @@ inputs:
       prefix: I=
       separate: false
     doc: Input file (bam or sam).  Required.
-  - default: '$(inputs.input_sam.basename.replace(''.sam'', ''_srt.bam''))'
-    id: output
+  - id: output
     type: string
     inputBinding:
       position: 0

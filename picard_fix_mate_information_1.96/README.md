@@ -1,4 +1,4 @@
-# CWL and Dockerfile for running Picard - AddOrReplaceReadGroups
+# CWL and Dockerfile for running Picard - FixMateInformation
 
 ## Version of tools in docker image (/container/Dockerfile)
 
@@ -16,5 +16,5 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner picard_add_or_replace_read_groups_1.96.cwl example_inputs.yaml
+    > toil-cwl-runner picard_fix_mate_information_1.96.cwl example_inputs.yaml
 ```
