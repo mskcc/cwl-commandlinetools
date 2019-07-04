@@ -4,7 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_add_or_replace_read_groups_1.96
+id: picard_mark_duplicates_1.96
 baseCommand:
   - java
 inputs:
@@ -29,8 +29,17 @@ inputs:
       position: 0
       prefix: O=
       separate: false
-      valueFrom: '$(inputs.input.basename.replace(/.sam |.bam/, ''_srt.bam''))'
+      valueFrom: '$(inputs.input.basename.replace(/.bam/, ''_md.bam''))'
     doc: Output file (bam or sam).
+  - default: '$( inputs.input.basename.replace(/.bam/, ''_md.metrics'') )'
+    id: duplication_metrics
+    type: string
+    inputBinding:
+      position: 0
+      prefix: M=
+      separate: false
+      valueFrom: '$( inputs.input.basename.replace(/.bam/, ''_md.metrics'') )'
+    doc: File to write duplication metrics to Required.
   - id: sort_order
     type: string?
     inputBinding:
@@ -41,67 +50,6 @@ inputs:
       Optional sort order to output in. If not supplied OUTPUT is in the same
       order as INPUT.Default value: null. Possible values: {unsorted, queryname,
       coordinate}
-  - id: read_group_identifier
-    type: string
-    inputBinding:
-      position: 0
-      prefix: RGID=
-      separate: false
-    doc: >-
-      Read Group ID  Default value: 1. This option can be set to 'null' to clear
-      the default value
-  - id: read_group_sequnecing_center
-    type: string
-    inputBinding:
-      position: 0
-      prefix: RGCN=
-      separate: false
-    doc: >-
-      Read Group sequencing center name  Default value: null.
-  - id: read_group_library
-    type: int
-    inputBinding:
-      position: 0
-      prefix: RGLB=
-      separate: false
-    doc: >-
-      Read Group Library.  Required.' - id: read_group_center_name type: string
-      inputBinding: position: 0 prefix: RGCN= separate: false doc: 
-  - id: read_group_platform_unit
-    type: string
-    inputBinding:
-      position: 0
-      prefix: RGPU=
-      separate: false
-    doc: Read Group platform unit (eg. run barcode)  Required.
-  - id: read_group_sample_name
-    type: string
-    inputBinding:
-      position: 0
-      prefix: RGSM=
-      separate: false
-    doc: Read Group sample name.  Required
-  - id: read_group_sequencing_platform
-    type: string
-    inputBinding:
-      position: 0
-      prefix: RGPL=
-      separate: false
-    doc: 'Read Group platform (e.g. illumina, solid)  Required.'
-  - id: read_group_description
-    type: string?
-    inputBinding:
-      position: 0
-      prefix: RGDS=
-      separate: false
-    doc: 'Read Group description  Default value: null.'
-  - id: read_group_run_date
-    type: string?
-    inputBinding:
-      position: 0
-      prefix: RGDT=
-      separate: false
-    doc: 'Read Group run date  Default value: null.'
   - id: tmp_dir
     type: string?
     inputBinding:
@@ -141,21 +89,34 @@ inputs:
       Whether to create a BAM index when writing a coordinate-sorted BAM file. 
       Default value:false. This option can be set to 'null' to clear the default
       value. Possible values:{true, false}
+  - default: true
+    id: assume_sorted
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: AS=true
+  - id: duplicate_scoring_strategy
+    type: string
+    inputBinding:
+      position: 0
+      prefix: DUPLICATE_SCORING_STRATEGY=
+      separate: false
 outputs:
   - id: bam
     type: File
     outputBinding:
-      glob: '$(inputs.input.basename.replace(/.sam |.bam/, ''_srt.bam''))'
+      glob: '$(inputs.input.basename.replace(/.bam/, ''_md.bam''))'
     secondaryFiles:
       - ^.bai
-label: picard_add_or_replace_read_groups_1.96
+      - ^.metrics
+label: picard_mark_duplicates_1.96
 arguments:
   - position: 0
     prefix: ''
     valueFrom: "${\n  if(inputs.memory_per_job && inputs.memory_overhead) {\n   \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if (inputs.memory_per_job && !inputs.memory_overhead){\n    \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if(!inputs.memory_per_job && inputs.memory_overhead){\n    \n    return \"-Xmx15G\"\n  }\n  else {\n    \n  \treturn \"-Xmx15G\"\n  }\n}"
   - position: 0
     prefix: '-jar'
-    valueFrom: /usr/local/bin/AddOrReplaceReadGroups.jar
+    valueFrom: /usr/local/bin/MarkDuplicates.jar
 requirements:
   - class: ResourceRequirement
     ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
