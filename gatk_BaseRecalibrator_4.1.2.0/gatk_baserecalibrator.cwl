@@ -1,7 +1,5 @@
 class: CommandLineTool
 cwlVersion: v1.0
-$namespaces:
-  sbg: 'https://www.sevenbridges.com/'
 id: gatk_base_recalibrator_4_1_2_0
 baseCommand:
   - gatk
@@ -263,11 +261,8 @@ outputs:
     type: File
     outputBinding:
       glob: '$(inputs.input.basename.replace(''.bam'', '''')).recal.table'
-label: gatk_base_recalibrator_4.1.0.0
+label: gatk_base_recalibrator_4.1.2.0
 arguments:
-  - position: 0
-    prefix: '--java-options'
-    valueFrom: "${\n  if(inputs.memory_per_job && inputs.memory_overhead) {\n   \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"\\\"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\\\"\"\n    }\n    else {\n      \n      return \"\\\"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\\\"\" \n    }\n  }\n  else if (inputs.memory_per_job && !inputs.memory_overhead){\n    \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"\\\"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\\\"\"\n    }\n    else {\n      \n      return \"\\\"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\\\"\" \n    }\n  }\n  else if(!inputs.memory_per_job && inputs.memory_overhead){\n    \n    return \"\\\"-Xmx4G\\\"\"\n  }\n  else {\n    \n  \treturn \"\\\"-Xmx4G\\\"\"\n  }\n}"
   - position: 0
     prefix: ''
     valueFrom: BaseRecalibrator
