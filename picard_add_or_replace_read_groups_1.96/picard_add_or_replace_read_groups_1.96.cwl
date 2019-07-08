@@ -49,23 +49,21 @@ inputs:
       separate: false
     doc: >-
       Read Group ID  Default value: 1. This option can be set to 'null' to clear
-      the default value
+      the default value  Required
   - id: read_group_sequnecing_center
     type: string
     inputBinding:
       position: 0
       prefix: RGCN=
       separate: false
-    doc: 'Read Group sequencing center name  Default value: null.'
+    doc: 'Read Group sequencing center name  Default value: null. Required'
   - id: read_group_library
     type: int
     inputBinding:
       position: 0
       prefix: RGLB=
       separate: false
-    doc: >-
-      Read Group Library.  Required.' - id: read_group_center_name type: string
-      inputBinding: position: 0 prefix: RGCN= separate: false doc: 
+    doc: Read Group Library.  Required
   - id: read_group_platform_unit
     type: string
     inputBinding:

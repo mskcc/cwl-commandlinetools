@@ -6,7 +6,7 @@ input:
 memory_overhead: 
 memory_per_job: 
 number_of_threads: 
-output: ar_srt.bam
+output: somename_srt.bam
 read_group_description: 
 read_group_identifier: test
 read_group_library: 1

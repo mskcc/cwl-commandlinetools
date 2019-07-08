@@ -34,8 +34,7 @@ RUN apt-get update && \
       git \
       unzip \
       wget \
-      r-base \
-      ant && \
+      r-base && \
       apt-get clean autoclean && \
       apt-get autoremove -y
 
