@@ -1,0 +1,18 @@
+assume_sorted: 
+bam_compression_level: 
+create_bam_index: true
+duplicate_scoring_strategy: 
+duplication_metrics: mark_duplicates_md.metrics
+input:
+  class: File
+  metadata: {}
+  path: "path/to/bam"
+  secondaryFiles: []
+memory_overhead: 
+memory_per_job: 
+number_of_threads: 
+optical_duplicate_pixel_distance: 2500
+output: mark_duplicates_md.bam
+sort_order: 
+tmp_dir: 
+validation_stringency: 
