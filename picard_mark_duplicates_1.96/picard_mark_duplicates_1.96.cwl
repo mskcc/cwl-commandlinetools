@@ -95,12 +95,6 @@ inputs:
     inputBinding:
       position: 0
       prefix: AS=true
-  - id: duplicate_scoring_strategy
-    type: string
-    inputBinding:
-      position: 0
-      prefix: DUPLICATE_SCORING_STRATEGY=
-      separate: false
 outputs:
   - id: bam
     type: File
