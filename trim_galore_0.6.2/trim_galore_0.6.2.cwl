@@ -4,6 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 id: trim_galore_0_6_2
 baseCommand:
   - trim_galore
@@ -11,20 +12,22 @@ inputs:
   - id: memory_per_job
     type: int
     inputBinding:
+      position: 0
       positon: 0
-    doc: >- 
-        Memory per job in megabytes
+    doc: Memory per job in megabytes
   - id: memory_overhead
     type: int
     inputBinding:
       position: 0
-    doc: >-
-        Memory overhead per job in megabytes
+    doc: Memory overhead per job in megabytes
   - id: number_of_threads
     type: int?
     inputBinding:
       position: 0
       prefix: '--threads'
+  - id: path_to_trim_galore
+    type: File?
+    doc: Path to trim_galore executable file
   - id: adapter
     type: string
     inputBinding:

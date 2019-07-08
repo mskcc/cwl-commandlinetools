@@ -1,16 +1,16 @@
+################## BASE IMAGE ######################
+
+FROM ubuntu:18.04
+
 ################## ARGUMENTS/Environments ##########
 
 ARG BUILD_DATE
 ARG BUILD_VERSION
-ENV UBUNTU_VERSION 18.04
-ENV LICENSE "Apache-2.0"
-ENV CUTADAPT_VERSION 2.3
-ENV FASTQC_VERSION 0.11.8
-ENV TRIMGALORE_VERSION 0.6.2
-
-################## BASE IMAGE ######################
-
-FROM ubuntu:${UBUNTU_VERSION}
+ARG UBUNTU_VERSION=18.04
+ARG LICENSE="Apache-2.0"
+ARG CUTADAPT_VERSION=2.3
+ARG FASTQC_VERSION=0.11.8
+ARG TRIMGALORE_VERSION=0.6.2
 
 ################## METADATA ########################
 LABEL org.opencontainers.image.vendor="MSKCC"
@@ -34,30 +34,26 @@ LABEL org.opencontainers.image.description="This container uses ubuntu ${UBUNTU_
 
 ################## INSTALL ##########################
 
-#Cutadapt
-RUN apt-get update && apt-get -y upgrade && apt-get install -y build-essential python3 python3-pip python3-dev && \
-	apt-get clean && apt-get purge && \
-        rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#Ubuntu
+RUN apt-get update && apt-get -y upgrade && apt-get install -y build-essential python3 python3-pip python3-dev wget zip default-jre && \
+	apt-get clean && apt-get purge && apt autoremove && apt-get remove --yes --purge build-essential && \
+	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+#Cutadapt
 RUN pip3 install --upgrade cutadapt==${CUTADAPT_VERSION}
 
 WORKDIR /usr/src
 
 #Get fastqc
-RUN apt-get update && apt-get -y upgrade && apt-get install -y wget zip default-jre && \
-	apt-get clean && apt-get purge && \
-        rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v${FASTQC_VERSION}.zip && \
 	unzip fastqc_v${FASTQC_VERSION}.zip && \
 	rm fastqc_v${FASTQC_VERSION}.zip && \
 	chmod a+x FastQC/fastqc
 
+ENV PATH=$PATH:/usr/src/FastQC/
+
 #trim galore
 RUN wget https://github.com/FelixKrueger/TrimGalore/archive/${TRIMGALORE_VERSION}.tar.gz && \
 	tar xvzf ${TRIMGALORE_VERSION}.tar.gz && \
-	rm ${TRIMGALORE_VERSION}.tar.gz
-
-# Clean
-RUN  apt-get clean ; apt-get remove --yes --purge build-essential
-
-ENV PATH=$PATH:/usr/src/FastQC/:/usr/src/TrimGalore-${TRIMGALORE_VERSION}/
+	rm ${TRIMGALORE_VERSION}.tar.gz && \
+	ln -s /usr/src/TrimGalore-${TRIMGALORE_VERSION}/trim_galore /usr/local/bin/trim_galore
