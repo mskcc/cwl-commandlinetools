@@ -1,0 +1,53 @@
+{
+    "reference": {
+        "class": "File",
+        "path": "chr14_chr16.fasta"
+    },
+    "input": {
+        "class": "File",
+        "path": "SeraCare_0-5_14.bam"
+    },
+    "bqsr_recal_file": {
+        "class": "File",
+        "path": "SeraCare_0-5_14.recal.table"
+    },
+    "add_output_sam_program_record": null,
+    "add_output_vcf_command_line": null,
+    "arguments_file": null,
+    "cloud_index_prefetch_buffer": null,
+    "cloud_prefetch_buffer": null,
+    "create_output_bam_index": null,
+    "create_output_bam_md5": null,
+    "create_output_variant_index": null,
+    "create_output_variant_md5": null,
+    "disable_bam_index_caching": null,
+    "disable_read_filter": null,
+    "disable_sequence_dictionary_validation": null,
+    "emit_original_quals": null,
+    "exclude_intervals": null,
+    "gatk_config_file": null,
+    "gcs_max_retries": null,
+    "gcs_project_for_requester_pays": null,
+    "global_qscore_prior": null,
+    "interval_exclusion_padding": null,
+    "interval_merging_rule": null,
+    "interval_padding": null,
+    "interval_set_rule": null,
+    "intervals": null,
+    "lenient": null,
+    "memory_overhead": null,
+    "memory_per_job": null,
+    "number_of_threads": null,
+    "preserve_qscores_less_than": null,
+    "quantize_quals": null,
+    "quiet": null,
+    "read_filter": null,
+    "read_index": null,
+    "read_validation_stringency": null,
+    "seconds_between_progress_updates": null,
+    "sequence_dictionary": null,
+    "sites_only_vcf_output": null,
+    "use_jdk_deflater": null,
+    "use_jdk_inflater": null,
+    "use_original_qualities": null
+}
