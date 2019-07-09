@@ -35,4 +35,4 @@ RUN apt-get update && \
 
 RUN wget "https://github.com/mozack/abra2/releases/download/v${ABRA2_VERSION}/abra2-${ABRA2_VERSION}.jar" && \
 	chmod 755 /usr/src/abra2-${ABRA2_VERSION}.jar && \
-    ln -s /usr/src/abra2-${ABRA2_VERSION}.jar /usr/local/bin/abra2.jar 
+    cp -s /usr/src/abra2-${ABRA2_VERSION}.jar /usr/local/bin/abra2.jar 
