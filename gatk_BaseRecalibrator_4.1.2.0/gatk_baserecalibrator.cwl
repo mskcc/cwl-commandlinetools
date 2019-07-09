@@ -1,5 +1,7 @@
 class: CommandLineTool
 cwlVersion: v1.0
+$namespaces:
+  sbg: 'https://www.sevenbridges.com/'
 id: gatk_base_recalibrator_4_1_2_0
 baseCommand:
   - gatk
