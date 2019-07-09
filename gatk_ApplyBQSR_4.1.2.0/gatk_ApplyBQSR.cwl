@@ -91,13 +91,11 @@ inputs:
       position: 0
       prefix: '--disable-sequence-dictionary-validation'
   - default: 'true'
-    'sbg:toolDefaultValue': 'true'
     id: emit_original_quals
     type: boolean?
     inputBinding:
       position: 0
       prefix: '--emit-original-quals'
-    default: 'true'
   - id: exclude_intervals
     type: string?
     inputBinding:
@@ -223,14 +221,14 @@ outputs:
   - id: output
     type: File?
     outputBinding:
-      glob: '$(inputs.input.basename.replace(''.bam'', '''')).recal.bam'
+      glob: '$(inputs.input.basename.replace(''.bam'', ''''))_bqsr.bam'
     secondaryFiles:
       - ^.bai
 label: gatk_apply_bqsr_4.1.2.0
 arguments:
   - position: 0
     prefix: '--output'
-    valueFrom: '$(inputs.input.basename.replace(''.bam'', '''')).recal.bam'
+    valueFrom: '$(inputs.input.basename.replace(''.bam'', ''''))_bqsr.bam'
   - position: 0
     prefix: '--tmp-dir'
     valueFrom: .
