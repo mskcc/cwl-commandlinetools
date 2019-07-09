@@ -250,12 +250,8 @@ inputs:
     inputBinding:
       position: 3
       prefix: '--known-sites'
-    doc: >-
-      One or more databases of known polymorphic sites used to exclude regions
-      around known polymorphisms from analysis. This second one is optional.
     secondaryFiles:
-      - .fai
-      - ^.dict
+      - .idx
 outputs:
   - id: output
     type: File
@@ -268,6 +264,7 @@ arguments:
     valueFrom: "${\n  if(inputs.memory_per_job && inputs.memory_overhead) {\n   \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if (inputs.memory_per_job && !inputs.memory_overhead){\n    \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if(!inputs.memory_per_job && inputs.memory_overhead){\n    \n    return \"-Xmx4G\"\n  }\n  else {\n    \n  \treturn \"-Xmx4G\"\n  }\n}"
   - position: 1
     prefix: ''
+    separate: false
     valueFrom: BaseRecalibrator
   - position: 2
     prefix: '--tmp-dir'
