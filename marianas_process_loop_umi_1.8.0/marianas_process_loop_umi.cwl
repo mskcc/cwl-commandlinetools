@@ -23,29 +23,14 @@ outputs:
     type: File
     outputBinding:
       glob: '$(inputs.fastq1.basename.replace(''.fastq'', ''_umi-clipped.fastq''))'
-      outputEval: |-
-        ${
-            self[0].basename = inputs.add_rg_SM + '_R1.fastq.gz';
-            return self[0]
-        }
   - id: processed_fastq_2
     type: File
     outputBinding:
       glob: '$(inputs.fastq2.basename.replace(''.fastq'', ''_umi-clipped.fastq''))'
-      outputEval: |-
-        ${
-            self[0].basename = inputs.add_rg_SM + '_R2.fastq.gz';
-            return self[0]
-        }
   - id: clipping_info
     type: File
     outputBinding:
       glob: info.txt
-      outputEval: |-
-        ${
-            self[0].basename = inputs.add_rg_SM + '_info.txt';
-            return self[0]
-        }
   - id: composite_umi_frequencies
     type: File
     outputBinding:
@@ -76,19 +61,10 @@ arguments:
     prefix: ''
     separate: false
     valueFrom: org.mskcc.marianas.umi.duplex.fastqprocessing.ProcessLoopUMIFastq
-  - position: 3
-    prefix: ''
-    separate: false
-    valueFrom: .
 requirements:
   - class: ResourceRequirement
     ramMin: 10000
     coresMin: 1
   - class: DockerRequirement
     dockerPull: 'mskcc/marianas:0.1.0'
-  - class: InitialWorkDirRequirement
-    listing:
-      - $(inputs.fastq1)
-      - $(inputs.fastq2)
-      - $(inputs.sample_sheet)
   - class: InlineJavascriptRequirement
