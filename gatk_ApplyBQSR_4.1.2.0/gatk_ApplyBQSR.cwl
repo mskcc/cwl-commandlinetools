@@ -89,7 +89,7 @@ inputs:
     inputBinding:
       position: 6
       prefix: '--disable-sequence-dictionary-validation'
-  - default: 'true'
+  - default: true
     id: emit_original_quals
     type: boolean?
     inputBinding:
@@ -236,6 +236,7 @@ arguments:
     valueFrom: .
   - position: 1
     prefix: ''
+    separate: false
     valueFrom: ApplyBQSR
 requirements:
   - class: ResourceRequirement
