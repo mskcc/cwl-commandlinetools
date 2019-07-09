@@ -4,7 +4,6 @@
 
 | Tool	| Version	| Location	|
 |---	|---	|---	|
-| Ubuntu base image  	| 18.04  	|   -	|
 | openjdk  	| 8  	|  -	|
 | ABRA2  	| 2.19	|  https://github.com/mozack/abra2/releases/download/v2.19/abra2-2.19.jar	|
 
