@@ -260,7 +260,7 @@ outputs:
   - id: output
     type: File
     outputBinding:
-      glob: '$(inputs.input.basename.replace(''.bam'', '''')).recal.table'
+      glob: '$(inputs.input.basename.replace(''.bam'', ''''))_bqsr.table'
 label: gatk_base_recalibrator_4.1.2.0
 arguments:
   - position: 0
@@ -271,7 +271,7 @@ arguments:
     valueFrom: .
   - position: 0
     prefix: '--output'
-    valueFrom: '$(inputs.input.basename.replace(''.bam'', '''')).recal.table'
+    valueFrom: '$(inputs.input.basename.replace(''.bam'', ''''))_bqsr.table'
   - position: 0
     prefix: '--verbosity'
     valueFrom: INFO
