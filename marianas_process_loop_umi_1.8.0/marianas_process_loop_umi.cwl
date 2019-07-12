@@ -5,17 +5,26 @@ baseCommand:
   - java
 inputs:
   - id: fastq1
-    type: File?
+    type: File
     inputBinding:
       position: 1
   - id: fastq2
-    type: File?
+    type: File
     inputBinding:
       position: 2
   - id: umi_length
-    type: int?
+    type: int
     inputBinding:
       position: 3
+  - id: memory_per_job
+    type: int?
+    inputBinding:
+      position: 0
+    doc: Memory per job in megabytes
+  - id: memory_overhead
+    type: int?
+    inputBinding:
+      position: 0
 outputs:
   - id: processed_fastq_1
     type: File
@@ -36,27 +45,21 @@ outputs:
 label: marianas_process_loop_umi.cwl
 arguments:
   - position: 0
-    prefix: ''
     separate: false
     valueFrom: '-server'
   - position: 0
-    prefix: ''
     separate: false
     valueFrom: '-Xms$(parseInt(runtime.ram)/1000 - 2)g'
   - position: 0
-    prefix: ''
     separate: false
     valueFrom: '-Xmx$(parseInt(runtime.ram)/1000 - 2)g'
   - position: 0
-    prefix: ''
     separate: false
     valueFrom: '-cp'
   - position: 0
-    prefix: ''
     separate: false
     valueFrom: /usr/bin/Marianas-1.8.1.jar
   - position: 0
-    prefix: ''
     separate: false
     valueFrom: org.mskcc.marianas.umi.duplex.fastqprocessing.ProcessLoopUMIFastq
 requirements:

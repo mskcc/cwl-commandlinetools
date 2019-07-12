@@ -1,12 +1,34 @@
-FROM java:8
+################## BASE IMAGE ######################
 
-LABEL maintainer='Ian Johnson (johnsoni@mskcc.org)' \
-	version.image='1.0.0' \
-	version.marianas='1.8.1' \
-	source.marianas='https://github.com/mskcc/marianas/tag/1.8.1'
+FROM openjdk:8
+
+################## ARGUMENTS########################
+
+ARG BUILD_DATE
+ARG BUILD_VERSION
+ARG LICENSE="Apache-2.0"
+ARG JAVA_VERSION=8
+ARG MARIANAS_VERSION=1.8.1
+
+################## METADATA ########################
+
+LABEL org.opencontainers.image.vendor="MSKCC"
+LABEL org.opencontainers.image.authors="Ian C Johnson (johnsoni@mskcc.org)"
+
+LABEL org.opencontainers.image.created=${BUILD_DATE} \
+	org.opencontainers.image.version=${BUILD_VERSION} \
+	org.opencontainers.image.licenses=${LICENSE} \
+	org.opencontainers.image.version.java=${JAVA_VERSION} \
+	org.opencontainers.image.version.marianas=${MARIANAS_VERSION} \
+	org.opencontainers.image.source.marianas="https://github.com/mskcc/Marianas/releases/"
+
+LABEL org.opencontainers.image.description="This container uses OPENJDK ${JAVA_VERSION} as the base image to use Marianas version ${MARIANAS_VERSION}"
+
+################## INSTALL ##########################
 
 ENV MARIANAS_VERSION 1.8.1
 
-# Install Marianas
+WORKDIR /usr/src/
+
 RUN wget https://github.com/juberpatel/Marianas/releases/download/v1.8.1/Marianas-1.8.1.jar
-RUN mv Marianas-1.8.1.jar /usr/bin/Marianas-1.8.1.jar
+RUN cp -s /usr/src/Marianas-1.8.1.jar /usr/local/bin/Marianas-1.8.1.jar
