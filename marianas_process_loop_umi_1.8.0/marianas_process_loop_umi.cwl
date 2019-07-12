@@ -105,7 +105,7 @@ arguments:
       }
   - position: 0
     prefix: '-cp'
-    valueFrom: /usr/bin/Marianas-1.8.1.jar
+    valueFrom: /usr/local/bin/Marianas-1.8.1.jar
   - position: 0
     valueFrom: org.mskcc.marianas.umi.duplex.fastqprocessing.ProcessLoopUMIFastq
 requirements:
