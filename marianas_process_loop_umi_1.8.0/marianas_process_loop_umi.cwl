@@ -1,5 +1,10 @@
 class: CommandLineTool
 cwlVersion: v1.0
+$namespaces:
+  dct: 'http://purl.org/dc/terms/'
+  doap: 'http://usefulinc.com/ns/doap#'
+  foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 id: marianas_process_loop_umi_cwl
 baseCommand:
   - java
@@ -45,11 +50,8 @@ outputs:
 label: marianas_process_loop_umi.cwl
 arguments:
   - position: 0
-    separate: false
     valueFrom: '-server'
   - position: 0
-    prefix: ''
-    separate: false
     valueFrom: |-
       ${
         if(inputs.memory_per_job && inputs.memory_overhead) {   
@@ -76,8 +78,6 @@ arguments:
         }
       }
   - position: 0
-    prefix: ''
-    separate: false
     valueFrom: |-
       ${
         if(inputs.memory_per_job && inputs.memory_overhead) {   
@@ -104,13 +104,9 @@ arguments:
         }
       }
   - position: 0
-    separate: false
-    valueFrom: '-cp'
-  - position: 0
-    separate: false
+    prefix: '-cp'
     valueFrom: /usr/bin/Marianas-1.8.1.jar
   - position: 0
-    separate: false
     valueFrom: org.mskcc.marianas.umi.duplex.fastqprocessing.ProcessLoopUMIFastq
 requirements:
   - class: ResourceRequirement
@@ -134,20 +130,20 @@ requirements:
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
-        'foaf:name': Ian Johnson
+        'foaf:mbox': 'mailto:shahr2@mskcc.org'
+        'foaf:name': Ronak Shah
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
-        'foaf:name': Ian Johnson
+        'foaf:mbox': 'mailto:shahr2@mskcc.org'
+        'foaf:name': Ronak Shah
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': Marianas
-    'doap:revision': 1.8.1
+    'doap:name': picard
+    'doap:revision': 1.96
   - class: 'doap:Version'
     'doap:name': cwl-wrapper
     'doap:revision': 1.0.0
