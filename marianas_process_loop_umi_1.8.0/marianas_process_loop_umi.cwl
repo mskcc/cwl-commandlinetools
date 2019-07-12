@@ -34,11 +34,11 @@ outputs:
   - id: processed_fastq_1
     type: File
     outputBinding:
-      glob: '$(inputs.fastq1.basename.replace(''.fastq'', ''_umi-clipped.fastq''))'
+      glob: '$(inputs.fastq1.basename.replace(''.fastq.gz'', ''_umi-clipped.fastq.gz''))'
   - id: processed_fastq_2
     type: File
     outputBinding:
-      glob: '$(inputs.fastq2.basename.replace(''.fastq'', ''_umi-clipped.fastq''))'
+      glob: '$(inputs.fastq2.basename.replace(''.fastq.gz'', ''_umi-clipped.fastq.gz''))'
   - id: clipping_info
     type: File
     outputBinding:
