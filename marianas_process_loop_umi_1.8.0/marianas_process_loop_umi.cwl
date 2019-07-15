@@ -4,7 +4,6 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-  sbg: 'https://www.sevenbridges.com/'
 id: marianas_process_loop_umi_cwl
 baseCommand:
   - java
