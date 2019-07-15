@@ -136,13 +136,13 @@ requirements:
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:shahr2@mskcc.org'
-        'foaf:name': Ronak Shah
+        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
+        'foaf:name': Ian Johnson
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': picard
-    'doap:revision': 1.96
+    'doap:name': marianas
+    'doap:revision': 1.8.1
   - class: 'doap:Version'
     'doap:name': cwl-wrapper
     'doap:revision': 1.0.0
