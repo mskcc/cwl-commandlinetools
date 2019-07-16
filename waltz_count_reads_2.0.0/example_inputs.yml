@@ -1,17 +1,17 @@
 bam:
   class: File
   metadata: {}
-  path: "SeraCare_0-5.bam"
+  path: "input.bam"
   secondaryFiles:
   - class: File
-    path: "SeraCare_0-5.bai"
+    path: "input.bai"
 bed_file:
   class: File
-  path: "MSK-ACCESS-v1_0-probe-A.sorted_correct.bed"
+  path: "intervals.bed"
 coverage_threshold: 7
 gene_list:
   class: File
-  path: "juber-hg19-gene-list.bed"
+  path: "gene_list.bed"
 memory_overhead: 
 memory_per_job: 
 number_of_threads: 
