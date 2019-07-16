@@ -1,5 +1,9 @@
 class: CommandLineTool
 cwlVersion: v1.0
+$namespaces:
+  dct: 'http://purl.org/dc/terms/'
+  doap: 'http://usefulinc.com/ns/doap#'
+  foaf: 'http://xmlns.com/foaf/0.1/'
 id: waltz_pileupmatrices
 baseCommand:
   - java
@@ -85,3 +89,24 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'mskcc/waltz:1.0.0'
   - class: InlineJavascriptRequirement
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:sumans@mskcc.org'
+        'foaf:name': Shalabh Suman
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:sumans@mskcc.org'
+        'foaf:name': Shalabh Suman
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'doap:release':
+  - class: 'doap:Version'
+    'doap:name': waltz
+    'doap:revision': 2.0
+  - class: 'doap:Version'
+    'doap:name': cwl-wrapper
+    'doap:revision': 1.0.0
