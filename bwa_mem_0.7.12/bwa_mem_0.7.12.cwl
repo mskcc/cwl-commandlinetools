@@ -194,8 +194,8 @@ outputs:
 arguments:
   - position: 0
     prefix: '-R'
-    valueFrom: >-
-      @RG\\tID:$(inputs.lane_id)\\tSM:$(inputs.sample_id)\\tLB:$(inputs.sample_id)\\tPL:Illumina
+    valueFrom: >\\tPU:$(inputs.lane_id)-
+      @RG\\tID:$(inputs.lane_id)\\tSM:$(inputs.sample_id)\\tLB:$(inputs.sample_id)\\tPL:Illumina\\tPU:$(inputs.lane_id)
   - position: 0
     prefix: '-t'
     valueFrom: $(runtime.cores)
