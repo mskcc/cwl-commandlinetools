@@ -44,7 +44,7 @@ outputs:
     type: File
     outputBinding:
       glob: '*.read-counts'
-label: waltz_count_reads_test
+label: waltz_count_reads
 arguments:
   - position: 0
     prefix: ''
