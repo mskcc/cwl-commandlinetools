@@ -4,7 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: waltz_pileupmatrices
+id: waltz_pileupmetrics
 baseCommand:
   - java
 inputs:
@@ -52,7 +52,7 @@ outputs:
     type: File
     outputBinding:
       glob: '*-intervals-without-duplicates.txt'
-label: waltz_pileupmetrices
+label: waltz_pileupmetrics
 arguments:
   - position: 0
     prefix: ''
