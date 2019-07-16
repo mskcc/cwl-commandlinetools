@@ -9,13 +9,13 @@ baseCommand:
   - java
 inputs:
   - id: bam
-    type: File?
+    type: File
     inputBinding:
       position: 11
     secondaryFiles:
       - ^.bai
   - id: referece_fasta
-    type: File?
+    type: File
     inputBinding:
       position: 12
     secondaryFiles:
@@ -32,24 +32,24 @@ inputs:
   - id: number_of_threads
     type: int?
   - id: bed_file
-    type: File?
+    type: File
     inputBinding:
       position: 13
 outputs:
   - id: pileup
-    type: File?
+    type: File
     outputBinding:
       glob: '*-pileup.txt'
   - id: pileup_without_duplicates
-    type: File?
+    type: File
     outputBinding:
       glob: '*-pileup-without-duplicates.txt'
   - id: intervals
-    type: File?
+    type: File
     outputBinding:
       glob: '*-intervals.txt'
   - id: intervals_without_duplicates
-    type: File?
+    type: File
     outputBinding:
       glob: '*-intervals-without-duplicates.txt'
 label: waltz_pileupmetrices
@@ -106,7 +106,7 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': waltz
-    'doap:revision': 2.0
+    'doap:revision': 3.1.1
   - class: 'doap:Version'
     'doap:name': cwl-wrapper
     'doap:revision': 1.0.0
