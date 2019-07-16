@@ -34,9 +34,9 @@ inputs:
     type: int?
 outputs:
   - id: output_file
-    type: File?
+    type: File
     outputBinding:
-      glob: '$(inputs.input.basename.replace(''.bam'', '''')).bedgraph'
+      glob: $(inputs.output_file_name)
 label: bedtools_genomecov
 arguments:
   - position: 0
