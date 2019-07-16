@@ -4,6 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 id: bedtools_genomecov
 baseCommand:
   - bedtools
@@ -22,10 +23,6 @@ inputs:
       - ^.bai
   - id: output_file_name
     type: string
-    inputBinding:
-      position: 10
-      prefix: '>'
-      shellQuote: false
   - id: memory_overhead
     type: int?
   - id: memory_per_job
@@ -36,7 +33,12 @@ outputs:
   - id: output_file
     type: File
     outputBinding:
-      glob: $(inputs.output_file_name)
+      glob: |2-
+          ${
+            if (inputs.output_file_name.length>0)
+              return inputs.output_file_name;
+            return inputs.input.basename.replace('.bam', '.bedgraph');
+          }
 label: bedtools_genomecov
 arguments:
   - position: 0
@@ -51,6 +53,12 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'biocontainers/bedtools:v2.28.0_cv2'
   - class: InlineJavascriptRequirement
+stdout: |2-
+    ${
+      if (inputs.output_file_name.length>0)
+        return inputs.output_file_name;
+      return inputs.input.basename.replace('.bam', '.bedgraph');
+    }
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
