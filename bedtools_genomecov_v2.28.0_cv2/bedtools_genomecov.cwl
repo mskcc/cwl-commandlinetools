@@ -32,9 +32,9 @@ outputs:
   - id: output_file
     type: File
     outputBinding:
-      glob: |2-
-          ${
-            if (inputs.output_file_name.length>0)
+      glob: |-
+        ${
+             if (inputs.output_file_name.length>0)
               return inputs.output_file_name;
             return inputs.input.basename.replace('.bam', '.bedgraph');
           }
@@ -52,8 +52,8 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'biocontainers/bedtools:v2.28.0_cv2'
   - class: InlineJavascriptRequirement
-stdout: |2-
-    ${
+stdout: |-
+  ${
       if (inputs.output_file_name.length>0)
         return inputs.output_file_name;
       return inputs.input.basename.replace('.bam', '.bedgraph');
