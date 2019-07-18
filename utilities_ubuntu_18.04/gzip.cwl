@@ -14,8 +14,6 @@ inputs:
   - id: memory_overhead
     type: int?
     doc: Memory overhead per job in megabytes
-  - id: number_of_threads
-    type: int?
   - id: input
     type: File
     inputBinding:

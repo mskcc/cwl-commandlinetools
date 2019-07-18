@@ -13,11 +13,6 @@ inputs:
   - id: memory_overhead
     type: int?
     doc: Memory overhead per job in megabytes
-  - id: number_of_threads
-    type: int?
-    inputBinding:
-      position: 0
-      prefix: '--threads'
   - id: input
     type: 'File[]'
     inputBinding:
