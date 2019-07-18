@@ -1,0 +1,9 @@
+decompress: false
+input:
+  class: File
+  metadata: {}
+  path: "/path/to/some_file"
+  secondaryFiles: []
+output: some_file.gz
+recursive: 
+to_stdout: true
