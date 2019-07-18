@@ -4,23 +4,27 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: waltz_count_reads
+id: waltz_pileupmetrics
 baseCommand:
   - java
 inputs:
   - id: bam
     type: File
     inputBinding:
-      position: 1
-  - id: gene_list
+      position: 11
+    secondaryFiles:
+      - ^.bai
+  - id: referece_fasta
     type: File
     inputBinding:
-      position: 3
+      position: 12
+    secondaryFiles:
+      - .fai
   - default: 20
-    id: coverage_threshold
+    id: min_map_quality
     type: int
     inputBinding:
-      position: 2
+      position: 10
   - id: memory_per_job
     type: int?
   - id: memory_overhead
@@ -30,46 +34,54 @@ inputs:
   - id: bed_file
     type: File
     inputBinding:
-      position: 4
+      position: 13
 outputs:
-  - id: covered_regions
+  - id: pileup
     type: File
     outputBinding:
-      glob: '*.covered-regions'
-  - id: fragment_sizes
+      glob: '*-pileup.txt'
+  - id: pileup_without_duplicates
     type: File
     outputBinding:
-      glob: '*.fragment-sizes'
-  - id: read_counts
+      glob: '*-pileup-without-duplicates.txt'
+  - id: intervals
     type: File
     outputBinding:
-      glob: '*.read-counts'
-label: waltz_count_reads_test
+      glob: '*-intervals.txt'
+  - id: intervals_without_duplicates
+    type: File
+    outputBinding:
+      glob: '*-intervals-without-duplicates.txt'
+label: waltz_pileupmetrics
 arguments:
   - position: 0
     prefix: ''
     separate: false
     valueFrom: '-server'
-  - position: 0
+  - position: 1
     prefix: ''
     separate: false
     valueFrom: "${\n  if(inputs.memory_per_job && inputs.memory_overhead) {\n   \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xms\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xms\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if (inputs.memory_per_job && !inputs.memory_overhead){\n    \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xms\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xms\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if(!inputs.memory_per_job && inputs.memory_overhead){\n    \n    return \"-Xms4G\"\n  }\n  else {\n    \n  \treturn \"-Xms4G\"\n  }\n}"
-  - position: 0
+  - position: 2
     prefix: ''
     separate: false
     valueFrom: "${\n  if(inputs.memory_per_job && inputs.memory_overhead) {\n   \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if (inputs.memory_per_job && !inputs.memory_overhead){\n    \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if(!inputs.memory_per_job && inputs.memory_overhead){\n    \n    return \"-Xmx4G\"\n  }\n  else {\n    \n  \treturn \"-Xmx4G\"\n  }\n}"
-  - position: 0
+  - position: 3
     prefix: ''
     separate: false
     valueFrom: '-cp'
-  - position: 0
+  - position: 4
     prefix: ''
     separate: false
     valueFrom: /usr/local/bin/Waltz.jar
-  - position: 0
+  - position: 5
     prefix: ''
     separate: false
-    valueFrom: org.mskcc.juber.waltz.countreads.CountReads
+    valueFrom: org.mskcc.juber.waltz.Waltz
+  - position: 6
+    prefix: ''
+    separate: false
+    valueFrom: PileupMetrics
 requirements:
   - class: ResourceRequirement
     ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 8000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 8000 \r  }\r}"
