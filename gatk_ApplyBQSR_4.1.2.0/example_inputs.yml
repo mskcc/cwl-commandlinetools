@@ -1,0 +1,48 @@
+reference:
+  class: File
+  path: chr14_chr16.fasta
+input:
+  class: File
+  path: SeraCare_0-5_14.bam
+bqsr_recal_file:
+  class: File
+  path: SeraCare_0-5_14.recal.table
+add_output_sam_program_record: 
+add_output_vcf_command_line: 
+arguments_file: 
+cloud_index_prefetch_buffer: 
+cloud_prefetch_buffer: 
+create_output_bam_index: 
+create_output_bam_md5: 
+create_output_variant_index: 
+create_output_variant_md5: 
+disable_bam_index_caching: 
+disable_read_filter: 
+disable_sequence_dictionary_validation: 
+emit_original_quals: 
+exclude_intervals: 
+gatk_config_file: 
+gcs_max_retries: 
+gcs_project_for_requester_pays: 
+global_qscore_prior: 
+interval_exclusion_padding: 
+interval_merging_rule: 
+interval_padding: 
+interval_set_rule: 
+intervals: 
+lenient: 
+memory_overhead: 
+memory_per_job: 
+number_of_threads: 
+preserve_qscores_less_than: 
+quantize_quals: 
+quiet: 
+read_filter: 
+read_index: 
+read_validation_stringency: 
+seconds_between_progress_updates: 
+sequence_dictionary: 
+sites_only_vcf_output: 
+use_jdk_deflater: 
+use_jdk_inflater: 
+use_original_qualities: 
