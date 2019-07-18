@@ -28,6 +28,15 @@ inputs:
     type: int?
   - id: number_of_threads
     type: int?
+  - id: option_bedgraph
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: '-bg'
+      separate: false
+    doc: >-
+      option flag parameter to choose output file format. -bg refers to bedgraph
+      format
 outputs:
   - id: output_file
     type: File
@@ -39,11 +48,6 @@ outputs:
             return inputs.input.basename.replace('.bam', '.bedgraph');
           }
 label: bedtools_genomecov
-arguments:
-  - position: 0
-    prefix: ''
-    separate: false
-    valueFrom: '-bg'
 requirements:
   - class: ShellCommandRequirement
   - class: ResourceRequirement
