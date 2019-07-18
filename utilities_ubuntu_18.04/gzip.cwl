@@ -21,14 +21,14 @@ inputs:
     inputBinding:
       position: 100
     doc: Input file.
-  - id: to_stdout
+  - default: true
+    id: to_stdout
     type: boolean
     inputBinding:
       position: 0
       prefix: '-c'
     doc: 'write to stdout, keep original files'
-  - default: true
-    id: decompress
+  - id: decompress
     type: boolean?
     inputBinding:
       position: 0
