@@ -42,7 +42,8 @@ outputs:
     outputBinding:
       glob: $(inputs.output)
 doc: |
-  linux-sort.cwl is developed for CWL consortium
+  linux-sort.cwl is developed for CWL consortium and modified by Ronak Shah as MSKCC
+  Reference https://github.com/common-workflow-language/workflows/blob/master/tools/linux-sort.cwl
 arguments:
   - position: 0
     prefix: '-S'
