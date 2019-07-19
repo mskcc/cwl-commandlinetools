@@ -4,6 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  edam: http://edamontology.org/
 id: gatk_apply_bqsr_4_1_2_0
 baseCommand:
   - gatk
@@ -244,8 +245,10 @@ arguments:
     valueFrom: ApplyBQSR
 requirements:
   - class: ResourceRequirement
-    ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 8000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 8000 \r  }\r}"
-    coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 1\r  }\r}"
+    ramMin: 10000
+    coresMin: 8
+#     ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 8000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 8000 \r  }\r}"
+#     coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 1\r  }\r}"
   - class: DockerRequirement
     dockerPull: 'broadinstitute/gatk:4.1.2.0'
   - class: InlineJavascriptRequirement
@@ -267,6 +270,3 @@ requirements:
   - class: 'doap:Version'
     'doap:name': gatk4
     'doap:revision': 4.1.2.0
-  - class: 'doap:Version'
-    'doap:name': cwl-wrapper
-    'doap:revision': 1.0.0
