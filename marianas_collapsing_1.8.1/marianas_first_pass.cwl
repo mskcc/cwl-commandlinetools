@@ -4,6 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 id: marianas_collapsing_first_pass_cwl
 baseCommand:
   - java
@@ -37,33 +38,34 @@ inputs:
     inputBinding:
       position: 7
   - id: reference_fasta
-    type: string
+    type: File
     inputBinding:
       position: 8
-    secondaryFiles: .fai
-  - id: output_dir
+    secondaryFiles:
+      - .fai
+  - default: .
+    id: output_dir
     type: string?
-    default: '.'
     inputBinding:
       position: 9
-      valueFrom: '.'
+      valueFrom: .
 outputs:
   - id: first_pass_output_file
     type: File
     outputBinding:
-      glob: 'first-pass.txt'
+      glob: first-pass.txt
   - id: alt_allele_file
     type: File
     outputBinding:
-      glob: 'first-pass-alt-alleles.txt'
+      glob: first-pass-alt-alleles.txt
   - id: first_pass_insertions
     type: File
     outputBinding:
-      glob: 'first-pass-insertions.txt'
+      glob: first-pass-insertions.txt
   - id: first_pass_output_dir
     type: Directory
     outputBinding:
-      glob: '.'
+      glob: .
 arguments:
   - position: 0
     valueFrom: '-server'
