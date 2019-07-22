@@ -43,12 +43,7 @@ inputs:
       position: 8
     secondaryFiles:
       - .fai
-  - default: .
-    id: output_dir
-    type: string?
-    inputBinding:
-      position: 9
-      valueFrom: .
+      - ^.dict
 outputs:
   - id: first_pass_output_file
     type: File

@@ -42,6 +42,7 @@ inputs:
       position: 8
     secondaryFiles:
       - .fai
+      - ^.dict
   - id: first_pass_file
     type: File
     inputBinding:
