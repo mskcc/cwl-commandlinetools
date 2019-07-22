@@ -37,35 +37,32 @@ inputs:
     inputBinding:
       position: 7
   - id: reference_fasta
-    type: string
+    type: File
     inputBinding:
       position: 8
-    secondaryFiles: .fai
+    secondaryFiles:
+      - .fai
   - id: first_pass_file
     type: File
-  - id: output_dir
-    type: string?
-    default: '.'
     inputBinding:
       position: 9
-      valueFrom: '.'
 outputs:
-  collapsed_fastq_1:
+  - id: collapsed_fastq_1
     type: File
     outputBinding:
-      glob: 'collapsed_R1_.fastq'
-  collapsed_fastq_2:
+      glob: collapsed_R1_.fastq
+  - id: collapsed_fastq_2
     type: File
     outputBinding:
-      glob: 'collapsed_R2_.fastq'
-  second_pass_insertions:
+      glob: collapsed_R2_.fastq
+  - id: second_pass_alt_alleles
     type: File
     outputBinding:
-      glob: 'second-pass-insertions.txt'
-  second_pass_alt_alleles:
+      glob: second-pass-alt-alleles.txt
+  - id: second_pass_insertions
     type: File
     outputBinding:
-      glob: 'second-pass-alt-alleles.txt'
+      glob: second-pass-insertions.txt
 arguments:
   - position: 0
     valueFrom: '-server'
@@ -144,9 +141,6 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'mskcc/marianas:0.1.0'
   - class: InlineJavascriptRequirement
-  - class: InitialWorkDirRequirement
-    listing:
-      - $(inputs.first_pass_file)
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
