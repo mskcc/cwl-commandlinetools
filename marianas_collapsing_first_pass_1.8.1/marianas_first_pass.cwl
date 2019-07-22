@@ -122,18 +122,19 @@ arguments:
     valueFrom: org.mskcc.marianas.umi.duplex.DuplexUMIBamToCollapsedFastqFirstPass
 requirements:
   - class: ResourceRequirement
-    ramMin: |-
-      ${
-          if (inputs.memory_per_job && inputs.memory_overhead) {
-              return inputs.memory_per_job + inputs.memory_overhead
-          } else if (inputs.memory_per_job && !inputs.memory_overhead) {
-              return inputs.memory_per_job + 2000
-          } else if (!inputs.memory_per_job && inputs.memory_overhead) {
-              return 20000 + inputs.memory_overhead
-          } else {
-              return 20000
-          }
-      }
+    ramMin: 20000
+#    ramMin: |-
+#      ${
+#          if (inputs.memory_per_job && inputs.memory_overhead) {
+#              return inputs.memory_per_job + inputs.memory_overhead
+#          } else if (inputs.memory_per_job && !inputs.memory_overhead) {
+#              return inputs.memory_per_job + 2000
+#          } else if (!inputs.memory_per_job && inputs.memory_overhead) {
+#              return 20000 + inputs.memory_overhead
+#          } else {
+#              return 20000
+#          }
+#      }
     coresMin: 1
   - class: DockerRequirement
     dockerPull: 'mskcc/marianas:0.1.0'
