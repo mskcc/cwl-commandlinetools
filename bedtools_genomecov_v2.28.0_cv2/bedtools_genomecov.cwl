@@ -5,8 +5,6 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   edam: http://edamontology.org/
-$schemas:
-  - http://edamontology.org/EDAM_1.18.owl
 id: bedtools_genomecov
 baseCommand:
   - bedtools
@@ -14,7 +12,6 @@ baseCommand:
 inputs:
   - id: input
     type: File
-    format: edam:format_2572
     inputBinding:
       position: 5
       prefix: '-ibam'
