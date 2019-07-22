@@ -4,9 +4,6 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-  edam: http://edamontology.org/
-$schemas:
-  - http://edamontology.org/EDAM_1.18.owl
 id: bedtools_merge
 baseCommand:
   - bedtools
@@ -38,7 +35,6 @@ inputs:
 outputs:
   - id: output_file
     type: File?
-    format: edam:format_3003
     outputBinding:
       glob: |-
         ${
