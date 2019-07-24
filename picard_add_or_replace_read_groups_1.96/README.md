@@ -20,7 +20,7 @@
     > toil-cwl-runner picard_add_or_replace_read_groups_1.96.cwl example_inputs.yaml
 ```
 
-**If at MSK, using the JUNO cluster having installed toild 3.19 and manually modifying lsf.py by removing `type==X86_64 &&` you can use the following command**
+**If at MSK, using the JUNO cluster having installed toil version 3.19 and manually modifying [lsf.py](https://github.com/DataBiosphere/toil/blob/releases/3.19.0/src/toil/batchSystems/lsf.py#L170) by removing `type==X86_64 &&` you can use the following command**
 
 ```bash
 #Using CWLTOOL
