@@ -6,7 +6,7 @@ input:
 memory_overhead: 
 memory_per_job: 
 number_of_threads: 
-output: somename_fm.bam
+output_file_name: somename_fm.bam
 sort_order: 
 tmp_dir: 
 validation_stringency: 

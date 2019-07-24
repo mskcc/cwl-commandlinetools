@@ -25,14 +25,9 @@ inputs:
     doc: Input file (bam or sam).  Required.
     secondaryFiles:
       - ^.bai
-  - id: output
-    type: string
-    inputBinding:
-      position: 0
-      prefix: O=
-      separate: false
-      valueFrom: '$(inputs.input.basename.replace(/.sam |.bam/, ''_srt.bam''))'
-    doc: Output file (bam or sam).
+  - id: output_file_name
+    type: string?
+    doc: Output file name (bam or sam). Not Required
   - id: sort_order
     type: string?
     inputBinding:
@@ -144,7 +139,14 @@ outputs:
   - id: bam
     type: File
     outputBinding:
-      glob: '$(inputs.input.basename.replace(/.sam |.bam/, ''_srt.bam''))'
+      glob: |-
+        ${
+            if(inputs.output_file_name){
+                return inputs.output_file_name
+            } else {
+                return inputs.input.basename.replace(/.sam | .bam/,'_srt.bam')
+            }
+        }
     secondaryFiles:
       - ^.bai
 label: picard_add_or_replace_read_groups_1.96
@@ -178,30 +180,21 @@ arguments:
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/AddOrReplaceReadGroups.jar
+  - position: 0
+    prefix: O=
+    separate: false
+    valueFrom: |-
+      ${
+          if(inputs.output_file_name){
+              return inputs.output_file_name
+          } else {
+              return inputs.input.basename.replace(/.sam | .bam/,'_srt.bam')
+          }
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 16000
     coresMin: 2
-#    ramMin: |-
-#      ${
-#          if (inputs.memory_per_job && inputs.memory_overhead) {
-#              return inputs.memory_per_job + inputs.memory_overhead
-#          } else if (inputs.memory_per_job && !inputs.memory_overhead) {
-#              return inputs.memory_per_job + 2000
-#          } else if (!inputs.memory_per_job && inputs.memory_overhead) {
-#              return 20000 + inputs.memory_overhead
-#          } else {
-#              return 20000
-#          }
-#      }      
-#    coresMin: |-
-#    ${
-#      if (inputs.number_of_threads) {
-#        return inputs.number_of_threads
-#        } else {
-#          return 2
-#        }
-#      }
   - class: DockerRequirement
     dockerPull: 'mskcc/picard_1.96:0.1.0'
   - class: InlineJavascriptRequirement

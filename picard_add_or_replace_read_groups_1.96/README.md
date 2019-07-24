@@ -48,7 +48,7 @@ optional arguments:
                         Memory overhead per job in megabytes
   --number_of_threads NUMBER_OF_THREADS
   --input INPUT         Input file (bam or sam). Required.
-  --output OUTPUT       Output file (bam or sam).
+  --output_file_name OUTPUT       Output file (bam or sam) Not Required.
   --sort_order SORT_ORDER
                         Optional sort order to output in. If not supplied
                         OUTPUT is in the same order as INPUT.Default value:

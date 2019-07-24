@@ -28,8 +28,7 @@ inputs:
   - id: output_file_name
     type: string?
     doc: >-
-      The output file to write to. If no output file is supplied, the input file
-      is overwritten.  Default value: null.
+        Output file name (bam or sam). Not Required
   - id: sort_order
     type: string?
     inputBinding:
