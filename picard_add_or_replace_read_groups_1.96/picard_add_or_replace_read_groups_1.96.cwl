@@ -23,6 +23,8 @@ inputs:
       prefix: I=
       separate: false
     doc: Input file (bam or sam).  Required.
+    secondaryFiles:
+      - ^.bai
   - id: output
     type: string
     inputBinding:
@@ -178,7 +180,7 @@ arguments:
     valueFrom: /usr/local/bin/AddOrReplaceReadGroups.jar
 requirements:
   - class: ResourceRequirement
-    ramMin: 16000 
+    ramMin: 16000
     coresMin: 2
 #    ramMin: |-
 #      ${
