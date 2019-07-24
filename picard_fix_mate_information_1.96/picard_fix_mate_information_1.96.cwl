@@ -25,14 +25,13 @@ inputs:
     doc: The input file to fix.  This option may be specified 0 or more times
     secondaryFiles:
       - ^.bai
-  - default:
-    valueFrom: '$(inputs.input.basename.replace(''.bam'', ''_fm.bam''))'
-    id: output
+  - id: output
     type: string?
     inputBinding:
       position: 0
       prefix: O=
       separate: false
+      valueFrom: '$(inputs.input.basename.replace(''.bam'', ''_fm.bam''))'
     doc: >-
       The output file to write to. If no output file is supplied, the input file
       is overwritten.  Default value: null.
