@@ -93,25 +93,30 @@ label: picard_fix_mate_information_1.96
 arguments:
   - position: 0
     valueFrom: |-
-    ${
-      if(inputs.memory_per_job && inputs.memory_overhead) {
-        if(inputs.memory_per_job % 1000 == 0) {
-          return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
-        } else {
-          return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+      ${
+        if(inputs.memory_per_job && inputs.memory_overhead) {
+          if(inputs.memory_per_job % 1000 == 0) {
+            return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+          }
+          else {
+            return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+          }
         }
-      } else if (inputs.memory_per_job && !inputs.memory_overhead) {
-        if(inputs.memory_per_job % 1000 == 0) {
-          return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
-        } else {
-          return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+        else if (inputs.memory_per_job && !inputs.memory_overhead){
+          if(inputs.memory_per_job % 1000 == 0) {
+            return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+          }
+          else {
+            return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+          }
         }
-      } else if(!inputs.memory_per_job && inputs.memory_overhead){
-        return "-Xmx15G"
-      } else {
-        return "-Xmx15G"
+        else if(!inputs.memory_per_job && inputs.memory_overhead){
+          return "-Xmx15G"
+        }
+        else {
+            return "-Xmx15G"
+        }
       }
-    }
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/FixMateInformation.jar
