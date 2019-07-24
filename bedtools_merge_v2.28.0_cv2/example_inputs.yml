@@ -1,0 +1,8 @@
+input:
+  class: File
+  path: "input.bedgraph"
+output_file_name: out.bed
+distance_between_features:
+memory_overhead: 
+memory_per_job: 
+number_of_threads: 

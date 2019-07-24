@@ -1,0 +1,8 @@
+input:
+  class: File
+  path: "input.bam"
+output_file_name: output.bedgraph
+option_bedgraph: true
+memory_overhead: 
+memory_per_job: 
+number_of_threads: 

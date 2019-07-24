@@ -1,0 +1,16 @@
+adapter: GATCGGAAGAGC
+adapter2: AGATCGGAAGAGC
+fastq1:
+  class: File
+  path: "/path/to/R1_fastq.gz"
+fastq2:
+  class: File
+  path: "/path/to/R2_fastq.gz"
+gzip: true
+length: 25
+memory_overhead: 10
+memory_per_job: 100
+number_of_threads: 2
+paired: true
+quality: 1
+stringency: 3

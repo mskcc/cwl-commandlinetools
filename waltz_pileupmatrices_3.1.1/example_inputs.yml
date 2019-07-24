@@ -1,0 +1,13 @@
+bam:
+  class: File
+  path: "input.bam"
+bed_file:
+  class: File
+  path: "input.bed"
+referece_fasta:
+  class: File
+  path: "reference.fasta"
+memory_overhead: 
+memory_per_job: 
+min_map_quality: 
+number_of_threads: 

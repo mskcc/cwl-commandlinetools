@@ -1,0 +1,12 @@
+input:
+- class: File
+  metadata: {}
+  path: "/path/to/first-pass.txt"
+  secondaryFiles: []
+key:
+- 6,6n
+- 8,8n
+memory_overhead: 
+memory_per_job: 
+number_of_threads: 
+output: sorted_file.txt
