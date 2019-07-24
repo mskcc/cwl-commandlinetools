@@ -33,9 +33,9 @@ inputs:
       separate: false
       valueFrom: |-
         ${
-            if(inputs.output){
+            if(inputs.output && inputs.output.lenght === 0){
                 return inputs.output
-            } else if(inputs.input){
+            } else if(inputs.output === "" && inputs.input){
                 return inputs.input.basename.replace('.bam, '_fm.bam')
             } else {
                 return inputs.input.basename.replace('.bam, '_fm.bam')
