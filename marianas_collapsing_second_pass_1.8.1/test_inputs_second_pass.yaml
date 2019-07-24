@@ -1,0 +1,9 @@
+input_bam: {class: File, path: test_sample_1_cl_aln_srt_MD_IR_FX_BR.bam}
+pileup: {class: File, path: test_sample_1_cl_aln_srt_MD_IR_FX_BR-pileup.txt}
+min_mapping_quality: 20
+min_base_quality: 20
+mismatches: 0
+wobble: 1
+min_consensus_percent: 90
+reference_fasta: {class: File, path: chr14_chr16.fasta}
+first_pass_file: {class: File, path: first-pass.txt}
