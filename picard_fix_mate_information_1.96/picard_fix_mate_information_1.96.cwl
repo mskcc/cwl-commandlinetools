@@ -4,7 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_fix_mate_information_1_96
+id: picard_fix_mate_information_1.96
 baseCommand:
   - java
 inputs:
@@ -25,14 +25,14 @@ inputs:
     doc: The input file to fix.  This option may be specified 0 or more times
     secondaryFiles:
       - ^.bai
-  - id: output
+  - default:
+    valueFrom: '$(inputs.input.basename.replace(''.bam'', ''_fm.bam''))'
+    id: output
     type: string?
     inputBinding:
       position: 0
       prefix: O=
       separate: false
-    default: 
-        valueFrom: '$(inputs.input.basename.replace(''.bam'', ''_fm.bam''))'
     doc: >-
       The output file to write to. If no output file is supplied, the input file
       is overwritten.  Default value: null.
