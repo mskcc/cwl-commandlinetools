@@ -137,8 +137,28 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 17000
+    ramMin: 16000
     coresMin: 2
+#    ramMin: |-
+#      ${
+#          if (inputs.memory_per_job && inputs.memory_overhead) {
+#              return inputs.memory_per_job + inputs.memory_overhead
+#          } else if (inputs.memory_per_job && !inputs.memory_overhead) {
+#              return inputs.memory_per_job + 2000
+#          } else if (!inputs.memory_per_job && inputs.memory_overhead) {
+#              return 20000 + inputs.memory_overhead
+#          } else {
+#              return 20000
+#          }
+#      }      
+#    coresMin: |-
+#    ${
+#      if (inputs.number_of_threads) {
+#        return inputs.number_of_threads
+#        } else {
+#          return 2
+#        }
+#      }
   - class: DockerRequirement
     dockerPull: 'mskcc/picard_1.96:0.1.0'
   - class: InlineJavascriptRequirement
