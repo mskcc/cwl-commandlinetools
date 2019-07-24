@@ -20,6 +20,17 @@
     > toil-cwl-runner picard_add_or_replace_read_groups_1.96.cwl example_inputs.yaml
 ```
 
+**If at MSK, using the JUNO cluster having installed toild 3.19 and manually modifying lsf.py by removing `type==X86_64 &&` you can use the following command**
+
+```bash
+#Using CWLTOOL
+> cwltool --singularity --non-strict /path/to/picard_add_or_replace_read_groups_1.96/picard_add_or_replace_read_groups_1.96.cwl /path/to/inputs.yaml
+
+#Using toil-cwl-runner
+> mkdir picardAddOrReplaceReadGroup_toil_log
+> toil-cwl-runner --singularity --logFile /path/to/picardAddOrReplaceReadGroup_toil_log/cwltoil.log  --jobStore /path/to/picardAddOrReplaceReadGroup_jobStore --batchSystem lsf --workDir /path/to picardAddOrReplaceReadGroup_toil_log --outdir . --writeLogs /path/to/picardAddOrReplaceReadGroup_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 /path/to/picard_add_or_replace_read_groups_1.96/picard_add_or_replace_read_groups_1.96.cwl /path/to/inputs.yaml > picardAddOrReplaceReadGroup_toil.stdout 2> picardAddOrReplaceReadGroup_toil.stderr &
+```
+
 ```bash
 > toil-cwl-runner picard_add_or_replace_read_groups_1.96.cwl --help
 usage: picard_add_or_replace_read_groups_1.96.cwl [-h]
@@ -102,3 +113,4 @@ optional arguments:
                         option can be set to 'null' to clear the default
                         value. Possible values:{true, false}
 ```
+
