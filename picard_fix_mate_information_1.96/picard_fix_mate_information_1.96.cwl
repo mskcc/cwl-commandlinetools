@@ -95,7 +95,15 @@ outputs:
   - id: bam
     type: File
     outputBinding:
-      glob: '$(inputs.input.basename.replace(''.bam'', ''_fm.bam''))'
+      glob:
+      valueFrom: |-
+        ${
+            if(inputs.output){
+                return inputs.output
+            } else {
+                return (inputs.input.basename.replace('.bam', '_fm.bam'))
+            }
+        }
     secondaryFiles:
       - ^.bai
 label: picard_fix_mate_information_1.96
