@@ -31,16 +31,7 @@ inputs:
       position: 0
       prefix: O=
       separate: false
-      valueFrom: |-
-        ${
-            if(inputs.output && inputs.output.lenght === 0){
-                return inputs.output
-            } else if(inputs.output === "" && inputs.input){
-                return inputs.input.basename.replace('.bam, '_fm.bam')
-            } else {
-                return inputs.input.basename.replace('.bam, '_fm.bam')
-            }
-        }
+      valueFrom: '$inputs.input.basename.replace(/.bam/, ''_fm.bam'')'
     doc: >-
       The output file to write to. If no output file is supplied, the input file
       is overwritten.  Default value: null.
