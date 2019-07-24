@@ -4,7 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_fix_mate_information_1.96
+id: picard_fix_mate_information_1_96
 baseCommand:
   - java
 inputs:
@@ -31,7 +31,14 @@ inputs:
       position: 0
       prefix: O=
       separate: false
-      valueFrom: '$(inputs.input.basename.replace(''.bam'', ''_fm.bam''))'
+      valueFrom: |-
+        ${
+            if(inputs.output){
+                return inputs.output
+            } else {
+                return (inputs.input.basename.replace('.bam', '_fm.bam'))
+            }
+        }
     doc: >-
       The output file to write to. If no output file is supplied, the input file
       is overwritten.  Default value: null.
@@ -126,26 +133,6 @@ requirements:
   - class: ResourceRequirement
     ramMin: 17000
     coresMin: 2
-    # ramMin: |-
-    # ${
-    #   if(inputs.memory_per_job && inputs.memory_overhead) {
-    #     return inputs.memory_per_job + inputs.memory_overhead
-    #   } else if (inputs.memory_per_job && !inputs.memory_overhead) {
-    #     return inputs.memory_per_job + 2000
-    #   } else if(!inputs.memory_per_job && inputs.memory_overhead) {
-    #     return 15000 + inputs.memory_overhead
-    #   } else {
-    #     return 17000
-    #   }
-    # }
-    # coresMin: |-
-    # ${
-    #   if (inputs.number_of_threads) {
-    #     return inputs.number_of_threads
-    #   } else {
-    #     return
-    #   }
-    # }
   - class: DockerRequirement
     dockerPull: 'mskcc/picard_1.96:0.1.0'
   - class: InlineJavascriptRequirement
