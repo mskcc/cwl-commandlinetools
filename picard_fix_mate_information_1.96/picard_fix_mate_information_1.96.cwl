@@ -95,8 +95,7 @@ outputs:
   - id: bam
     type: File
     outputBinding:
-      glob:
-      valueFrom: |-
+      glob: |-
         ${
             if(inputs.output){
                 return inputs.output
