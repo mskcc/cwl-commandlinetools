@@ -25,13 +25,8 @@ inputs:
     doc: The input file to fix.  This option may be specified 0 or more times
     secondaryFiles:
       - ^.bai
-  - id: output
-    type: string
-    inputBinding:
-      position: 0
-      prefix: O=
-      separate: false
-      valueFrom: '$(inputs.input.basename.replace(/.bam/, ''_fm.bam''))'
+  - id: output_file_name
+    type: string?
     doc: >-
       The output file to write to. If no output file is supplied, the input file
       is overwritten.  Default value: null.
@@ -122,6 +117,17 @@ arguments:
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/FixMateInformation.jar
+  - position: 0
+    prefix: 0=
+    separate: false
+    valueFrom: |-
+      ${
+          if(inputs.ouput_file_name){
+              return inputs.ouput_file_name
+          } else {
+              return inputs.input.basename.replace(/.bam/|'_fm.bam')
+          }
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 17000
