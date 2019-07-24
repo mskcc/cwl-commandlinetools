@@ -23,6 +23,8 @@ inputs:
       prefix: I=
       separate: false
     doc: The input file to fix.  This option may be specified 0 or more times
+    secondaryFiles:
+      - ^.bai
   - id: output
     type: string
     inputBinding:
