@@ -31,7 +31,8 @@ inputs:
       position: 0
       prefix: O=
       separate: false
-    default: '$(inputs.input.basename.replace(''.bam'', ''_fm.bam''))'
+    default: 
+        valueFrom: '$(inputs.input.basename.replace(''.bam'', ''_fm.bam''))'
     doc: >-
       The output file to write to. If no output file is supplied, the input file
       is overwritten.  Default value: null.
