@@ -26,7 +26,7 @@ inputs:
     secondaryFiles:
       - ^.bai
   - id: output
-    type: string
+    type: string?
     inputBinding:
       position: 0
       prefix: O=
