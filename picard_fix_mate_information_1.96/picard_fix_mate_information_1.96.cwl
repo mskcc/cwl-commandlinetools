@@ -26,12 +26,21 @@ inputs:
     secondaryFiles:
       - ^.bai
   - id: output
-    type: string?
+    type: string
     inputBinding:
       position: 0
       prefix: O=
       separate: false
-      valueFrom: '$(inputs.input.basename.replace(''.bam'', ''_fm.bam''))'
+      valueFrom: |-
+        ${
+            if(inputs.output){
+                return inputs.output
+            } else if(inputs.input){
+                return inputs.input.basename.replace('.bam, '_fm.bam')
+            } else {
+                return inputs.input.basename.replace('.bam, '_fm.bam')
+            }
+        }
     doc: >-
       The output file to write to. If no output file is supplied, the input file
       is overwritten.  Default value: null.
