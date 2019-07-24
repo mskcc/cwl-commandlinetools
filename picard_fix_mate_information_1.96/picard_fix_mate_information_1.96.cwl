@@ -83,7 +83,14 @@ outputs:
   - id: bam
     type: File
     outputBinding:
-      glob: '$(inputs.input.basename.replace(/.bam/, ''_fm.bam''))'
+      glob: |-
+        ${
+            if(inputs.ouput_file_name){
+                return inputs.ouput_file_name
+            } else {
+                return inputs.input.basename.replace(/.bam/|'_fm.bam')
+            }
+        } 
     secondaryFiles:
       - ^.bai
 label: picard_fix_mate_information_1.96
@@ -118,7 +125,7 @@ arguments:
     prefix: '-jar'
     valueFrom: /usr/local/bin/FixMateInformation.jar
   - position: 0
-    prefix: 0=
+    prefix: O=
     separate: false
     valueFrom: |-
       ${
