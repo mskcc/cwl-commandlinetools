@@ -31,34 +31,11 @@
 > toil-cwl-runner --singularity --logFile /path/to/picardAddOrReplaceReadGroup_toil_log/cwltoil.log  --jobStore /path/to/picardAddOrReplaceReadGroup_jobStore --batchSystem lsf --workDir /path/to picardAddOrReplaceReadGroup_toil_log --outdir . --writeLogs /path/to/picardAddOrReplaceReadGroup_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 /path/to/picard_add_or_replace_read_groups_1.96/picard_add_or_replace_read_groups_1.96.cwl /path/to/inputs.yaml > picardAddOrReplaceReadGroup_toil.stdout 2> picardAddOrReplaceReadGroup_toil.stderr &
 ```
 
+### Usage
+
 ```bash
 > toil-cwl-runner picard_add_or_replace_read_groups_1.96.cwl --help
 usage: picard_add_or_replace_read_groups_1.96.cwl [-h]
-                                                  [--memory_per_job MEMORY_PER_JOB]
-                                                  [--memory_overhead MEMORY_OVERHEAD]
-                                                  [--number_of_threads NUMBER_OF_THREADS]
-                                                  --input INPUT --output
-                                                  OUTPUT
-                                                  [--sort_order SORT_ORDER]
-                                                  --read_group_identifier
-                                                  READ_GROUP_IDENTIFIER
-                                                  --read_group_sequnecing_center
-                                                  READ_GROUP_SEQUNECING_CENTER
-                                                  --read_group_library
-                                                  READ_GROUP_LIBRARY
-                                                  --read_group_platform_unit
-                                                  READ_GROUP_PLATFORM_UNIT
-                                                  --read_group_sample_name
-                                                  READ_GROUP_SAMPLE_NAME
-                                                  --read_group_sequencing_platform
-                                                  READ_GROUP_SEQUENCING_PLATFORM
-                                                  [--read_group_description READ_GROUP_DESCRIPTION]
-                                                  [--read_group_run_date READ_GROUP_RUN_DATE]
-                                                  [--tmp_dir TMP_DIR]
-                                                  [--validation_stringency VALIDATION_STRINGENCY]
-                                                  [--bam_compression_level BAM_COMPRESSION_LEVEL]
-                                                  [--create_bam_index]
-                                                  [job_order]
 
 positional arguments:
   job_order             Job input json file
