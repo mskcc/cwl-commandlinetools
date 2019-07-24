@@ -48,7 +48,8 @@ optional arguments:
   --number_of_threads NUMBER_OF_THREADS
   --input INPUT         The input file to fix. This option may be specified 0
                         or more times
-  --output_file_name OUTPUT       Output file (bam or sam) Not Required.
+  --output_file_name OUTPUT_FILE_NAME
+                        Output file name (bam or sam). Not Required
   --sort_order SORT_ORDER
                         Optional sort order to output in. If not supplied
                         OUTPUT is in the same order as INPUT.Default value:
