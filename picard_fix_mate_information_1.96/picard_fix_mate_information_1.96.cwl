@@ -31,7 +31,7 @@ inputs:
       position: 0
       prefix: O=
       separate: false
-      valueFrom: '$inputs.input.basename.replace(/.bam/, ''_fm.bam'')'
+      valueFrom: '$(inputs.input.basename.replace(/.bam/, ''_fm.bam'')'
     doc: >-
       The output file to write to. If no output file is supplied, the input file
       is overwritten.  Default value: null.
@@ -88,14 +88,7 @@ outputs:
   - id: bam
     type: File
     outputBinding:
-      glob: |-
-        ${
-            if(inputs.output){
-                return inputs.output
-            } else {
-                return (inputs.input.basename.replace('.bam', '_fm.bam'))
-            }
-        }
+      glob: '$(inputs.input.basename.replace(/.bam/, ''_fm.bam''))'
     secondaryFiles:
       - ^.bai
 label: picard_fix_mate_information_1.96
