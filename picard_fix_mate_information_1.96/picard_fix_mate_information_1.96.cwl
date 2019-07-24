@@ -92,14 +92,53 @@ outputs:
 label: picard_fix_mate_information_1.96
 arguments:
   - position: 0
-    valueFrom: "${\n  if(inputs.memory_per_job && inputs.memory_overhead) {\n   \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if (inputs.memory_per_job && !inputs.memory_overhead){\n    \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if(!inputs.memory_per_job && inputs.memory_overhead){\n    \n    return \"-Xmx15G\"\n  }\n  else {\n    \n  \treturn \"-Xmx15G\"\n  }\n}"
+    valueFrom: |-
+    ${
+      if(inputs.memory_per_job && inputs.memory_overhead) {
+        if(inputs.memory_per_job % 1000 == 0) {
+          return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+        } else {
+          return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+        }
+      } else if (inputs.memory_per_job && !inputs.memory_overhead) {
+        if(inputs.memory_per_job % 1000 == 0) {
+          return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+        } else {
+          return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+        }
+      } else if(!inputs.memory_per_job && inputs.memory_overhead){
+        return "-Xmx15G"
+      } else {
+        return "-Xmx15G"
+      }
+    }
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/FixMateInformation.jar
 requirements:
   - class: ResourceRequirement
-    ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
-    coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 2\r  }\r}"
+    ramMin: 17000
+    coresMin: 2
+    # ramMin: |-
+    # ${
+    #   if(inputs.memory_per_job && inputs.memory_overhead) {
+    #     return inputs.memory_per_job + inputs.memory_overhead
+    #   } else if (inputs.memory_per_job && !inputs.memory_overhead) {
+    #     return inputs.memory_per_job + 2000
+    #   } else if(!inputs.memory_per_job && inputs.memory_overhead) {
+    #     return 15000 + inputs.memory_overhead
+    #   } else {
+    #     return 17000
+    #   }
+    # }
+    # coresMin: |-
+    # ${
+    #   if (inputs.number_of_threads) {
+    #     return inputs.number_of_threads
+    #   } else {
+    #     return
+    #   }
+    # }
   - class: DockerRequirement
     dockerPull: 'mskcc/picard_1.96:0.1.0'
   - class: InlineJavascriptRequirement
@@ -121,6 +160,3 @@ requirements:
   - class: 'doap:Version'
     'doap:name': picard
     'doap:revision': 1.96
-  - class: 'doap:Version'
-    'doap:name': cwl-wrapper
-    'doap:revision': 1.0.0
