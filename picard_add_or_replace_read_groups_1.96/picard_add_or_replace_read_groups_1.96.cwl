@@ -218,6 +218,3 @@ requirements:
   - class: 'doap:Version'
     'doap:name': picard
     'doap:revision': 1.96
-  - class: 'doap:Version'
-    'doap:name': cwl-wrapper
-    'doap:revision': 1.0.0
