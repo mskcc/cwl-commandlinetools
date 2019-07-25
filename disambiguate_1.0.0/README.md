@@ -28,10 +28,10 @@ Dockerfile uses `biocontainers/biocontainers:latest` as a base image and install
 USAGE:
 
    cwltool disambiguate_1.0.0.cwl \
-   --prefix <string> \
-   --output_dir <string> \
-   [--aligner <string>] \
-   <species_a_bam> <species_b_bam>
+      --prefix <string> \
+      --output_dir <string> \
+      [--aligner <string>] \
+      <species_a_bam> <species_b_bam>
 
 Where:
 
