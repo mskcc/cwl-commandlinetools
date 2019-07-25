@@ -1,3 +1,26 @@
+$namespaces:
+  dct: 'http://purl.org/dc/terms/'
+  doap: 'http://usefulinc.com/ns/doap#'
+  foaf: 'http://xmlns.com/foaf/0.1/'
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:bolipatc@mskcc.org'
+        'foaf:name': C. Allan Bolipata
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:bolipatc@mskcc.org'
+        'foaf:name': C. Allan Bolipata
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'doap:release':
+  - class: 'doap:Version'
+    'doap:name': disambiguate
+    'doap:revision': 1.0.0
+
 class: CommandLineTool
 cwlVersion: v1.0
 baseCommand:
