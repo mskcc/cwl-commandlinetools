@@ -1,0 +1,7 @@
+{
+    prefix: "this_is_my_sample_id",
+    output_dir: "this_is_my_output_dir",
+    species_a_bam: { class: File, path: '/path/to/human.bam' },
+    species_b_bam: { class: File, path: '/path/to/mouse.bam' },
+    aligner: 'bwa'
+}
