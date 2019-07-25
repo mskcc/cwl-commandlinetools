@@ -8,7 +8,7 @@ Dockerfile uses `biocontainers/biocontainers:latest` as a base image and install
 |---	|---	|---	| - |
 | biocontainers | latest | https://hub.docker.com/r/biocontainers/biocontainers/ | base image; "latest" not actually latest version, just tag name on docker hub|
 | bamtools  	| 2.4.0  	|  https://bioconda.github.io/recipes/bamtools/README.html	| - |
-| ngs-disambiguate  	| 2016.11.10	| https://bioconda.github.io/recipes/ngs-disambiguate/README.html?highlight=ngs%20disambiguate	| - |
+| ngs-disambiguate  	| 2016.11.10	| https://bioconda.github.io/recipes/ngs-disambiguate/README.html	| - |
 
 [![](https://images.microbadger.com/badges/version/mskcc/disambiguate:1.0.0.svg)](https://microbadger.com/images/mskcc/disambiguate:1.0.0 "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/mskcc/disambiguate:1.0.0.svg)](https://microbadger.com/images/mskcc/disambiguate:1.0.0 "Get your own image badge on microbadger.com")
 
