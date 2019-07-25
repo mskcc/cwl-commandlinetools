@@ -16,7 +16,7 @@ Dockerfile uses `biocontainers/biocontainers:latest` as a base image and install
 ## CWL
 
 - CWL specification 1.0
-- Use example_inputs.yaml to see the inputs to the cwl
+- Use `example_inputs.yaml` to see the inputs to the cwl
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
@@ -27,7 +27,7 @@ Dockerfile uses `biocontainers/biocontainers:latest` as a base image and install
 ```
 USAGE:
 
-   disambiguate_1.0.0.cwl \
+   cwltool disambiguate_1.0.0.cwl \
    --prefix <string> \
    --output_dir <string> \
    [--aligner <string>] \
