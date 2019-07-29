@@ -36,7 +36,8 @@
 usage: gatk_ApplyBQSR_4.1.2.0.cwl [-h] --reference REFERENCE
                                   [--create_output_bam_index]
                                   --bqsr_recal_file BQSR_RECAL_FILE --input
-                                  INPUT [--add_output_sam_program_record]
+                                  INPUT [--output_file_name OUTPUT_FILE_NAME]
+                                  [--add_output_sam_program_record]
                                   [--add_output_vcf_command_line]
                                   [--arguments_file ARGUMENTS_FILE]
                                   [--cloud_index_prefetch_buffer CLOUD_INDEX_PREFETCH_BUFFER]
@@ -85,6 +86,8 @@ optional arguments:
                         Input recalibration table for BQSR. Only run ApplyBQSR
                         with the covariates table created from the input BAM
   --input INPUT         A BAM file containing input read data
+  --output_file_name OUTPUT_FILE_NAME
+                        Output file name. Not Required
   --add_output_sam_program_record
   --add_output_vcf_command_line
   --arguments_file ARGUMENTS_FILE

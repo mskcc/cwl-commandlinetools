@@ -39,6 +39,9 @@ inputs:
     doc: A BAM file containing input read data
     secondaryFiles:
       - ^.bai
+  - id: output_file_name
+    type: string?
+    doc: Output file name. Not Required
   - id: add_output_sam_program_record
     type: boolean?
     inputBinding:
@@ -225,7 +228,14 @@ outputs:
   - id: output
     type: File?
     outputBinding:
-      glob: '$(inputs.input.basename.replace(''.bam'', ''''))_bqsr.bam'
+      glob: |-
+        ${
+            if(inputs.output_file_name){
+                return inputs.output_file_name
+            } else {
+                return inputs.input.basename.replace(/.bam/, '_bqsr.bam')
+            }
+        }
     secondaryFiles:
       - ^.bai
 label: gatk_apply_bqsr_4.1.2.0
@@ -235,7 +245,14 @@ arguments:
     valueFrom: "${\n  if(inputs.memory_per_job && inputs.memory_overhead) {\n   \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if (inputs.memory_per_job && !inputs.memory_overhead){\n    \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if(!inputs.memory_per_job && inputs.memory_overhead){\n    \n    return \"-Xmx4G\"\n  }\n  else {\n    \n  \treturn \"-Xmx4G\"\n  }\n}"
   - position: 2
     prefix: '--output'
-    valueFrom: '$(inputs.input.basename.replace(''.bam'', '''') + ''_bqsr.bam'')'
+    valueFrom: |-
+      ${
+          if(inputs.output_file_name){
+              return inputs.output_file_name
+          } else {
+              return inputs.input.basename.replace(/.bam/, '_bqsr.bam')
+          }
+      }
   - position: 2
     prefix: '--tmp-dir'
     valueFrom: .
