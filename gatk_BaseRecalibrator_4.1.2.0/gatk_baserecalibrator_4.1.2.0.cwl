@@ -36,6 +36,11 @@ inputs:
     secondaryFiles:
       - .fai
       - ^.dict
+  - id: output_file_name
+    type: string?
+    inputBinding:
+      position: 3
+    doc: Output file name. Not Required
   - id: add_output_sam_program_record
     type: boolean?
     inputBinding:
@@ -261,7 +266,16 @@ outputs:
   - id: output
     type: File
     outputBinding:
-      glob: '$(inputs.input.basename.replace(''.bam'', ''''))_bqsr.table'
+      glob: |-
+        ${
+            if(inputs.output_file_name){
+                return inputs.output_file_name
+            } else {
+                return inputs.input.basename.replace(/.bam/, '_bqsr.table')
+            }
+        }
+#    outputBinding:
+#      glob: '$(inputs.input.basename.replace(''.bam'', ''''))_bqsr.table'
 label: gatk_base_recalibrator_4.1.2.0
 arguments:
   - position: 0
@@ -276,7 +290,15 @@ arguments:
     valueFrom: .
   - position: 2
     prefix: '--output'
-    valueFrom: '$(inputs.input.basename.replace(''.bam'', ''''))_bqsr.table'
+    valueFrom: |-
+      ${
+          if(inputs.output_file_name){
+              return inputs.output_file_name
+          } else {
+              return inputs.input.basename.replace(/.bam/, '_bqsr.table')
+          }
+      }
+#   valueFrom: '$(inputs.input.basename.replace(''.bam'', ''''))_bqsr.table'
   - position: 2
     prefix: '--verbosity'
     valueFrom: INFO
