@@ -35,6 +35,7 @@
 
 usage: gatk_baserecalibrator_4.1.2.0.cwl [-h] --input INPUT --known_sites_1
                                          KNOWN_SITES_1 --reference REFERENCE
+                                         [--output_file_name OUTPUT_FILE_NAME]
                                          [--add_output_sam_program_record]
                                          [--add_output_vcf_command_line]
                                          [--arguments_file ARGUMENTS_FILE]
@@ -92,6 +93,8 @@ optional arguments:
                         analysis
   --reference REFERENCE
                         Reference sequence file
+  --output_file_name OUTPUT_FILE_NAME
+                        Output file name. Not Required
   --add_output_sam_program_record
   --add_output_vcf_command_line
   --arguments_file ARGUMENTS_FILE

@@ -3,8 +3,8 @@ cwlVersion: v1.0
 $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
+  edam: 'http://edamontology.org/'
   foaf: 'http://xmlns.com/foaf/0.1/'
-  edam: http://edamontology.org/
 id: gatk_base_recalibrator_4_1_2_0
 baseCommand:
   - gatk
@@ -38,8 +38,6 @@ inputs:
       - ^.dict
   - id: output_file_name
     type: string?
-    inputBinding:
-      position: 3
     doc: Output file name. Not Required
   - id: add_output_sam_program_record
     type: boolean?
@@ -274,8 +272,6 @@ outputs:
                 return inputs.input.basename.replace(/.bam/, '_bqsr.table')
             }
         }
-#    outputBinding:
-#      glob: '$(inputs.input.basename.replace(''.bam'', ''''))_bqsr.table'
 label: gatk_base_recalibrator_4.1.2.0
 arguments:
   - position: 0
@@ -298,7 +294,6 @@ arguments:
               return inputs.input.basename.replace(/.bam/, '_bqsr.table')
           }
       }
-#   valueFrom: '$(inputs.input.basename.replace(''.bam'', ''''))_bqsr.table'
   - position: 2
     prefix: '--verbosity'
     valueFrom: INFO
@@ -306,8 +301,6 @@ requirements:
   - class: ResourceRequirement
     ramMin: 32000
     coresMin: 8
-#     ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 8000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 8000 \r  }\r}"
-#     coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 1\r  }\r}"
   - class: DockerRequirement
     dockerPull: 'broadinstitute/gatk:4.1.2.0'
   - class: InlineJavascriptRequirement
