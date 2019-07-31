@@ -1,15 +1,11 @@
 input:
   class: File
   metadata: {}
-  path: SeraCare_0-5.bam
-  secondaryFiles:
-  - class: File
-    path: SeraCare_0-5.bai
+  path: input.bam
 reference:
   class: File
   metadata: {}
-  path: chr14_chr16.fasta
-  secondaryFiles: []
+  path: ref.fasta
 known_sites_1:
   class: File
   path: dbsnp_137_14_16.b37.vcf

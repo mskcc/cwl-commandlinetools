@@ -2,9 +2,6 @@ bam:
   class: File
   metadata: {}
   path: "input.bam"
-  secondaryFiles:
-  - class: File
-    path: "input.bai"
 bed_file:
   class: File
   path: "intervals.bed"
