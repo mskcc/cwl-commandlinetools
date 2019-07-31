@@ -32,6 +32,7 @@
 
 ### Usage  
 
+```
 usage: abra2_2.17.cwl [-h]
 
 positional arguments:
@@ -84,3 +85,4 @@ optional arguments:
                         VCF containing known (or suspected) variant sites.
                         Very large files should be avoided.
   --no_sort             Do not attempt to sort final output
+  ```
