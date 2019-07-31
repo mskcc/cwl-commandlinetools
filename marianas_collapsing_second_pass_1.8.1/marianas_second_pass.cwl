@@ -126,7 +126,7 @@ arguments:
     valueFrom: org.mskcc.marianas.umi.duplex.DuplexUMIBamToCollapsedFastqSecondPass
 requirements:
   - class: ResourceRequirement
-    ramMain: 20000
+    ramMin: 20000
 #    ramMin: |-
 #      ${
 #          if (inputs.memory_per_job && inputs.memory_overhead) {
