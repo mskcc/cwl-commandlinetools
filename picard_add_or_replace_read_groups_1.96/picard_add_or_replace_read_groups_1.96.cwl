@@ -23,14 +23,11 @@ inputs:
       prefix: I=
       separate: false
     doc: Input file (bam or sam).  Required.
-  - id: output
-    type: string
-    inputBinding:
-      position: 0
-      prefix: O=
-      separate: false
-      valueFrom: '$(inputs.input.basename.replace(/.sam |.bam/, ''_srt.bam''))'
-    doc: Output file (bam or sam).
+    secondaryFiles:
+      - ^.bai
+  - id: output_file_name
+    type: string?
+    doc: Output file name (bam or sam). Not Required
   - id: sort_order
     type: string?
     inputBinding:
@@ -142,20 +139,62 @@ outputs:
   - id: bam
     type: File
     outputBinding:
-      glob: '$(inputs.input.basename.replace(/.sam |.bam/, ''_srt.bam''))'
+      glob: |-
+        ${
+            if(inputs.output_file_name){
+                return inputs.output_file_name
+            } else {
+                return inputs.input.basename.replace(/.sam | .bam/,'_srt.bam')
+            }
+        }
     secondaryFiles:
       - ^.bai
 label: picard_add_or_replace_read_groups_1.96
 arguments:
   - position: 0
-    valueFrom: "${\n  if(inputs.memory_per_job && inputs.memory_overhead) {\n   \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if (inputs.memory_per_job && !inputs.memory_overhead){\n    \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if(!inputs.memory_per_job && inputs.memory_overhead){\n    \n    return \"-Xmx15G\"\n  }\n  else {\n    \n  \treturn \"-Xmx15G\"\n  }\n}"
+    valueFrom: |-
+      ${
+        if(inputs.memory_per_job && inputs.memory_overhead) {
+          if(inputs.memory_per_job % 1000 == 0) {
+            return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+          }
+          else {
+            return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+          }
+        }
+        else if (inputs.memory_per_job && !inputs.memory_overhead){
+          if(inputs.memory_per_job % 1000 == 0) {
+            return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+          }
+          else {
+            return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+          }
+        }
+        else if(!inputs.memory_per_job && inputs.memory_overhead){
+          return "-Xmx15G"
+        }
+        else {
+            return "-Xmx15G"
+        }
+      }
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/AddOrReplaceReadGroups.jar
+  - position: 0
+    prefix: O=
+    separate: false
+    valueFrom: |-
+      ${
+          if(inputs.output_file_name){
+              return inputs.output_file_name
+          } else {
+              return inputs.input.basename.replace(/.sam | .bam/,'_srt.bam')
+          }
+      }
 requirements:
   - class: ResourceRequirement
-    ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
-    coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 2\r  }\r}"
+    ramMin: 16000
+    coresMin: 2
   - class: DockerRequirement
     dockerPull: 'mskcc/picard_1.96:0.1.0'
   - class: InlineJavascriptRequirement
@@ -177,6 +216,3 @@ requirements:
   - class: 'doap:Version'
     'doap:name': picard
     'doap:revision': 1.96
-  - class: 'doap:Version'
-    'doap:name': cwl-wrapper
-    'doap:revision': 1.0.0

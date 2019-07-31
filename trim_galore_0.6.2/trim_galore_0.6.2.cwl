@@ -4,8 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-  sbg: 'https://www.sevenbridges.com/'
-id: trim_galore_0_6_2
+id: trim_galore_0.6.2
 baseCommand:
   - trim_galore
 inputs:
@@ -13,7 +12,6 @@ inputs:
     type: int
     inputBinding:
       position: 0
-      positon: 0
     doc: Memory per job in megabytes
   - id: memory_overhead
     type: int
@@ -145,8 +143,10 @@ outputs:
 label: trim_galore_0.6.2
 requirements:
   - class: ResourceRequirement
-    ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
-    coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 4\r  }\r}"
+    ramMin: 8000
+    coresMin: 1
+    #ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
+    #coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 4\r  }\r}"
   - class: DockerRequirement
     dockerPull: 'mskcc/trim_galore:0.1.0'
   - class: InlineJavascriptRequirement
@@ -168,6 +168,3 @@ requirements:
   - class: 'doap:Version'
     'doap:name': trim_galore
     'doap:revision': 0.6.2
-  - class: 'doap:Version'
-    'doap:name': cwl-wrapper
-    'doap:revision': 1.0.0
