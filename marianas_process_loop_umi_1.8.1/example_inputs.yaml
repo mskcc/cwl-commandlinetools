@@ -1,0 +1,3 @@
+fastq1: {class: File, path: test_fastq_read_1.fastq.gz}
+fastq2: {class: File, path: test_fastq_read_2.fastq.gz}
+umi_length: 3
