@@ -18,4 +18,16 @@
 ```bash
     > toil-cwl-runner trim_galore_0.6.2.cwl example_inputs.yaml
 ```
-  
+
+**If at MSK, using the JUNO cluster having installed toil version 3.19 and manually modifying [lsf.py](https://github.com/DataBiosphere/toil/blob/releases/3.19.0/src/toil/batchSystems/lsf.py#L170) by removing `type==X86_64 &&` you can use the following command**
+
+```bash
+#Using CWLTOOL
+> cwltool --singularity --non-strict /path/to/trim_galore_0.6.2.cwl /path/to/inputs.yaml
+
+#Using toil-cwl-runner
+> mkdir trimgalore_toil_log
+> toil-cwl-runner --singularity --logFile /path/to/trimgalore_toil_log/cwltoil.log  --jobStore /path/to/trimgalore_jobStore --batchSystem lsf --workDir /path/to/trimgalore_toil_log --outdir . --writeLogs /path/to/trimgalore_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 /path/to/trim_galore_0.6.2.cwl /path/to/inputs.yaml > trimgalore_toil.stdout 2> trimgalore_toil.stderr &
+```
+
+### Usage  
