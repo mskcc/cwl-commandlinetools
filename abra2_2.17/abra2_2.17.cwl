@@ -170,8 +170,10 @@ arguments:
     valueFrom: /usr/local/bin/abra2.jar
 requirements:
   - class: ResourceRequirement
-    ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
-    coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 4\r  }\r}"
+    ramMin: 48000
+    coresMin: 4
+    #ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
+    #coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 4\r  }\r}"
   - class: DockerRequirement
     dockerPull: 'mskcc/abra2:0.1.0'
   - class: InlineJavascriptRequirement
@@ -193,6 +195,3 @@ requirements:
   - class: 'doap:Version'
     'doap:name': abra2
     'doap:revision': 2.17
-  - class: 'doap:Version'
-    'doap:name': cwl-wrapper
-    'doap:revision': 1.0.0
