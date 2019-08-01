@@ -4,7 +4,8 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_add_or_replace_read_groups_1.96
+  sbg: 'https://www.sevenbridges.com/'
+id: picard_add_or_replace_read_groups_1_96
 baseCommand:
   - java
 inputs:
@@ -141,11 +142,9 @@ outputs:
     outputBinding:
       glob: |-
         ${
-            if(inputs.output_file_name){
-                return inputs.output_file_name
-            } else {
-                return inputs.input.basename.replace(/.sam | .bam/,'_srt.bam')
-            }
+            if(inputs.output_file_name)
+                return inputs.output_file_name;
+            return inputs.input.basename.replace(/.sam$/, '_srt.bam');
         }
     secondaryFiles:
       - ^.bai
@@ -185,11 +184,9 @@ arguments:
     separate: false
     valueFrom: |-
       ${
-          if(inputs.output_file_name){
-              return inputs.output_file_name
-          } else {
-              return inputs.input.basename.replace(/.sam | .bam/,'_srt.bam')
-          }
+          if(inputs.output_file_name)
+              return inputs.output_file_name;
+            return inputs.input.basename.replace(/.sam$/, '_srt.bam');
       }
 requirements:
   - class: ResourceRequirement

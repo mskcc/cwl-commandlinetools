@@ -4,7 +4,8 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_mark_duplicates_2.8.1
+  sbg: 'https://www.sevenbridges.com/'
+id: picard_mark_duplicates_2_8_1
 baseCommand:
   - java
 inputs:
@@ -100,6 +101,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: DUPLICATE_SCORING_STRATEGY=
+      separate: false
     doc: >-
       The scoring strategy for choosing the non-duplicate among candidates. 
       Default value:SUM_OF_BASE_QUALITIES. This option can be set to 'null' to
