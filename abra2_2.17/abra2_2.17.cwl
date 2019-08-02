@@ -4,7 +4,8 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: abra2_2.17
+  sbg: 'https://www.sevenbridges.com/'
+id: abra2_2_17
 baseCommand:
   - java
 inputs:
@@ -120,6 +121,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: '--out'
+      valueFrom: '$(inputs.input_bam.basename.replace(/.bam/, ''_abra.bam''))'
     doc: Required list of output sam or bam file (s) separated by comma
   - id: ignore_bad_assembly
     type: boolean?
@@ -172,8 +174,6 @@ requirements:
   - class: ResourceRequirement
     ramMin: 48000
     coresMin: 4
-    #ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
-    #coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 4\r  }\r}"
   - class: DockerRequirement
     dockerPull: 'mskcc/abra2:0.1.0'
   - class: InlineJavascriptRequirement
