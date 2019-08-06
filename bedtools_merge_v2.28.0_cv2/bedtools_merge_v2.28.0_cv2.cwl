@@ -18,7 +18,7 @@ inputs:
       shellQuote: false
     doc: BEDgraph format file generated from Bedtools Genomecov module
   - id: output_file_name
-    type: string
+    type: string?
   - id: memory_overhead
     type: int?
   - id: memory_per_job

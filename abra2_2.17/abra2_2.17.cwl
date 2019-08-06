@@ -44,7 +44,7 @@ inputs:
       prefix: '--ref'
     doc: Genome reference location
     secondaryFiles:
-      - ^.fai
+      - .fai
   - id: targets
     type: File
     inputBinding:
@@ -113,15 +113,8 @@ inputs:
       position: 0
       prefix: '--cons'
     doc: Use positional consensus sequence when aligning high quality soft clipping
-  - id: output_bams
-    type:
-      - string
-      - type: array
-        items: string
-    inputBinding:
-      position: 0
-      prefix: '--out'
-      valueFrom: '$(inputs.input_bam.basename.replace(/.bam/, ''_abra.bam''))'
+  - id: output_file_name
+    type: string?
     doc: Required list of output sam or bam file (s) separated by comma
   - id: ignore_bad_assembly
     type: boolean?
@@ -159,8 +152,14 @@ outputs:
       - type: array
         items: File
     outputBinding:
-      glob: |
-        *abra.bam
+      glob: |-
+        ${
+            if(inputs.output_file_name){
+                return inputs.output_file_name
+            } else {
+                return inputs.input_bam.basename.replace(/.bam/, '_abra.bam')
+            }
+        }
     secondaryFiles:
       - ^.bai
 label: abra2_2.17
@@ -170,6 +169,16 @@ arguments:
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/abra2.jar
+  - position: 0
+    prefix: '--out'
+    valueFrom: |-
+      ${
+          if(inputs.output_file_name){
+              return inputs.output_file_name
+          } else {
+              return inputs.input_bam.basename.replace(/.bam/, '_abra.bam')
+          }
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 48000

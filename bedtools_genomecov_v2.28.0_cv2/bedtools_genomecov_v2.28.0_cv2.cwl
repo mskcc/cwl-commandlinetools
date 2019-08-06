@@ -23,7 +23,7 @@ inputs:
     secondaryFiles:
       - ^.bai
   - id: output_file_name
-    type: string
+    type: string?
   - id: memory_overhead
     type: int?
   - id: memory_per_job

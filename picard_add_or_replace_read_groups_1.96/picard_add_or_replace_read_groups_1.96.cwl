@@ -23,9 +23,7 @@ inputs:
       position: 0
       prefix: I=
       separate: false
-    doc: Input file (bam or sam).  Required.
-    secondaryFiles:
-      - ^.bai
+    doc: Input file ( sam).  Required.
   - id: output_file_name
     type: string?
     doc: Output file name (bam or sam). Not Required

@@ -4,17 +4,18 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: trim_galore_0.6.2
+  sbg: 'https://www.sevenbridges.com/'
+id: trim_galore_0_6_2
 baseCommand:
   - trim_galore
 inputs:
   - id: memory_per_job
-    type: int
+    type: int?
     inputBinding:
       position: 0
     doc: Memory per job in megabytes
   - id: memory_overhead
-    type: int
+    type: int?
     inputBinding:
       position: 0
     doc: Memory overhead per job in megabytes
@@ -27,7 +28,7 @@ inputs:
     type: File?
     doc: Path to trim_galore executable file
   - id: adapter
-    type: string
+    type: string?
     inputBinding:
       position: 0
       prefix: '-a'
@@ -35,7 +36,7 @@ inputs:
       Adapter sequence to be trimmed. If not specified explicitely, the first
       13bp of the Illumina adapter 'AGATCGGAAGAGC' will be used by default.
   - id: adapter2
-    type: string
+    type: string?
     inputBinding:
       position: 0
       prefix: '-a2'
@@ -127,7 +128,7 @@ outputs:
   - id: clfastq2
     type: File
     outputBinding:
-      glob: '$(inputs.fastq2.basename.replace(''.fastq.gz'', ''_val_1.fq.gz''))'
+      glob: '$(inputs.fastq2.basename.replace(''.fastq.gz'', ''_val_2.fq.gz''))'
   - id: clstats1
     type: File
     outputBinding:
@@ -145,8 +146,6 @@ requirements:
   - class: ResourceRequirement
     ramMin: 8000
     coresMin: 1
-    #ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
-    #coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 4\r  }\r}"
   - class: DockerRequirement
     dockerPull: 'mskcc/trim_galore:0.1.0'
   - class: InlineJavascriptRequirement
