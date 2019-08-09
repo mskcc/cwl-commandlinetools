@@ -57,10 +57,27 @@ inputs:
       position: 2
 
 outputs:
-  - id: output
-    type: Directory
+  - id: disambiguate_a_bam
+    type: File
     outputBinding:
-      glob: '$(inputs.output_dir)'
+      glob: |
+        ${
+            return inputs.output_dir.concat('/*.disambiguatedSpeciesA.bam');
+        }
+  - id: disambiguate_b_bam
+    type: File
+    outputBinding:
+      glob: |
+        ${
+            return inputs.output_dir.concat('/*.disambiguatedSpeciesB.bam');
+        }
+  - id: summary
+    type: File
+    outputBinding:
+      glob: |
+        ${
+            return inputs.output_dir.concat('/*_summary.txt');
+        }
 requirements:
   - class: ResourceRequirement
     ramMin: 32000
