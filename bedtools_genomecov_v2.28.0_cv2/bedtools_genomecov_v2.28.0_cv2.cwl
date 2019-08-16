@@ -3,8 +3,8 @@ cwlVersion: v1.0
 $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
+  edam: 'http://edamontology.org/'
   foaf: 'http://xmlns.com/foaf/0.1/'
-  edam: http://edamontology.org/
 id: bedtools_genomecov
 baseCommand:
   - bedtools
@@ -22,7 +22,7 @@ inputs:
     secondaryFiles:
       - ^.bai
   - id: output_file_name
-    type: string
+    type: string?
   - id: memory_overhead
     type: int?
   - id: memory_per_job
@@ -44,9 +44,9 @@ outputs:
     outputBinding:
       glob: |-
         ${
-             if (inputs.output_file_name.length>0)
+             if (inputs.output_file_name)
               return inputs.output_file_name;
-            return inputs.input.basename.replace('.bam', '.bedgraph');
+            return inputs.input.basename.replace('.bam','.bedgraph');
           }
 label: bedtools_genomecov
 requirements:
@@ -54,16 +54,14 @@ requirements:
   - class: ResourceRequirement
     ramMin: 20000
     coresMin: 1
-    #ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 8000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 8000 \r  }\r}"
-    #coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 1\r  }\r}"
   - class: DockerRequirement
     dockerPull: 'biocontainers/bedtools:v2.28.0_cv2'
   - class: InlineJavascriptRequirement
 stdout: |-
   ${
-      if (inputs.output_file_name.length>0)
+      if (inputs.output_file_name)
         return inputs.output_file_name;
-      return inputs.input.basename.replace('.bam', '.bedgraph');
+      return inputs.input.basename.replace('.bam','.bedgraph');
     }
 'dct:contributor':
   - class: 'foaf:Organization'

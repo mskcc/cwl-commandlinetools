@@ -4,7 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_add_or_replace_read_groups_1.96
+id: picard_add_or_replace_read_groups_1_96
 baseCommand:
   - java
 inputs:
@@ -22,9 +22,7 @@ inputs:
       position: 0
       prefix: I=
       separate: false
-    doc: Input file (bam or sam).  Required.
-    secondaryFiles:
-      - ^.bai
+    doc: Input file ( sam).  Required.
   - id: output_file_name
     type: string?
     doc: Output file name (bam or sam). Not Required
@@ -141,11 +139,9 @@ outputs:
     outputBinding:
       glob: |-
         ${
-            if(inputs.output_file_name){
-                return inputs.output_file_name
-            } else {
-                return inputs.input.basename.replace(/.sam | .bam/,'_srt.bam')
-            }
+            if(inputs.output_file_name)
+                return inputs.output_file_name;
+            return inputs.input.basename.replace(/.sam$/, '_srt.bam');
         }
     secondaryFiles:
       - ^.bai
@@ -185,11 +181,9 @@ arguments:
     separate: false
     valueFrom: |-
       ${
-          if(inputs.output_file_name){
-              return inputs.output_file_name
-          } else {
-              return inputs.input.basename.replace(/.sam | .bam/,'_srt.bam')
-          }
+          if(inputs.output_file_name)
+              return inputs.output_file_name;
+            return inputs.input.basename.replace(/.sam$/, '_srt.bam');
       }
 requirements:
   - class: ResourceRequirement
