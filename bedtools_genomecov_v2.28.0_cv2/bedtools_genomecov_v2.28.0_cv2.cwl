@@ -5,7 +5,6 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   edam: 'http://edamontology.org/'
   foaf: 'http://xmlns.com/foaf/0.1/'
-  sbg: 'https://www.sevenbridges.com/'
 id: bedtools_genomecov
 baseCommand:
   - bedtools
