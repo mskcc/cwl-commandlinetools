@@ -4,7 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_mark_duplicates_2.8.1
+id: picard_mark_duplicates_2_8_1
 baseCommand:
   - java
 inputs:
@@ -23,13 +23,8 @@ inputs:
       prefix: I=
       separate: false
     doc: Input file (bam or sam).  Required.
-  - id: output
-    type: string
-    inputBinding:
-      position: 0
-      prefix: O=
-      separate: false
-      valueFrom: '$(inputs.input.basename.replace(/.bam/, ''_md.bam''))'
+  - id: output_file_name
+    type: string?
     doc: Output file (bam or sam).
   - default: '$( inputs.input.basename.replace(/.bam/, ''_md.metrics'') )'
     id: duplication_metrics
@@ -100,6 +95,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: DUPLICATE_SCORING_STRATEGY=
+      separate: false
     doc: >-
       The scoring strategy for choosing the non-duplicate among candidates. 
       Default value:SUM_OF_BASE_QUALITIES. This option can be set to 'null' to
@@ -121,7 +117,14 @@ outputs:
   - id: bam
     type: File
     outputBinding:
-      glob: '$(inputs.input.basename.replace(/.bam/, ''_md.bam''))'
+      glob: |-
+        ${
+            if(inputs.output_file_name){
+                return inputs.output_file_name
+            } else {
+                return inputs.input.basename.replace(/.bam/,'_md.bam')
+            }
+        }
     secondaryFiles:
       - ^.bai
       - ^.metrics
@@ -134,6 +137,17 @@ arguments:
     valueFrom: /usr/local/bin/picard.jar
   - position: 0
     valueFrom: MarkDuplicates
+  - position: 0
+    prefix: O=
+    separate: false
+    valueFrom: |-
+      ${
+          if(inputs.output_file_name){
+              return inputs.output_file_name
+          } else {
+              return inputs.input.basename.replace(/.bam/,'_md.bam')
+          }
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
