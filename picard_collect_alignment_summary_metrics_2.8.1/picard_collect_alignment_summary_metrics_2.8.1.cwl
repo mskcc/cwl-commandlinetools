@@ -124,10 +124,6 @@ outputs:
             } else {
                 return inputs.input.basename.replace(/.bam/,'_alignment_metrics.txt')
             }
-        }
-    secondaryFiles:
-      - ^.bai
-      - ^.metrics
 label: picard_collect_alignment_summary_metrics_2.8.1
 arguments:
   - position: 0
