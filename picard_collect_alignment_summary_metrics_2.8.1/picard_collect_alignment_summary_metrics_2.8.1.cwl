@@ -153,7 +153,7 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 15000
+    ramMin: 18000
     coresMin: 1
   - class: DockerRequirement
     dockerPull: 'mskcc/picard:2.8.1'
