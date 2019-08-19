@@ -17,3 +17,17 @@
 ```bash
     > toil-cwl-runner marianas_seprate_bams_1.8.1.cwl example_inputs.yaml
 ```
+
+### Usage
+
+```bash
+usage: marianas_separate_bams_1.8.1/marianas_separate_bams_1.8.1.cwl
+       [-h] --input_bam INPUT_BAM [job_order]
+
+positional arguments:
+  job_order             Job input json file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --input_bam INPUT_BAM
+```
