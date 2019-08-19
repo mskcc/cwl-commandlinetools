@@ -1,0 +1,26 @@
+assume_sorted: true
+bam_compression_level: null
+create_bam_index: null
+input:
+  class: File
+  metadata: {}
+  path: "/path/to/bam"
+  secondaryFiles:
+    - class: File
+      path: "/path/to/bam.bai"
+max_insert_size: null
+memory_overhead: null
+memory_per_job: null
+metrics_acciumulation_level: null
+number_of_threads: null
+output_file_name: null
+reference_sequence:
+  class: File
+  metadata: {}
+  path: "/path/to/reference.fasta"
+  secondaryFiles:
+    - class: File
+      path: "/path/to/reference.dict"
+stop_after: null
+tmp_dir: null
+validation_stringency: null
