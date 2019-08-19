@@ -4,6 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 id: picard_collect_alignment_summary_metrics_2_8_1
 baseCommand:
   - java
@@ -114,7 +115,7 @@ inputs:
       Stop after processing N reads, mainly for debugging. Default value: 0.
       This option can be set to 'null' to clear the default value.
 outputs:
-  - id: bam
+  - id: alignment_metrics
     type: File
     outputBinding:
       glob: |-
