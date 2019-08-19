@@ -159,7 +159,6 @@ arguments:
     valueFrom: /usr/local/bin/picard.jar
     seprate: true
   - position: 0
-    separate: false
     valueFrom: CollectAlignmentSummaryMetrics
   - position: 0
     prefix: O=
