@@ -138,7 +138,6 @@ arguments:
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/picard.jar
-    seprate: true
   - position: 0
     valueFrom: CollectAlignmentSummaryMetrics
   - position: 0
