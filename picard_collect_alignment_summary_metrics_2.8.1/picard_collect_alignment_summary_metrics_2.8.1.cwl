@@ -98,6 +98,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: R=
+      separate: false
     doc: >-
       Reference sequence file. Note that while this argument isn't required,
       without it only a small subset of the metrics will be calculated. Note
