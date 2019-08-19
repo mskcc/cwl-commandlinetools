@@ -124,52 +124,54 @@ outputs:
             } else {
                 return inputs.input.basename.replace(/.bam/,'_alignment_metrics.txt')
             }
+        }
 label: picard_collect_alignment_summary_metrics_2.8.1
 arguments:
   - position: 0
     valueFrom: |-
-      ${
+     ${
         if(inputs.memory_per_job && inputs.memory_overhead) {
-          if(inputs.memory_per_job % 1000 == 0) {
-            return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
-          }
-          else {
-            return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
-          }
+            if(inputs.memory_per_job % 1000 == 0) {
+                return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+            }
+            else {
+                return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+            }
         }
         else if (inputs.memory_per_job && !inputs.memory_overhead){
-          if(inputs.memory_per_job % 1000 == 0) {
-            return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
-          }
-          else {
-            return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
-          }
+            if(inputs.memory_per_job % 1000 == 0) {
+                return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+            }
+            else {
+                return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+            }
         }
         else if(!inputs.memory_per_job && inputs.memory_overhead){
-          return "-Xmx15G"
+            return "-Xmx15G"
         }
         else {
             return "-Xmx15G"
         }
+          
       }
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/picard.jar
     seprate: true
   - position: 0
-    valueFrom: CollectAlignmentSummaryMetrics
     separate: false
+    valueFrom: CollectAlignmentSummaryMetrics
   - position: 0
     prefix: O=
     separate: false
     valueFrom: |-
-      ${
+        ${
           if(inputs.output_file_name){
               return inputs.output_file_name
           } else {
               return inputs.input.basename.replace(/.bam/,'_alignment_metrics.txt')
           }
-      }
+        }
 requirements:
   - class: ResourceRequirement
     ramMin: 16000
