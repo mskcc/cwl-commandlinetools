@@ -128,10 +128,10 @@ arguments:
              }
          }
          else if(!inputs.memory_per_job && inputs.memory_overhead){
-             return "-Xmx16G"
+             return "-Xmx15G"
          }
          else {
-             return "-Xmx16G"
+             return "-Xmx15G"
          }
            
        }
@@ -153,8 +153,8 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 18000
-    coresMin: 1
+    ramMin: 20000
+    coresMin: 2
   - class: DockerRequirement
     dockerPull: 'mskcc/picard:2.8.1'
   - class: InlineJavascriptRequirement
