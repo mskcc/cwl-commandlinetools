@@ -4,7 +4,6 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-  sbg: 'https://www.sevenbridges.com/'
 id: picard_collect_alignment_summary_metrics_2_8_1
 baseCommand:
   - java
@@ -152,8 +151,8 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
-    coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 2\r  }\r}"
+    ramMin: 16000
+    coresMin: 1
   - class: DockerRequirement
     dockerPull: 'mskcc/picard:2.8.1'
   - class: InlineJavascriptRequirement
