@@ -1,0 +1,3 @@
+input_bam:
+  class: File
+  path: /path/to/collapsed.bam
