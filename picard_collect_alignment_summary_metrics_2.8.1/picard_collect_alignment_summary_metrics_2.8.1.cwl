@@ -67,26 +67,6 @@ inputs:
       which variable-length data (read, qualities, tags) do not otherwise need
       to be decoded.  Default value: STRICT. This option can be set to 'null' to
       clear the default value. Possible values: {STRICT,LENIENT, SILENT}
-  - id: bam_compression_level
-    type: int?
-    inputBinding:
-      position: 0
-      prefix: COMPRESSION_LEVEL=
-      separate: false
-    doc: >-
-      Compression level for all compressed files created (e.g. BAM and GELI). 
-      Default value:5. This option can be set to 'null' to clear the default
-      value.
-  - default: true
-    id: create_bam_index
-    type: boolean?
-    inputBinding:
-      position: 0
-      prefix: CREATE_INDEX=true
-    doc: >-
-      Whether to create a BAM index when writing a coordinate-sorted BAM file. 
-      Default value:false. This option can be set to 'null' to clear the default
-      value. Possible values:{true, false}
   - default: true
     id: assume_sorted
     type: boolean?
@@ -130,31 +110,31 @@ label: picard_collect_alignment_summary_metrics_2.8.1
 arguments:
   - position: 0
     valueFrom: |-
-     ${
-        if(inputs.memory_per_job && inputs.memory_overhead) {
-            if(inputs.memory_per_job % 1000 == 0) {
-                return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
-            }
-            else {
-                return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
-            }
-        }
-        else if (inputs.memory_per_job && !inputs.memory_overhead){
-            if(inputs.memory_per_job % 1000 == 0) {
-                return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
-            }
-            else {
-                return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
-            }
-        }
-        else if(!inputs.memory_per_job && inputs.memory_overhead){
-            return "-Xmx16G"
-        }
-        else {
-            return "-Xmx16G"
-        }
-          
-      }
+      ${
+         if(inputs.memory_per_job && inputs.memory_overhead) {
+             if(inputs.memory_per_job % 1000 == 0) {
+                 return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+             }
+             else {
+                 return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+             }
+         }
+         else if (inputs.memory_per_job && !inputs.memory_overhead){
+             if(inputs.memory_per_job % 1000 == 0) {
+                 return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+             }
+             else {
+                 return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+             }
+         }
+         else if(!inputs.memory_per_job && inputs.memory_overhead){
+             return "-Xmx16G"
+         }
+         else {
+             return "-Xmx16G"
+         }
+           
+       }
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/picard.jar
@@ -165,13 +145,13 @@ arguments:
     prefix: O=
     separate: false
     valueFrom: |-
-        ${
-          if(inputs.output_file_name){
-              return inputs.output_file_name
-          } else {
-              return inputs.input.basename.replace(/.bam/,'_alignment_metrics.txt')
-          }
+      ${
+        if(inputs.output_file_name){
+            return inputs.output_file_name
+        } else {
+            return inputs.input.basename.replace(/.bam/,'_alignment_metrics.txt')
         }
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 15000
