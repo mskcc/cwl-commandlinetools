@@ -1,6 +1,6 @@
 # CWL and Dockerfile for running Marianas - SeparateBams
 
-## Version of tools in docker image (/container/Dockerfile)
+## Version of tools in docker image (../marianas_process_loop_umi_1.8.1/container/Dockerfile)
 
 | Tool	| Version	| Location	|
 |---	|---	|---	|
