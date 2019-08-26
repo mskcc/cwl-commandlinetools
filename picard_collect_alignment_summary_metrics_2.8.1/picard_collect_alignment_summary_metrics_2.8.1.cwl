@@ -103,7 +103,7 @@ outputs:
             if(inputs.output_file_name){
                 return inputs.output_file_name
             } else {
-                return inputs.input.basename.replace(/.bam/,'_alignment_metrics.txt')
+                return *_alignment_metrics.txt
             }
         }
 label: picard_collect_alignment_summary_metrics_2.8.1
