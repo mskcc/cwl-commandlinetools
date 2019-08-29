@@ -4,7 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_collect_alignment_summary_metrics_2_8_1
+id: picard_collect_alignment_summary_metrics_2.8.1
 baseCommand:
   - java
 inputs:
@@ -109,6 +109,7 @@ outputs:
 label: picard_collect_alignment_summary_metrics_2.8.1
 arguments:
   - position: 0
+    prefix: ''
     valueFrom: |-
       ${
          if(inputs.memory_per_job && inputs.memory_overhead) {
@@ -128,10 +129,10 @@ arguments:
              }
          }
          else if(!inputs.memory_per_job && inputs.memory_overhead){
-             return "-Xmx15G"
+             return "-Xmx8G"
          }
          else {
-             return "-Xmx15G"
+             return "-Xmx8G"
          }
            
        }
@@ -153,8 +154,8 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 20000
-    coresMin: 2
+    ramMin: 12000
+    coresMin: 1
   - class: DockerRequirement
     dockerPull: 'mskcc/picard:2.8.1'
   - class: InlineJavascriptRequirement
