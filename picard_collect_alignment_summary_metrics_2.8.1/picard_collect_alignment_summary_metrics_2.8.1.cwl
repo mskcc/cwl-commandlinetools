@@ -109,7 +109,6 @@ outputs:
 label: picard_collect_alignment_summary_metrics_2.8.1
 arguments:
   - position: 0
-    prefix: ''
     valueFrom: |-
       ${
          if(inputs.memory_per_job && inputs.memory_overhead) {
