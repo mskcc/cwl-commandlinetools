@@ -4,7 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: marianas_separate_bams_1_8_1
+id: marianas_separate_bams_1.8.1
 baseCommand:
   - java
 inputs:
@@ -25,6 +25,7 @@ outputs:
       glob: '*simplex.bam'
     secondaryFiles:
       - ^.bai
+label: marianas_separate_bams_1.8.1
 arguments:
   - position: 0
     valueFrom: '-server'
@@ -84,7 +85,6 @@ arguments:
     prefix: '-cp'
     valueFrom: /usr/local/bin/Marianas-1.8.1.jar
   - position: 0
-    prefix: ''
     valueFrom: org.mskcc.marianas.umi.duplex.postprocessing.SeparateBams
 requirements:
   - class: ResourceRequirement
@@ -99,6 +99,12 @@ requirements:
       - class: 'foaf:Person'
         'foaf:mbox': 'mailto:johnsoni@mskcc.org'
         'foaf:name': Ian Johnson
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:shahr2@mskcc.org'
+        'foaf:name': Ronak Shha
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
