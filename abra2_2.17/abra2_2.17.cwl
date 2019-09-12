@@ -4,6 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 id: abra2_2_17
 baseCommand:
   - java
@@ -180,8 +181,8 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 48000
-    coresMin: 4
+    ramMin: 60000
+    coresMin: 12
   - class: DockerRequirement
     dockerPull: 'mskcc/abra2:0.1.0'
   - class: InlineJavascriptRequirement
