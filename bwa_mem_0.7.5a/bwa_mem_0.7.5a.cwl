@@ -4,6 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 baseCommand:
   - bwa
   - mem
@@ -169,8 +170,8 @@ arguments:
     valueFrom: $(runtime.cores)
 requirements:
   - class: ResourceRequirement
-    ramMin: 16000
-    coresMin: 4
+    ramMin: 32000
+    coresMin: 16
   - class: DockerRequirement
     dockerPull: 'mskcc/bwa_mem:0.7.5a'
   - class: InlineJavascriptRequirement
