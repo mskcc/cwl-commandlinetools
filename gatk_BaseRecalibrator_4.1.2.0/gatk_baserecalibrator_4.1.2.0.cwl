@@ -221,12 +221,12 @@ inputs:
   - id: read_filter
     type:
       - 'null'
-      - string
       - type: array
         items: string
+        inputBinding:
+          prefix: '--read-filter'
     inputBinding:
       position: 10
-      prefix: '--read-filter'
   - id: read_index
     type: string?
     inputBinding:
