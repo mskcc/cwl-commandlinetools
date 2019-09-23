@@ -174,10 +174,15 @@ inputs:
       position: 6
       prefix: '--QUIET'
   - id: read_filter
-    type: string?
+    type:
+      - 'null'
+      - type: string
+      - type: array
+        items: string
+        inputBinding:
+          prefix: '--read-filter'
     inputBinding:
       position: 6
-      prefix: '--read-filter'
   - id: read_index
     type: string?
     inputBinding:
