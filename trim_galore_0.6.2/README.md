@@ -1,25 +1,25 @@
 # CWL and Dockerfile for running Trim Galore
 
-## Version of tools in docker image \(/container/Dockerfile\)
+## Version of tools in docker image (/container/Dockerfile)
 
-| Tool | Version | Location |
-| :--- | :--- | :--- |
-| Ubuntu base image | 18.04 | - |
-| cutadapt | 2.3 | [https://pypi.org/project/cutadapt/](https://pypi.org/project/cutadapt/) |
-| FASTQC | 0.11.8 | [https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc\_v0.11.8.zip](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.8.zip) |
-| Trim Galore | 0.6.2 | [https://github.com/FelixKrueger/TrimGalore/archive/0.6.2.tar.gz](https://github.com/FelixKrueger/TrimGalore/archive/0.6.2.tar.gz) |
+| Tool	| Version	| Location	|
+|---	|---	|---	|
+| Ubuntu base image  	| 18.04  	|   -	|
+| cutadapt  	| 2.3  	|  https://pypi.org/project/cutadapt/	|
+| FASTQC  	| 0.11.8	|  https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.8.zip	|
+| Trim Galore  	| 0.6.2	| https://github.com/FelixKrueger/TrimGalore/archive/0.6.2.tar.gz	|
 
 ## CWL
 
-* CWL specification 1.0
-* Use example\_inputs.yaml to see the inputs to the cwl
-* Example Command using [toil](https://toil.readthedocs.io):
+- CWL specification 1.0
+- Use example_inputs.yaml to see the inputs to the cwl
+- Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
     > toil-cwl-runner trim_galore_0.6.2.cwl example_inputs.yaml
 ```
 
-**If at MSK, using the JUNO cluster having installed toil version 3.19 and manually modifying** [**lsf.py**](https://github.com/DataBiosphere/toil/blob/releases/3.19.0/src/toil/batchSystems/lsf.py#L170) **by removing `type==X86_64 &&` you can use the following command**
+**If at MSK, using the JUNO cluster having installed toil version 3.19 and manually modifying [lsf.py](https://github.com/DataBiosphere/toil/blob/releases/3.19.0/src/toil/batchSystems/lsf.py#L170) by removing `type==X86_64 &&` you can use the following command**
 
 ```bash
 #Using CWLTOOL
@@ -32,7 +32,7 @@
 
 ### Usage
 
-```text
+```
 usage: trim_galore_0.6.2.cwl [-h]
 
 positional arguments:
@@ -93,4 +93,3 @@ optional arguments:
                         Maximum allowed error rate (no. of errors divided by
                         the length of the matching region) (default: 0.1)
 ```
-
