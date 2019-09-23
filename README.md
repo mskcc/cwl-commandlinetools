@@ -2,7 +2,7 @@
 description: Central location for storing common workflow language based command line tools for building msk-access workflows
 ---
 
-# MSK-ACCESS BAM Generation workflow
+# MSK-ACCESS command-line tools
 
 [![PyPI version](https://badge.fury.io/py/cwl-commandlinetools.svg)](https://badge.fury.io/py/cwl-commandlinetools)
 [![Build Status](https://travis-ci.org/msk-access/cwl-commandlinetools.svg?branch=master)](https://travis-ci.org/msk-access/cwl-commandlinetools/)
