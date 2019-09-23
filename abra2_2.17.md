@@ -1,25 +1,25 @@
 # CWL and Dockerfile for running ABRA2
 
-## Version of tools in docker image (/container/Dockerfile)
+## Version of tools in docker image \(/container/Dockerfile\)
 
-| Tool	| Version	| Location	|
-|---	|---	|---	|
-| openjdk  	| 8  	|  -	|
-| ABRA2  	| 2.17	|  https://github.com/mozack/abra2/releases/download/v2.19/abra2-2.17.jar	|
+| Tool | Version | Location |
+| :--- | :--- | :--- |
+| openjdk | 8 | - |
+| ABRA2 | 2.17 | [https://github.com/mozack/abra2/releases/download/v2.19/abra2-2.17.jar](https://github.com/mozack/abra2/releases/download/v2.19/abra2-2.17.jar) |
 
-[![](https://images.microbadger.com/badges/version/mskcc/abra2:0.1.0.svg)](https://microbadger.com/images/mskcc/abra2:0.1.0 "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/mskcc/abra2:0.1.0.svg)](https://microbadger.com/images/mskcc/abra2:0.1.0 "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/license/mskcc/abra2:0.1.0.svg)](https://microbadger.com/images/mskcc/abra2:0.1.0 "Get your own license badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/mskcc/abra2:0.1.0.svg)](https://microbadger.com/images/mskcc/abra2:0.1.0) [![](https://images.microbadger.com/badges/image/mskcc/abra2:0.1.0.svg)](https://microbadger.com/images/mskcc/abra2:0.1.0) [![](https://images.microbadger.com/badges/license/mskcc/abra2:0.1.0.svg)](https://microbadger.com/images/mskcc/abra2:0.1.0)
 
 ## CWL
 
-- CWL specification 1.0
-- Use example_inputs.yaml to see the inputs to the cwl
-- Example Command using [toil](https://toil.readthedocs.io):
+* CWL specification 1.0
+* Use example\_inputs.yaml to see the inputs to the cwl
+* Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
     > toil-cwl-runner abra2_2.17.cwl example_inputs.yaml
 ```
 
-**If at MSK, using the JUNO cluster having installed toil version 3.19 and manually modifying [lsf.py](https://github.com/DataBiosphere/toil/blob/releases/3.19.0/src/toil/batchSystems/lsf.py#L170) by removing `type==X86_64 &&` you can use the following command**
+**If at MSK, using the JUNO cluster having installed toil version 3.19 and manually modifying** [**lsf.py**](https://github.com/DataBiosphere/toil/blob/releases/3.19.0/src/toil/batchSystems/lsf.py#L170) **by removing `type==X86_64 &&` you can use the following command**
 
 ```bash
 #Using CWLTOOL
@@ -30,9 +30,9 @@
 > toil-cwl-runner --singularity --logFile /path/to/abra2_toil_log/cwltoil.log  --jobStore /path/to/abra2_jobStore --batchSystem lsf --workDir /path/to/abra2_toil_log --outdir . --writeLogs /path/to/abra2_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 /path/to/abra2_2.17.cwl /path/to/inputs.yaml > abra2_toil.stdout 2> abra2_toil.stderr &
 ```
 
-### Usage  
+### Usage
 
-```
+```text
 usage: abra2_2.17.cwl [-h]
 
 positional arguments:
@@ -85,4 +85,5 @@ optional arguments:
                         VCF containing known (or suspected) variant sites.
                         Very large files should be avoided.
   --no_sort             Do not attempt to sort final output
-  ```
+```
+

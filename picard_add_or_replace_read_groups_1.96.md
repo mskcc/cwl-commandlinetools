@@ -1,26 +1,26 @@
 # CWL and Dockerfile for running Picard - AddOrReplaceReadGroups
 
-## Version of tools in docker image (/container/Dockerfile)
+## Version of tools in docker image \(/container/Dockerfile\)
 
-| Tool	| Version	| Location	|
-|---	|---	|---	|
-| java base image  	| 8 	|   -	|
-| picard  	| 1.96  	|  https://sourceforge.net/projects/picard/files/picard-tools/1.96/picard-tools-1.96.zip	|
-| R 	| 3.3.3	|  r-base for opnejdk:8	|
+| Tool | Version | Location |
+| :--- | :--- | :--- |
+| java base image | 8 | - |
+| picard | 1.96 | [https://sourceforge.net/projects/picard/files/picard-tools/1.96/picard-tools-1.96.zip](https://sourceforge.net/projects/picard/files/picard-tools/1.96/picard-tools-1.96.zip) |
+| R | 3.3.3 | r-base for opnejdk:8 |
 
-[![](https://images.microbadger.com/badges/image/mskcc/picard_1.96:0.1.0.svg)](https://microbadger.com/images/mskcc/picard_1.96:0.1.0 "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/mskcc/picard_1.96:0.1.0.svg)](https://microbadger.com/images/mskcc/picard_1.96:0.1.0 "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/license/mskcc/picard_1.96:0.1.0.svg)](https://microbadger.com/images/mskcc/picard_1.96:0.1.0 "Get your own license badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/mskcc/picard_1.96:0.1.0.svg)](https://microbadger.com/images/mskcc/picard_1.96:0.1.0) [![](https://images.microbadger.com/badges/version/mskcc/picard_1.96:0.1.0.svg)](https://microbadger.com/images/mskcc/picard_1.96:0.1.0) [![](https://images.microbadger.com/badges/license/mskcc/picard_1.96:0.1.0.svg)](https://microbadger.com/images/mskcc/picard_1.96:0.1.0)
 
 ## CWL
 
-- CWL specification 1.0
-- Use example_inputs.yaml to see the inputs to the cwl
-- Example Command using [toil](https://toil.readthedocs.io):
+* CWL specification 1.0
+* Use example\_inputs.yaml to see the inputs to the cwl
+* Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
     > toil-cwl-runner picard_add_or_replace_read_groups_1.96.cwl example_inputs.yaml
 ```
 
-**If at MSK, using the JUNO cluster having installed toil version 3.19 and manually modifying [lsf.py](https://github.com/DataBiosphere/toil/blob/releases/3.19.0/src/toil/batchSystems/lsf.py#L170) by removing `type==X86_64 &&` you can use the following command**
+**If at MSK, using the JUNO cluster having installed toil version 3.19 and manually modifying** [**lsf.py**](https://github.com/DataBiosphere/toil/blob/releases/3.19.0/src/toil/batchSystems/lsf.py#L170) **by removing `type==X86_64 &&` you can use the following command**
 
 ```bash
 #Using CWLTOOL
