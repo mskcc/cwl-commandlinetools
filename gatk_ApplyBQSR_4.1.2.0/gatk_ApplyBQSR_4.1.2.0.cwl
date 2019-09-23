@@ -176,7 +176,7 @@ inputs:
   - id: read_filter
     type:
       - 'null'
-      - type: string
+      - string
       - type: array
         items: string
         inputBinding:
