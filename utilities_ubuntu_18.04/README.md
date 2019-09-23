@@ -13,5 +13,5 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner gzip.cl example_inputs_gzip.yaml
+    > toil-cwl-runner gzip.cwl example_inputs_gzip.yaml
 ```
