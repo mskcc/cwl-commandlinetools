@@ -180,8 +180,9 @@ inputs:
       - type: array
         items: string
         inputBinding:
-          position: 6
           prefix: '--read-filter'
+    inputBinding:
+      position: 6
   - id: read_index
     type: string?
     inputBinding:
