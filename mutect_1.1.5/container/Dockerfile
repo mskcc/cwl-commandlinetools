@@ -4,7 +4,7 @@ FROM openjdk:7
 ################## ARGUMENTS/Environments ##########
 
 ARG BUILD_DATE
-ARG BUILD_VERSION=1.0.0
+ARG BUILD_VERSION=0.1.0
 ARG MUTECT_VERSION=1.1.5
 
 ################## METADATA ########################
@@ -28,6 +28,4 @@ RUN unzip muTect-${MUTECT_VERSION}-bin.zip
 RUN rm muTect-${MUTECT_VERSION}-bin.zip
 RUN chmod a+x muTect-${MUTECT_VERSION}.jar
 RUN mv muTect-${MUTECT_VERSION}.jar /usr/local/bin/muTect.jar
-RUN java -version
-RUN which java
 
