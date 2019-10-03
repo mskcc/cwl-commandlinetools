@@ -448,10 +448,8 @@ inputs:
       prefix: --only_passing_calls
     doc: only emit passing calls
   - id: out
-    type:
-      - string
-      - File
-      - 'null'
+    default: 'mutect_variants.txt'
+    type: string?
     inputBinding:
       position: 0
       prefix: --out
@@ -649,6 +647,7 @@ inputs:
     doc: How strict should we be with validation (STRICT|LENIENT|SILENT)
   - id: vcf
     type: string?
+    default: 'mutect_variants.vcf'
     inputBinding:
       position: 0
       prefix: --vcf
@@ -658,21 +657,11 @@ outputs:
   - id: mutect_output_txt
     type: File?
     outputBinding:
-      glob: |
-        ${
-          if (inputs.out)
-            return inputs.out;
-          return 'null';
-        }
+      glob: $(inputs.out)
   - id: mutext_output_vcf
     type: File?
     outputBinding:
-      glob: |
-        ${
-          if (inputs.vcf)
-            return inputs.vcf;
-          return 'null';
-        }
+      glob: $(inputs.vcf)
 
 arguments:
   - |-
