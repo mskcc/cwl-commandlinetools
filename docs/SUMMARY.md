@@ -17,6 +17,8 @@
     * [Collapsing Second Pass v1.8.1](../marianas_collapsing_second_pass_1.8.1/README.md)
     * [Process Loop UMI v1.8.1](../marianas_process_loop_umi_1.8.1/README.md)
     * [Seprate BAMs v1.8.1](../marianas_separate_bams_1.8.1/README.md)
+  * MuTect
+    * [MuTect 1.1.5](../mutect_1.1.5/README.md)
   * Picard Tools 
     * [AddOrReplaceReadGroups v1.96](../picard_add_or_replace_read_groups_1.96/README.md)
     * [CollectAlignmentSummaryMetrics v2.8.1](../picard_collect_alignment_summary_metrics_2.8.1/README.md)
