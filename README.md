@@ -10,7 +10,7 @@ description: Central location for storing common workflow language based command
 [![Python 3](https://pyup.io/repos/github/msk-access/cwl-commandlinetools/python-3-shield.svg)](https://pyup.io/repos/github/msk-access/cwl-commandlinetools/)
 
 - Free software: Apache Software License 2.0
-- Documentation: https://msk-access.gitbook.io/cwl-commandlinetools
+* Documentation: [https://msk-access.gitbook.io/command-line-tools-cwl/](https://msk-access.gitbook.io/command-line-tools-cwl/)
 
 ## Features
 
