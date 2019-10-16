@@ -162,7 +162,7 @@ requirements:
     ramMin: 8000
     coresMin: 4
   - class: DockerRequirement
-    dockerPull: 'mskaccess/trim_galore:0.6.0'
+    dockerPull: 'mskaccess/trim_galore:0.6.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
