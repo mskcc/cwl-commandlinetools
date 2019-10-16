@@ -725,7 +725,7 @@ requirements:
     ramMin: 34000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: mskcc/mutect:0.1.0
+    dockerPull: mskaccess/mutect:0.6.0
   - class: InlineJavascriptRequirement
 
 dct:contributor:
