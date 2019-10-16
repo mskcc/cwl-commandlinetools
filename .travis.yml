@@ -24,4 +24,4 @@ deploy:
   on:
     tags: true
     repo: msk-access/cwl_commandlinetools
-    python: 3.7
+    python: 2.7

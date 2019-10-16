@@ -32,7 +32,7 @@ setup(
     description="Central location for CWL CommandLineTools",
     install_requires=requirements,
     license="Apache Software License 2.0",
-    long_description=readme + '\n\n' + history,
+    long_description=readme + '\n\n',
     include_package_data=True,
     keywords='cwl_commandlinetools',
     name='cwl_commandlinetools',
