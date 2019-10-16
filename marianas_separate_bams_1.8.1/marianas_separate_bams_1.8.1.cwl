@@ -91,7 +91,7 @@ requirements:
     ramMin: 30000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskcc/marianas:0.1.0'
+    dockerPull: 'mskaccess/marianas:0.6.0'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

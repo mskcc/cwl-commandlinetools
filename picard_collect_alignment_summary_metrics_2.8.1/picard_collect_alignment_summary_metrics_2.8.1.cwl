@@ -156,7 +156,7 @@ requirements:
     ramMin: 12000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskcc/picard:2.8.1'
+    dockerPull: 'mskaccess/picard:0.6.0'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
