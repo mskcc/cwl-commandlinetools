@@ -5,6 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   edam: 'http://edamontology.org/'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 id: gatk_base_recalibrator_4_1_2_0
 baseCommand:
   - gatk
@@ -218,10 +219,14 @@ inputs:
       position: 10
       prefix: '--QUIET'
   - id: read_filter
-    type: string?
+    type:
+      - 'null'
+      - type: array
+        items: string
+        inputBinding:
+          prefix: '--read-filter'
     inputBinding:
       position: 10
-      prefix: '--read-filter'
   - id: read_index
     type: string?
     inputBinding:

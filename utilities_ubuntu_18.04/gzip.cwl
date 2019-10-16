@@ -19,9 +19,9 @@ inputs:
     inputBinding:
       position: 100
     doc: Input file.
-  - default: true
-    id: to_stdout
-    type: boolean
+  - id: to_stdout
+    type: boolean?
+    default: true
     inputBinding:
       position: 0
       prefix: '-c'

@@ -180,8 +180,8 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 48000
-    coresMin: 4
+    ramMin: 60000
+    coresMin: 16
   - class: DockerRequirement
     dockerPull: 'mskcc/abra2:0.1.0'
   - class: InlineJavascriptRequirement
