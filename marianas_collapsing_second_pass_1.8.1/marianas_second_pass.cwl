@@ -141,7 +141,7 @@ requirements:
 #      }
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/marianas:0.6.0'
+    dockerPull: 'mskaccess/marianas:0.6.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

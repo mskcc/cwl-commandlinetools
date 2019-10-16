@@ -23,5 +23,5 @@ deploy:
     secure: ithmgopowELxskUKR2LAi/cMnet6J+PH4emAOiJ57rBqFkwq8lVXmT/NW8D7k2VoJdTguB9v+RH+Q/91ShJh1VnwbRQ1bX7Ecr7P7O35DIQBp40Eqg5AH6ap8se37dsufnNyVNhj8vNtusd65jC3+6w4kQkcCfysD5eByUDDw04FNYCbhbXIn4S/JJ/EJUFFb8ElNzo5iWpVPnfP9uddYxpXTEgWZBo+TylZsa1gxMYUqio5xa34TMkUzN5N4tooe0C1uZ6H9/zRzh2pLwoof1ITf3wws/FOJkPwsJFZWviC+0K1pNJTaTY77kHEEC5W8/JupvdShrFg+BzldLHWsGuyC+Mfj3bjJFTqyDnbthc0kosQ3x7UdTKzyztL+gekdCcNEsusN10VTdO0DYkUnYTc1YWpsC+ORQxPGANg+RrvjO8lGobvQ4ZlhcWBJ1ynlvntlg+b0iHzuOntznwZGTJRcTqtjsH+zzIEo12FiWnJwjvM78OkEsNp5XYaKgYryhQBIo5Uqy79h7wtF8mAnIRrsK5cyQmYTJtWZ+OIQbuzj+l9o+Ff19hykD7LEB8I9So8240w09+HoNxpZKYMQFndGGZnC1wkoZNdBEOjn9Az9ZouHO7qkFHZVSp3rqSAEqiG8fm3TTl/5VAO9RNEKT5vmZMDhl04F6LXZYGCLKU=
   on:
     tags: true
-    repo: msk-access/cwl_commandlinetools
+    repo: msk-access/cwl-commandlinetools
     python: 2.7

@@ -4,4 +4,4 @@
 
 __author__ = """msk-access"""
 __email__ = 'msk.access@gmail.com'
-__version__ = '0.4.0'
+__version__ = '0.6.1'
