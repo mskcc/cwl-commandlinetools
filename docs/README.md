@@ -23,6 +23,8 @@ Clone the repository:
 git clone --depth 50 https://github.com/msk-access/cwl-commandlinetools.git
 ```
 
+**Follow the README in repsective tool folder for execution of the tool.**
+
 ## Credits
 
 This package was created with Cookiecutter _and the `audreyr/cookiecutter-pypackage`_ project template.
