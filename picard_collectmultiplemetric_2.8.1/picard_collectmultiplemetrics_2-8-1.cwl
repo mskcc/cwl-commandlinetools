@@ -45,6 +45,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: AS=true
+      separate: false
   - id: bam_compression_level
     type: int?
     inputBinding:
@@ -61,6 +62,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: CREATE_INDEX=true
+      separate: false
     doc: >-
       Whether to create a BAM index when writing a coordinate-sorted BAM file. 
       Default value:false. This option can be set to 'null' to clear the default
@@ -69,6 +71,8 @@ inputs:
     type: int?
     inputBinding:
       position: 0
+      prefix: STOP_AFTER=
+      separate: false
     doc: >-
       Stop after processing N reads, mainly for debugging. Default value: 0.
       This option can be set to 'null' to clear the default value.
@@ -77,6 +81,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: METRIC_ACCUMULATION_LEVEL=
+      separate: false
     doc: >-
       The level(s) at which to accumulate metrics. Default value: [ALL_READS].
       This option can be set to 'null' to clear the default value. Possible
@@ -88,6 +93,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: FILE_EXTENSION=
+      separate: false
     doc: >-
       Append the given file extension to all metric file names (ex.
       OUTPUT.insert_size_metrics.EXT). None if null Default value: null.
@@ -96,6 +102,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: PROGRAM=
+      separate: false
     doc: >-
       Set of metrics programs to apply during the pass through the SAM file.
       Default value: [CollectAlignmentSummaryMetrics,
@@ -113,6 +120,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: INTERVALS=
+      separate: false
     doc: >-
       An optional list of intervals to restrict analysis to. Only pertains to
       some of the PROGRAMs. Programs whose stand-alone CLP does not have an
@@ -123,6 +131,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: DB_SNP=
+      separate: false
     doc: >-
       VCF format dbSNP file, used to exclude regions around known polymorphisms
       from analysis by some PROGRAMs; PROGRAMs whose CLP doesn't allow for this
@@ -132,6 +141,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: INCLUDE_UNPAIRED=true
+      separate: false
     doc: >-
       Include unpaired reads in CollectSequencingArtifactMetrics. If set to true
       then all paired reads will be included as well - MINIMUM_INSERT_SIZE and
@@ -143,10 +153,15 @@ outputs:
     type: Directory
     outputBinding:
       glob: .
-      outputEval: |
+      outputEval: |-
         ${
-          self[0].basename = inputs.output_file_name + '_picard_metrics';
+            if(inputs.output_file_name){
+                self[0].basename = inputs.output_file_name + '_picard_metrics';
           return self[0]
+            } else {
+                self[0].basename =  'picard_metrics';
+          return self[0]
+            }
         }
 label: picard_collectmultiplemetrices_2.8.1
 arguments:
