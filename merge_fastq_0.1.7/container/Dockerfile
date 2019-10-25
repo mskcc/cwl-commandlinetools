@@ -29,9 +29,10 @@ LABEL org.opencontainers.image.description="This container uses ubuntu ${UBUNTU_
 
 #Ubuntu
 RUN apt-get update && \
-    apt-get --no-install-recommends install -y build-essential python3 python3-pip python3-dev wget zip unzip default-jre && \
+    apt-get --no-install-recommends install -y build-essential python3.7 python3-pip python3-dev wget zip unzip default-jre && \
     apt-get clean && apt-get purge && apt autoremove && apt-get remove --yes --purge build-essential && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 #MERGE_FASTQ
 RUN pip3 install --upgrade merge-fastq==${MERGE_FASTQ_VERSION}
+
