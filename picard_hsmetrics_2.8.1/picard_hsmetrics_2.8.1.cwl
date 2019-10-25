@@ -113,7 +113,6 @@ outputs:
 label: picard_hsmetrics_2.8.1
 arguments:
   - position: 0
-  - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/picard.jar
   - position: 0
@@ -136,7 +135,6 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'msk-access/picard:0.6.1'
   - class: InlineJavascriptRequirement
-
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
