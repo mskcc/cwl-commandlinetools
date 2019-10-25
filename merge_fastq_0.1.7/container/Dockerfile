@@ -8,7 +8,7 @@ ARG BUILD_DATE
 ARG BUILD_VERSION
 ARG UBUNTU_VERSION=18.04
 ARG LICENSE="Apache-2.0"
-ARG MERGE_FASTQ_VERSION=0.1.6
+ARG MERGE_FASTQ_VERSION=0.1.7
 ARG VCS_REF
 ################## METADATA ########################
 LABEL org.opencontainers.image.vendor="MSKCC"
