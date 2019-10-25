@@ -134,5 +134,24 @@ requirements:
     ramMin: 4000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskcc/picard:2.8.1'
+    dockerPull: 'msk-access/picard:0.6.1'
   - class: InlineJavascriptRequirement
+
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
+        'foaf:name': Ian Johnson
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
+        'foaf:name': Ian Johnson
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'doap:release':
+  - class: 'doap:Version'
+    'doap:name': picard
+    'doap:revision': 2.8.1
