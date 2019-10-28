@@ -23,17 +23,17 @@
 
 ```bash
 #Using CWLTOOL
-> cwltool --singularity --non-strict /path/to/merge_fastq_0\.1\.7/merge_fastq_0\.1\.7\.cwl /path/to/inputs.yaml
+> cwltool --singularity --non-strict /path/to/merge_fastq_0.1.7/merge_fastq_0.1.7.cwl /path/to/inputs.yaml
 
 #Using toil-cwl-runner
 > mkdir tool_toil_log
-> toil-cwl-runner --singularity --logFile /path/to/tool_toil_log/cwltoil.log  --jobStore /path/to/tool_jobStore --batchSystem lsf --workDir /path/to/tool_toil_log --outdir . --writeLogs /path/to/tool_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 /path/to/merge_fastq_0\.1\.7/merge_fastq_0\.1\.7\.cwl /path/to/inputs.yaml > tool_toil.stdout 2> tool_toil.stderr &
+> toil-cwl-runner --singularity --logFile /path/to/tool_toil_log/cwltoil.log  --jobStore /path/to/tool_jobStore --batchSystem lsf --workDir /path/to/tool_toil_log --outdir . --writeLogs /path/to/tool_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 /path/to/merge_fastq_0.1.7/merge_fastq_0.1.7.cwl /path/to/inputs.yaml > tool_toil.stdout 2> tool_toil.stderr &
 ```
 
 ### Usage
 
 ```bash
-> toil-cwl-runner merge_fastq_0\.1\.7\.cwl --help
+> toil-cwl-runner merge_fastq_0.1.7.cwl --help
 usage: merge_fastq_0.1.7.cwl [-h]
 
 positional arguments:
