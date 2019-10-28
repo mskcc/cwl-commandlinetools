@@ -4,46 +4,10 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-
-$schemas:
-  - 'http://dublincore.org/2012/06/14/dcterms.rdf'
-  - 'http://xmlns.com/foaf/spec/20140114.rdf'
-  - 'http://usefulinc.com/ns/doap#'
-'dct:contributor':
-  - class: 'foaf:Organization'
-    'foaf:member':
-      - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:chunj@mskcc.org'
-        'foaf:name': Jaeyoung Chun
-    'foaf:name': Memorial Sloan Kettering Cancer Center
-'dct:creator':
-  - class: 'foaf:Organization'
-    'foaf:member':
-      - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:chunj@mskcc.org'
-        'foaf:name': Jaeyoung Chun
-    'foaf:name': Memorial Sloan Kettering Cancer Center
-'doap:release':
-  - class: 'doap:Version'
-    'doap:name': bwa-mem
-    'doap:revision': 0.7.5a
-  - class: 'doap:Version'
-    'doap:name': bwa-mem-cwl
-    'doap:revision': 1.0.0
-
-doc: |
-  bwa mem
-label: bwa-mem
-
+  sbg: 'https://www.sevenbridges.com/'
 baseCommand:
   - bwa
   - mem
-
-arguments:
-  - position: 0
-    prefix: '-t'
-    valueFrom: $(runtime.cores)
-
 inputs:
   - id: A
     type: int?
@@ -195,13 +159,19 @@ outputs:
         ${
           if (inputs.output)
             return inputs.output;
-          return inputs.reads[0].basename.replace('fastq.gz', 'sam');
+          return inputs.reads[0].basename.replace(/(fastq.gz)|(fq.gz)/, 'sam');
         }
-
+doc: |
+  bwa mem
+label: bwa-mem
+arguments:
+  - position: 0
+    prefix: '-t'
+    valueFrom: $(runtime.cores)
 requirements:
   - class: ResourceRequirement
-    ramMin: 16000
-    coresMin: 4
+    ramMin: 32000
+    coresMin: 16
   - class: DockerRequirement
     dockerPull: 'mskcc/bwa_mem:0.7.5a'
   - class: InlineJavascriptRequirement
@@ -209,5 +179,30 @@ stdout: |-
   ${
     if (inputs.output)
       return inputs.output;
-    return inputs.reads[0].basename.replace('fastq.gz', 'sam');
+    return inputs.reads[0].basename.replace(/(fastq.gz)|(fq.gz)/, 'sam');
   }
+$schemas:
+  - 'http://dublincore.org/2012/06/14/dcterms.rdf'
+  - 'http://xmlns.com/foaf/spec/20140114.rdf'
+  - 'http://usefulinc.com/ns/doap#'
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:chunj@mskcc.org'
+        'foaf:name': Jaeyoung Chun
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:chunj@mskcc.org'
+        'foaf:name': Jaeyoung Chun
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'doap:release':
+  - class: 'doap:Version'
+    'doap:name': bwa-mem
+    'doap:revision': 0.7.5a
+  - class: 'doap:Version'
+    'doap:name': bwa-mem-cwl
+    'doap:revision': 1.0.0

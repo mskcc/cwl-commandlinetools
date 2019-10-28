@@ -4,17 +4,18 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: trim_galore_0.6.2
+  sbg: 'https://www.sevenbridges.com/'
+id: trim_galore_0_6_2
 baseCommand:
   - trim_galore
 inputs:
   - id: memory_per_job
-    type: int
+    type: int?
     inputBinding:
       position: 0
     doc: Memory per job in megabytes
   - id: memory_overhead
-    type: int
+    type: int?
     inputBinding:
       position: 0
     doc: Memory overhead per job in megabytes
@@ -22,12 +23,12 @@ inputs:
     type: int?
     inputBinding:
       position: 0
-      prefix: '--threads'
+      prefix: '--cores'
   - id: path_to_trim_galore
     type: File?
     doc: Path to trim_galore executable file
   - id: adapter
-    type: string
+    type: string?
     inputBinding:
       position: 0
       prefix: '-a'
@@ -35,7 +36,7 @@ inputs:
       Adapter sequence to be trimmed. If not specified explicitely, the first
       13bp of the Illumina adapter 'AGATCGGAAGAGC' will be used by default.
   - id: adapter2
-    type: string
+    type: string?
     inputBinding:
       position: 0
       prefix: '-a2'
@@ -119,6 +120,22 @@ inputs:
     doc: >-
       Maximum allowed error rate (no. of errors divided by the length of the
       matching region) (default: 0.1)
+  - id: trim_galore_basename
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: '--basename'
+    label: trim_galore_output_file_basename
+    doc: >-
+      Use PREFERRED_NAME as the basename for output files, instead of deriving
+      the filenames from the input files. Single-end data would be called
+      PREFERRED_NAME_trimmed.fq(.gz), or
+
+      PREFERRED_NAME_val_1.fq(.gz) and PREFERRED_NAME_val_2.fq(.gz) for
+      paired-end data. --basename
+
+      only works when 1 file (single-end) or 2 files (paired-end) are specified,
+      but not for longer lists.
 outputs:
   - id: clfastq1
     type: File
@@ -127,7 +144,7 @@ outputs:
   - id: clfastq2
     type: File
     outputBinding:
-      glob: '$(inputs.fastq2.basename.replace(''.fastq.gz'', ''_val_1.fq.gz''))'
+      glob: '$(inputs.fastq2.basename.replace(''.fastq.gz'', ''_val_2.fq.gz''))'
   - id: clstats1
     type: File
     outputBinding:
@@ -138,15 +155,13 @@ outputs:
     type: File
     outputBinding:
       glob: >-
-        $(inputs.fastq1.basename.replace('.fastq.gz',
+        $(inputs.fastq2.basename.replace('.fastq.gz',
         '.fastq.gz_trimming_report.txt'))
 label: trim_galore_0.6.2
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
-    coresMin: 1
-    #ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 15000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 17000 \r  }\r}"
-    #coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 4\r  }\r}"
+    coresMin: 4
   - class: DockerRequirement
     dockerPull: 'mskcc/trim_galore:0.1.0'
   - class: InlineJavascriptRequirement
