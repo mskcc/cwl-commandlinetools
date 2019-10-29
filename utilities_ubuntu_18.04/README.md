@@ -2,17 +2,17 @@
 
 ## Version of tools in docker image (/container/Dockerfile)
 
-| Tool | Version | Location |
-|--- |--- |--- |
-| Ubuntu base image   | 18.04   |   - |
+| Tool              | Version | Location |
+| ----------------- | ------- | -------- |
+| Ubuntu base image | 18.04   | -        |
 
 ## Available tools
 
-| Tool | Description |
-|--- |--- |
-| sort.cwl   | sort lines of text files   |
-| gzip.cwl   | compress or expand files   |
-| mv.cwl  | move (rename) files   |
+| Tool     | Description              |
+| -------- | ------------------------ |
+| sort.cwl | sort lines of text files |
+| gzip.cwl | compress or expand files |
+| mv.cwl   | move (rename) files      |
 
 ## CWL
 
