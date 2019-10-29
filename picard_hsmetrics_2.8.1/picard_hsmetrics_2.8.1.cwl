@@ -1,6 +1,9 @@
 class: CommandLineTool
 cwlVersion: v1.0
 $namespaces:
+  dct: 'http://purl.org/dc/terms/'
+  doap: 'http://usefulinc.com/ns/doap#'
+  foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
 id: picard_hsmetrics_2_8_1
 baseCommand:
@@ -116,7 +119,6 @@ arguments:
     prefix: '-jar'
     valueFrom: /usr/local/bin/picard.jar
   - position: 0
-    prefix: ''
     valueFrom: CollectHsMetrics
   - position: 0
     prefix: OUTPUT=
@@ -135,6 +137,7 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'mskaccess/picard:0.6.1'
   - class: InlineJavascriptRequirement
+
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
@@ -151,5 +154,5 @@ requirements:
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': picard
+    'doap:name': hsmetrics
     'doap:revision': 2.8.1
