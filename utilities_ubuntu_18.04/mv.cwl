@@ -45,7 +45,7 @@ outputs:
 label: mv
 requirements:
   - class: ResourceRequirement
-    ramMin: 100
+    ramMin: 2000
     coresMin: 1
   - class: DockerRequirement
     dockerPull: 'ubuntu:18.04'
