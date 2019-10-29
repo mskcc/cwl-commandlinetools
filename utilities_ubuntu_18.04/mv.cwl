@@ -19,7 +19,7 @@ inputs:
     type: File
     inputBinding:
       position: 1
-    doc: 'Source that needs to be moved'
+    doc: 'Source with path that needs to be moved'
   - id: outfile
     type: string
     inputBinding:
