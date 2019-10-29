@@ -10,9 +10,9 @@
 
 | Tool | Description |
 |--- |--- |
-| sort   | sort lines of text files   |
-| gzip   | compress or expand files   |
-| mv  | move (rename) files   |
+| sort.cwl   | sort lines of text files   |
+| gzip.cwl   | compress or expand files   |
+| mv.cwl  | move (rename) files   |
 
 ## CWL
 
