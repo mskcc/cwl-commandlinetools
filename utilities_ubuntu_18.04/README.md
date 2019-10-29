@@ -1,10 +1,18 @@
-# CWL and Dockerfile for running utilites from Ubuntu 18.04
+# CWL and Dockerfile for running utilities from Ubuntu 18.04
 
 ## Version of tools in docker image (/container/Dockerfile)
 
-| Tool	| Version	| Location	|
-|---	|---	|---	|
-| Ubuntu base image  	| 18.04  	|   -	|
+| Tool | Version | Location |
+|--- |--- |--- |
+| Ubuntu base image   | 18.04   |   - |
+
+## Available tools
+
+| Tool | Description |
+|--- |--- |
+| sort   | sort lines of text files   |
+| gzip   | compress or expand files   |
+| mv  | move (rename) files   |
 
 ## CWL
 
