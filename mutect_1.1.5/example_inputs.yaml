@@ -1,0 +1,32 @@
+input_file_normal:
+  class: File
+  path: /path/to/normal/bam/file
+input_file_tumor:
+  class: File
+  path: /path/to/tumor/bam/file
+normal_sample_name: normalsamplename
+tumor_sample_name: tumorsamplename
+
+read_filter: BadCigar
+downsample_to_coverage: 50000
+fraction_contamination: 0.0005
+minimum_mutation_cell_fraction: 0.0005
+
+cosmic:
+  class: File
+  path: /path/to/cosmic/coding/mutations/file
+dbsnp: 
+  class: File
+  path: /path/to/dbsnp/vcf/file
+intervals:
+  class: File
+  path: /path/to/canonicaltargets/bed/file
+reference_sequence:
+  class: File
+  path: /path/to/genomic/reference/file
+
+out: output.mutect.txt
+vcf: output.mutect.vcf
+
+tmp_dir: /path/to/tmp/dir
+

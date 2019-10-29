@@ -1,0 +1,6 @@
+force: null
+infile: /path/to/source/file
+memory_overhead: null
+memory_per_job: null
+outfile: /path/to/destination/file
+verbose: null

@@ -4,7 +4,6 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-  sbg: 'https://www.sevenbridges.com/'
 id: trim_galore_0_6_2
 baseCommand:
   - trim_galore
@@ -163,7 +162,7 @@ requirements:
     ramMin: 8000
     coresMin: 4
   - class: DockerRequirement
-    dockerPull: 'mskcc/trim_galore:0.1.0'
+    dockerPull: 'mskaccess/trim_galore:0.6.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

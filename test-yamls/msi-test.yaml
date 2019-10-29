@@ -1,4 +1,0 @@
-normal_bam: {class: File, path: /juno/work/pi/cmopipeline/data/uncategorized/re-run/normal_sample.sorted.md.bqsr.bam}
-tumor_bam: {class: File, path: /juno/work/pi/cmopipeline/data/uncategorized/re-run/tumor_sample.sorted.md.bqsr.bam}
-msi_file: {class: File, path: /juno/work/taylorlab/cmopipeline/mskcc-igenomes/igenomes/Homo_sapiens/GATK/GRCh37/Sequence/WholeGenomeFasta/human_g1k_v37_decoy.fasta.microsatellites.list}
-output_prefix: "msi_run_prefix"
