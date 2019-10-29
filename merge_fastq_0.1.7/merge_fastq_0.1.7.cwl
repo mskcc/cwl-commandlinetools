@@ -24,7 +24,7 @@ inputs:
       inputBinding:
         prefix: '--fastq1'
     inputBinding:
-      position: 1
+      position: 0
     doc: >-
       Full path to gziped READ1 fastq files, can be specified multiple times for
       example: --fastq1 test_part1_R1.fastq.gz --fastq1 test_part2_R1.fastq.gz 
@@ -44,13 +44,13 @@ inputs:
   - id: output_path
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--output-path'
     doc: 'Full path to write the output files (default: Current working directory)'
   - id: out_fastq1_name
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--out-fastq1'
     doc: >-
       Name of the merged output READ1 fastq file(default:
@@ -58,7 +58,7 @@ inputs:
   - id: out_fastq2_name
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--out-fastq2'
     doc: >-
       Name of the merged output READ2 fastq file(default:
@@ -67,15 +67,29 @@ outputs:
   - id: mergedfastq1
     type: File
     outputBinding:
-      glob: '$(inputs.fastq1.basename.replace(''.fastq.gz'', ''_val_1.fq.gz''))'
+      glob: |-
+        ${
+            if(inputs.out_fastq1_name){
+                return inputs.out_fastq1_name
+            } else {
+                return 'merged_fastq_R1.fastq.gz'
+            }
+        }
   - id: mergedfastq2
     type: File
     outputBinding:
-      glob: '$(inputs.fastq2.basename.replace(''.fastq.gz'', ''_val_2.fq.gz''))'
+      glob: |-
+        ${
+            if(inputs.out_fastq2_name){
+                return inputs.out_fastq2_name
+            } else {
+                return 'merged_fastq_R2.fastq.gz'
+            }
+        }
 requirements:
   - class: ResourceRequirement
-    ramMin: 16000
-    coresMin: 2
+    ramMin: 8000
+    coresMin: 1
   - class: DockerRequirement
     dockerPull: 'mskaccess/merge_fastq:0.6.1'
   - class: InlineJavascriptRequirement

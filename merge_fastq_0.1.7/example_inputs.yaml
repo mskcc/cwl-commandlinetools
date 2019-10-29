@@ -1,0 +1,20 @@
+fastq1:
+  - class: File
+    path: >-
+      /path/to/R1_001.fastq.gz
+  - class: File
+    path: >-
+      /path/to/R1_002.fastq.gz
+fastq2:
+  - class: File
+    path: >-
+      /path/to/R2_001.fastq.gz
+  - class: File
+    path: >-
+      /path/to/R2_002.fastq.gz
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null
+out_fastq1_name: null
+out_fastq2_name: null
+output_path: null

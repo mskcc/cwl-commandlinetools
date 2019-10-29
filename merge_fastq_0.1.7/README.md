@@ -46,5 +46,22 @@ optional arguments:
   --memory_overhead MEMORY_OVERHEAD
                         Memory overhead per job in megabytes
   --number_of_threads NUMBER_OF_THREADS
-  
+  --fastq1 FASTQ1       Full path to gziped READ1 fastq files, can be
+                        specified multiple times for example: --fastq1
+                        test_part1_R1.fastq.gz --fastq1 test_part2_R1.fastq.gz
+                        [required]
+  --fastq2 FASTQ2       Full path to gziped READ2 fastq files, can be
+                        specified multiple times for example: --fastq1
+                        test_part1_R2.fastq.gz --fastq1 test_part2_R2.fastq.gz
+                        [required]
+  --output_path OUTPUT_PATH
+                        Full path to write the output files (default: Current
+                        working directory)
+  --out_fastq1_name OUT_FASTQ1_NAME
+                        Name of the merged output READ1 fastq file(default:
+                        merged_fastq_R1.fastq.gz)
+  --out_fastq2_name OUT_FASTQ2_NAME
+                        Name of the merged output READ2 fastq file(default:
+                        merged_fastq_R2.fastq.gz)
+
 ```
