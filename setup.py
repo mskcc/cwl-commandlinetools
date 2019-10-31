@@ -8,9 +8,6 @@ from setuptools import setup, find_packages
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
-#with open('HISTORY.rst') as history_file:
-#    history = history_file.read()
-
 requirements = [ ]
 
 setup_requirements = ['pytest-runner', ]
@@ -34,13 +31,13 @@ setup(
     license="Apache Software License 2.0",
     long_description=readme + '\n\n',
     include_package_data=True,
-    keywords='cwl_commandlinetools',
-    name='cwl_commandlinetools',
+    keywords='cwl-commandlinetools',
+    name='cwl-commandlinetools',
     packages=find_packages(include=['cwl_commandlinetools', 'cwl_commandlinetools.*']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/msk-access/cwl_commandlinetools',
-    version='0.6.1',
+    url='https://github.com/msk-access/cwl-commandlinetools',
+    version='0.6.2',
     zip_safe=False,
 )
