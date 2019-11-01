@@ -22,6 +22,7 @@
   * Picard Tools 
     * [AddOrReplaceReadGroups v1.96](../picard_add_or_replace_read_groups_1.96/README.md)
     * [CollectAlignmentSummaryMetrics v2.8.1](../picard_collect_alignment_summary_metrics_2.8.1/README.md)
+    * [CollectMultipleMetrics v2.8.1](../picard_collectmultiplemetric_2.8.1/README.md)
     * [FixMateInformation v1.96](../picard_fix_mate_information_1.96/README.md)
     * [MarkDuplicates v1.96](../picard_mark_duplicates_1.96/README.md)
     * [MarkDuplicates v2.8.1](../picard_mark_duplicates_2.8.1/README.md)
