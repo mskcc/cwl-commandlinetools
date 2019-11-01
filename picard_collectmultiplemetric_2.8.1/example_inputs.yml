@@ -1,6 +1,6 @@
 input:
   class: File
-  path: "/Users/sumans/test_reference/bam/SeraCare_0-5_14.bam"
+  path: "Sample.bam"
 assume_sorted:
 bam_compression_level:
 create_bam_index:
