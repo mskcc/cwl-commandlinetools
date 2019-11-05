@@ -246,7 +246,7 @@ requirements:
     ramMin: 10000
     coresMin: 8
   - class: DockerRequirement
-    dockerPull: 'mskaccess/picard:0.6.1'
+    dockerPull: 'mskaccess/picard:0.6.2'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -266,6 +266,3 @@ requirements:
   - class: 'doap:Version'
     'doap:name': picard
     'doap:revision': 2.8.1
-  - class: 'doap:Version'
-    'doap:name': cwl-wrapper
-    'doap:revision': 1.0.0
