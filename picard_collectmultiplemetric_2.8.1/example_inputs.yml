@@ -1,0 +1,18 @@
+input:
+  class: File
+  path: "Sample.bam"
+assume_sorted:
+bam_compression_level:
+create_bam_index:
+dbsnp_file:
+file_extension:
+include_unpaired:
+intervals_file:
+memory_overhead:
+memory_per_job:
+metric_accumulation_level:
+number_of_threads:
+output_file_name:
+program_list:
+stop_after:
+validation_stringency:
