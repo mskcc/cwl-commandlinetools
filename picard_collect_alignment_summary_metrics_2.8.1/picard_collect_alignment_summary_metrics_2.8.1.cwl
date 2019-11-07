@@ -4,7 +4,8 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_collect_alignment_summary_metrics_2.8.1
+  sbg: 'https://www.sevenbridges.com/'
+id: picard_collect_alignment_summary_metrics_2.21.2
 baseCommand:
   - java
 inputs:
@@ -106,7 +107,7 @@ outputs:
                 return inputs.input.basename.replace(/.bam/,'_alignment_metrics.txt')
             }
         }
-label: picard_collect_alignment_summary_metrics_2.8.1
+label: picard_collect_alignment_summary_metrics_2.21.2
 arguments:
   - position: 0
     valueFrom: |-
@@ -137,7 +138,7 @@ arguments:
        }
   - position: 0
     prefix: '-jar'
-    valueFrom: /usr/local/bin/picard.jar
+    valueFrom: /usr/picard/picard.jar
   - position: 0
     valueFrom: CollectAlignmentSummaryMetrics
   - position: 0
@@ -156,7 +157,7 @@ requirements:
     ramMin: 12000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/picard:0.6.2'
+    dockerPull: 'broadinstitute/picard:2.21.2'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -175,4 +176,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': picard
-    'doap:revision': 2.8.1
+    'doap:revision': 2.21.2

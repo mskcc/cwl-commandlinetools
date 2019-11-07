@@ -1,6 +1,6 @@
-# CWL and Dockerfile for running Picard - AddOrReplaceReadGroups
+# CWL for running Picard - AddOrReplaceReadGroups
 
-## Version of tools in docker image (/container/Dockerfile)
+## Version of tools in docker image
 
 | Tool	| Version	| Location	|
 |---	|---	|---	|
