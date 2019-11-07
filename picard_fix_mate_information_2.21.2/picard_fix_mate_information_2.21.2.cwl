@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: picard_fix_mate_information_2.21.2
+id: picard_fix_mate_information_2_21_2
 baseCommand:
   - java
 inputs:
@@ -92,7 +92,7 @@ outputs:
         } 
     secondaryFiles:
       - ^.bai
-label: picard_fix_mate_information_1.96
+label: picard_fix_mate_information_2.21.2
 arguments:
   - position: 0
     valueFrom: |-

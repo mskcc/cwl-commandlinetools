@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: picard_collectmultiplemetrics_2_8_1
+id: picard_collectmultiplemetrics_2.21.2
 baseCommand:
   - java
 inputs:
@@ -217,7 +217,7 @@ outputs:
     type: File?
     outputBinding:
       glob: '*quality_distribution.pdf'
-label: picard_collectmultiplemetrices_2.8.1
+label: picard_collectmultiplemetrices_2.21.2
 arguments:
   - position: 0
     prefix: ''
@@ -225,7 +225,7 @@ arguments:
     valueFrom: "${\n  if(inputs.memory_per_job && inputs.memory_overhead) {\n   \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if (inputs.memory_per_job && !inputs.memory_overhead){\n    \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if(!inputs.memory_per_job && inputs.memory_overhead){\n    \n    return \"-Xmx15G\"\n  }\n  else {\n    \n  \treturn \"-Xmx15G\"\n  }\n}"
   - position: 0
     prefix: '-jar'
-    valueFrom: /usr/local/bin/picard.jar
+    valueFrom: /usr/picard/picard.jar
   - position: 0
     prefix: ''
     separate: false
@@ -246,7 +246,7 @@ requirements:
     ramMin: 10000
     coresMin: 8
   - class: DockerRequirement
-    dockerPull: 'mskaccess/picard:0.6.2'
+    dockerPull: 'broadinstitute/picard:2.21.2'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -259,10 +259,10 @@ requirements:
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:sumans@mskcc.org'
-        'foaf:name': Shalabh Suman
+        'foaf:mbox': 'mailto:shahr2@mskcc.org'
+        'foaf:name': Ronak Shah
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
     'doap:name': picard
-    'doap:revision': 2.8.1
+    'doap:revision': 2.21.2
