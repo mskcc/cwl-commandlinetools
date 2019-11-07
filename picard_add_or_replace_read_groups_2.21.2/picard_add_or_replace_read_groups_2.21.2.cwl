@@ -4,7 +4,8 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_add_or_replace_read_groups_1_96
+  sbg: 'https://www.sevenbridges.com/'
+id: picard_add_or_replace_read_groups_2.21.2
 baseCommand:
   - java
 inputs:
@@ -145,7 +146,7 @@ outputs:
         }
     secondaryFiles:
       - ^.bai
-label: picard_add_or_replace_read_groups_1.96
+label: picard_add_or_replace_read_groups_2.21.2
 arguments:
   - position: 0
     valueFrom: |-
@@ -175,7 +176,10 @@ arguments:
       }
   - position: 0
     prefix: '-jar'
-    valueFrom: /usr/local/bin/AddOrReplaceReadGroups.jar
+    valueFrom: /usr/picard/picard.jar
+  - position: 0
+    separate: false
+    valueFrom: AddOrReplaceReadGroups
   - position: 0
     prefix: O=
     separate: false
@@ -187,10 +191,10 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 16000
+    ramMin: 17000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'mskaccess/picard_1.96:0.6.2'
+    dockerPull: 'broadinstitute/picard:2.21.2'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -209,4 +213,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': picard
-    'doap:revision': 1.96
+    'doap:revision': 2.21.2
