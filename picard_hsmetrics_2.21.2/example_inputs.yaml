@@ -1,0 +1,24 @@
+bait_intervals:
+  class: File
+  metadata: {}
+  path: 'picard_baits.interval_list'
+  secondaryFiles: []
+bait_set_name: null
+clip_overlapping_reads: null
+coverage_cap: null
+input:
+  class: File
+  path: 'test_bam.bam'
+metric_accumulation_level: null
+minimum_base_quality: null
+minimum_mapping_quality: null
+near_distance: null
+output_file_name: null
+per_base_coverage: null
+per_target_coverage: null
+sample_size: null
+target_intervals:
+  class: File
+  metadata: {}
+  path: 'picard_targets.interval_list'
+  secondaryFiles: []
