@@ -23,12 +23,18 @@
     * [v0.1.7](../merge_fastq_0.1.7/README.md)
   * Picard Tools 
     * [AddOrReplaceReadGroups v1.96](../picard_add_or_replace_read_groups_1.96/README.md)
+    * [AddOrReplaceReadGroups v2.21.2](../picard_add_or_replace_read_groups_2.21.2/README.md)
     * [CollectAlignmentSummaryMetrics v2.8.1](../picard_collect_alignment_summary_metrics_2.8.1/README.md)
+    * [CollectAlignmentSummaryMetrics v2.21.2](../picard_collect_alignment_summary_metrics_2.21.2/README.md)
     * [CollectMultipleMetrics v2.8.1](../picard_collectmultiplemetric_2.8.1/README.md)
+    * [CollectMultipleMetrics v2.21.2](../picard_collectmultiplemetric_2.21.2/README.md)
     * [FixMateInformation v1.96](../picard_fix_mate_information_1.96/README.md)
+    * [FixMateInformation v2.21.2](../picard_fix_mate_information_2.21.2/README.md)
     * [HSmetrics v2.8.1](../picard_hsmetrics_2.8.1/README.md)
+    * [HSmetrics v2.21.2](../picard_hsmetrics_2.21.2/README.md)
     * [MarkDuplicates v1.96](../picard_mark_duplicates_1.96/README.md)
     * [MarkDuplicates v2.8.1](../picard_mark_duplicates_2.8.1/README.md)
+    * [MarkDuplicates v2.21.2](../picard_mark_duplicates_2.21.2/README.md)
   * Trim Galore
     * [v0.6.2](../trim_galore_0.6.2/README.md)
   * Ubuntu utilites
