@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: picard_add_or_replace_read_groups_2.21.2
+id: picard_add_or_replace_read_groups_2_21_2
 baseCommand:
   - java
 inputs:
@@ -46,7 +46,7 @@ inputs:
     doc: >-
       Read Group ID  Default value: 1. This option can be set to 'null' to clear
       the default value  Required
-  - id: read_group_sequnecing_center
+  - id: read_group_sequencing_center
     type: string
     inputBinding:
       position: 0
@@ -54,7 +54,7 @@ inputs:
       separate: false
     doc: 'Read Group sequencing center name  Default value: null. Required'
   - id: read_group_library
-    type: int
+    type: string
     inputBinding:
       position: 0
       prefix: RGLB=
@@ -101,6 +101,7 @@ inputs:
       position: 0
       prefix: TMP_DIR=
       separate: false
+    default: $(runtime.tmpdir)
     doc: This option may be specified 0 or more times
   - id: validation_stringency
     type: string?
@@ -175,6 +176,12 @@ arguments:
         }
       }
   - position: 0
+    valueFrom: "-XX:-UseGCOverheadLimit"
+    shellQuote: false
+  - position: 0
+    valueFrom: "-Djava.io.tmpdir=$(runtime.tmpdir)"
+    shellQuote: false
+  - position: 0
     prefix: '-jar'
     valueFrom: /usr/picard/picard.jar
   - position: 0
@@ -191,7 +198,7 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 17000
+    ramMin: 25000
     coresMin: 2
   - class: DockerRequirement
     dockerPull: 'broadinstitute/picard:2.21.2'
