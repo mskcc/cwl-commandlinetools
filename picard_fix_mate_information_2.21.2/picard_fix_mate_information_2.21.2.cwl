@@ -45,6 +45,7 @@ inputs:
       position: 0
       prefix: TMP_DIR=
       separate: false
+    default: $(runtime.tmpdir)
     doc: This option may be specified 0 or more times
   - id: validation_stringency
     type: string?
@@ -121,6 +122,12 @@ arguments:
         }
       }
   - position: 0
+    valueFrom: "-XX:-UseGCOverheadLimit"
+    shellQuote: false
+  - position: 0
+    valueFrom: "-Djava.io.tmpdir=$(runtime.tmpdir)"
+    shellQuote: false
+  - position: 0
     prefix: '-jar'
     valueFrom: /usr/picard/picard.jar
   - position: 0
@@ -138,7 +145,7 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 17000
+    ramMin: 25000
     coresMin: 2
   - class: DockerRequirement
     dockerPull: 'broadinstitute/picard:2.21.2'
