@@ -177,7 +177,6 @@ arguments:
     prefix: '-jar'
     valueFrom: /usr/picard/picard.jar
   - position: 0
-    separate: false
     valueFrom: AddOrReplaceReadGroups
   - position: 0
     prefix: TMP_DIR=
