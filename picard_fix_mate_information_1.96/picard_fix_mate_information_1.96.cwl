@@ -39,14 +39,6 @@ inputs:
       Optional sort order to output in. If not supplied OUTPUT is in the same
       order as INPUT.Default value: null. Possible values: {unsorted, queryname,
       coordinate}
-  - id: tmp_dir
-    type: string?
-    inputBinding:
-      position: 0
-      prefix: TMP_DIR=
-      separate: false
-    default: $(runtime.tmpdir)
-    doc: This option may be specified 0 or more times
   - id: validation_stringency
     type: string?
     inputBinding:
@@ -130,6 +122,10 @@ arguments:
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/FixMateInformation.jar
+  - position: 0
+    prefix: TMP_DIR=
+    separate: false
+    valueFrom: "$(runtime.tmpdir)"
   - position: 0
     prefix: O=
     separate: false
