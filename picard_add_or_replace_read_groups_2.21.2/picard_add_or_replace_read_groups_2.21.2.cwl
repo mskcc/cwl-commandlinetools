@@ -95,14 +95,6 @@ inputs:
       prefix: RGDT=
       separate: false
     doc: 'Read Group run date  Default value: null.'
-  - id: tmp_dir
-    type: string?
-    inputBinding:
-      position: 0
-      prefix: TMP_DIR=
-      separate: false
-    default: $(runtime.tmpdir)
-    doc: This option may be specified 0 or more times
   - id: validation_stringency
     type: string?
     inputBinding:
@@ -187,6 +179,10 @@ arguments:
   - position: 0
     separate: false
     valueFrom: AddOrReplaceReadGroups
+  - position: 0
+    prefix: TMP_DIR=
+    separate: false
+    valueFrom: "$(runtime.tmpdir)"
   - position: 0
     prefix: O=
     separate: false
