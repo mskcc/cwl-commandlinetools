@@ -71,6 +71,9 @@ inputs:
       Whether to create a BAM index when writing a coordinate-sorted BAM file. 
       Default value:false. This option can be set to 'null' to clear the default
       value. Possible values:{true, false}
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: bam
     type: File
@@ -125,7 +128,12 @@ arguments:
   - position: 0
     prefix: TMP_DIR=
     separate: false
-    valueFrom: "$(runtime.tmpdir)"
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return $(runtime.tmpdir)
+      }
   - position: 0
     prefix: O=
     separate: false

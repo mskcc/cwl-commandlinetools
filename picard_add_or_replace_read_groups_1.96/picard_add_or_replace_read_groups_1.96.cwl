@@ -127,6 +127,9 @@ inputs:
       Whether to create a BAM index when writing a coordinate-sorted BAM file. 
       Default value:false. This option can be set to 'null' to clear the default
       value. Possible values:{true, false}
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: bam
     type: File
@@ -168,18 +171,23 @@ arguments:
         }
       }
   - position: 0
-    valueFrom: "-XX:-UseGCOverheadLimit"
     shellQuote: false
+    valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
-    valueFrom: "-Djava.io.tmpdir=$(runtime.tmpdir)"
     shellQuote: false
+    valueFrom: '-Djava.io.tmpdir=$(runtime.tmpdir)'
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/AddOrReplaceReadGroups.jar
   - position: 0
     prefix: TMP_DIR=
     separate: false
-    valueFrom: "$(runtime.tmpdir)"
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return $(runtime.tmpdir)
+      }
   - position: 0
     prefix: O=
     separate: false
@@ -190,6 +198,7 @@ arguments:
             return inputs.input.basename.replace(/.sam$/, '_srt.bam');
       }
 requirements:
+  - class: ShellCommandRequirement
   - class: ResourceRequirement
     ramMin: 25000
     coresMin: 2
