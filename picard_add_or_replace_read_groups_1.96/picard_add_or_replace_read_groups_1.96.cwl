@@ -186,7 +186,7 @@ arguments:
       ${
           if(inputs.temporary_directory)
               return inputs.temporary_directory;
-            return $(runtime.tmpdir)
+            return '$(runtime.tmpdir)'
       }
   - position: 0
     prefix: O=
