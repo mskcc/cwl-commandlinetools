@@ -4,7 +4,8 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_fix_mate_information_1.96
+  sbg: 'https://www.sevenbridges.com/'
+id: picard_fix_mate_information_1_96
 baseCommand:
   - java
 inputs:
@@ -27,8 +28,7 @@ inputs:
       - ^.bai
   - id: output_file_name
     type: string?
-    doc: >-
-        Output file name (bam or sam). Not Required
+    doc: Output file name (bam or sam). Not Required
   - id: sort_order
     type: string?
     inputBinding:
@@ -72,7 +72,7 @@ inputs:
       Default value:false. This option can be set to 'null' to clear the default
       value. Possible values:{true, false}
   - id: temporary_directory
-    type: string?
+    type: Directory?
     doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: bam
@@ -117,11 +117,11 @@ arguments:
         }
       }
   - position: 0
-    valueFrom: "-XX:-UseGCOverheadLimit"
     shellQuote: false
+    valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
-    valueFrom: "-Djava.io.tmpdir=$(runtime.tmpdir)"
     shellQuote: false
+    valueFrom: '-Djava.io.tmpdir=$(runtime.tmpdir)'
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/FixMateInformation.jar
@@ -132,7 +132,7 @@ arguments:
       ${
           if(inputs.temporary_directory)
               return inputs.temporary_directory;
-            return '$(runtime.tmpdir)'
+            return runtime.tmpdir
       }
   - position: 0
     prefix: O=
@@ -146,6 +146,7 @@ arguments:
           }
       }
 requirements:
+  - class: ShellCommandRequirement
   - class: ResourceRequirement
     ramMin: 25000
     coresMin: 2
