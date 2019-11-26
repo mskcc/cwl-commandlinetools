@@ -128,7 +128,7 @@ inputs:
       Default value:false. This option can be set to 'null' to clear the default
       value. Possible values:{true, false}
   - id: temporary_directory
-    type: string?
+    type: Directory?
     doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: bam
@@ -186,7 +186,7 @@ arguments:
       ${
           if(inputs.temporary_directory)
               return inputs.temporary_directory;
-            return '$(runtime.tmpdir)'
+            return runtime.tmpdir
       }
   - position: 0
     prefix: O=
