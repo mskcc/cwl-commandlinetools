@@ -6,9 +6,6 @@ $namespaces:
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
   cwltool: 'http://commonwl.org/cwltool#'
-hints:
-  cwltool:LoadListingRequirement:
-    loadListing: no_listing
 id: picard_fix_mate_information_1_96
 baseCommand:
   - java
@@ -157,6 +154,11 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'mskaccess/picard_1.96:0.6.2'
   - class: InlineJavascriptRequirement
+  - class: InitialWorkDirRequirement
+    listing:
+     entry: "$({class: 'Directory', listing: []})"
+     entryname: $(inputs.temporary_directory)
+     writable: true
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
