@@ -204,12 +204,14 @@ requirements:
     coresMin: 2
   - class: DockerRequirement
     dockerPull: 'mskaccess/picard_1.96:0.6.2'
-  - class: InlineJavascriptRequirement
   - class: InitialWorkDirRequirement
     listing:
-     - entryname: $(inputs.temporary_directory)
-       entry: "$({class: 'Directory', listing: []})"
-       writable: true
+      - entry: |-
+          ${
+             return {"class": "Directory", "basename": inputs.temporary_directory, "listing": []}
+           }
+        writable: true
+  - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':

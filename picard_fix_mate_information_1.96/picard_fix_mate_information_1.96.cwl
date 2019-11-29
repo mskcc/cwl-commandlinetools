@@ -156,9 +156,11 @@ requirements:
   - class: InlineJavascriptRequirement
   - class: InitialWorkDirRequirement
     listing:
-     - entryname: $(inputs.temporary_directory)
-       entry: "$({class: 'Directory', listing: []})"
-       writable: true
+      - entry: |-
+          ${
+             return {"class": "Directory", "basename": inputs.temporary_directory, "listing": []}
+           }
+        writable: true
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
