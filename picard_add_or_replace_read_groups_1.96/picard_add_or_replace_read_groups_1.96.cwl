@@ -128,7 +128,7 @@ inputs:
       Default value:false. This option can be set to 'null' to clear the default
       value. Possible values:{true, false}
   - id: temporary_directory
-    type: Directory?
+    type: string?
     doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: bam
