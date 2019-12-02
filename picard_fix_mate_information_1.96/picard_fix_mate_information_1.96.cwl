@@ -121,8 +121,14 @@ arguments:
     shellQuote: false
     valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
-    shellQuote: false
-    valueFrom: '-Djava.io.tmpdir=$(runtime.tmpdir)'
+    prefix: -Djava.io.tmpdir=
+    separate: false
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/FixMateInformation.jar
@@ -154,13 +160,6 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'mskaccess/picard_1.96:0.6.2'
   - class: InlineJavascriptRequirement
-  - class: InitialWorkDirRequirement
-    listing:
-      - entry: |-
-          ${
-             return {"class": "Directory", "basename": inputs.temporary_directory, "listing": []}
-           }
-        writable: true
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
