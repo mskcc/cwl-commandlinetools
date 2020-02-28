@@ -1,0 +1,10 @@
+call_regions: null
+generateEvidenceBam: null
+memory_overhead: null
+memory_per_job: null
+non_wgs: null
+normal_bam: null
+number_of_threads: null
+output_contigs: null
+reference_fasta: null
+tumor_bam: null
