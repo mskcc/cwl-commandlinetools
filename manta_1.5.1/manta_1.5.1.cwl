@@ -4,8 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-  sbg: 'https://www.sevenbridges.com/'
-id: manta_1_51
+id: manta_1.5.1
 baseCommand:
   - /usr/bin/python
   - /usr/local/bin/manta/bin/configManta.py
