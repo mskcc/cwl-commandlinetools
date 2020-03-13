@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: picard_add_or_replace_read_groups_1_96
+id: picard_add_or_replace_read_groups_2_21_2
 baseCommand:
   - java
 inputs:
@@ -127,9 +127,6 @@ inputs:
       Whether to create a BAM index when writing a coordinate-sorted BAM file. 
       Default value:false. This option can be set to 'null' to clear the default
       value. Possible values:{true, false}
-  - id: temporary_directory
-    type: string?
-    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: bam
     type: File
@@ -142,7 +139,7 @@ outputs:
         }
     secondaryFiles:
       - ^.bai
-label: picard_add_or_replace_read_groups_1.96
+label: picard_add_or_replace_read_groups_2.21.2
 arguments:
   - position: 0
     valueFrom: |-
@@ -171,29 +168,20 @@ arguments:
         }
       }
   - position: 0
+    valueFrom: "-XX:-UseGCOverheadLimit"
     shellQuote: false
-    valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
-    prefix: '-Djava.io.tmpdir='
-    separate: false
-    valueFrom: |-
-      ${
-          if(inputs.temporary_directory)
-              return inputs.temporary_directory;
-            return runtime.tmpdir
-      }
+    valueFrom: "-Djava.io.tmpdir=$(runtime.tmpdir)"
+    shellQuote: false
   - position: 0
     prefix: '-jar'
-    valueFrom: /usr/local/bin/AddOrReplaceReadGroups.jar
+    valueFrom: /usr/picard/picard.jar
+  - position: 0
+    valueFrom: AddOrReplaceReadGroups
   - position: 0
     prefix: TMP_DIR=
     separate: false
-    valueFrom: |-
-      ${
-          if(inputs.temporary_directory)
-              return inputs.temporary_directory;
-            return runtime.tmpdir
-      }
+    valueFrom: "$(runtime.tmpdir)"
   - position: 0
     prefix: O=
     separate: false
@@ -204,12 +192,11 @@ arguments:
             return inputs.input.basename.replace(/.sam$/, '_srt.bam');
       }
 requirements:
-  - class: ShellCommandRequirement
   - class: ResourceRequirement
     ramMin: 25000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'mskaccess/picard_1.96:0.6.3'
+    dockerPull: 'broadinstitute/picard:2.21.2'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -228,4 +215,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': picard
-    'doap:revision': 1.96
+    'doap:revision': 2.21.2

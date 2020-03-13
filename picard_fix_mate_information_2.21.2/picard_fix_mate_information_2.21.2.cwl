@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: picard_add_or_replace_read_groups_1_96
+id: picard_fix_mate_information_2_21_2
 baseCommand:
   - java
 inputs:
@@ -23,7 +23,9 @@ inputs:
       position: 0
       prefix: I=
       separate: false
-    doc: Input file ( sam).  Required.
+    doc: The input file to fix.  This option may be specified 0 or more times
+    secondaryFiles:
+      - ^.bai
   - id: output_file_name
     type: string?
     doc: Output file name (bam or sam). Not Required
@@ -37,64 +39,6 @@ inputs:
       Optional sort order to output in. If not supplied OUTPUT is in the same
       order as INPUT.Default value: null. Possible values: {unsorted, queryname,
       coordinate}
-  - id: read_group_identifier
-    type: string
-    inputBinding:
-      position: 0
-      prefix: RGID=
-      separate: false
-    doc: >-
-      Read Group ID  Default value: 1. This option can be set to 'null' to clear
-      the default value  Required
-  - id: read_group_sequencing_center
-    type: string
-    inputBinding:
-      position: 0
-      prefix: RGCN=
-      separate: false
-    doc: 'Read Group sequencing center name  Default value: null. Required'
-  - id: read_group_library
-    type: string
-    inputBinding:
-      position: 0
-      prefix: RGLB=
-      separate: false
-    doc: Read Group Library.  Required
-  - id: read_group_platform_unit
-    type: string
-    inputBinding:
-      position: 0
-      prefix: RGPU=
-      separate: false
-    doc: Read Group platform unit (eg. run barcode)  Required.
-  - id: read_group_sample_name
-    type: string
-    inputBinding:
-      position: 0
-      prefix: RGSM=
-      separate: false
-    doc: Read Group sample name.  Required
-  - id: read_group_sequencing_platform
-    type: string
-    inputBinding:
-      position: 0
-      prefix: RGPL=
-      separate: false
-    doc: 'Read Group platform (e.g. illumina, solid)  Required.'
-  - id: read_group_description
-    type: string?
-    inputBinding:
-      position: 0
-      prefix: RGDS=
-      separate: false
-    doc: 'Read Group description  Default value: null.'
-  - id: read_group_run_date
-    type: string?
-    inputBinding:
-      position: 0
-      prefix: RGDT=
-      separate: false
-    doc: 'Read Group run date  Default value: null.'
   - id: validation_stringency
     type: string?
     inputBinding:
@@ -127,22 +71,21 @@ inputs:
       Whether to create a BAM index when writing a coordinate-sorted BAM file. 
       Default value:false. This option can be set to 'null' to clear the default
       value. Possible values:{true, false}
-  - id: temporary_directory
-    type: string?
-    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: bam
     type: File
     outputBinding:
       glob: |-
         ${
-            if(inputs.output_file_name)
-                return inputs.output_file_name;
-            return inputs.input.basename.replace(/.sam$/, '_srt.bam');
-        }
+            if(inputs.output_file_name){
+                return inputs.output_file_name
+            } else {
+                return inputs.input.basename.replace(/.bam/,'_fm.bam')
+            }
+        } 
     secondaryFiles:
       - ^.bai
-label: picard_add_or_replace_read_groups_1.96
+label: picard_fix_mate_information_2.21.2
 arguments:
   - position: 0
     valueFrom: |-
@@ -171,45 +114,37 @@ arguments:
         }
       }
   - position: 0
+    valueFrom: "-XX:-UseGCOverheadLimit"
     shellQuote: false
-    valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
-    prefix: '-Djava.io.tmpdir='
-    separate: false
-    valueFrom: |-
-      ${
-          if(inputs.temporary_directory)
-              return inputs.temporary_directory;
-            return runtime.tmpdir
-      }
+    valueFrom: "-Djava.io.tmpdir=$(runtime.tmpdir)"
+    shellQuote: false
   - position: 0
     prefix: '-jar'
-    valueFrom: /usr/local/bin/AddOrReplaceReadGroups.jar
+    valueFrom: /usr/picard/picard.jar
+  - position: 0
+    valueFrom: FixMateInformation
   - position: 0
     prefix: TMP_DIR=
     separate: false
-    valueFrom: |-
-      ${
-          if(inputs.temporary_directory)
-              return inputs.temporary_directory;
-            return runtime.tmpdir
-      }
+    valueFrom: "$(runtime.tmpdir)"
   - position: 0
     prefix: O=
     separate: false
     valueFrom: |-
       ${
-          if(inputs.output_file_name)
-              return inputs.output_file_name;
-            return inputs.input.basename.replace(/.sam$/, '_srt.bam');
+          if(inputs.output_file_name){
+              return inputs.output_file_name
+          } else {
+              return inputs.input.basename.replace(/.bam/,'_fm.bam')
+          }
       }
 requirements:
-  - class: ShellCommandRequirement
   - class: ResourceRequirement
     ramMin: 25000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'mskaccess/picard_1.96:0.6.3'
+    dockerPull: 'broadinstitute/picard:2.21.2'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -228,4 +163,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': picard
-    'doap:revision': 1.96
+    'doap:revision': 2.21.2
