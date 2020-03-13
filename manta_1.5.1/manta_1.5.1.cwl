@@ -153,7 +153,6 @@ requirements:
   - class: ResourceRequirement
     ramMin: 24000
     coresMin: 12
-    tmpdirMin: 10000
   - class: DockerRequirement
     dockerPull: 'mskaccess/manta:0.0.2'
   - class: InlineJavascriptRequirement
