@@ -4,7 +4,8 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_collect_alignment_summary_metrics_2.8.1
+  sbg: 'https://www.sevenbridges.com/'
+id: picard_collect_alignment_summary_metrics_2_8_1
 baseCommand:
   - java
 inputs:
@@ -156,7 +157,7 @@ requirements:
     ramMin: 12000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/picard:0.6.2'
+    dockerPull: 'mskaccess/picard:0.6.3'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
