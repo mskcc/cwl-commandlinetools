@@ -12,6 +12,8 @@
   * GATK
     * [ApplyBQSR v4.1.2.0](../gatk_ApplyBQSR_4.1.2.0/README.md)
     * [BaseRecalibrator v4.1.2.0](../gatk_BaseRecalibrator_4.1.2.0/README.md)
+  * Manta
+    * [Manta v1.5.1](../manta_1.5.1/README.md)
   * Marianas
     * [Collapsing First Pass v1.8.1](../marianas_collapsing_first_pass_1.8.1/README.md)
     * [Collapsing Second Pass v1.8.1](../marianas_collapsing_second_pass_1.8.1/README.md)
