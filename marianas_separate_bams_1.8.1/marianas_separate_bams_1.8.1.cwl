@@ -4,7 +4,8 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: marianas_separate_bams_1.8.1
+  sbg: 'https://www.sevenbridges.com/'
+id: marianas_separate_bams_1_8_1
 baseCommand:
   - java
 inputs:
@@ -91,7 +92,7 @@ requirements:
     ramMin: 30000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/marianas:0.6.2'
+    dockerPull: 'mskaccess/marianas:0.6.3'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

@@ -1,11 +1,11 @@
 class: CommandLineTool
 cwlVersion: v1.0
 $namespaces:
+  cwltool: 'http://commonwl.org/cwltool#'
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-  cwltool: 'http://commonwl.org/cwltool#'
 id: picard_fix_mate_information_1_96
 baseCommand:
   - java
@@ -121,7 +121,7 @@ arguments:
     shellQuote: false
     valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
-    prefix: -Djava.io.tmpdir=
+    prefix: '-Djava.io.tmpdir='
     separate: false
     valueFrom: |-
       ${
@@ -158,7 +158,7 @@ requirements:
     ramMin: 25000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'mskaccess/picard_1.96:0.6.2'
+    dockerPull: 'mskaccess/picard_1.96:0.6.3'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

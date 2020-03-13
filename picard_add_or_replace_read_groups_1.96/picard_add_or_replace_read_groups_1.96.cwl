@@ -174,7 +174,7 @@ arguments:
     shellQuote: false
     valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
-    prefix: -Djava.io.tmpdir=
+    prefix: '-Djava.io.tmpdir='
     separate: false
     valueFrom: |-
       ${
@@ -209,7 +209,7 @@ requirements:
     ramMin: 25000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'mskaccess/picard_1.96:0.6.2'
+    dockerPull: 'mskaccess/picard_1.96:0.6.3'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

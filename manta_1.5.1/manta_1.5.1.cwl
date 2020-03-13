@@ -4,7 +4,8 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: manta_1.5.1
+  sbg: 'https://www.sevenbridges.com/'
+id: manta_1_5_1
 baseCommand:
   - /usr/bin/python
   - /usr/local/bin/manta/bin/configManta.py
@@ -154,7 +155,7 @@ requirements:
     ramMin: 24000
     coresMin: 12
   - class: DockerRequirement
-    dockerPull: 'mskaccess/manta:0.0.2'
+    dockerPull: 'mskaccess/manta:0.6.3'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

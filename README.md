@@ -1,6 +1,3 @@
-# Initial page
-
-=======
 ---
 description: Central location for storing common workflow language based command line tools for building msk-access workflows
 ---
@@ -27,12 +24,13 @@ Clone the repository:
 git clone --depth 50 https://github.com/msk-access/cwl-commandlinetools.git
 ```
 
-**Follow the README in repsective tool folder for execution of the tool.**
+**Follow the README in respective tool folder for execution of the tool.**
 
 
 ## Credits
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+- CMO ACCESS Informatics Team
+- This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+  - Cookiecutter: https://github.com/audreyr/cookiecutter
+  - `audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
 
-- Cookiecutter: https://github.com/audreyr/cookiecutter
-- `audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
