@@ -1,0 +1,20 @@
+input_vcf:
+  class: File
+  path: /path/to/vcf_file
+tumor_id: tumor_sample_name
+vcf_tumor_id: tumor_sample_name
+normal_id: normal_sample_name
+vcf_normal_id: normal_sample_name
+ncbi_build: genome_string
+filter_vcf:
+  class: File
+  path: /path/to/filter/vcf
+vep_data: vep_cache_path_str (/var/cache in container)
+ref_fasta:
+  class: File
+  path: /path/to/ref/fasta
+vep_path: vep_path (/usr/bin/vep in container)
+custom_enst: custom_enst_str
+retain_info: retain_info_str
+retain_fmt: retain_fmt_str
+output_maf: output_maf_str
