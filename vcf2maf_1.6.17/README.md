@@ -1,4 +1,4 @@
-# CWL and Dockerfile for running Mutect v1.1.5
+# CWL and Dockerfile for running vcf2maf v1.6.17
 
 ## Version of tools in docker image (/container/Dockerfile)
 
