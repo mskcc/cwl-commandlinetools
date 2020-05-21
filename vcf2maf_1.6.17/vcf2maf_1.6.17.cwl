@@ -205,4 +205,4 @@ dct:creator:
 doap:release:
   - class: doap:Version
     doap:name: vcf2maf
-    doap:revision: 1.0.0
+    doap:revision: 1.6.17
