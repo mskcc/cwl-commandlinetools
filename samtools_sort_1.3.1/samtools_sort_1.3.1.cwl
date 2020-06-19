@@ -1,6 +1,5 @@
 class: CommandLineTool
 cwlVersion: v1.0
-$namespaces:
 baseCommand:
   - samtools
   - sort
