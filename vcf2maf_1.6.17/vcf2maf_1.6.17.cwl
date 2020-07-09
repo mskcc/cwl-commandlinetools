@@ -15,6 +15,15 @@ baseCommand:
   - /usr/bin/vcf2maf/vcf2maf.pl
 
 inputs:
+
+  memory_per_job:
+    type: ["null",int]
+    doc: Memory per job in megabytes
+  
+  memory_overhead:
+    type: ["null",int]
+    doc: Memory overhead per job in megabytes
+ 
   cache_version:
     type:
     - 'null'
