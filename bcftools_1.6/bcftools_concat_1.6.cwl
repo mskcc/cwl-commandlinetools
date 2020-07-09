@@ -19,6 +19,14 @@ doc: |
 
 inputs:
 
+  memory_per_job:
+    type: ["null",int]
+    doc: Memory per job in megabytes
+  
+  memory_overhead:
+    type: ["null",int]
+    doc: Memory overhead per job in megabytes
+  
   threads:
     type: ["null", string]
     doc: <int> Number of extra output compression threads [0]
