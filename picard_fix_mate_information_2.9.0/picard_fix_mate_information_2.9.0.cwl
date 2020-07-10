@@ -131,7 +131,9 @@ arguments:
       }
   - position: 0
     prefix: '-jar'
-    valueFrom: /usr/local/bin/FixMateInformation.jar
+    valueFrom: /usr/local/bin/picard.jar
+  - position: 0
+    valueFrom: MarkDuplicates
   - position: 0
     prefix: TMP_DIR=
     separate: false
