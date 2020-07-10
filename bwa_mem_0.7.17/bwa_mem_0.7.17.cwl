@@ -209,6 +209,6 @@ requirements:
     ramMin: 32000
     coresMin: 4
   - class: DockerRequirement
-    dockerPull: 'mskcc/bwa_mem:0.7.17'
+    dockerPull: 'mskaccess/bwa_mem_0.7.17:0.1.0'
   - class: InlineJavascriptRequirement
 stdout: '$(inputs.reads[0].basename.replace(''fastq.gz'', ''sam''))'
