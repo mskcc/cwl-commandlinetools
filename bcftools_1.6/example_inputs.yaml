@@ -1,0 +1,9 @@
+vcf_files_tbi:
+  class: File
+  path: /path/to/vcf/and/tbi/files
+tumor_sample_name: tumor_sample_name
+normal_sample_name: normal_sample_name
+allow_overlaps: allow_overlaps_boolean
+rm_dups: rm_dups_str
+output_type: output_type_str
+output: output_file_name
