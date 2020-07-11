@@ -30,7 +30,7 @@ dct:contributor:
     foaf:mbox: mailto:songt@mskcc.org
 
 
-cwlVersion: cwl:v1.0
+cwlVersion: v1.0
 
 class: CommandLineTool
 baseCommand: [ msisensor, msi ]

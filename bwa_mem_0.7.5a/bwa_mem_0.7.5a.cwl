@@ -169,8 +169,8 @@ arguments:
     valueFrom: $(runtime.cores)
 requirements:
   - class: ResourceRequirement
-    ramMin: 16000
-    coresMin: 4
+    ramMin: 32000
+    coresMin: 16
   - class: DockerRequirement
     dockerPull: 'mskcc/bwa_mem:0.7.5a'
   - class: InlineJavascriptRequirement
