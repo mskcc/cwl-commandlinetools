@@ -114,6 +114,12 @@ inputs:
       is moreappropriate. For other platforms and models, users should
       experiment to find what works best.  Default value: 100. This option can
       be set to 'null' to clear the default value.
+  - id: read_name_regex
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: READ_NAME_REGEX=
+      separate: false
 outputs:
   - id: bam
     type: File
