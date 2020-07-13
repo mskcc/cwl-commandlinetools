@@ -1,5 +1,7 @@
 class: CommandLineTool
 cwlVersion: v1.0
+$namespaces:
+  sbg: 'https://www.sevenbridges.com/'
 baseCommand:
   - bwa
   - mem
@@ -195,12 +197,13 @@ outputs:
   - id: output_sam
     type: File
     outputBinding:
-      glob: '$(inputs.reads[0].basename.replace(''fastq.gz'', ''sam''))'
+      glob: |-
+        ${
+          if (inputs.output)
+            return inputs.output;
+          return inputs.reads[0].basename.replace(/(fastq.gz)|(fq.gz)/, 'sam');
+        }
 arguments:
-  - position: 0
-    prefix: '-R'
-    valueFrom: >-
-      @RG\\tID:$(inputs.lane_id)\\tSM:$(inputs.sample_id)\\tLB:$(inputs.sample_id)\\tPL:Illumina\\tPU:$(inputs.lane_id)
   - position: 0
     prefix: '-t'
     valueFrom: $(runtime.cores)
@@ -211,4 +214,9 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'mskaccess/bwa_mem_0.7.17:0.1.0'
   - class: InlineJavascriptRequirement
-stdout: '$(inputs.reads[0].basename.replace(''fastq.gz'', ''sam''))'
+stdout: |-
+  ${
+    if (inputs.output)
+      return inputs.output;
+    return inputs.reads[0].basename.replace(/(fastq.gz)|(fq.gz)/, 'sam');
+  }
