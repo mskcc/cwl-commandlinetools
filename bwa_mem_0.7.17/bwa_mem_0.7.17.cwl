@@ -24,7 +24,7 @@ inputs:
   - id: sample_id
     type: string
   - id: lane_id
-    type: string
+    type: string?
   - id: A
     type: int?
     inputBinding:
