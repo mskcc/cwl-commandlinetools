@@ -193,6 +193,17 @@ inputs:
     inputBinding:
       position: 0
       prefix: '-M'
+  - id: t
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '-t'
+  - id: R
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: '-R'
+    doc: 'STR read group header line such as ''@RG\tID -foo\tSM -bar'' [null]'
 outputs:
   - id: output_sam
     type: File
@@ -203,10 +214,6 @@ outputs:
             return inputs.output;
           return inputs.reads[0].basename.replace(/(fastq.gz)|(fq.gz)/, 'sam');
         }
-arguments:
-  - position: 0
-    prefix: '-t'
-    valueFrom: $(runtime.cores)
 requirements:
   - class: ResourceRequirement
     ramMin: 32000
