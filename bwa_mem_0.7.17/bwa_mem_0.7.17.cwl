@@ -78,6 +78,9 @@ inputs:
     inputBinding:
       position: 0
       prefix: '-T'
+    doc: >-
+      Don’t output alignment with score lower than INT. This option only affects
+      output.
   - id: U
     type: int?
     inputBinding:
@@ -188,6 +191,9 @@ inputs:
     inputBinding:
       position: 0
       prefix: '-Y'
+    doc: >-
+      Force soft-clipping rather than default hard-clipping of supplementary
+      alignments
   - id: I
     type: string?
     inputBinding:
@@ -198,6 +204,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: '-t'
+    doc: Number of threads
   - id: R
     type: string?
     inputBinding:
