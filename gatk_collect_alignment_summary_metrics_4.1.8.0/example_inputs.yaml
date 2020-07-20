@@ -1,0 +1,28 @@
+input:
+  class: File
+  metadata: {}
+  path: "/path/to/bam"
+  secondaryFiles:
+    - class: File
+      path: "/path/to/bam.bai"
+input:
+  class: File?
+  metadata: {}
+  path: "/path/to/fasta"
+  secondaryFiles:
+    - class: File
+      path: "/path/to/reference.dict"
+output_file_name: "alignment_summary_metrics.txt"
+adaptor_sequence: null
+metrics_acciumulation_level: null
+expected_pair_orientations: null
+is_bisulfite_sequenced: false
+max_insert_size: null
+validation_stringency: null
+assume_sorted: null
+stop_after: null
+create_index: null
+create_md5_file: null
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null
