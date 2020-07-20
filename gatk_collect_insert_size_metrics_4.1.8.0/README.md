@@ -4,7 +4,7 @@
 
 | Tool	| Version	| Location	|
 |---	|---	|---	|
-| gatk  	| 4.1.3.0  	|  broadinstitute/gatk:4.1.3.0	|
+| gatk  	| 4.1.8.0  	|  broadinstitute/gatk:4.1.8.0	|
 
 
 ## CWL
@@ -14,13 +14,13 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner gatk_collect_insert_size_metrics_4.1.3.0.cwl example_inputs.yaml
+    > toil-cwl-runner gatk_collect_insert_size_metrics_4.1.8.0.cwl example_inputs.yaml
 ```
 
 ### Usage
 
 ```bash
-usage: ./GitHub/cwl-commandlinetools/gatk_collect_insert_size_metrics_4.1.3.0/gatk_collect_insert_size_metrics_4.1.3.0.cwl
+usage: ./GitHub/cwl-commandlinetools/gatk_collect_insert_size_metrics_4.1.8.0/gatk_collect_insert_size_metrics_4.1.8.0.cwl
        [-h] [--memory_per_job MEMORY_PER_JOB]
        [--memory_overhead MEMORY_OVERHEAD]
        [--number_of_threads NUMBER_OF_THREADS] --input INPUT

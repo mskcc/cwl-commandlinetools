@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: gatk_collect_insert_size_metrics_4_1_3_0
+id: gatk_collect_insert_size_metrics_4_1_8_0
 label: GATK-CollectInsertSizeMetrics
 baseCommand:
   - gatk
@@ -196,5 +196,5 @@ requirements:
     ramMin: 32000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'broadinstitute/gatk:4.1.3.0'
+    dockerPull: 'broadinstitute/gatk:4.1.8.0'
   - class: InlineJavascriptRequirement
