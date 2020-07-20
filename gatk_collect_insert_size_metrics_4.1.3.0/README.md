@@ -1,10 +1,10 @@
-# CWL for running Picard - CollectInsertSizeMetrics
+# CWL for running GATK - CollectInsertSizeMetrics
 
 ## Version of tools in docker image
 
 | Tool	| Version	| Location	|
 |---	|---	|---	|
-| picard  	| 2.21.2  	|  https://github.com/broadinstitute/picard/releases/download/2.21.2/picard.jar	|
+| gatk  	| 4.1.3.0  	|  broadinstitute/gatk:4.1.3.0	|
 
 
 ## CWL
@@ -14,22 +14,23 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner picard_collect_insert_size_metrics_2.21.2.cwl example_inputs.yaml
+    > toil-cwl-runner gatk_collect_insert_size_metrics_4.1.3.0.cwl example_inputs.yaml
 ```
 
 ### Usage
 
 ```bash
-usage: ./GitHub/cwl-commandlinetools/picard_collect_insert_size_metrics_2.21.2/picard_collect_insert_size_metrics_2.21.2.cwl
+usage: ./GitHub/cwl-commandlinetools/gatk_collect_insert_size_metrics_4.1.3.0/gatk_collect_insert_size_metrics_4.1.3.0.cwl
        [-h] [--memory_per_job MEMORY_PER_JOB]
        [--memory_overhead MEMORY_OVERHEAD]
        [--number_of_threads NUMBER_OF_THREADS] --input INPUT
        --output_file_name OUTPUT_FILE_NAME --histogram_file HISTOGRAM_FILE
        [--deviations DEVIATIONS] [--histogram_width HISTOGRAM_WIDTH]
-       [--min_histogram_width MIN_HISTOGRAM_WIDTH] [--minimum_pct MINIMUM_PCT]
+       [--minimum_pct MINIMUM_PCT]
        [--metrics_acciumulation_level METRICS_ACCIUMULATION_LEVEL]
        [--include_duplicates] [--validation_stringency VALIDATION_STRINGENCY]
-       [--assume_sorted] [--stop_after STOP_AFTER]
+       [--assume_sorted] [--stop_after STOP_AFTER] [--create_index]
+       [--create_md5_file]
        [job_order]
 
 positional arguments:
@@ -62,11 +63,6 @@ optional arguments:
                         automatic truncation of Histogram tail. Also, when
                         calculating mean and standard deviation, only bins <=
                         Histogram_WIDTH will be included. Default value: null.
-  --min_histogram_width MIN_HISTOGRAM_WIDTH
-                        Minimum width of histogram plots. In the case when the
-                        histogram would otherwise betruncated to a shorter
-                        range of sizes, the MIN_HISTOGRAM_WIDTH will enforce a
-                        minimum range. Default value: null.
   --minimum_pct MINIMUM_PCT
                         When generating the Histogram, discard any data
                         categories (out of FR, TANDEM, RF) that have fewer
@@ -100,4 +96,10 @@ optional arguments:
                         Stop after processing N reads, mainly for debugging.
                         Default value: 0. This option can be set to 'null' to
                         clear the default value.
+  --create_index        Whether to create a BAM index when writing a
+                        coordinate-sorted BAM file. Default value: false.
+                        Possible values: {true, false}
+  --create_md5_file     Whether to create an MD5 digest for any BAM or FASTQ
+                        files created. Default value: false. Possible values:
+                        {true, false}
 ```
