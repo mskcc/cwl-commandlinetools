@@ -35,9 +35,11 @@ inputs:
       specified at least once. Required.
   - id: output_file_name
     type: string
+    default: '$(inputs.input.basename.replace(/.bam/, ''_hs_metrics.txt''))'
     inputBinding:
       position: 0
       prefix: -O
+      valueFrom: '$(inputs.input.basename.replace(/.bam/, ''_hs_metrics.txt''))'
     doc: The output file to write the metrics to.  Required.
   - id: per_base_coverage
     type: string?

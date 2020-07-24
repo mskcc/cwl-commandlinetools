@@ -27,9 +27,11 @@ inputs:
     doc: Input file (bam or sam).  Required.
   - id: output_file_name
     type: string
+    default: '$(inputs.input.basename.replace(/.bam/, ''_alignment_summary_metrics.txt''))'
     inputBinding:
       position: 0
       prefix: -O
+      valueFrom: '$(inputs.input.basename.replace(/.bam/, ''_alignment_summary_metrics.txt''))'
     doc: File to write the output to.  Required.
   - id: reference
     type: File?

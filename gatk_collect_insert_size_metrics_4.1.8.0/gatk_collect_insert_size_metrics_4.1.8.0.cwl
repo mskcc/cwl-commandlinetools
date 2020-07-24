@@ -27,15 +27,19 @@ inputs:
     doc: Input file (bam or sam).  Required.
   - id: output_file_name
     type: string
+    default: '$(inputs.input.basename.replace(/.bam/, ''_insert_size_metrics.txt''))'
     inputBinding:
       position: 0
       prefix: -O
+      valueFrom: '$(inputs.input.basename.replace(/.bam/, ''_insert_size_metrics.txt''))'
     doc: File to write the output to.  Required.
   - id: histogram_file
     type: string
+    default: '$(inputs.input.basename.replace(/.bam/, ''_histogram.pdf''))'
     inputBinding:
       position: 0
       prefix: -H
+      valueFrom: '$(inputs.input.basename.replace(/.bam/, ''_histogram.pdf''))'
     doc: File to write insert size Histogram chart to.  Required.
   - id: deviations
     type: float?
