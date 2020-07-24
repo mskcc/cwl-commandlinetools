@@ -228,5 +228,5 @@ requirements:
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': Tool Name
-    'doap:revision': Tool Version
+    'doap:name': gatk4
+    'doap:revision': 4.1.8.0
