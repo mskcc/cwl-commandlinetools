@@ -26,16 +26,10 @@ inputs:
       prefix: -I
     doc: Input file (bam or sam).  Required.
   - id: output_file_name
-    type: string
-    inputBinding:
-      position: 0
-      prefix: -O
+    type: string?
     doc: File to write the output to.  Required.
   - id: histogram_file
-    type: string
-    inputBinding:
-      position: 0
-      prefix: -H
+    type: string?
     doc: File to write insert size Histogram chart to.  Required.
   - id: deviations
     type: float?
@@ -191,6 +185,26 @@ arguments:
   - position: 0
     prefix: '--MAX_RECORDS_IN_RAM'
     valueFrom: '50000'
+  - position: 2
+    prefix: '-O'
+    valueFrom: |-
+      ${
+          if(inputs.output_file_name){
+              return inputs.output_file_name
+          } else {
+              return inputs.input.basename.replace(/.bam/, '_insert_size_metrics.txt')
+          }
+      }
+  - position: 2
+    prefix: '-H'
+    valueFrom: |-
+      ${
+          if(inputs.histogram_file){
+              return inputs.histogram_file
+          } else {
+              return inputs.input.basename.replace(/.bam/, '_histogram.pdf')
+          }
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 32000
@@ -198,3 +212,21 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'broadinstitute/gatk:4.1.8.0'
   - class: InlineJavascriptRequirement
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:murphyc4@mskcc.org'
+        'foaf:name': Charles Murphy
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:murphyc4@mskcc.org'
+        'foaf:name': Charles Murphy
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'doap:release':
+  - class: 'doap:Version'
+    'doap:name': gatk4
+    'doap:revision': 4.1.8.0
