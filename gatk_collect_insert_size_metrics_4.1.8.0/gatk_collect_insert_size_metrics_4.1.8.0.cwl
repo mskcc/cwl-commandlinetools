@@ -26,20 +26,10 @@ inputs:
       prefix: -I
     doc: Input file (bam or sam).  Required.
   - id: output_file_name
-    type: string
-    default: '$(inputs.input.basename.replace(/.bam/, ''_insert_size_metrics.txt''))'
-    inputBinding:
-      position: 0
-      prefix: -O
-      valueFrom: '$(inputs.input.basename.replace(/.bam/, ''_insert_size_metrics.txt''))'
+    type: string?
     doc: File to write the output to.  Required.
   - id: histogram_file
-    type: string
-    default: '$(inputs.input.basename.replace(/.bam/, ''_histogram.pdf''))'
-    inputBinding:
-      position: 0
-      prefix: -H
-      valueFrom: '$(inputs.input.basename.replace(/.bam/, ''_histogram.pdf''))'
+    type: string?
     doc: File to write insert size Histogram chart to.  Required.
   - id: deviations
     type: float?
@@ -195,6 +185,26 @@ arguments:
   - position: 0
     prefix: '--MAX_RECORDS_IN_RAM'
     valueFrom: '50000'
+  - position: 2
+    prefix: '-O'
+    valueFrom: |-
+      ${
+          if(inputs.output_file_name){
+              return inputs.output_file_name
+          } else {
+              return inputs.input.basename.replace(/.bam/, '_insert_size_metrics.txt')
+          }
+      }
+  - position: 2
+    prefix: '-H'
+    valueFrom: |-
+      ${
+          if(inputs.histogram_file){
+              return inputs.histogram_file
+          } else {
+              return inputs.input.basename.replace(/.bam/, '_histogram.pdf')
+          }
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 32000

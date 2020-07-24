@@ -34,27 +34,16 @@ inputs:
       An interval list file that contains the locations of the targets.  This argument must be
       specified at least once. Required.
   - id: output_file_name
-    type: string
-    default: '$(inputs.input.basename.replace(/.bam/, ''_hs_metrics.txt''))'
-    inputBinding:
-      position: 0
-      prefix: -O
-      valueFrom: '$(inputs.input.basename.replace(/.bam/, ''_hs_metrics.txt''))'
+    type: string?
     doc: The output file to write the metrics to.  Required.
   - id: per_base_coverage
     type: string?
-    inputBinding:
-      position: 0
-      prefix: --PER_BASE_COVERAGE
     doc: >-
       An optional file to output per base coverage information to. The per-base file contains
       one line per target base and can grow very large. It is not recommended for use with large
       target sets.  Default value: null.
   - id: per_target_coverage
     type: string?
-    inputBinding:
-      position: 0
-      prefix: --PER_TARGET_COVERAGE
     doc: >-
       An optional file to output per target coverage information to.  Default value: null.
   - id: theoretical_sensitivity_output
@@ -265,6 +254,36 @@ arguments:
   - position: 0
     prefix: '--MAX_RECORDS_IN_RAM'
     valueFrom: '50000'
+  - position: 2
+    prefix: '-O'
+    valueFrom: |-
+      ${
+          if(inputs.output_file_name){
+              return inputs.output_file_name
+          } else {
+              return inputs.input.basename.replace(/.bam/, '_hs_metrics.txt')
+          }
+      }
+  - position: 2
+    prefix: '--PER_TARGET_COVERAGE'
+    valueFrom: |-
+      ${
+          if(inputs.per_target_coverage){
+              return inputs.per_target_coverage
+          } else {
+              return inputs.input.basename.replace(/.bam/, '_per_target_coverage.txt')
+          }
+      }
+  - position: 2
+    prefix: '--PER_BASE_COVERAGE'
+    valueFrom: |-
+      ${
+          if(inputs.per_base_coverage){
+              return inputs.per_base_coverage
+          } else {
+              return inputs.input.basename.replace(/.bam/, '_per_base_coverage.txt')
+          }
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 32000
