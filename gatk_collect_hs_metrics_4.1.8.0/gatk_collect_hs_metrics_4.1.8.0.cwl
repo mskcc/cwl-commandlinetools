@@ -291,3 +291,21 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'broadinstitute/gatk:4.1.8.0'
   - class: InlineJavascriptRequirement
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:murphyc4@mskcc.org'
+        'foaf:name': Charles Murphy
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:murphyc4@mskcc.org'
+        'foaf:name': Charles Murphy
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'doap:release':
+  - class: 'doap:Version'
+    'doap:name': Tool Name
+    'doap:revision': Tool Version
