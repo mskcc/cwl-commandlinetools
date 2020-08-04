@@ -7,7 +7,7 @@ FROM python:3.6-alpine
 ARG BUILD_DATE
 ARG BUILD_VERSION
 ARG LICENSE="Apache-2.0"
-ARG SEQUENCE_QC_VERSION=0.1.12
+ARG SEQUENCE_QC_VERSION=0.1.15
 ARG VCS_REF
 ################## METADATA ########################
 LABEL org.opencontainers.image.vendor="MSKCC"
@@ -28,5 +28,4 @@ LABEL org.opencontainers.image.description="This container uses python3.6 as the
 
 RUN apk add --no-cache --virtual .build-deps gcc musl-dev make zlib-dev bzip2-dev xz-dev g++ libstdc++ \
  && pip install cython \
- && pip install sequence_qc==0.1.12 \
- && apk del .build-deps
+ && pip install sequence_qc==0.1.15

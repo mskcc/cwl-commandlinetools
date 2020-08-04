@@ -16,26 +16,26 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner sequence_qc_0.1.12.cwl example_inputs.yaml
+    > toil-cwl-runner sequence_qc_0.1.15.cwl example_inputs.yaml
 ```
 
 **If at MSK, using the JUNO cluster having installed toil version 3.19 and manually modifying [lsf.py](https://github.com/DataBiosphere/toil/blob/releases/3.19.0/src/toil/batchSystems/lsf.py#L170) by removing `type==X86_64 &&` you can use the following command**
 
 ```bash
 #Using CWLTOOL
-> cwltool --singularity --non-strict /path/to/sequence_qc_0.1.12/sequence_qc_0.1.12.cwl /path/to/inputs.yaml
+> cwltool --singularity --non-strict /path/to/sequence_qc_0.1.15/sequence_qc_0.1.15.cwl /path/to/inputs.yaml
 
 #Using toil-cwl-runner
 > mkdir tool_toil_log
-> toil-cwl-runner --singularity --logFile /path/to/tool_toil_log/cwltoil.log  --jobStore /path/to/tool_jobStore --batchSystem lsf --workDir /path/to/tool_toil_log --outdir . --writeLogs /path/to/tool_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 /path/to/sequence_qc_0.1.12/sequence_qc_0.1.12.cwl /path/to/inputs.yaml > tool_toil.stdout 2> tool_toil.stderr &
+> toil-cwl-runner --singularity --logFile /path/to/tool_toil_log/cwltoil.log  --jobStore /path/to/tool_jobStore --batchSystem lsf --workDir /path/to/tool_toil_log --outdir . --writeLogs /path/to/tool_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 /path/to/sequence_qc_0.1.15/sequence_qc_0.1.15.cwl /path/to/inputs.yaml > tool_toil.stdout 2> tool_toil.stderr &
 ```
 
 ### Usage
 
 ```bash
-toil-cwl-runner sequence_qc_0.1.12.cwl -h
+toil-cwl-runner sequence_qc_0.1.15.cwl -h
 
-usage: sequence_qc_0.1.12.cwl [-h] --reference REFERENCE --bam_file BAM_FILE
+usage: sequence_qc_0.1.15.cwl [-h] --reference REFERENCE --bam_file BAM_FILE
                               --bed_file BED_FILE --output_prefix
                               OUTPUT_PREFIX [--threshold THRESHOLD]
                               [--truncate TRUNCATE] [--min_mapq MIN_MAPQ]

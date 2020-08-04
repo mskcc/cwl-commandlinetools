@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: calculate_noise_0_1_12
+id: calculate_noise_0_1_15
 baseCommand:
   - calculate_noise
 inputs:
@@ -38,7 +38,7 @@ inputs:
     doc: >-
       Prefix to include in all output file names
   - id: threshold
-    type: string?
+    type: float?
     inputBinding:
       position: 0
       prefix: --threshold
@@ -92,7 +92,7 @@ requirements:
     ramMin: 8000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: '424e59769581'
+    dockerPull: 'sequence_qc/0.1.15'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -111,4 +111,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': sesquence_qc
-    'doap:revision': 0.1.12
+    'doap:revision': 0.1.15
