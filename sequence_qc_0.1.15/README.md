@@ -1,13 +1,10 @@
-# CWL and Dockerfile for running merge_fastq
+# CWL and Dockerfile for running sequence_qc
 
 ## Version of tools in docker image (/container/Dockerfile)
 
 | Tool | Version | Location |
 |--- |--- |--- |
-| miniconda   | 3 | <https://hub.docker.com/r/continuumio/miniconda3> |
-| merge_fastq   | 0.1.7   |  <https://pypi.org/project/merge-fastq/> |
-
-[![](https://images.microbadger.com/badges/version/mskaccess/merge_fastq:0.6.1.svg)](https://microbadger.com/images/mskaccess/merge_fastq:0.6.1 "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/mskaccess/merge_fastq:0.6.1.svg)](https://microbadger.com/images/mskaccess/merge_fastq:0.6.1 "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/mskaccess/merge_fastq:0.6.1.svg)](https://microbadger.com/images/mskaccess/merge_fastq:0.6.1 "Get your own commit badge on microbadger.com") [![](https://images.microbadger.com/badges/license/mskaccess/merge_fastq:0.6.1.svg)](https://microbadger.com/images/mskaccess/merge_fastq:0.6.1 "Get your own license badge on microbadger.com")
+| sequence_qc   | 0.1.15   |  <https://pypi.org/project/sequence-qc/> |
 
 ## CWL
 
