@@ -87,6 +87,20 @@ outputs:
         ${
             return inputs.output_prefix + 'noise_acgt.tsv'
         }
+  - id: noise_n
+    type: File
+    outputBinding:
+      glob: |-
+        ${
+            return inputs.output_prefix + 'noise_n.tsv'
+        }
+  - id: noise_del
+    type: File
+    outputBinding:
+      glob: |-
+        ${
+            return inputs.output_prefix + 'noise_del.tsv'
+        }
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
