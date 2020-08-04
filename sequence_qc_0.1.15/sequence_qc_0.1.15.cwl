@@ -14,6 +14,8 @@ inputs:
     inputBinding:
       position: 0
       prefix: --ref_fasta
+    secondaryFiles:
+      - ^.fasta.fai
     doc: >-
       Path to reference fasta, containing all regions in bed_file
   - id: bam_file
@@ -21,6 +23,8 @@ inputs:
     inputBinding:
       position: 0
       prefix: --bam_file
+    secondaryFiles:
+      - ^.bai
     doc: >-
       Path to BAM file for calculating noise  [required]
   - id: bed_file
@@ -106,7 +110,7 @@ requirements:
     ramMin: 8000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'sequence_qc/0.1.15'
+    dockerPull: 'mskaccess/sequence_qc:0.1.15'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
