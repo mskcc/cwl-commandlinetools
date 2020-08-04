@@ -1,15 +1,15 @@
 reference:
   class: File
   metadata: {}
-  path: /Users/charlesmurphy/Desktop/data/ref/hg19/Homo_sapiens_assembly19.fasta
+  path: /path/to/fasta
 bam_file:
   class: File
   metadata: {}
-  path: /Users/charlesmurphy/Desktop/mskcc-analyses/200608_compare_qc_tools/manually_count_bases/C-52YNHF-N001-d_cl_aln_srt_MD_IR_FX_BR__aln_srt_IR_FX.bam
+  path: /path/to/bam
 bed_file:
   class: File
   metadata: {}
-  path: /Users/charlesmurphy/Desktop/data/innovation/resources/MSK-ACCESS-v1.0/MSK-ACCESS-v1_0-probe-A.sorted_correct.bed
+  path: /path/to/bed
 output_prefix: test_sample_
 threshold: 0.01
 truncate: 1
