@@ -4,7 +4,7 @@
 
 | Tool | Version | Location |
 |--- |--- |--- |
-| sequence_qc   | 0.1.15   |  <https://pypi.org/project/sequence-qc/> |
+| sequence_qc   | 0.1.16   |  <https://pypi.org/project/sequence-qc/> |
 
 ## CWL
 
@@ -13,30 +13,29 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner sequence_qc_0.1.15.cwl example_inputs.yaml
+    > toil-cwl-runner sequence_qc_0.1.16.cwl example_inputs.yaml
 ```
 
 **If at MSK, using the JUNO cluster having installed toil version 3.19 and manually modifying [lsf.py](https://github.com/DataBiosphere/toil/blob/releases/3.19.0/src/toil/batchSystems/lsf.py#L170) by removing `type==X86_64 &&` you can use the following command**
 
 ```bash
 #Using CWLTOOL
-> cwltool --singularity --non-strict /path/to/sequence_qc_0.1.15/sequence_qc_0.1.15.cwl /path/to/inputs.yaml
+> cwltool --singularity --non-strict /path/to/sequence_qc_0.1.16/sequence_qc_0.1.16.cwl /path/to/inputs.yaml
 
 #Using toil-cwl-runner
 > mkdir tool_toil_log
-> toil-cwl-runner --singularity --logFile /path/to/tool_toil_log/cwltoil.log  --jobStore /path/to/tool_jobStore --batchSystem lsf --workDir /path/to/tool_toil_log --outdir . --writeLogs /path/to/tool_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 /path/to/sequence_qc_0.1.15/sequence_qc_0.1.15.cwl /path/to/inputs.yaml > tool_toil.stdout 2> tool_toil.stderr &
+> toil-cwl-runner --singularity --logFile /path/to/tool_toil_log/cwltoil.log  --jobStore /path/to/tool_jobStore --batchSystem lsf --workDir /path/to/tool_toil_log --outdir . --writeLogs /path/to/tool_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 /path/to/sequence_qc_0.1.16/sequence_qc_0.1.16.cwl /path/to/inputs.yaml > tool_toil.stdout 2> tool_toil.stderr &
 ```
 
 ### Usage
 
 ```bash
-toil-cwl-runner sequence_qc_0.1.15.cwl -h
+toil-cwl-runner sequence_qc_0.1.16.cwl -h
 
-usage: sequence_qc_0.1.15.cwl [-h] --reference REFERENCE --bam_file BAM_FILE
-                              --bed_file BED_FILE --output_prefix
-                              OUTPUT_PREFIX [--threshold THRESHOLD]
-                              [--truncate TRUNCATE] [--min_mapq MIN_MAPQ]
-                              [--min_basq MIN_BASQ]
+usage: sequence_qc_0.1.16.cwl [-h] --reference REFERENCE --bam_file BAM_FILE
+                              --bed_file BED_FILE --sample_id SAMPLE_ID
+                              [--threshold THRESHOLD] [--truncate TRUNCATE]
+                              [--min_mapq MIN_MAPQ] [--min_basq MIN_BASQ]
                               [job_order]
 
 positional arguments:
@@ -50,7 +49,7 @@ optional arguments:
   --bam_file BAM_FILE   Path to BAM file for calculating noise [required]
   --bed_file BED_FILE   Path to BED file containing regions over which to
                         calculate noise [required]
-  --output_prefix OUTPUT_PREFIX
+  --sample_id SAMPLE_ID
                         Prefix to include in all output file names
   --threshold THRESHOLD
                         Alt allele frequency past which to ignore positions

@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: calculate_noise_0_1_15
+id: calculate_noise_0_1_16
 baseCommand:
   - calculate_noise
 inputs:
@@ -34,11 +34,11 @@ inputs:
       prefix: --bed_file
     doc: >-
       Path to BED file containing regions over which to calculate noise  [required]
-  - id: output_prefix
+  - id: sample_id
     type: string
     inputBinding:
       position: 0
-      prefix: --output_prefix
+      prefix: --sample_id
     doc: >-
       Prefix to include in all output file names
   - id: threshold
@@ -75,42 +75,49 @@ outputs:
     outputBinding:
       glob: |-
         ${
-            return inputs.output_prefix + 'pileup.tsv'
+            return inputs.sample_id + 'pileup.tsv'
         }
   - id: noise_positions
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.output_prefix + 'noise_positions.tsv'
+            return inputs.sample_id + 'noise_positions.tsv'
         }
   - id: noise_acgt
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.output_prefix + 'noise_acgt.tsv'
+            return inputs.sample_id + 'noise_acgt.tsv'
         }
   - id: noise_n
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.output_prefix + 'noise_n.tsv'
+            return inputs.sample_id + 'noise_n.tsv'
         }
   - id: noise_del
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.output_prefix + 'noise_del.tsv'
+            return inputs.sample_id + 'noise_del.tsv'
+        }
+  - id: figures
+    type: File
+    outputBinding:
+      glob: |-
+        ${
+            return inputs.sample_id + '_noise.html'
         }
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/sequence_qc:0.1.15'
+    dockerPull: 'mskaccess/sequence_qc:0.1.16'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -129,4 +136,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': sesquence_qc
-    'doap:revision': 0.1.15
+    'doap:revision': 0.1.16
