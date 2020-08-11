@@ -1,0 +1,17 @@
+reference:
+  class: File
+  metadata: {}
+  path: /path/to/fasta
+bam_file:
+  class: File
+  metadata: {}
+  path: /path/to/bam
+bed_file:
+  class: File
+  metadata: {}
+  path: /path/to/bed
+sample_id: test_sample_
+threshold: 0.01
+truncate: 1
+min_mapq: 10
+min_basq: 10
