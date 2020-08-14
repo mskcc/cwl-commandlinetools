@@ -133,7 +133,7 @@ inputs:
       shellQuote: false
     doc: 'Date the run was produced, to insert into the read group header'
 outputs:
-  - id: bam
+  - id: fastqtobam_ubam
     type: File
     outputBinding:
       glob: |-
