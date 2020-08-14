@@ -9,6 +9,8 @@
 	* [merge v2.28.0_cv2](../bedtools_merge_v2.28.0_cv2/README.md)
   * Disambiguate
     * [v1.0.0](../disambiguate_1.0.0/README.md)
+  * Fgbio
+    * [FastqToBam v1.2.0](../fgbio_fastq_to_bam_1.2.0/README.md)
   * GATK
     * [ApplyBQSR v4.1.2.0](../gatk_ApplyBQSR_4.1.2.0/README.md)
     * [BaseRecalibrator v4.1.2.0](../gatk_BaseRecalibrator_4.1.2.0/README.md)
