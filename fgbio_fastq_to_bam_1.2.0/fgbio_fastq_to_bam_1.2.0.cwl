@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: fgbio_fastq_to_bam_1_2_0
+id: fgbio_fastq_to_bam_1.2.0
 baseCommand:
   - fgbio
 inputs:
@@ -39,16 +39,14 @@ inputs:
     doc: >-
       Read structures, one for each of the FASTQs.
       https://github.com/fulcrumgenomics/fgbio/wiki/Read-Structures
-  - 'sbg:altPrefix': '-s'
-    id: sort
+  - id: sort
     type: boolean?
     inputBinding:
       position: 0
       prefix: '--sort'
       shellQuote: false
     doc: 'If true, queryname sort the BAM file, otherwise preserve input order.'
-  - 'sbg:altPrefix': '-u'
-    id: umi-tag
+  - id: umi-tag
     type: string?
     inputBinding:
       position: 0
@@ -133,7 +131,7 @@ inputs:
       shellQuote: false
     doc: 'Date the run was produced, to insert into the read group header'
 outputs:
-  - id: fastqtobam_ubam
+  - id: fastq_to_bam_ubam
     type: File
     outputBinding:
       glob: |-
@@ -239,5 +237,5 @@ requirements:
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': fgbio
+    'doap:name': fgbio FastqToBam
     'doap:revision': 1.2.0
