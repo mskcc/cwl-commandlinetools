@@ -1,0 +1,17 @@
+error_rate_post_umi: null
+error_rate_pre_umi: null
+input: /path/to/bam_file
+max_reads_per_strand: null
+memory_overhead: null
+memory_per_job: null
+min_input_base_quality: null
+min_reads:
+  - 1
+  - 1
+  - 0
+number_of_threads: null
+output_file_name: null
+read_group_id: null
+read_name_prefix: null
+sort_order: null
+trim: null
