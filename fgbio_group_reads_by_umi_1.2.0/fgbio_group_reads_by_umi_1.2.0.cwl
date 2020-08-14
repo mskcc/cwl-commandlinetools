@@ -194,7 +194,7 @@ arguments:
           return "-Xmx10G"
         }
         else {
-            return "-Xmx4G"
+            return "-Xmx10G"
         }
       }
   - position: 0
