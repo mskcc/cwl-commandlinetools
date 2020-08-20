@@ -10,6 +10,7 @@
         -   [v1.0.0](../disambiguate_1.0.0/README.md)
     -   Fgbio
         -   [CallDuplexConsensusReads v1.2.0](../fgbio_call_duplex_consensus_reads_1.2.0/README.md)
+        -   [FastqToBam v1.2.0](../fgbio_fastq_to_bam_1.2.0/README.md)
     -   GATK
         -   [ApplyBQSR v4.1.2.0](../gatk_ApplyBQSR_4.1.2.0/README.md)
         -   [BaseRecalibrator v4.1.2.0](../gatk_BaseRecalibrator_4.1.2.0/README.md)
