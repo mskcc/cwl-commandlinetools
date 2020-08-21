@@ -1,0 +1,7 @@
+create_bam_index: true
+duplication_metrics: mark_duplicates_md.metrics
+input:
+  class: File
+  path: "path/to/sample_id.bam"
+optical_duplicate_pixel_distance: 2500
+output: mark_duplicates_md.bam

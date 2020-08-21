@@ -1,0 +1,5 @@
+create_bam_index: true
+input:
+  class: File
+  path: "/path/to/sample_id.bam"
+output_file_name: sample_id_fm.bam
