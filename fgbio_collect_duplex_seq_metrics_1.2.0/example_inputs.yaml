@@ -1,0 +1,16 @@
+input:
+  class: File
+  metadata: {}
+  path: /path/to/bam
+output_prefix: prefix
+intervals:
+  class: File?
+  metadata: {}
+  path: /path/to/intervals
+description: null
+duplex_umi_counts: null
+min_ab_reads: null
+min_ba_reads: null
+number_of_threads: null
+umi_tag: null
+mi_tag: null
