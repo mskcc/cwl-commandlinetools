@@ -238,7 +238,7 @@ inputs:
       (read, qualities, tags) do not otherwise need to be decoded.  Default value: STRICT.
       Possible values: {STRICT, LENIENT, SILENT}
 outputs:
-  - id: fastq_output
+  - id: gatk_sam_to_fastq_fastq_output
     type: File?
     outputBinding:
       glob: |-
@@ -249,7 +249,7 @@ outputs:
               return inputs.input.basename.replace(/.bam|.sam/, '-R1.fastq')
             }
         }
-  - id: unpaired_fastq_output
+  - id: gatk_sam_to_fastq_unpaired_fastq_output
     type: File?
     outputBinding:
       glob: |-
@@ -260,7 +260,7 @@ outputs:
               return inputs.input.basename.replace(/.bam|.sam/, '-unpaired.fastq')
             }
         }
-  - id: second_end_fastq_output
+  - id: gatk_sam_to_fastq_second_end_fastq_output
     type: File?
     outputBinding:
       glob: |-
