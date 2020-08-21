@@ -1,0 +1,32 @@
+input:
+  class: File
+  metadata: {}
+  path: "/path/to/bam"
+fastq: null
+clipping_action: null
+clipping_attribute: null
+clipping_min_length: null
+compress_outputs_per_rg: null
+compression_level: null
+create_index: null
+include_non_pf_reads: null
+include_non_primary_alignments: null
+interleave: null
+max_records_in_ram: null
+output_dir: null
+create_md5_file: null
+output_per_rg: null
+quality: null
+re_reverse: null
+read1_max_bases_to_write: null
+read1_trim: null
+read2_max_bases_to_write: null
+read2_trim: null
+reference_sequence: null
+rg_tag: null
+second_end_fastq: null
+unpaired_fastq: null
+validation_stringency: null
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null
