@@ -1,0 +1,20 @@
+bam_compression_level: 
+create_bam_index: true
+input:
+  class: File
+  path: "/path/to/bam"
+memory_overhead: 
+memory_per_job: 
+number_of_threads: 
+output_file_name: somename_srt.bam
+read_group_description: 
+read_group_identifier: test
+read_group_library: 1
+read_group_platform_unit: bc01
+read_group_run_date: 
+read_group_sample_name: seracare
+read_group_sequencing_platform: Illumina
+read_group_sequnecing_center: msk
+sort_order: 
+tmp_dir: 
+validation_stringency: 
