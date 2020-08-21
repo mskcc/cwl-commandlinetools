@@ -1,0 +1,13 @@
+assign_tag: null
+edits: null
+family_size_histogram: null
+include_non_pf_reads: null
+input: /path/to/bam_file
+memory_overhead: null
+memory_per_job: null
+min_map_q: null
+min_umi_length: null
+number_of_threads: null
+output_file_name: null
+raw_tag: null
+strategy: paired

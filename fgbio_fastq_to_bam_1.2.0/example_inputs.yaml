@@ -1,0 +1,27 @@
+comment: null
+description: null
+input:
+  - class: File
+    path: >-
+      /Users/shahr2/Documents/test_reference/test_fastq_to_bam/fastq/test_R1_001.fastq.gz
+  - class: File
+    path: >-
+      /Users/shahr2/Documents/test_reference/test_fastq_to_bam/fastq/test_R2_001.fastq.gz
+library: test
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null
+output_file_name: null
+platform: Illumina
+platform-model: novaseq
+platform-unit: .
+predicted-insert-size: null
+read-group-id: test
+read-structures:
+  - 3M2S+T
+  - 3M2S+T
+run-date: null
+sample: test
+sequencing-center: mskcc
+sort: null
+umi-tag: null
