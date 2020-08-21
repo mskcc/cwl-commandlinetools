@@ -10,6 +10,7 @@
         -   [v1.0.0](../disambiguate_1.0.0/README.md)
     -   Fgbio
         -   [CallDuplexConsensusReads v1.2.0](../fgbio_call_duplex_consensus_reads_1.2.0/README.md)
+        -   [CollectDuplexSeqMetrics v1.2.0](../fgbio_collect_duplex_seq_metrics_1.2.0/README.md)
         -   [GroupReadsByUmi v1.2.0](../fgbio_group_reads_by_umi_1.2.0/README.md)
         -   [FastqToBam v1.2.0](../fgbio_fastq_to_bam_1.2.0/README.md)
     -   GATK
