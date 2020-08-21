@@ -132,7 +132,31 @@ outputs:
 label: picard_mark_duplicates_2.9.0
 arguments:
   - position: 0
-    valueFrom: "${\n  if(inputs.memory_per_job && inputs.memory_overhead) {\n   \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if (inputs.memory_per_job && !inputs.memory_overhead){\n    \n    if(inputs.memory_per_job % 1000 == 0) {\n    \t\n      return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"\n    }\n    else {\n      \n      return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\" \n    }\n  }\n  else if(!inputs.memory_per_job && inputs.memory_overhead){\n    \n    return \"-Xmx15G\"\n  }\n  else {\n    \n  \treturn \"-Xmx15G\"\n  }\n}"
+    valueFrom: |-
+      ${
+         if(inputs.memory_per_job && inputs.memory_overhead) {
+             if(inputs.memory_per_job % 1000 == 0) {
+                 return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+             }
+             else {
+                 return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+             }
+         }
+         else if (inputs.memory_per_job && !inputs.memory_overhead){
+             if(inputs.memory_per_job % 1000 == 0) {
+                 return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+             }
+             else {
+                 return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
+             }
+         }
+         else if(!inputs.memory_per_job && inputs.memory_overhead){
+             return "-Xmx8G"
+         }
+         else {
+             return "-Xmx8G"
+         }
+      }
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/picard.jar
