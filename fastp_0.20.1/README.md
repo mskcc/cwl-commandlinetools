@@ -4,8 +4,8 @@
 
 | Tool	| Version	| Location	|
 |---	|---	|---	|
-| ubuntu base image  	| 16.04 	|   -	|
-| fastp     | 0.20.1  	|  https://github.com/OpenGene/fastp	|
+| fastp     | 0.20.1  	|  quay.io/biocontainers/fastp:0.20.1--h8b12597_0	|
+
 
 ## CWL
 
