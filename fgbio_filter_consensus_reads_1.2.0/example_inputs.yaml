@@ -1,0 +1,17 @@
+input: /path/to/bam_file
+max_base_error_rate: null
+max_no_call_fraction: null
+max_read_error_rate: null
+memory_overhead: null
+memory_per_job: null
+min_base_quality: null
+min_mean_base_quality: null
+min_reads:
+  - 2
+  - 2
+  - 1
+number_of_threads: null
+output_file_name: test.bam
+reference_fasta: /path/to/reference_fasta
+require_single_strand_agreement: true
+reverse_per_base_tags: null
