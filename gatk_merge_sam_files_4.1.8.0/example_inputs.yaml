@@ -1,0 +1,21 @@
+input:
+  - class: File
+    path: "/path/to/bam"
+  - class: File
+    path: "/path/to/bam"
+output_file_name: null
+assume_sorted: null
+comment: null
+create_index: null
+create_md5_file: null
+intervals: null
+merge_sequence_dictionaries: null
+reference_sequence:
+  class: File
+  path: "/path/to/reference.fasta"
+sort_order: null
+validation_stringency: null
+verbosity: null
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null
