@@ -31,6 +31,7 @@ usage: gatk_merge_sam_files_4.1.8.0.cwl [-h] [--memory_per_job MEMORY_PER_JOB]
                                         [--merge_sequence_dictionaries]
                                         [--reference_sequence REFERENCE_SEQUENCE]
                                         [--sort_order SORT_ORDER]
+                                        [--use_threading]
                                         [--validation_stringency VALIDATION_STRINGENCY]
                                         [--verbosity VERBOSITY]
                                         [job_order]
@@ -78,6 +79,12 @@ optional arguments:
                         Sort order of output file Default value: coordinate.
                         Possible values: {unsorted, queryname, coordinate,
                         duplicate, unknown}
+  --use_threading       Option to create a background thread to encode,
+                        compress and write to disk the output file. The
+                        threaded version uses about 20% more CPU and decreases
+                        runtime by ~20% when writing out a compressed BAM
+                        file. Default value: false. Possible values: {true,
+                        false}
   --validation_stringency VALIDATION_STRINGENCY
                         Validation stringency for all SAM files read by this
                         program. Setting stringency to SILENT can improve
