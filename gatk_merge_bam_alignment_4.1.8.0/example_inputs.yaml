@@ -1,12 +1,12 @@
 unmapped_bam:
   class: File
-  path: "/Users/charlesmurphy/Desktop/test-unmapped.bam"
+  path: "/path/to/bam"
 reference:
   class: File
-  path: "/Users/charlesmurphy/Desktop/data/ref/hg19/Homo_sapiens_assembly19.fasta"
+  path: "/path/to/reference.fasta"
 aligned_bam:
   - class: File
-    path: "/Users/charlesmurphy/Desktop/test.bam"
+    path: "/path/to/bam"
 output_file_name: null
 add_mate_cigar: null
 add_pg_tag_to_reads: null
