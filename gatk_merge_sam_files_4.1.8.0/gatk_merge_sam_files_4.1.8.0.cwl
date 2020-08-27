@@ -97,6 +97,15 @@ inputs:
     doc: |
       Sort order of output file  Default value: coordinate. Possible values: {unsorted,
       queryname, coordinate, duplicate, unknown}
+  - id: use_threading
+    type: boolean?
+    inputBinding:
+      position: 1
+      prefix: --USE_THREADING
+    doc: |
+      Option to create a background thread to encode, compress and write to disk the output
+      file. The threaded version uses about 20% more CPU and decreases runtime by ~20% when
+      writing out a compressed BAM file.  Default value: false. Possible values: {true, false}
   - id: validation_stringency
     type: string?
     inputBinding:
