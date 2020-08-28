@@ -27,6 +27,11 @@ inputs:
     inputBinding:
       prefix: --output_filename
     doc: Output file (bam or sam).
+  - id: min_simplex_reads
+    type: int?
+    inputBinding:
+      prefix: --min_simplex_reads
+    doc: Minimum number of simplex reads to pass filter for consensus reads
 outputs:
   - id: fgbio_postprocessing_simplex_bam
     type: File
