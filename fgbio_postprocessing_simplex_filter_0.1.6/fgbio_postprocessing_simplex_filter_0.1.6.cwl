@@ -74,7 +74,7 @@ requirements:
     ramMin: 2000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/fgbio_postprocessing_simplex_filter_0.1.7:0.1.0'
+    dockerPull: 'mskaccess/fgbio_postprocessing:0.1.0'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
