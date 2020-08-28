@@ -9,14 +9,6 @@ id: fgbio_postprocessing_simplex_filter_0.1.7
 baseCommand:
   - simplex_filter
 inputs:
-  - id: memory_per_job
-    type: int?
-    doc: Memory per job in megabytes
-  - id: memory_overhead
-    type: int?
-    doc: Memory overhead per job in megabytes
-  - id: number_of_threads
-    type: int?
   - id: input_bam
     type: File
     inputBinding:
@@ -47,33 +39,6 @@ outputs:
     secondaryFiles:
       - ^.bai
 label: fgbio_postprocessing_simplex_filter_0.1.7
-arguments:
-  - position: 0
-    valueFrom: |-
-      ${
-         if(inputs.memory_per_job && inputs.memory_overhead) {
-             if(inputs.memory_per_job % 1000 == 0) {
-                 return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
-             }
-             else {
-                 return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
-             }
-         }
-         else if (inputs.memory_per_job && !inputs.memory_overhead){
-             if(inputs.memory_per_job % 1000 == 0) {
-                 return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
-             }
-             else {
-                 return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
-             }
-         }
-         else if(!inputs.memory_per_job && inputs.memory_overhead){
-             return "-Xmx8G"
-         }
-         else {
-             return "-Xmx8G"
-         }
-      }
 requirements:
   - class: ResourceRequirement
     ramMin: 2000
