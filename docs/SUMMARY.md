@@ -40,6 +40,7 @@
         -   [CollectMultipleMetrics v2.21.2](../picard_collectmultiplemetric_2.21.2/README.md)
         -   [FixMateInformation v1.96](../picard_fix_mate_information_1.96/README.md)
         -   [FixMateInformation v2.21.2](../picard_fix_mate_information_2.21.2/README.md)
+        -   [FixMateInformation v4.1.8.1](../picard_fix_mate_information_4.1.8.1/README.md)
         -   [HSmetrics v2.8.1](../picard_hsmetrics_2.8.1/README.md)
         -   [HSmetrics v2.21.2](../picard_hsmetrics_2.21.2/README.md)
         -   [MarkDuplicates v1.96](../picard_mark_duplicates_1.96/README.md)
