@@ -4,7 +4,7 @@
 
 | Tool	| Version	| Location	|
 |---	|---	|---	|
-| picard  	| 2.21.2  	|  https://github.com/broadinstitute/picard/releases/download/2.21.2/picard.jar	|
+| gatk    | 4.1.8.1   |  broadinstitute/gatk:4.1.8.1  |
 
 
 ## CWL
@@ -14,13 +14,13 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner picard_mark_duplicates_2.21.2.cwl example_inputs.yaml
+    > toil-cwl-runner picard_mark_duplicates_4.1.8.1.cwl example_inputs.yaml
 ```
 
 ### Usage
 
 ```bash
-usage: picard_mark_duplicates_2.21.2.cwl [-h]
+usage: picard_mark_duplicates_4.1.8.1.cwl [-h]
 
 positional arguments:
   job_order             Job input json file
