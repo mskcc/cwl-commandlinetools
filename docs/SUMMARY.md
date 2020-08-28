@@ -34,6 +34,7 @@
     -   Picard Tools
         -   [AddOrReplaceReadGroups v1.96](../picard_add_or_replace_read_groups_1.96/README.md)
         -   [AddOrReplaceReadGroups v2.21.2](../picard_add_or_replace_read_groups_2.21.2/README.md)
+        -   [AddOrReplaceReadGroups v4.1.8.1](../picard_add_or_replace_read_groups_4.1.8.1/README.md)
         -   [CollectAlignmentSummaryMetrics v2.8.1](../picard_collect_alignment_summary_metrics_2.8.1/README.md)
         -   [CollectAlignmentSummaryMetrics v2.21.2](../picard_collect_alignment_summary_metrics_2.21.2/README.md)
         -   [CollectMultipleMetrics v2.8.1](../picard_collectmultiplemetric_2.8.1/README.md)
