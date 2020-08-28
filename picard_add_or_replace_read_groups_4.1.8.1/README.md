@@ -82,6 +82,12 @@ optional arguments:
                         Compression level for all compressed files created
                         (e.g. BAM and GELI). Default value:5. This option can
                         be set to 'null' to clear the default value.
+  --use_jdk_deflater    Use the JDK Deflater instead of the Intel Deflater for
+                        writing compressed output
+  --use_jdk_inflater    Whether to create a BAM index when writing a
+                        coordinate-sorted BAM file. Default value:false. This
+                        option can be set to 'null' to clear the default
+                        value. Possible values:{true, false}
   --create_bam_index    Whether to create a BAM index when writing a
                         coordinate-sorted BAM file. Default value:false. This
                         option can be set to 'null' to clear the default
