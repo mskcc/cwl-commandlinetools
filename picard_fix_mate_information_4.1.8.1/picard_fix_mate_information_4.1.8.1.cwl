@@ -21,8 +21,7 @@ inputs:
     type: File
     inputBinding:
       position: 0
-      prefix: I=
-      separate: false
+      prefix: -I
     doc: The input file to fix.  This option may be specified 0 or more times
     secondaryFiles:
       - ^.bai
@@ -33,8 +32,7 @@ inputs:
     type: string?
     inputBinding:
       position: 0
-      prefix: SO=
-      separate: false
+      prefix: -SO
     doc: >-
       Optional sort order to output in. If not supplied OUTPUT is in the same
       order as INPUT.Default value: null. Possible values: {unsorted, queryname,
@@ -43,8 +41,7 @@ inputs:
     type: string?
     inputBinding:
       position: 0
-      prefix: VALIDATION_STRINGENCY=
-      separate: false
+      prefix: --VALIDATION_STRINGENCY
     doc: >-
       Validation stringency for all SAM files read by this program.  Setting
       stringency to SILENT can improve performance when processing a BAM file in
@@ -55,8 +52,7 @@ inputs:
     type: int?
     inputBinding:
       position: 0
-      prefix: COMPRESSION_LEVEL=
-      separate: false
+      prefix: --COMPRESSION_LEVEL
     doc: >-
       Compression level for all compressed files created (e.g. BAM and GELI).
       Default value:5. This option can be set to 'null' to clear the default
@@ -66,7 +62,7 @@ inputs:
     type: boolean?
     inputBinding:
       position: 0
-      prefix: CREATE_INDEX=true
+      prefix: --CREATE_INDEX
     doc: >-
       Whether to create a BAM index when writing a coordinate-sorted BAM file.
       Default value:false. This option can be set to 'null' to clear the default
@@ -125,12 +121,11 @@ arguments:
   - position: 0
     valueFrom: FixMateInformation
   - position: 0
-    prefix: TMP_DIR=
+    prefix: --TMP_DIR
     separate: false
     valueFrom: "$(runtime.tmpdir)"
   - position: 0
-    prefix: O=
-    separate: false
+    prefix: -O
     valueFrom: |-
       ${
           if(inputs.output_file_name){
