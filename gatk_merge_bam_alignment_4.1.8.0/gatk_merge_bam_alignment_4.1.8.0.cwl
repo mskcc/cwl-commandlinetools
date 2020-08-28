@@ -343,7 +343,7 @@ outputs:
             if(inputs.output_file_name){
                 return inputs.output_file_name
             } else {
-                return inputs.unmapped_bam.basename.replace(/.bam|.sam/, '-merged.bam')
+                return inputs.unmapped_bam.basename.replace(/.bam|.sam/, '_merged.bam')
             }
         }
 arguments:
