@@ -80,7 +80,7 @@ inputs:
       prefix: '--max-no-call-fraction'
     doc: Maximum fraction of no-calls in the read after filtering
   - id: min_mean_base_quality
-    type: File?
+    type: int?
     inputBinding:
       position: 0
       prefix: '--min-mean-base-quality'
