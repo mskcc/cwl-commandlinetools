@@ -21,8 +21,7 @@ inputs:
     type: File
     inputBinding:
       position: 0
-      prefix: I=
-      separate: false
+      prefix: -I
     doc: Input file (bam or sam).  Required.
   - id: output_file_name
     type: string?
@@ -32,15 +31,13 @@ inputs:
     type: string
     inputBinding:
       position: 0
-      prefix: M=
-      separate: false
+      prefix: -M
     doc: File to write duplication metrics to Required.
   - id: assume_sort_order
     type: string?
     inputBinding:
       position: 0
-      prefix: ASO=
-      separate: false
+      prefix: -ASO
     doc: >-
       Optional sort order to output in. If not supplied OUTPUT is in the same
       order as INPUT.Default value: null. Possible values: {unsorted, queryname,
@@ -49,15 +46,13 @@ inputs:
     type: string?
     inputBinding:
       position: 0
-      prefix: TMP_DIR=
-      separate: false
+      prefix: --TMP_DIR
     doc: This option may be specified 0 or more times
   - id: validation_stringency
     type: string?
     inputBinding:
       position: 0
-      prefix: VALIDATION_STRINGENCY=
-      separate: false
+      prefix: --VALIDATION_STRINGENCY
     doc: >-
       Validation stringency for all SAM files read by this program.  Setting
       stringency to SILENT can improve performance when processing a BAM file in
@@ -68,8 +63,7 @@ inputs:
     type: int?
     inputBinding:
       position: 0
-      prefix: COMPRESSION_LEVEL=
-      separate: false
+      prefix: --COMPRESSION_LEVEL
     doc: >-
       Compression level for all compressed files created (e.g. BAM and GELI).
       Default value:5. This option can be set to 'null' to clear the default
@@ -136,8 +130,7 @@ inputs:
     type: string?
     inputBinding:
       position: 0
-      prefix: DUPLICATE_SCORING_STRATEGY=
-      separate: false
+      prefix: --DUPLICATE_SCORING_STRATEGY
     doc: >-
       The scoring strategy for choosing the non-duplicate among candidates.
       Default value:SUM_OF_BASE_QUALITIES. This option can be set to 'null' to
@@ -147,8 +140,7 @@ inputs:
     type: int?
     inputBinding:
       position: 0
-      prefix: OPTICAL_DUPLICATE_PIXEL_DISTANCE=
-      separate: false
+      prefix: --OPTICAL_DUPLICATE_PIXEL_DISTANCE
     doc: >-
       The maximum offset between two duplicate clusters in order to consider
       them optical duplicates. The default is appropriate for unpatterned
@@ -191,8 +183,7 @@ arguments:
   - position: 0
     valueFrom: MarkDuplicates
   - position: 0
-    prefix: O=
-    separate: false
+    prefix: -O
     valueFrom: |-
       ${
           if(inputs.output_file_name){
