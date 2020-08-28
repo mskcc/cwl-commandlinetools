@@ -21,8 +21,7 @@ inputs:
     type: File
     inputBinding:
       position: 0
-      prefix: I=
-      separate: false
+      prefix: -I
     doc: Input file ( sam).  Required.
   - id: output_file_name
     type: string?
@@ -31,8 +30,7 @@ inputs:
     type: string?
     inputBinding:
       position: 0
-      prefix: SO=
-      separate: false
+      prefix: -SO
     doc: >-
       Optional sort order to output in. If not supplied OUTPUT is in the same
       order as INPUT.Default value: null. Possible values: {unsorted, queryname,
@@ -41,8 +39,7 @@ inputs:
     type: string
     inputBinding:
       position: 0
-      prefix: RGID=
-      separate: false
+      prefix: --RGID
     doc: >-
       Read Group ID  Default value: 1. This option can be set to 'null' to clear
       the default value  Required
@@ -50,57 +47,49 @@ inputs:
     type: string
     inputBinding:
       position: 0
-      prefix: RGCN=
-      separate: false
+      prefix: --RGCN
     doc: 'Read Group sequencing center name  Default value: null. Required'
   - id: read_group_library
     type: string
     inputBinding:
       position: 0
-      prefix: RGLB=
-      separate: false
+      prefix: --RGLB
     doc: Read Group Library.  Required
   - id: read_group_platform_unit
     type: string
     inputBinding:
       position: 0
-      prefix: RGPU=
-      separate: false
+      prefix: --RGPU
     doc: Read Group platform unit (eg. run barcode)  Required.
   - id: read_group_sample_name
     type: string
     inputBinding:
       position: 0
-      prefix: RGSM=
-      separate: false
+      prefix: --RGSM
     doc: Read Group sample name.  Required
   - id: read_group_sequencing_platform
     type: string
     inputBinding:
       position: 0
-      prefix: RGPL=
-      separate: false
+      prefix: --RGPL
     doc: 'Read Group platform (e.g. illumina, solid)  Required.'
   - id: read_group_description
     type: string?
     inputBinding:
       position: 0
-      prefix: RGDS=
-      separate: false
+      prefix: --RGDS
     doc: 'Read Group description  Default value: null.'
   - id: read_group_run_date
     type: string?
     inputBinding:
       position: 0
-      prefix: RGDT=
-      separate: false
+      prefix: --RGDT
     doc: 'Read Group run date  Default value: null.'
   - id: validation_stringency
     type: string?
     inputBinding:
       position: 0
-      prefix: VALIDATION_STRINGENCY=
-      separate: false
+      prefix: --VALIDATION_STRINGENCY
     doc: >-
       Validation stringency for all SAM files read by this program.  Setting
       stringency to SILENT can improve performance when processing a BAM file in
@@ -111,8 +100,7 @@ inputs:
     type: int?
     inputBinding:
       position: 0
-      prefix: COMPRESSION_LEVEL=
-      separate: false
+      prefix: --COMPRESSION_LEVEL
     doc: >-
       Compression level for all compressed files created (e.g. BAM and GELI).
       Default value:5. This option can be set to 'null' to clear the default
@@ -195,12 +183,10 @@ arguments:
   - position: 0
     valueFrom: AddOrReplaceReadGroups
   - position: 0
-    prefix: TMP_DIR=
-    separate: false
+    prefix: --TMP_DIR
     valueFrom: "$(runtime.tmpdir)"
   - position: 0
-    prefix: O=
-    separate: false
+    prefix: -O
     valueFrom: |-
       ${
           if(inputs.output_file_name)
