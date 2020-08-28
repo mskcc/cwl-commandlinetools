@@ -201,6 +201,9 @@ arguments:
               return inputs.input.basename.replace(/.bam/,'_md.bam')
           }
       }
+  - position: 0
+    prefix: --TMP_DIR
+    valueFrom: $(runtime.tmpdir)
 requirements:
   - class: ResourceRequirement
     ramMin: 17000
