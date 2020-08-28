@@ -1,0 +1,44 @@
+unmapped_bam:
+  class: File
+  path: "/path/to/bam"
+reference:
+  class: File
+  path: "/path/to/reference.fasta"
+aligned_bam:
+  - class: File
+    path: "/path/to/bam"
+output_file_name: null
+add_mate_cigar: null
+add_pg_tag_to_reads: null
+aligned_reads_only: null
+include_duplicates: null
+aligner_proper_pair_flags: null
+attributes_to_remove: null
+attributes_to_retain: null
+attributes_to_reverse: null
+attributes_to_reverse_complement: null
+clip_adapters: null
+clip_overlapping_reads: null
+expected_orientations: null
+hard_clip_overlapping_reads: null
+include_secondary_alignments: null
+is_bisulfite_sequence: null
+jump_size: null
+matching_dictionary_tags: null
+max_insertions_or_deletions: null
+min_unclipped_bases: null
+paired_run: null
+primary_alignment_strategy: null
+read1_aligned_bam: null
+read1_trim: null
+read2_aligned_bam: null
+read2_trim: null
+sort_order: null
+unmap_contaminant_reads: null
+unmapped_read_strategy: null
+validation_stringency: null
+create_index: null
+create_md5_file: null
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null

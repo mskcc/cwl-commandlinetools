@@ -16,6 +16,7 @@
     -   GATK
         -   [ApplyBQSR v4.1.2.0](../gatk_ApplyBQSR_4.1.2.0/README.md)
         -   [BaseRecalibrator v4.1.2.0](../gatk_BaseRecalibrator_4.1.2.0/README.md)
+        -   [MergeBamAlignment v4.1.8.0](../gatk_merge_bam_alignment_4.1.8.0/README.md)
         -   [MergeSamFiles v4.1.8.0](../gatk_merge_sam_files_4.1.8.0/README.md)
         -   [SamToFastq v4.1.8.0](../gatk_sam_to_fastq_4_1_8_0/README.md)
     -   Manta
