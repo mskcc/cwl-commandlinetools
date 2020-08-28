@@ -59,6 +59,44 @@ optional arguments:
                         coordinate-sorted BAM file. Default value:false. This
                         option can be set to 'null' to clear the default
                         value. Possible values:{true, false}
+  --read_name_regex READ_NAME_REGEX
+                        MarkDuplicates can use the tile and cluster positions
+                        to estimate the rate of optical duplication in
+                        addition to the dominant source of duplication, PCR,
+                        to provide a more accurate estimation of library size.
+                        By default (with no READ_NAME_REGEX specified),
+                        MarkDuplicates will attempt to extract coordinates
+                        using a split on ':' (see Note below). Set
+                        READ_NAME_REGEX to 'null' to disable optical duplicate
+                        detection. Note that without optical duplicate counts,
+                        library size estimation will be less accurate. If the
+                        read name does not follow a standard Illumina colon-
+                        separation convention, but does contain tile and x,y
+                        coordinates, a regular expression can be specified to
+                        extract three variables: tile/region, x coordinate and
+                        y coordinate from a read name. The regular expression
+                        must contain three capture groups for the three
+                        variables, in order. It must match the entire read
+                        name. e.g. if field names were separated by semi-colon
+                        (';') this example regex could be specified
+                        (?:.*;)?([0-9]+)[^;]*;([0-9]+)[^;]*;([0-9]+)[^;]*$
+                        Note that if no READ_NAME_REGEX is specified, the read
+                        name is split on ':'. For 5 element names, the 3rd,
+                        4th and 5th elements are assumed to be tile, x and y
+                        values. For 7 element names (CASAVA 1.8), the 5th,
+                        6th, and 7th elements are assumed to be tile, x and y
+                        values.
+  --sorting_collection_size_ratio SORTING_COLLECTION_SIZE_RATIO
+                        This number, plus the maximum RAM available to the
+                        JVM, determine the memory footprint used by some of
+                        the sorting collections. If you are running out of
+                        memory, try reducing this number.
+  --use_jdk_deflater    Use the JDK Deflater instead of the Intel Deflater for
+                        writing compressed output
+  --use_jdk_inflater    Whether to create a BAM index when writing a
+                        coordinate-sorted BAM file. Default value:false. This
+                        option can be set to 'null' to clear the default
+                        value. Possible values:{true, false}
   --duplicate_scoring_strategy DUPLICATE_SCORING_STRATEGY
                         The scoring strategy for choosing the non-duplicate
                         among candidates. Default value:SUM_OF_BASE_QUALITIES.

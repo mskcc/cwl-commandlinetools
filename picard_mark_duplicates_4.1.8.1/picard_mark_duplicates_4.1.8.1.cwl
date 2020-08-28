@@ -79,8 +79,55 @@ inputs:
     type: boolean?
     inputBinding:
       position: 0
-      prefix: CREATE_INDEX=true
-      separate: false
+      prefix: --CREATE_INDEX
+    doc: >-
+      Whether to create a BAM index when writing a coordinate-sorted BAM file.
+      Default value:false. This option can be set to 'null' to clear the default
+      value. Possible values:{true, false}
+  - id: read_name_regex
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: --READ_NAME_REGEX
+    doc: >-
+      MarkDuplicates can use the tile and cluster positions to estimate the rate of
+      optical duplication in addition to the dominant source of duplication, PCR,
+      to provide a more accurate estimation of library size. By default (with no
+      READ_NAME_REGEX specified), MarkDuplicates will attempt to extract coordinates
+      using a split on ':' (see Note below). Set READ_NAME_REGEX to 'null' to
+      disable optical duplicate detection. Note that without optical duplicate
+      counts, library size estimation will be less accurate. If the read name does
+      not follow a standard Illumina colon-separation convention, but does contain
+      tile and x,y coordinates, a regular expression can be specified to extract
+      three variables: tile/region, x coordinate and y coordinate from a read name.
+      The regular expression must contain three capture groups for the three variables,
+      in order. It must match the entire read name. e.g. if field names were separated
+      by semi-colon (';') this example regex could be specified
+      (?:.*;)?([0-9]+)[^;]*;([0-9]+)[^;]*;([0-9]+)[^;]*$ Note that if no
+      READ_NAME_REGEX is specified, the read name is split on ':'. For 5 element names,
+      the 3rd, 4th and 5th elements are assumed to be tile, x and y values. For 7
+      element names (CASAVA 1.8), the 5th, 6th, and 7th elements are assumed to be
+      tile, x and y values.
+  - id: sorting_collection_size_ratio
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: --SORTING_COLLECTION_SIZE_RATIO
+    doc: >-
+      This number, plus the maximum RAM available to the JVM, determine the memory
+      footprint used by some of the sorting collections. If you are running out of memory, try reducing this number.
+  - id: use_jdk_deflater
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: --USE_JDK_DEFLATER
+    doc: >-
+      Use the JDK Deflater instead of the Intel Deflater for writing compressed output
+  - id: use_jdk_inflater
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: --USE_JDK_INFLATER
     doc: >-
       Whether to create a BAM index when writing a coordinate-sorted BAM file.
       Default value:false. This option can be set to 'null' to clear the default
