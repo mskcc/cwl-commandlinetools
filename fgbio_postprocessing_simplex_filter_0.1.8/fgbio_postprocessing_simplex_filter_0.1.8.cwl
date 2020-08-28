@@ -35,7 +35,7 @@ outputs:
             if (inputs.output_file_name){
                 return inputs.output_file_name
             } else {
-                return inputs.input_bam.basename.replace(/.bam/,'_simplex.bam')
+                return inputs.input_bam.basename.replace(/.bam$/,'_simplex.bam')
             }
         }
     secondaryFiles:
