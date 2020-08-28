@@ -38,6 +38,7 @@
         -   [MarkDuplicates v1.96](../picard_mark_duplicates_1.96/README.md)
         -   [MarkDuplicates v2.8.1](../picard_mark_duplicates_2.8.1/README.md)
         -   [MarkDuplicates v2.21.2](../picard_mark_duplicates_2.21.2/README.md)
+        -   [MarkDuplicates v4.1.8.1](../picard_mark_duplicates_4.1.8.1/README.md)
     -   Trim Galore
         -   [v0.6.2](../trim_galore_0.6.2/README.md)
     -   Ubuntu utilites
