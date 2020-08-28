@@ -224,7 +224,7 @@ requirements:
           }
         }"
   - class: DockerRequirement
-    dockerPull: 'aphoid/abra2:2.22'
+    dockerPull: mskaccess/abra:2.22
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
