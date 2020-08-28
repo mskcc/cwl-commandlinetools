@@ -1,0 +1,30 @@
+bam_index: true
+no_edge_complex_indel: true
+consensus_sequence:
+contig_anchor:
+ignore_bad_assembly:
+input_bam:
+  class: File
+  path: "path/to/alignment.bam"
+input_vcf:
+kmer_size:
+maximum_average_depth:
+maximum_mixmatch_rate:
+memory_overhead:
+memory_per_job:
+no_sort:
+number_of_threads:
+output_bam: name_of_realigned_abra.bam
+path_to_abra:
+reference_fasta:
+  class: File
+  path: "/path/to/reference.fasta"
+scoring_gap_alignments:
+soft_clip_contig:
+targets:
+  class: File
+  metadata: {}
+  path: "/path/to/target.bed"
+  secondaryFiles: []
+window_size:
+working_directory:
