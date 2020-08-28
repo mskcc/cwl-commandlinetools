@@ -13,6 +13,7 @@
         -   [CollectDuplexSeqMetrics v1.2.0](../fgbio_collect_duplex_seq_metrics_1.2.0/README.md)
         -   [GroupReadsByUmi v1.2.0](../fgbio_group_reads_by_umi_1.2.0/README.md)
         -   [FastqToBam v1.2.0](../fgbio_fastq_to_bam_1.2.0/README.md)
+        -   [FilterConsensusReads v1.2.0](../fgbio_filter_consensus_reads_1.2.0/README.md)
     -   GATK
         -   [ApplyBQSR v4.1.2.0](../gatk_ApplyBQSR_4.1.2.0/README.md)
         -   [BaseRecalibrator v4.1.2.0](../gatk_BaseRecalibrator_4.1.2.0/README.md)
