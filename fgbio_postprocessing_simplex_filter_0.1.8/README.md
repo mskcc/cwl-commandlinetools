@@ -4,7 +4,7 @@
 
 | Tool  | Version | Location                             |
 | ----- | ------- | ------------------------------------ |
-| fgbio_postprocessing | 0.1.7   | https://github.com/msk-access/fgbio_postprocessing |
+| fgbio_postprocessing | 0.1.8   | https://github.com/msk-access/fgbio_postprocessing |
 
 ## CWL
 
@@ -13,13 +13,13 @@
 -   Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner fgbio_postprocessing_simplex_filter_0.1.7.cwl example_inputs.yaml
+    > toil-cwl-runner fgbio_postprocessing_simplex_filter_0.1.8.cwl example_inputs.yaml
 ```
 
 ## Usage
 
 ```bash
-usage: fgbio_postprocessing_simplex_filter_0.1.7/fgbio_postprocessing_simplex_filter_0.1.7.cwl
+usage: fgbio_postprocessing_simplex_filter_0.1.8/fgbio_postprocessing_simplex_filter_0.1.8.cwl
        [-h] [--memory_per_job MEMORY_PER_JOB]
        [--memory_overhead MEMORY_OVERHEAD]
        [--number_of_threads NUMBER_OF_THREADS] --input_bam INPUT_BAM
