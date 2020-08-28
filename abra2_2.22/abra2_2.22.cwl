@@ -158,7 +158,7 @@ inputs:
       prefix: '--nosort'
     doc: Do not attempt to sort final output
 outputs:
-  - id: realigned_bam
+  - id: abra_realigned_bam
     type:
       - 'null'
       - File
