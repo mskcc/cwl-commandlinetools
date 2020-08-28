@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: fgbio_postprocessing_simplex_filter_0.1.7
+id: fgbio_postprocessing_simplex_filter_0.1.8
 baseCommand:
   - simplex_filter
 inputs:
@@ -14,6 +14,8 @@ inputs:
     inputBinding:
       prefix: --input_bam
     doc: Input file (bam or sam).  Required.
+    secondaryFiles:
+      - ^.bai
   - id: output_file_name
     type: string?
     inputBinding:
@@ -38,7 +40,7 @@ outputs:
         }
     secondaryFiles:
       - ^.bai
-label: fgbio_postprocessing_simplex_filter_0.1.7
+label: fgbio_postprocessing_simplex_filter_0.1.8
 requirements:
   - class: ResourceRequirement
     ramMin: 2000
@@ -63,4 +65,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': fgbio_postprocessing
-    'doap:revision': 0.1.7
+    'doap:revision': 0.1.8
