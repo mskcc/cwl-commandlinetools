@@ -1,4 +1,4 @@
-# CWL for running Fgbio - GroupReadsByUmi
+# CWL for running simplex_filter script from fgbio_postprocessing package
 
 ## Version of tools in docker image
 
