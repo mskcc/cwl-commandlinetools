@@ -76,8 +76,11 @@ inputs:
         prefix: '--json'
     doc: |
          the json format report file name
+    default: "fastp.json"
+        
   - id: html_output_path 
     type: string
+    default: "fastp.html"
     inputBinding:
         prefix: '--html'
     doc: |
@@ -100,7 +103,14 @@ outputs:
     type: File?
     outputBinding:
       glob: $(inputs.read2_output_path)
-
+  - id: unpaired1_output
+    type: File?
+    outputBinding:
+      glob: $(inputs.unpaired1_path)
+  - id: unpaired2_output
+    type: File?
+    outputBinding:
+      glob: $(inputs.unpaired2_path)
 doc: Setup and execute Fastp
 label: fastp_0.20.1
 requirements:
