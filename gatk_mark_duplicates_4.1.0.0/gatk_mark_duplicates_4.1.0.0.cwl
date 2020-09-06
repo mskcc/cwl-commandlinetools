@@ -137,14 +137,14 @@ inputs:
       position: 0
       prefix: '--TAGGING_POLICY'
 outputs:
-  - id: output_md_bam
+  - id: gatk_mark_duplicates_bam
     doc: Output marked duplicate bam
     type: File
     outputBinding:
       glob: '$(inputs.input.basename.replace(''md.bam'', ''bam''))'
     secondaryFiles:
       - ^.bai
-  - id: output_md_metrics
+  - id: gatk_mark_duplicates_metrics
     doc: Output marked duplicate metrics
     type: File
     outputBinding:

@@ -26,7 +26,7 @@ inputs:
       position: 0
       prefix: '--output'
 outputs:
-  - id: interval_files
+  - id: gatk_scatter_intervals_interval_files
     type: 'File[]'
     outputBinding:
       glob: $(inputs.output)/*.interval_list

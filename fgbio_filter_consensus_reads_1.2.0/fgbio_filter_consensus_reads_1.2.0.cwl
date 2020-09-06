@@ -94,7 +94,7 @@ inputs:
       Mask (make N) consensus bases where the AB and BA consensus reads disagree
       (for duplex-sequencing only).
 outputs:
-  - id: filter_consensus_reads_bam
+  - id: fgbio_filter_consensus_reads_bam
     type: File
     outputBinding:
       glob: |-

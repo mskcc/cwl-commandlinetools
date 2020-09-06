@@ -34,15 +34,15 @@ inputs:
     inputBinding:
       position: 4
 outputs:
-  - id: covered_regions
+  - id: waltz_count_reads_covered_regions
     type: File
     outputBinding:
       glob: '*.covered-regions'
-  - id: fragment_sizes
+  - id: waltz_count_reads_fragment_sizes
     type: File
     outputBinding:
       glob: '*.fragment-sizes'
-  - id: read_counts
+  - id: waltz_count_reads_read_counts
     type: File
     outputBinding:
       glob: '*.read-counts'

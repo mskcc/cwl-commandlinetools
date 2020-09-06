@@ -121,7 +121,7 @@ inputs:
       prefix: READ_NAME_REGEX=
       separate: false
 outputs:
-  - id: bam
+  - id: picard_mark_duplicates_bam
     type: File
     outputBinding:
       glob: |-

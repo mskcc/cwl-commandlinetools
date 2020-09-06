@@ -131,7 +131,7 @@ inputs:
       shellQuote: false
     doc: 'Date the run was produced, to insert into the read group header'
 outputs:
-  - id: fastq_to_bam_ubam
+  - id: fgbio_fastq_to_bam_ubam
     type: File
     outputBinding:
       glob: |-

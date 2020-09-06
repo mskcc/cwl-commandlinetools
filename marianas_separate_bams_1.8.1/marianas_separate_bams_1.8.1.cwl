@@ -14,13 +14,13 @@ inputs:
     inputBinding:
       position: 1
 outputs:
-  - id: duplex-bam
+  - id: marianas_separate_bams_duplex_bam
     type: File
     outputBinding:
       glob: '*duplex.bam'
     secondaryFiles:
       - ^.bai
-  - id: simplex-bam
+  - id: marianas_separate_bams_simplex_bam
     type: File
     outputBinding:
       glob: '*simplex.bam'

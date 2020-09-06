@@ -42,7 +42,7 @@ inputs:
       position: 4
       prefix: '--normal-sample'
 outputs:
-  - id: output
+  - id: mutect2_vcf_gz
     type: File?
     outputBinding:
       glob: >-

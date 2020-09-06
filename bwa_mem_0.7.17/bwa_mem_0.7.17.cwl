@@ -239,7 +239,7 @@ inputs:
       prefix: '-R'
     doc: 'STR read group header line such as ''@RG\tID -foo\tSM -bar'' [null]'
 outputs:
-  - id: output_sam
+  - id: bwa_mem_output_sam
     type: File
     outputBinding:
       glob: |-

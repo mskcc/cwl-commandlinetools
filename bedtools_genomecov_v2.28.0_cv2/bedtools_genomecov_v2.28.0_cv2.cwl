@@ -39,7 +39,7 @@ inputs:
       option flag parameter to choose output file format. -bg refers to bedgraph
       format
 outputs:
-  - id: output_file
+  - id: bedtools_genomecove_bedgraph
     type: File
     outputBinding:
       glob: |-
