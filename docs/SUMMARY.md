@@ -16,6 +16,7 @@
         -   [GroupReadsByUmi v1.2.0](../fgbio_group_reads_by_umi_1.2.0/README.md)
         -   [FastqToBam v1.2.0](../fgbio_fastq_to_bam_1.2.0/README.md)
         -   [FilterConsensusReads v1.2.0](../fgbio_filter_consensus_reads_1.2.0/README.md)
+        -   [simplex_filter v0.1.8](../fgbio_postprocessing_simplex_filter_0.1.8/README.md)
     -   GATK
         -   [ApplyBQSR v4.1.2.0](../gatk_ApplyBQSR_4.1.2.0/README.md)
         -   [BaseRecalibrator v4.1.2.0](../gatk_BaseRecalibrator_4.1.2.0/README.md)

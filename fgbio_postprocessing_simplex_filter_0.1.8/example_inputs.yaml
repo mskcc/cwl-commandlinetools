@@ -1,0 +1,2 @@
+input_bam: /path/to/simplex_duplex_fgbio.bam
+output_filename: simplex_filtered.bam
