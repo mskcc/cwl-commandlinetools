@@ -151,7 +151,7 @@ inputs:
       10000. Default value: 10000. This option can be set to 'null' to clear the
       default value.
 outputs:
-  - id: hs_metrics_file
+  - id: picard_hsmetrics_txt
     type: File?
     outputBinding:
       glob: |-

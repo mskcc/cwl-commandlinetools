@@ -96,7 +96,7 @@ inputs:
       Stop after processing N reads, mainly for debugging. Default value: 0.
       This option can be set to 'null' to clear the default value.
 outputs:
-  - id: alignment_metrics
+  - id: picard_collect_alignment_summary_metrics_txt
     type: File
     outputBinding:
       glob: |-

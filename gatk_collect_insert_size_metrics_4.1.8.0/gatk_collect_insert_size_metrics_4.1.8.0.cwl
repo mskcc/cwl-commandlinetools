@@ -126,7 +126,7 @@ inputs:
       Whether to create an MD5 digest for any BAM or FASTQ files created.    Default value:
       false. Possible values: {true, false}
 outputs:
-  - id: insert_size_metrics
+  - id: gatk_collect_insert_size_metrics_txt
     type: File
     outputBinding:
       glob: |-
@@ -137,7 +137,7 @@ outputs:
                 return inputs.input.basename.replace(/.bam/, '_insert_size_metrics.txt')
             }
         }
-  - id: histogram_file_out
+  - id: gatk_collect_insert_size_metrics_histogram_pdf
     type: File
     outputBinding:
       glob: |-

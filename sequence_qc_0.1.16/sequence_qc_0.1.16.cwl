@@ -70,42 +70,42 @@ inputs:
     doc: >-
       Exclude bases with a lower base quality
 outputs:
-  - id: pileup
+  - id: sequence_qc_pileup
     type: File
     outputBinding:
       glob: |-
         ${
             return inputs.sample_id + 'pileup.tsv'
         }
-  - id: noise_positions
+  - id: sequence_qc_noise_positions
     type: File
     outputBinding:
       glob: |-
         ${
             return inputs.sample_id + 'noise_positions.tsv'
         }
-  - id: noise_acgt
+  - id: sequence_qc_noise_acgt
     type: File
     outputBinding:
       glob: |-
         ${
             return inputs.sample_id + 'noise_acgt.tsv'
         }
-  - id: noise_n
+  - id: sequence_qc_noise_n
     type: File
     outputBinding:
       glob: |-
         ${
             return inputs.sample_id + 'noise_n.tsv'
         }
-  - id: noise_del
+  - id: sequence_qc_noise_del
     type: File
     outputBinding:
       glob: |-
         ${
             return inputs.sample_id + 'noise_del.tsv'
         }
-  - id: figures
+  - id: sequence_qc_figures
     type: File
     outputBinding:
       glob: |-

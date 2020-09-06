@@ -204,7 +204,7 @@ inputs:
       position: 0
       prefix: '--use-original-qualities'
 outputs:
-  - id: output
+  - id: gatk_apply_bqsr_bam
     type: File?
     outputBinding:
       glob: '$(inputs.input.basename.replace(''.bam'', '''')).recal.bam'

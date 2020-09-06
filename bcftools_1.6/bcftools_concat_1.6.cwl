@@ -141,7 +141,7 @@ inputs:
         position: 1
 
 outputs:
-  concat_vcf_output_file:
+  bcftools_concat_vcf_output_file:
     type: File
     outputBinding:
       glob: |-

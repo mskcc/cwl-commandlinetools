@@ -136,7 +136,7 @@ inputs:
       Whether to create an MD5 digest for any BAM or FASTQ files created.    Default value:
       false. Possible values: {true, false}
 outputs:
-  - id: alignment_summary_metrics
+  - id: gatk_collect_alignment_summary_metrics_txt
     type: File
     outputBinding:
       glob: |-

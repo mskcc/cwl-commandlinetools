@@ -87,27 +87,27 @@ inputs:
          the html format report file name
 
 outputs:
-  - id: json_output
+  - id: fastp_json_output
     type: File
     outputBinding:
       glob: $(inputs.json_output_path)
-  - id: html_output
+  - id: fastp_html_output
     type: File
     outputBinding:
       glob: $(inputs.html_output_path)
-  - id: read1_output
+  - id: fastp_read1_output
     type: File
     outputBinding:
       glob: $(inputs.read1_output_path)
-  - id: read2_output
+  - id: fastp_read2_output
     type: File?
     outputBinding:
       glob: $(inputs.read2_output_path)
-  - id: unpaired1_output
+  - id: fastp_unpaired1_output
     type: File?
     outputBinding:
       glob: $(inputs.unpaired1_path)
-  - id: unpaired2_output
+  - id: fastp_unpaired2_output
     type: File?
     outputBinding:
       glob: $(inputs.unpaired2_path)

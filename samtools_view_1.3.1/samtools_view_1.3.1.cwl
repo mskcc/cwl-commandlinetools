@@ -197,7 +197,7 @@ inputs:
       position: 0
       prefix: '-O'
 outputs:
-  - id: output_bam
+  - id: samtools_view_bam
     type: File
     outputBinding:
       glob: '$(inputs.input.basename.replace(''sam'', ''bam''))'

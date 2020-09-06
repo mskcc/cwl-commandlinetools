@@ -102,7 +102,7 @@ inputs:
       prefix: SAMPLE_SIZE=
       separate: false
 outputs:
-  - id: hs_metrics_file
+  - id: picard_hsmetrics_txt
     type: File?
     outputBinding:
       glob: |-

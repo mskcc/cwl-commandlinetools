@@ -31,19 +31,19 @@ inputs:
     inputBinding:
       position: 0
 outputs:
-  - id: processed_fastq_1
+  - id: marianas_process_loop_umi_processed_fastq_1
     type: File
     outputBinding:
       glob: '$(inputs.fastq1.basename.replace(''.fastq.gz'', ''_umi-clipped.fastq.gz''))'
-  - id: processed_fastq_2
+  - id: marianas_process_loop_umi_processed_fastq_2
     type: File
     outputBinding:
       glob: '$(inputs.fastq2.basename.replace(''.fastq.gz'', ''_umi-clipped.fastq.gz''))'
-  - id: clipping_info
+  - id: marianas_process_loop_umi_clipping_info
     type: File
     outputBinding:
       glob: info.txt
-  - id: composite_umi_frequencies
+  - id: marianas_process_loop_umi_composite_umi_frequencies
     type: File
     outputBinding:
       glob: composite-umi-frequencies.txt

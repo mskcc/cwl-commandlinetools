@@ -97,7 +97,7 @@ inputs:
       position: 0
       prefix: AS=true
 outputs:
-  - id: bam
+  - id: picard_mark_duplicates_bam
     type: File
     outputBinding:
       glob: '$(inputs.input.basename.replace(/.bam/, ''_md.bam''))'

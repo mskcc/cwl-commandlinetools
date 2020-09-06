@@ -78,7 +78,7 @@ inputs:
       length, otherwise discard reads with UMIs shorter than this length and
       allow for differing UMI lengths.
 outputs:
-  - id: group_reads_by_umi_bam
+  - id: fgbio_group_reads_by_umi_bam
     type: File
     outputBinding:
       glob: |-
@@ -87,7 +87,7 @@ outputs:
                 return inputs.output_file_name;
             return  inputs.input.basename.replace(/.bam/,'_group.bam');
         }
-  - id: group_reads_by_umi_histogram
+  - id: fgbio_group_reads_by_umi_histogram
     type: File
     outputBinding:
       glob: |-

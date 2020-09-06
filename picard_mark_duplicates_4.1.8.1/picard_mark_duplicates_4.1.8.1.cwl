@@ -162,7 +162,7 @@ outputs:
         }
     secondaryFiles:
       - ^.bai
-  - id: picard_mark_duplicates_stats
+  - id: picard_mark_duplicates_metrics
     type: File
     outputBinding:
       glob: |-

@@ -164,7 +164,7 @@ inputs:
       prefix: -y
 
 outputs:
-  output:
+  msisensor_output:
     type: File
     outputBinding:
       glob: |-

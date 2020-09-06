@@ -125,7 +125,7 @@ inputs:
       Control verbosity of logging.  Default value: INFO. Possible values: {ERROR, WARNING,
       INFO, DEBUG}
 outputs:
-  - id: gatk_merge_sam_files_output
+  - id: gatk_merge_sam_files_bam
     type: File
     outputBinding:
       glob: |-

@@ -335,7 +335,7 @@ inputs:
       Whether to create an MD5 digest for any BAM or FASTQ files created.    Default value:
       false. Possible values: {true, false}
 outputs:
-  - id: gatk_merge_bam_alignment_output
+  - id: gatk_merge_bam_alignment_bam
     type: File
     outputBinding:
       glob: |-

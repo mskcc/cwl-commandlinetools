@@ -174,7 +174,7 @@ inputs:
     inputBinding:
       prefix: --retain-fmt
 outputs:
-  output:
+  vcf2maf_maf:
     type: File
     outputBinding:
       glob: |

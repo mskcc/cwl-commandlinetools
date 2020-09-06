@@ -184,7 +184,7 @@ inputs:
   - id: number_of_threads
     type: int?
 outputs:
-  - id: hs_metrics
+  - id: gatk_collect_hs_metrics_txt
     type: File
     outputBinding:
       glob: |-
@@ -195,7 +195,7 @@ outputs:
                 return inputs.input.basename.replace(/.bam/, '_hs_metrics.txt')
             }
         }
-  - id: per_base_coverage_out
+  - id: gatk_collect_hs_metrics_per_base_coverage_txt
     type: File
     outputBinding:
       glob: |-
@@ -206,7 +206,7 @@ outputs:
                 return inputs.input.basename.replace(/.bam/, '_per_base_coverage.txt')
             }
         }
-  - id: per_target_coverage_out
+  - id: gatk_collect_hs_metrics_per_target_coverage_txt
     type: File
     outputBinding:
       glob: |-

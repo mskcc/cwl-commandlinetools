@@ -90,7 +90,7 @@ inputs:
       consensus. If more than this many reads are present in a tag family, the
       family is randomly downsampled to exactly max-reads reads.
 outputs:
-  - id: call_duplex_consensus_reads_bam
+  - id: fgbio_call_duplex_consensus_reads_bam
     type: File
     outputBinding:
       glob: |-

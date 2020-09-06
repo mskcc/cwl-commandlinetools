@@ -74,42 +74,42 @@ inputs:
       prefix: '--mi-tag'
     doc: The output tag for UMI grouping. [Optional].
 outputs:
-  - id: family_size
+  - id: fgbio_collect_duplex_seq_metrics_family_size
     type: File
     outputBinding:
       glob: |-
         ${
             return  inputs.output_prefix + '.family_sizes.txt'
         }
-  - id: duplex_family_size
+  - id: fgbio_collect_duplex_seq_metrics_duplex_family_size
     type: File
     outputBinding:
       glob: |-
         ${
             return  inputs.output_prefix + '.duplex_family_sizes.txt'
         }
-  - id: duplex_yield_metrics
+  - id: fgbio_collect_duplex_seq_metrics_duplex_yield_metrics
     type: File
     outputBinding:
       glob: |-
         ${
             return  inputs.output_prefix + '.duplex_yield_metrics.txt'
         }
-  - id: umi_counts
+  - id: fgbio_collect_duplex_seq_metrics_umi_counts
     type: File
     outputBinding:
       glob: |-
         ${
             return  inputs.output_prefix + '.umi_counts.txt'
         }
-  - id: duplex_qc
+  - id: fgbio_collect_duplex_seq_metrics_duplex_qc
     type: File
     outputBinding:
       glob: |-
         ${
             return  inputs.output_prefix + '.duplex_qc.pdf'
         }
-  - id: duplex_umi_counts
+  - id: fgbio_collect_duplex_seq_metrics_duplex_umi_counts
     type: File
     outputBinding:
       glob: |-

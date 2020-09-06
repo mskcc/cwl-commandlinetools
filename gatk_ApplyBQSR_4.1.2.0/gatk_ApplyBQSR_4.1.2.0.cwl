@@ -230,7 +230,7 @@ inputs:
   - id: number_of_threads
     type: int?
 outputs:
-  - id: output
+  - id: gatk_apply_bqsr_bam
     type: File?
     outputBinding:
       glob: |-
