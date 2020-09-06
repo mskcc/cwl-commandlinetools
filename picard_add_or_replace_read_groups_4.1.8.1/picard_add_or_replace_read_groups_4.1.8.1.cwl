@@ -111,16 +111,14 @@ inputs:
       position: 0
       prefix: --USE_JDK_DEFLATER
     doc: >-
-        Use the JDK Deflater instead of the Intel Deflater for writing compressed output
+      Use the JDK Deflater instead of the Intel Deflater for writing compressed output
   - id: use_jdk_inflater
     type: boolean?
     inputBinding:
       position: 0
       prefix: --USE_JDK_INFLATER
     doc: >-
-      Whether to create a BAM index when writing a coordinate-sorted BAM file.
-      Default value:false. This option can be set to 'null' to clear the default
-      value. Possible values:{true, false}
+      Use the JDK Inflater instead of the Intel Inflater for reading compressed input
   - default: true
     id: create_bam_index
     type: boolean?

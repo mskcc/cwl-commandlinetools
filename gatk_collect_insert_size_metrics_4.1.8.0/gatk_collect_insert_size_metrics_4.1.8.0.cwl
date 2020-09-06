@@ -125,6 +125,20 @@ inputs:
     doc: >-
       Whether to create an MD5 digest for any BAM or FASTQ files created.    Default value:
       false. Possible values: {true, false}
+  - id: use_jdk_deflater
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: --USE_JDK_DEFLATER
+    doc: >-
+      Use the JDK Deflater instead of the Intel Deflater for writing compressed output
+  - id: use_jdk_inflater
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: --USE_JDK_INFLATER
+    doc: >-
+      Use the JDK Inflater instead of the Intel Inflater for reading compressed input
 outputs:
   - id: gatk_collect_insert_size_metrics_txt
     type: File

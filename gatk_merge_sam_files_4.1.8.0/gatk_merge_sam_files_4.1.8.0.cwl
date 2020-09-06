@@ -124,6 +124,20 @@ inputs:
     doc: |
       Control verbosity of logging.  Default value: INFO. Possible values: {ERROR, WARNING,
       INFO, DEBUG}
+  - id: use_jdk_deflater
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: --USE_JDK_DEFLATER
+    doc: >-
+      Use the JDK Deflater instead of the Intel Deflater for writing compressed output
+  - id: use_jdk_inflater
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: --USE_JDK_INFLATER
+    doc: >-
+      Use the JDK Inflater instead of the Intel Inflater for reading compressed input
 outputs:
   - id: gatk_merge_sam_files_bam
     type: File
