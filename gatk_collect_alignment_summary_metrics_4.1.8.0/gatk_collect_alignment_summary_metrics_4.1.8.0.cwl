@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: gatk_collect_alignment_summary_metrics_4_1_3_0
+id: gatk_collect_alignment_summary_metrics_4.1.8.0
 label: GATK-CollectAlignmentSummaryMetrics
 baseCommand:
   - gatk
