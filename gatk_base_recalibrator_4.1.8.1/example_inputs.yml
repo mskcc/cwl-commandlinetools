@@ -1,0 +1,58 @@
+input:
+  class: File
+  metadata: {}
+  path: input.bam
+reference:
+  class: File
+  metadata: {}
+  path: ref.fasta
+known_sites_1:
+  class: File
+  path: dbsnp_137_14_16.b37.vcf
+known_sites_2:
+  class: File
+  path: Mills_and_1000G_gold_standard-14_16.indels.b37.vcf
+QUIET: 
+add_output_sam_program_record: 
+add_output_vcf_command_line: 
+arguments_file: 
+binary_tag_name: 
+bqsr_baq_gap_open_penalty: 
+cloud-index-prefetch-buffer: 
+cloud_prefetch_buffer: 
+create_output_bam_index: 
+create_output_bam_md5: 
+create_output_variant_index: 
+create_output_variant_md5: 
+default_base_qualities: 
+deletions_default_quality: 
+disable_bam_index_caching: 
+disable_read_filter: 
+disable_sequence_dictionary_validation: 
+exclude_intervals: 
+gatk_config_file: 
+gcs_max_retries: 
+gcs_project_for_requester_pays: 
+indels_context_size: 
+insertions_default_quality: 
+interval_exclusion_padding: 
+interval_merging_rule: 
+interval_padding: 
+interval_set_rule: 
+intervals: 
+lenient: 
+low_quality_tail: 
+maximum_cycle_value: 
+memory_overhead: 
+memory_per_job: 
+mismatches_context_size: 
+mismatches_default_quality: 
+number_of_threads: 
+preserve_qscores_less_than: 
+quantizing_levels: 
+read_filter: 
+read_index: 
+seconds_between_progress_updates: 
+sequence_dictionary: 
+sites_only_vcf_output: 
+use_original_qualities: 

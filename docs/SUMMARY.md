@@ -19,7 +19,9 @@
         -   [simplex_filter v0.1.8](../fgbio_postprocessing_simplex_filter_0.1.8/README.md)
     -   GATK
         -   [ApplyBQSR v4.1.2.0](../gatk_ApplyBQSR_4.1.2.0/README.md)
+        -   [ApplyBQSR v4.1.8.1](../gatk_apply_bqsr_4.1.8.1/README.md)
         -   [BaseRecalibrator v4.1.2.0](../gatk_BaseRecalibrator_4.1.2.0/README.md)
+        -   [BaseRecalibrator v4.1.8.1](../gatk_base_recalibrator_4.1.8.1/README.md)
         -   [MergeBamAlignment v4.1.8.0](../gatk_merge_bam_alignment_4.1.8.0/README.md)
         -   [MergeSamFiles v4.1.8.0](../gatk_merge_sam_files_4.1.8.0/README.md)
         -   [SamToFastq v4.1.8.0](../gatk_sam_to_fastq_4_1_8_0/README.md)
