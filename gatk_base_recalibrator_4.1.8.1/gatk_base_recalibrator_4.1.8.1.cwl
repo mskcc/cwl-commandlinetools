@@ -116,10 +116,15 @@ inputs:
       position: 10
       prefix: '--disable-bam-index-caching'
   - id: disable_read_filter
-    type: string?
+    type:
+      - 'null'
+      - type: array
+        items: string
+        inputBinding:
+          prefix: '--disable-read-filter'
     inputBinding:
       position: 10
-      prefix: '--disable-read-filter'
+    doc: Read filters to be disabled before analysis
   - id: disable_sequence_dictionary_validation
     type: boolean?
     inputBinding:
