@@ -21,11 +21,11 @@
 
 ```bash
 #Using CWLTOOL
-> cwltool --singularity --non-strict gatk_apply_bqsr_4.1.2.0.cwl inputs.yaml
+> cwltool --singularity --non-strict gatk_apply_bqsr_4.1.8.1.cwl inputs.yaml
 
 #Using toil-cwl-runner
 > mkdir run_directory
-> toil-cwl-runner --singularity --logFile path/to/run_directory/cwltoil.log  --jobStore path/to/jobStore --batchSystem lsf --workDir /path/to/run_directory --outdir /path/to/run_directory --writeLogs /path/to/run_directory --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 gatk_apply_bqsr_4.1.2.0.cwl inputs.yaml > file.stdout 2> file.stderr &
+> toil-cwl-runner --singularity --logFile path/to/run_directory/cwltoil.log  --jobStore path/to/jobStore --batchSystem lsf --workDir /path/to/run_directory --outdir /path/to/run_directory --writeLogs /path/to/run_directory --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 gatk_apply_bqsr_4.1.8.1.cwl inputs.yaml > file.stdout 2> file.stderr &
 ```
 
 ## Usage
