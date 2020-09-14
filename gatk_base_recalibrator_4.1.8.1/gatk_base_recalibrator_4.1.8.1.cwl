@@ -17,16 +17,19 @@ inputs:
     doc: BAM/SAM file containing reads
     secondaryFiles:
       - ^.bai
-  - id: known_sites_1
-    type: File
+  - id: known_sites
+    type:
+      type: array
+      items: File
+      inputBinding:
+        prefix: '--known-sites'
     inputBinding:
       position: 3
-      prefix: '--known-sites'
     doc: >-
       One or more databases of known polymorphic sites used to exclude regions
       around known polymorphisms from analysis
     secondaryFiles:
-      - .idx
+      - ^.idx
   - id: reference
     type: File
     inputBinding:
@@ -163,7 +166,7 @@ inputs:
       position: 10
       prefix: '--interval-merging-rule'
   - id: interval_padding
-    type: string?
+    type: int?
     inputBinding:
       position: 10
       prefix: '--interval-padding'
@@ -257,13 +260,6 @@ inputs:
     type: int?
   - id: memory_overhead
     type: int?
-  - id: known_sites_2
-    type: File?
-    inputBinding:
-      position: 3
-      prefix: '--known-sites'
-    secondaryFiles:
-      - .idx
 outputs:
   - id: gatk_base_recalibrator_output
     type: File
