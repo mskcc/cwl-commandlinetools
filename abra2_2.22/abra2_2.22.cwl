@@ -165,8 +165,7 @@ outputs:
       - type: array
         items: File
     outputBinding:
-      glob: |
-        *abra.bam
+      glob: '*abra.bam'
     secondaryFiles:
       - ^.bai
 label: abra2_2.22
