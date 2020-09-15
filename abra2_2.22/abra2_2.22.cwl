@@ -44,7 +44,7 @@ inputs:
       prefix: '--ref'
     doc: Genome reference location
     secondaryFiles:
-      - ^.fai
+      - ^.fasta.fai
   - id: targets
     type: File
     inputBinding:
