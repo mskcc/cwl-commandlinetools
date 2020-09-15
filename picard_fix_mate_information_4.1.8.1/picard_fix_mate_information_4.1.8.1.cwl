@@ -136,7 +136,6 @@ arguments:
     valueFrom: FixMateInformation
   - position: 0
     prefix: --TMP_DIR
-    separate: false
     valueFrom: "$(runtime.tmpdir)"
   - position: 0
     prefix: -O
