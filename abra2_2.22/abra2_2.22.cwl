@@ -44,7 +44,7 @@ inputs:
       prefix: '--ref'
     doc: Genome reference location
     secondaryFiles:
-      - ^.fasta.fai
+      - .fai
   - id: targets
     type: File
     inputBinding:
@@ -223,7 +223,7 @@ requirements:
           }
         }"
   - class: DockerRequirement
-    dockerPull: mskaccess/abra:2.22
+    dockerPull: mskaccess/abra2:2.22
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
