@@ -44,7 +44,7 @@ inputs:
       prefix: '--ref'
     doc: Genome reference location
     secondaryFiles:
-      - ^.fai
+      - .fai
   - id: targets
     type: File
     inputBinding:
@@ -165,8 +165,7 @@ outputs:
       - type: array
         items: File
     outputBinding:
-      glob: |
-        *abra.bam
+      glob: '*abra.bam'
     secondaryFiles:
       - ^.bai
 label: abra2_2.22
@@ -224,7 +223,7 @@ requirements:
           }
         }"
   - class: DockerRequirement
-    dockerPull: mskaccess/abra:2.22
+    dockerPull: mskaccess/abra2:2.22
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
