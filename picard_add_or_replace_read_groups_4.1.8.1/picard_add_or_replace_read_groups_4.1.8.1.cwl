@@ -124,7 +124,7 @@ inputs:
     type: boolean?
     inputBinding:
       position: 0
-      prefix: CREATE_INDEX=true
+      prefix: --CREATE_INDEX
     doc: >-
       Whether to create a BAM index when writing a coordinate-sorted BAM file.
       Default value:false. This option can be set to 'null' to clear the default
