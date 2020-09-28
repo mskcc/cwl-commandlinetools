@@ -271,15 +271,15 @@ arguments:
     valueFrom: |-
         ${
             if (inputs.sample_id) {
-                var rg_id = "@RG    ID:$(inputs.sample_id)  SM:$(inputs.sample_id)";
+                var rg_id = "@RG\tID:$(inputs.sample_id)\tSM:$(inputs.sample_id)";
                 if (inputs.library_id) {
-                    rg_id += "  LB:$(inputs.library_id) ";
+                    rg_id += "\tLB:$(inputs.library_id)";
                 } if (inputs.platform) {
-                    rg_id += "  PL:$(inputs.platform)   ";
+                    rg_id += "\tPL:$(inputs.platform)";
                 } if (inputs.platform_unit) {
-                    rg_id += "  PU:$(inputs.platform_unit)  ";
+                    rg_id += "\tPU:$(inputs.platform_unit)";
                 } if (inputs.center_name) {
-                    rg_id += "  CN:$(inputs.center_name)    ";
+                    rg_id += "\tCN:$(inputs.center_name)";
                 }
                 return rg_id
             } else {
