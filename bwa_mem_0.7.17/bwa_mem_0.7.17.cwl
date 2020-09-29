@@ -267,25 +267,25 @@ outputs:
         }
 arguments:
   - position: 0
-    prefix: -R
+    prefix: '-R'
     valueFrom: |-
-        ${
-            if (inputs.sample_id) {
-                var rg_id = "@RG\tID:$(inputs.sample_id)\tSM:$(inputs.sample_id)";
-                if (inputs.library_id) {
-                    rg_id += "\tLB:$(inputs.library_id)";
-                } if (inputs.platform) {
-                    rg_id += "\tPL:$(inputs.platform)";
-                } if (inputs.platform_unit) {
-                    rg_id += "\tPU:$(inputs.platform_unit)";
-                } if (inputs.center_name) {
-                    rg_id += "\tCN:$(inputs.center_name)";
-                }
-                return rg_id
-            } else {
-                return inputs.R
-            }
-        }
+      ${
+          if (inputs.sample_id) {
+              var rg_id = "@RG\\tID:" + inputs.sample_id + "\\tSM:" + inputs.sample_id;
+              if (inputs.library_id) {
+                  rg_id += "\\tLB:" + inputs.library_id;
+              } if (inputs.platform) {
+                  rg_id += "\\tPL:" + inputs.platform;
+              } if (inputs.platform_unit) {
+                  rg_id += "\\tPU:" + inputs.platform_unit;
+              } if (inputs.center_name) {
+                  rg_id += "\\tCN:" + inputs.center_name;
+              }
+              return rg_id
+          } else {
+              return inputs.R
+          }
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 32000

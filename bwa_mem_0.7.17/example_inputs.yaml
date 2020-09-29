@@ -1,10 +1,9 @@
 reads:
 - class: File
-  path: "path/to/fastq_R1.fastq"
+  path: "/Users/johnsoni/Desktop/test_fastq_to_bam/fastq/test_R1_001.fastq.gz"
 - class: File
-  path: "path/to/fastq_R2.fastq"
-reference_fasta:
+  path: "/Users/johnsoni/Desktop/test_fastq_to_bam/fastq/test_R2_001.fastq.gz"
+reference:
   class: File
-  path: "/path/to/reference.fasta"
+  path: "/Users/johnsoni/Desktop/test_fastq_to_bam/reference/chr14_chr16.fasta"
 sample_id: test_sample_id
-lane_id: test_lane_id
