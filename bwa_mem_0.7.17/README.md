@@ -1,4 +1,4 @@
-# CWL and Dockerfile for running ABRA2
+# CWL and Dockerfile for running BWA MEM
 
 ## Version of tools in docker image (/container/Dockerfile)
 

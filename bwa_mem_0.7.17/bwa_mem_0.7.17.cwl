@@ -6,6 +6,14 @@ baseCommand:
   - bwa
   - mem
 inputs:
+  - id: memory_per_job
+    type: int?
+    doc: Memory per job in megabytes
+  - id: memory_overhead
+    type: int?
+    doc: Memory overhead per job in megabytes
+  - id: number_of_threads
+    type: int?
   - id: reads
     type: 'File[]'
     inputBinding:
@@ -234,12 +242,6 @@ inputs:
     inputBinding:
       position: 0
       prefix: '-M'
-  - id: t
-    type: int?
-    inputBinding:
-      position: 0
-      prefix: '-t'
-    doc: Number of threads
   - id: R
     type: string?
     doc: 'STR read group header line such as ''@RG\tID -foo\tSM -bar'' [null]'
@@ -267,6 +269,9 @@ outputs:
         }
 arguments:
   - position: 0
+    prefix: '-t'
+    valueFrom: $(runtime.cores)
+  - position: 0
     prefix: '-R'
     valueFrom: |-
       ${
@@ -288,8 +293,28 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 32000
-    coresMin: 4
+    ramMin: "${
+      if(inputs.memory_per_job && inputs.memory_overhead) {
+        return inputs.memory_per_job + inputs.memory_overhead
+      }
+      else if (inputs.memory_per_job && !inputs.memory_overhead){
+        return inputs.memory_per_job + 2000
+      }
+      else if(!inputs.memory_per_job && inputs.memory_overhead){
+        return 32000 + inputs.memory_overhead
+      }
+      else {
+        return 32000
+      }
+    }"
+    coresMin: "${
+          if (inputs.number_of_threads) {
+            return inputs.number_of_threads
+          }
+          else {
+            return 16
+          }
+        }"
   - class: DockerRequirement
     dockerPull: 'mskaccess/bwa_mem_0.7.17:0.1.0'
   - class: InlineJavascriptRequirement
@@ -299,3 +324,21 @@ stdout: |-
       return inputs.output;
     return inputs.reads[0].basename.replace(/(fastq.gz)|(fq.gz)/, 'sam');
   }
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:shahr2@mskcc.org'
+        'foaf:name': Ronak Shah
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
+        'foaf:name': Ian Johnson
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'doap:release':
+  - class: 'doap:Version'
+    'doap:name': bwa
+    'doap:revision': 0.7.17
