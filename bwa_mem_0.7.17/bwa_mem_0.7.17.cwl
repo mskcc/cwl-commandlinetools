@@ -1,7 +1,9 @@
 class: CommandLineTool
 cwlVersion: v1.0
 $namespaces:
-  sbg: 'https://www.sevenbridges.com/'
+  dct: 'http://purl.org/dc/terms/'
+  doap: 'http://usefulinc.com/ns/doap#'
+  foaf: 'http://xmlns.com/foaf/0.1/'
 baseCommand:
   - bwa
   - mem
@@ -267,6 +269,32 @@ outputs:
             return inputs.output;
           return inputs.reads[0].basename.replace(/(fastq.gz)|(fq.gz)/, 'sam');
         }
+doc: >-
+  bwa mem [-aCHMpP] [-t nThreads] [-k minSeedLen] [-w bandWidth] [-d zDropoff]
+  [-r seedSplitRatio] [-c maxOcc] [-A matchScore] [-B mmPenalty] [-O gapOpenPen]
+  [-E gapExtPen] [-L clipPen] [-U unpairPen] [-R RGline] [-v verboseLevel]
+  db.prefix reads.fq [mates.fq]
+
+  Align 70bp-1Mbp query sequences with the BWA-MEM algorithm. Briefly, the
+  algorithm works by seeding alignments with maximal exact matches (MEMs) and
+  then extending seeds with the affine-gap Smith-Waterman algorithm (SW).
+
+
+  If mates.fq file is absent and option -p is not set, this command regards
+  input reads are single-end. If mates.fq is present, this command assumes the
+  i-th read in reads.fq and the i-th read in mates.fq constitute a read pair. If
+  -p is used, the command assumes the 2i-th and the (2i+1)-th read in reads.fq
+  constitute a read pair (such input file is said to be interleaved). In this
+  case, mates.fq is ignored. In the paired-end mode, the mem command will infer
+  the read orientation and the insert size distribution from a batch of reads.
+
+
+  The BWA-MEM algorithm performs local alignment. It may produce multiple
+  primary alignments for different part of a query sequence. This is a crucial
+  feature for long sequences. However, some tools such as Picard’s
+  markDuplicates does not work with split alignments. One may consider to use
+  option -M to flag shorter split hits as secondary.
+label: bwa_mem_0.7.17
 arguments:
   - position: 0
     prefix: '-t'
@@ -293,28 +321,16 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: "${
-      if(inputs.memory_per_job && inputs.memory_overhead) {
-        return inputs.memory_per_job + inputs.memory_overhead
-      }
-      else if (inputs.memory_per_job && !inputs.memory_overhead){
-        return inputs.memory_per_job + 2000
-      }
-      else if(!inputs.memory_per_job && inputs.memory_overhead){
-        return 32000 + inputs.memory_overhead
-      }
-      else {
-        return 32000
-      }
-    }"
-    coresMin: "${
-          if (inputs.number_of_threads) {
-            return inputs.number_of_threads
-          }
-          else {
-            return 16
-          }
-        }"
+    ramMin: >-
+      ${ if(inputs.memory_per_job && inputs.memory_overhead) { return
+      inputs.memory_per_job + inputs.memory_overhead } else if
+      (inputs.memory_per_job && !inputs.memory_overhead){ return
+      inputs.memory_per_job + 2000 } else if(!inputs.memory_per_job &&
+      inputs.memory_overhead){ return 32000 + inputs.memory_overhead } else {
+      return 32000 } }
+    coresMin: >-
+      ${ if (inputs.number_of_threads) { return inputs.number_of_threads } else
+      { return 16 } }
   - class: DockerRequirement
     dockerPull: 'mskaccess/bwa_mem_0.7.17:0.1.0'
   - class: InlineJavascriptRequirement

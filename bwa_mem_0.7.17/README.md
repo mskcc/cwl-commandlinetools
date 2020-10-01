@@ -2,18 +2,18 @@
 
 ## Version of tools in docker image (/container/Dockerfile)
 
-| Tool	| Version	| Location	|
-|---	|---	|---	|
-| ubuntu  	| 16.04  	|  -	|
-| BWA  	| 0.7.17	|  https://github.com/lh3/bwa/releases/tag/v0.7.17	|
+| Tool   | Version | Location                                        |
+| ------ | ------- | ----------------------------------------------- |
+| ubuntu | 16.04   | -                                               |
+| BWA    | 0.7.17  | https://github.com/lh3/bwa/releases/tag/v0.7.17 |
 
 [![](https://images.microbadger.com/badges/version/mskaccess/bwa_mem_0.7.17.svg)](https://microbadger.com/images/mskaccess/bwa_mem_0.7.17 "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/mskaccess/bwa_mem_0.7.17.svg)](https://microbadger.com/images/mskaccess/bwa_mem_0.7.17 "Get your own image badge on microbadger.com")
 
 ## CWL
 
-- CWL specification 1.0
-- Use example_inputs.yaml to see the inputs to the cwl
-- Example Command using [toil](https://toil.readthedocs.io):
+-   CWL specification 1.0
+-   Use example_inputs.yaml to see the inputs to the cwl
+-   Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
     > toil-cwl-runner bwa_mem_0.7.17.cwl example_inputs.yaml
@@ -32,27 +32,52 @@
 ### Usage
 
 ```
-usage: bwa_mem_0.7.17/bwa_mem_0.7.17.cwl [-h] --reads READS --reference
-                                         REFERENCE --sample_id SAMPLE_ID
-                                         [--lane_id LANE_ID] [-A A] [-B B]
-                                         [-C] [-E E] [-L L] [-M] [-O O] [-P]
-                                         [-S] [-T T] [-U U] [-a] [-c C] [-d D]
-                                         [-k K] [-K K] [--output OUTPUT] [-p]
-                                         [-r R] [-v V] [-w W] [-y Y] [-D D]
-                                         [-W W] [-m M] [-e] [-x X] [-j J]
-                                         [--he HE] [-V] [-Y] [-I I] [-t T]
-                                         [-R R]
-                                         [job_order]
+usage: bwa_mem_0.7.17.cwl [-h] [--memory_per_job MEMORY_PER_JOB]
+                          [--memory_overhead MEMORY_OVERHEAD]
+                          [--number_of_threads NUMBER_OF_THREADS] --reads
+                          READS --reference REFERENCE [-A A] [-B B] [-C]
+                          [-E E] [-L L] [-M] [-O O] [-P] [-S] [-T T] [-U U]
+                          [-a] [-c C] [-d D] [-k K] [-K K] [--output OUTPUT]
+                          [-p] [-r R] [-v V] [-w W] [-y Y] [-D D] [-W W]
+                          [-m M] [-e] [-x X] [-j J] [--he HE] [-V] [-Y] [-I I]
+                          [-R R] [--sample_id SAMPLE_ID] [--lane_id LANE_ID]
+                          [--platform PLATFORM]
+                          [--platform_unit PLATFORM_UNIT]
+                          [--center_name CENTER_NAME]
+                          [--library_id LIBRARY_ID]
+                          [job_order]
+
+bwa mem [-aCHMpP] [-t nThreads] [-k minSeedLen] [-w bandWidth] [-d zDropoff]
+[-r seedSplitRatio] [-c maxOcc] [-A matchScore] [-B mmPenalty] [-O gapOpenPen]
+[-E gapExtPen] [-L clipPen] [-U unpairPen] [-R RGline] [-v verboseLevel]
+db.prefix reads.fq [mates.fq] Align 70bp-1Mbp query sequences with the BWA-MEM
+algorithm. Briefly, the algorithm works by seeding alignments with maximal
+exact matches (MEMs) and then extending seeds with the affine-gap Smith-
+Waterman algorithm (SW). If mates.fq file is absent and option -p is not set,
+this command regards input reads are single-end. If mates.fq is present, this
+command assumes the i-th read in reads.fq and the i-th read in mates.fq
+constitute a read pair. If -p is used, the command assumes the 2i-th and the
+(2i+1)-th read in reads.fq constitute a read pair (such input file is said to
+be interleaved). In this case, mates.fq is ignored. In the paired-end mode,
+the mem command will infer the read orientation and the insert size
+distribution from a batch of reads. The BWA-MEM algorithm performs local
+alignment. It may produce multiple primary alignments for different part of a
+query sequence. This is a crucial feature for long sequences. However, some
+tools such as Picard’s markDuplicates does not work with split alignments. One
+may consider to use option -M to flag shorter split hits as secondary.
 
 positional arguments:
   job_order             Job input json file
 
 optional arguments:
   -h, --help            show this help message and exit
+  --memory_per_job MEMORY_PER_JOB
+                        Memory per job in megabytes
+  --memory_overhead MEMORY_OVERHEAD
+                        Memory overhead per job in megabytes
+  --number_of_threads NUMBER_OF_THREADS
   --reads READS
   --reference REFERENCE
-  --sample_id SAMPLE_ID
-  --lane_id LANE_ID
   -A A                  score for a sequence match, which scales options
                         -TdBOELU unless overridden [1]
   -B B                  penalty for a mismatch [4]
@@ -100,7 +125,12 @@ optional arguments:
   -V                    output the reference FASTA header in the XR tag
   -Y                    use soft clipping for supplementary alignments
   -I I
-  -t T                  Number of threads
   -R R                  STR read group header line such as '@RG\tID -foo\tSM
                         -bar' [null]
+  --sample_id SAMPLE_ID
+  --lane_id LANE_ID
+  --platform PLATFORM
+  --platform_unit PLATFORM_UNIT
+  --center_name CENTER_NAME
+  --library_id LIBRARY_ID
 ```
