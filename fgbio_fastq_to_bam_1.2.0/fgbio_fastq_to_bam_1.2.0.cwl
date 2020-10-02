@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: fgbio_fastq_to_bam_1.2.0
+id: fgbio_fastq_to_bam_1_2_0
 baseCommand:
   - fgbio
 inputs:
@@ -169,7 +169,6 @@ doc: >-
 label: fgbio_fastq_to_bam_1.2.0
 arguments:
   - position: 0
-    prefix: ''
     valueFrom: |-
       ${
         if(inputs.memory_per_job && inputs.memory_overhead) {
