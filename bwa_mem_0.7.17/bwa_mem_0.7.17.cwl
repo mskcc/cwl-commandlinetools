@@ -4,6 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 baseCommand:
   - bwa
   - mem
@@ -202,14 +203,13 @@ inputs:
       intractg: -B9 -O16 -L5  (intra-species contigs to ref)
   - id: H
     type:
-      - File?
-      - string?
+      - boolean?
     inputBinding:
       position: 0
       prefix: '-H'
     doc: >-
-      if there are <INT hits with score >80% of the max score, output all in XA
-      [5,200]
+      Use hard clipping ’H’ in the SAM output. This option may dramatically
+      reduce the redundancy of output when mapping long contig or BAC sequences
   - id: j
     type: File?
     inputBinding:
