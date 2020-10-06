@@ -18,6 +18,11 @@ inputs:
     doc: Memory overhead per job in megabytes
   - id: number_of_threads
     type: int?
+  - id: fastq
+    type: string?
+    doc: >-
+      Output FASTQ file (single-end fastq or, if paired, first end of the pair
+      FASTQ)
   - id: input
     type: File
     inputBinding:
