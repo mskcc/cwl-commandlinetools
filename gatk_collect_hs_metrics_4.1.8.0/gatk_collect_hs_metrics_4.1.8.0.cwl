@@ -6,7 +6,6 @@ $namespaces:
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
 id: gatk_collect_hs_metrics_4_1_8_0
-label: GATK-CollectHsMetrics
 baseCommand:
   - gatk
   - CollectHsMetrics
@@ -15,133 +14,138 @@ inputs:
     type: File
     inputBinding:
       position: 0
-      prefix: -I
+      prefix: '-I'
     doc: An aligned SAM or BAM file.  Required.
   - id: bait_intervals
     type: File
     inputBinding:
       position: 0
-      prefix: --BAIT_INTERVALS
+      prefix: '--BAIT_INTERVALS'
     doc: >-
-      An interval list file that contains the locations of the baits used.  This argument must
-      be specified at least once. Required.
+      An interval list file that contains the locations of the baits used.  This
+      argument must be specified at least once. Required.
   - id: target_intervals
     type: File
     inputBinding:
       position: 0
-      prefix: --TARGET_INTERVALS
+      prefix: '--TARGET_INTERVALS'
     doc: >-
-      An interval list file that contains the locations of the targets.  This argument must be
-      specified at least once. Required.
+      An interval list file that contains the locations of the targets.  This
+      argument must be specified at least once. Required.
   - id: output_file_name
     type: string?
     doc: The output file to write the metrics to.  Required.
   - id: per_base_coverage
     type: string?
     doc: >-
-      An optional file to output per base coverage information to. The per-base file contains
-      one line per target base and can grow very large. It is not recommended for use with large
-      target sets.  Default value: null.
+      An optional file to output per base coverage information to. The per-base
+      file contains one line per target base and can grow very large. It is not
+      recommended for use with large target sets.  Default value: null.
   - id: per_target_coverage
     type: string?
     doc: >-
-      An optional file to output per target coverage information to.  Default value: null.
+      An optional file to output per target coverage information to.  Default
+      value: null.
   - id: theoretical_sensitivity_output
     type: string?
     inputBinding:
       position: 0
-      prefix: --THEORETICAL_SENSITIVITY_OUTPUT
+      prefix: '--THEORETICAL_SENSITIVITY_OUTPUT'
     doc: >-
-      Output for Theoretical Sensitivity metrics where the allele fractions are provided by the
-      ALLELE_FRACTION argument.  Default value: null.
+      Output for Theoretical Sensitivity metrics where the allele fractions are
+      provided by the ALLELE_FRACTION argument.  Default value: null.
   - id: allele_fraction
     type: float?
     inputBinding:
       position: 0
-      prefix: --ALLELE_FRACTION
+      prefix: '--ALLELE_FRACTION'
     doc: >-
-      Allele fraction for which to calculate theoretical sensitivity.  This argument may be
-      specified 0 or more times. Default value: [0.001, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.3,
-      0.5].
+      Allele fraction for which to calculate theoretical sensitivity.  This
+      argument may be specified 0 or more times. Default value: [0.001, 0.005,
+      0.01, 0.02, 0.05, 0.1, 0.2, 0.3, 0.5].
   - id: bait_set_name
     type: string?
     inputBinding:
       position: 0
-      prefix: --BAIT_SET_NAME
+      prefix: '--BAIT_SET_NAME'
     doc: >-
-      Bait set name. If not provided it is inferred from the filename of the bait intervals.
-      Default value: null.
+      Bait set name. If not provided it is inferred from the filename of the
+      bait intervals. Default value: null.
   - id: clip_overlapping_reads
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --CLIP_OVERLAPPING_READS
+      prefix: '--CLIP_OVERLAPPING_READS'
     doc: >-
-      True if we are to clip overlapping reads, false otherwise.  Default value: true. Possible
-      values: {true, false}
+      True if we are to clip overlapping reads, false otherwise.  Default value:
+      true. Possible values: {true, false}
   - id: coverage_cap
     type: int?
     inputBinding:
       position: 0
-      prefix: --COVERAGE_CAP
+      prefix: '--COVERAGE_CAP'
     doc: >-
-      Parameter to set a max coverage limit for Theoretical Sensitivity calculations. Default is
-      200.  Default value: 200.
+      Parameter to set a max coverage limit for Theoretical Sensitivity
+      calculations. Default is 200.  Default value: 200.
   - id: include_indels
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --INCLUDE_INDELS
+      prefix: '--INCLUDE_INDELS'
     doc: >-
-      If true count inserted bases as on target and deleted bases as covered by a read.  Default
-      value: false. Possible values: {true, false}
+      If true count inserted bases as on target and deleted bases as covered by
+      a read.  Default value: false. Possible values: {true, false}
   - id: minimum_base_quality
     type: int?
     inputBinding:
       position: 0
-      prefix: --MINIMUM_BASE_QUALITY
+      prefix: '--MINIMUM_BASE_QUALITY'
     doc: >-
-      Minimum base quality for a base to contribute coverage.  Default value: 20.
+      Minimum base quality for a base to contribute coverage.  Default value:
+      20.
   - id: minimum_mapping_quality
     type: int?
     inputBinding:
       position: 0
-      prefix: --MINIMUM_MAPPING_QUALITY
+      prefix: '--MINIMUM_MAPPING_QUALITY'
     doc: >-
-      Minimum mapping quality for a read to contribute coverage.  Default value: 20.
+      Minimum mapping quality for a read to contribute coverage.  Default value:
+      20.
   - id: near_distance
     type: int?
     inputBinding:
       position: 0
-      prefix: --NEAR_DISTANCE
+      prefix: '--NEAR_DISTANCE'
     doc: >-
-      The maximum distance between a read and the nearest probe/bait/amplicon for the read to be
-      considered 'near probe' and included in percent selected.  Default value: 250.
+      The maximum distance between a read and the nearest probe/bait/amplicon
+      for the read to be considered 'near probe' and included in percent
+      selected.  Default value: 250.
   - id: sample_size
     type: int?
     inputBinding:
       position: 0
-      prefix: --SAMPLE_SIZE
+      prefix: '--SAMPLE_SIZE'
     doc: >-
-      Sample Size used for Theoretical Het Sensitivity sampling. Default is 10000.  Default
-      value: 10000.
+      Sample Size used for Theoretical Het Sensitivity sampling. Default is
+      10000.  Default value: 10000.
   - id: reference
     type: File?
     inputBinding:
       position: 0
-      prefix: -R
+      prefix: '-R'
+    doc: >-
+      Reference sequence file. Note that while this argument is not required,
+      without it only a small subset of the metrics will be calculated. Note
+      also that if a reference sequence is provided, it must be accompanied by a
+      sequence dictionary.  Default value: null.
     secondaryFiles:
       - ^.fasta.fai
       - ^.dict
-    doc: >-
-      Reference sequence file. Note that while this argument is not required, without it only a
-      small subset of the metrics will be calculated. Note also that if a reference sequence is
-      provided, it must be accompanied by a sequence dictionary.  Default value: null.
   - id: metrics_acciumulation_level
     type: string?
     inputBinding:
       position: 0
-      prefix: --METRIC_ACCUMULATION_LEVEL
+      prefix: '--METRIC_ACCUMULATION_LEVEL'
     doc: >-
       The level(s) at which to accumulate metrics. Default value: [ALL_READS].
       This option can be set to 'null' to clear the default value. Possible
@@ -152,7 +156,7 @@ inputs:
     type: string?
     inputBinding:
       position: 0
-      prefix: --VALIDATION_STRINGENCY
+      prefix: '--VALIDATION_STRINGENCY'
     doc: >-
       Validation stringency for all SAM files read by this program.  Setting
       stringency to SILENT can improve performance when processing a BAM file in
@@ -163,18 +167,18 @@ inputs:
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --CREATE_INDEX
+      prefix: '--CREATE_INDEX'
     doc: >-
-      Whether to create a BAM index when writing a coordinate-sorted BAM file.  Default value:
-      false. Possible values: {true, false}
+      Whether to create a BAM index when writing a coordinate-sorted BAM file. 
+      Default value: false. Possible values: {true, false}
   - id: create_md5_file
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --CREATE_MD5_FILE
+      prefix: '--CREATE_MD5_FILE'
     doc: >-
-      Whether to create an MD5 digest for any BAM or FASTQ files created.    Default value:
-      false. Possible values: {true, false}
+      Whether to create an MD5 digest for any BAM or FASTQ files created.   
+      Default value: false. Possible values: {true, false}
   - id: memory_per_job
     type: int?
     doc: Memory per job in megabytes
@@ -217,6 +221,7 @@ outputs:
                 return inputs.input.basename.replace(/.bam/, '_per_target_coverage.txt')
             }
         }
+label: GATK-CollectHsMetrics
 arguments:
   - position: 0
     prefix: '--java-options'
@@ -247,7 +252,7 @@ arguments:
       }
   - position: 0
     prefix: '--TMP_DIR'
-    valueFrom: .
+    valueFrom: $(runtime.tmpdir)
   - position: 0
     prefix: '--COMPRESSION_LEVEL'
     valueFrom: '2'
