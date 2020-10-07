@@ -6,7 +6,6 @@ $namespaces:
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
 id: gatk_merge_sam_files_4_1_8_0
-label: GATK-MergeSamFiles
 baseCommand:
   - gatk
   - MergeSamFiles
@@ -24,11 +23,12 @@ inputs:
       type: array
       items: File
       inputBinding:
-        prefix: -I
+        prefix: '-I'
     inputBinding:
       position: 1
-    doc: |
-      SAM or BAM input file  This argument must be specified at least once. Required.
+    doc: >
+      SAM or BAM input file  This argument must be specified at least once.
+      Required.
   - id: output_file_name
     type: string?
     doc: SAM or BAM file to write merged result to  Required.
@@ -36,108 +36,142 @@ inputs:
     type: boolean?
     inputBinding:
       position: 1
-      prefix: --ASSUME_SORTED
-    doc: |
-      If true, assume that the input files are in the same sort order as the requested output
-      sort order, even if their headers say otherwise.  Default value: false. Possible values:
+      prefix: '--ASSUME_SORTED'
+    doc: >
+      If true, assume that the input files are in the same sort order as the
+      requested output
+
+      sort order, even if their headers say otherwise.  Default value: false.
+      Possible values:
+
       {true, false}
   - id: comment
     type: string?
     inputBinding:
       position: 1
-      prefix: --COMMENT
-    doc: |
-      Comment(s) to include in the merged output files header.  This argument may be specified
+      prefix: '--COMMENT'
+    doc: >
+      Comment(s) to include in the merged output files header.  This argument
+      may be specified
+
       0 or more times. Default value: null.
   - id: create_index
     type: boolean?
     inputBinding:
       position: 1
-      prefix: --CREATE_INDEX
-    doc: |
-      Whether to create a BAM index when writing a coordinate-sorted BAM file.  Default value:
+      prefix: '--CREATE_INDEX'
+    doc: >
+      Whether to create a BAM index when writing a coordinate-sorted BAM file. 
+      Default value:
+
       false. Possible values: {true, false}
   - id: create_md5_file
     type: boolean?
     inputBinding:
       position: 1
-      prefix: --CREATE_MD5_FILE
-    doc: |
-      Whether to create an MD5 digest for any BAM or FASTQ files created.    Default value:
+      prefix: '--CREATE_MD5_FILE'
+    doc: >
+      Whether to create an MD5 digest for any BAM or FASTQ files created.   
+      Default value:
+
       false. Possible values: {true, false}
   - id: intervals
     type: File?
     inputBinding:
       position: 1
-      prefix: --INTERVALS
-    doc: |
-      An interval list file that contains the locations of the positions to merge. Assume bam
-      are sorted and indexed. The resulting file will contain alignments that may overlap with
-      genomic regions outside the requested region. Unmapped reads are discarded.  Default
+      prefix: '--INTERVALS'
+    doc: >
+      An interval list file that contains the locations of the positions to
+      merge. Assume bam
+
+      are sorted and indexed. The resulting file will contain alignments that
+      may overlap with
+
+      genomic regions outside the requested region. Unmapped reads are
+      discarded.  Default
+
       value: null.
   - id: merge_sequence_dictionaries
     type: boolean?
     inputBinding:
       position: 1
-      prefix: --MERGE_SEQUENCE_DICTIONARIES
-    doc: |
-      Merge the sequence dictionaries  Default value: false. Possible values: {true, false}
+      prefix: '--MERGE_SEQUENCE_DICTIONARIES'
+    doc: >
+      Merge the sequence dictionaries  Default value: false. Possible values:
+      {true, false}
   - id: reference_sequence
     type: File?
     inputBinding:
       position: 1
-      prefix: --REFERENCE_SEQUENCE
+      prefix: '--REFERENCE_SEQUENCE'
     doc: |
       Reference sequence file.  Default value: null.
   - id: sort_order
     type: string?
     inputBinding:
       position: 1
-      prefix: --SORT_ORDER
-    doc: |
-      Sort order of output file  Default value: coordinate. Possible values: {unsorted,
+      prefix: '--SORT_ORDER'
+    doc: >
+      Sort order of output file  Default value: coordinate. Possible values:
+      {unsorted,
+
       queryname, coordinate, duplicate, unknown}
   - id: use_threading
     type: boolean?
     inputBinding:
       position: 1
-      prefix: --USE_THREADING
-    doc: |
-      Option to create a background thread to encode, compress and write to disk the output
-      file. The threaded version uses about 20% more CPU and decreases runtime by ~20% when
-      writing out a compressed BAM file.  Default value: false. Possible values: {true, false}
+      prefix: '--USE_THREADING'
+    doc: >
+      Option to create a background thread to encode, compress and write to disk
+      the output
+
+      file. The threaded version uses about 20% more CPU and decreases runtime
+      by ~20% when
+
+      writing out a compressed BAM file.  Default value: false. Possible values:
+      {true, false}
   - id: validation_stringency
     type: string?
     inputBinding:
       position: 1
-      prefix: --VALIDATION_STRINGENCY
-    doc: |
-      Validation stringency for all SAM files read by this program.  Setting stringency to
-      SILENT can improve performance when processing a BAM file in which variable-length data
-      (read, qualities, tags) do not otherwise need to be decoded.  Default value: STRICT.
+      prefix: '--VALIDATION_STRINGENCY'
+    doc: >
+      Validation stringency for all SAM files read by this program.  Setting
+      stringency to
+
+      SILENT can improve performance when processing a BAM file in which
+      variable-length data
+
+      (read, qualities, tags) do not otherwise need to be decoded.  Default
+      value: STRICT.
+
       Possible values: {STRICT, LENIENT, SILENT}
   - id: verbosity
     type: string?
     inputBinding:
       position: 1
-      prefix: --VERBOSITY
-    doc: |
-      Control verbosity of logging.  Default value: INFO. Possible values: {ERROR, WARNING,
+      prefix: '--VERBOSITY'
+    doc: >
+      Control verbosity of logging.  Default value: INFO. Possible values:
+      {ERROR, WARNING,
+
       INFO, DEBUG}
   - id: use_jdk_deflater
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --USE_JDK_DEFLATER
+      prefix: '--USE_JDK_DEFLATER'
     doc: >-
-      Use the JDK Deflater instead of the Intel Deflater for writing compressed output
+      Use the JDK Deflater instead of the Intel Deflater for writing compressed
+      output
   - id: use_jdk_inflater
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --USE_JDK_INFLATER
+      prefix: '--USE_JDK_INFLATER'
     doc: >-
-      Use the JDK Inflater instead of the Intel Inflater for reading compressed input
+      Use the JDK Inflater instead of the Intel Inflater for reading compressed
+      input
 outputs:
   - id: gatk_merge_sam_files_bam
     type: File
@@ -150,6 +184,7 @@ outputs:
                 return 'merged.bam'
             }
         }
+label: GATK-MergeSamFiles
 arguments:
   - position: 0
     prefix: '--java-options'
@@ -180,7 +215,7 @@ arguments:
       }
   - position: 0
     prefix: '--TMP_DIR'
-    valueFrom: .
+    valueFrom: $(runtime.tmpdir)
   - position: 0
     prefix: '--COMPRESSION_LEVEL'
     valueFrom: '2'

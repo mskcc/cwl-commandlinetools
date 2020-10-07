@@ -29,7 +29,7 @@ inputs:
       One or more databases of known polymorphic sites used to exclude regions
       around known polymorphisms from analysis
     secondaryFiles:
-      - ^.idx
+      - .idx
   - id: reference
     type: File
     inputBinding:
