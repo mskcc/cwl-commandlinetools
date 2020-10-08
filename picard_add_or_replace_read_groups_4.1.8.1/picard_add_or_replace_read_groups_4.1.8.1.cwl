@@ -21,7 +21,7 @@ inputs:
     type: File
     inputBinding:
       position: 0
-      prefix: -I
+      prefix: '-I'
     doc: Input file ( sam).  Required.
   - id: output_file_name
     type: string?
@@ -30,7 +30,7 @@ inputs:
     type: string?
     inputBinding:
       position: 0
-      prefix: -SO
+      prefix: '-SO'
     doc: >-
       Optional sort order to output in. If not supplied OUTPUT is in the same
       order as INPUT.Default value: null. Possible values: {unsorted, queryname,
@@ -39,7 +39,7 @@ inputs:
     type: string
     inputBinding:
       position: 0
-      prefix: --RGID
+      prefix: '--RGID'
     doc: >-
       Read Group ID  Default value: 1. This option can be set to 'null' to clear
       the default value  Required
@@ -47,49 +47,49 @@ inputs:
     type: string
     inputBinding:
       position: 0
-      prefix: --RGCN
+      prefix: '--RGCN'
     doc: 'Read Group sequencing center name  Default value: null. Required'
   - id: read_group_library
     type: string
     inputBinding:
       position: 0
-      prefix: --RGLB
+      prefix: '--RGLB'
     doc: Read Group Library.  Required
   - id: read_group_platform_unit
     type: string
     inputBinding:
       position: 0
-      prefix: --RGPU
+      prefix: '--RGPU'
     doc: Read Group platform unit (eg. run barcode)  Required.
   - id: read_group_sample_name
     type: string
     inputBinding:
       position: 0
-      prefix: --RGSM
+      prefix: '--RGSM'
     doc: Read Group sample name.  Required
   - id: read_group_sequencing_platform
     type: string
     inputBinding:
       position: 0
-      prefix: --RGPL
+      prefix: '--RGPL'
     doc: 'Read Group platform (e.g. illumina, solid)  Required.'
   - id: read_group_description
     type: string?
     inputBinding:
       position: 0
-      prefix: --RGDS
+      prefix: '--RGDS'
     doc: 'Read Group description  Default value: null.'
   - id: read_group_run_date
     type: string?
     inputBinding:
       position: 0
-      prefix: --RGDT
+      prefix: '--RGDT'
     doc: 'Read Group run date  Default value: null.'
   - id: validation_stringency
     type: string?
     inputBinding:
       position: 0
-      prefix: --VALIDATION_STRINGENCY
+      prefix: '--VALIDATION_STRINGENCY'
     doc: >-
       Validation stringency for all SAM files read by this program.  Setting
       stringency to SILENT can improve performance when processing a BAM file in
@@ -100,7 +100,7 @@ inputs:
     type: int?
     inputBinding:
       position: 0
-      prefix: --COMPRESSION_LEVEL
+      prefix: '--COMPRESSION_LEVEL'
     doc: >-
       Compression level for all compressed files created (e.g. BAM and GELI).
       Default value:5. This option can be set to 'null' to clear the default
@@ -109,22 +109,24 @@ inputs:
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --USE_JDK_DEFLATER
+      prefix: '--USE_JDK_DEFLATER'
     doc: >-
-      Use the JDK Deflater instead of the Intel Deflater for writing compressed output
+      Use the JDK Deflater instead of the Intel Deflater for writing compressed
+      output
   - id: use_jdk_inflater
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --USE_JDK_INFLATER
+      prefix: '--USE_JDK_INFLATER'
     doc: >-
-      Use the JDK Inflater instead of the Intel Inflater for reading compressed input
+      Use the JDK Inflater instead of the Intel Inflater for reading compressed
+      input
   - default: true
     id: create_bam_index
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --CREATE_INDEX
+      prefix: '--CREATE_INDEX'
     doc: >-
       Whether to create a BAM index when writing a coordinate-sorted BAM file.
       Default value:false. This option can be set to 'null' to clear the default
@@ -140,7 +142,7 @@ outputs:
             return inputs.input.basename.replace(/.sam$/, '_srt.bam');
         }
     secondaryFiles:
-      - ^.bai
+      - ^.bai?
 label: picard_add_or_replace_read_groups_4.1.8.1
 arguments:
   - position: 0
@@ -170,21 +172,21 @@ arguments:
         }
       }
   - position: 0
-    valueFrom: "-XX:-UseGCOverheadLimit"
     shellQuote: false
+    valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
-    valueFrom: "-Djava.io.tmpdir=$(runtime.tmpdir)"
     shellQuote: false
+    valueFrom: '-Djava.io.tmpdir=$(runtime.tmpdir)'
   - position: 0
     prefix: '-jar'
     valueFrom: /gatk/gatk-package-4.1.8.1-local.jar
   - position: 0
     valueFrom: AddOrReplaceReadGroups
   - position: 0
-    prefix: --TMP_DIR
-    valueFrom: "$(runtime.tmpdir)"
+    prefix: '--TMP_DIR'
+    valueFrom: $(runtime.tmpdir)
   - position: 0
-    prefix: -O
+    prefix: '-O'
     valueFrom: |-
       ${
           if(inputs.output_file_name)
@@ -192,8 +194,9 @@ arguments:
             return inputs.input.basename.replace(/.sam$/, '_srt.bam');
       }
 requirements:
+  - class: ShellCommandRequirement
   - class: ResourceRequirement
-    ramMin: 25000
+    ramMin: 16000
     coresMin: 2
   - class: DockerRequirement
     dockerPull: 'broadinstitute/gatk:4.1.8.1'
