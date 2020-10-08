@@ -89,10 +89,11 @@ inputs:
       prefix: '--disable-bam-index-caching'
   - id: disable_read_filter
     type:
-      type: array
-      items: string
-      inputBinding:
-        prefix: '--disable-read-filter'
+      - 'null'
+      - type: array
+        items: string
+        inputBinding:
+          prefix: '--disable-read-filter'
     inputBinding:
       position: 6
     doc: Read filters to be disabled before analysis
@@ -179,10 +180,11 @@ inputs:
       prefix: '--QUIET'
   - id: read_filter
     type:
-      type: array
-      items: string
-      inputBinding:
-        prefix: '--read-filter'
+      - 'null'
+      - type: array
+        items: string
+        inputBinding:
+          prefix: '--read-filter'
     inputBinding:
       position: 6
   - id: read_index
