@@ -89,7 +89,6 @@ inputs:
       prefix: '--disable-bam-index-caching'
   - id: disable_read_filter
     type:
-      - 'null'
       - type: array
         items: string
         inputBinding:
@@ -180,7 +179,6 @@ inputs:
       prefix: '--QUIET'
   - id: read_filter
     type:
-      - 'null'
       - type: array
         items: string
         inputBinding:
