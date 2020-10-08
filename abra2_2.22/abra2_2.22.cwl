@@ -149,8 +149,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: '--no-edge-ci'
-    doc: >-
-      Prevent output of complex indels at read start or read end
+    doc: Prevent output of complex indels at read start or read end
   - id: no_sort
     type: boolean?
     inputBinding:
@@ -165,65 +164,57 @@ outputs:
       - type: array
         items: File
     outputBinding:
-      glob: '*abra.bam'
+      glob: |-
+        ${
+            return inputs.output_bams
+        }
     secondaryFiles:
       - ^.bai
 label: abra2_2.22
 arguments:
   - position: 0
-    valueFrom: "${
-      if(inputs.memory_per_job && inputs.memory_overhead) {
-        if(inputs.memory_per_job % 1000 == 0) {
-          return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"
+    valueFrom: |-
+      ${
+          if(inputs.memory_per_job && inputs.memory_overhead) {
+           
+            if(inputs.memory_per_job % 1000 == 0) {
+            	
+              return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+            }
+            else {
+              
+              return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G" 
+            }
+          }
+          else if (inputs.memory_per_job && !inputs.memory_overhead){
+            
+            if(inputs.memory_per_job % 1000 == 0) {
+            	
+              return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
+            }
+            else {
+              
+              return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G" 
+            }
+          }
+          else if(!inputs.memory_per_job && inputs.memory_overhead){
+            
+            return "-Xmx15G"
+          }
+          else {
+            
+          	return "-Xmx15G"
+          }
         }
-        else {
-          return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\"
-        }
-      }
-      else if (inputs.memory_per_job && !inputs.memory_overhead){
-        if(inputs.memory_per_job % 1000 == 0) {
-          return \"-Xmx\" + (inputs.memory_per_job/1000).toString() + \"G\"
-        }
-        else {
-          return \"-Xmx\" + Math.floor((inputs.memory_per_job/1000)).toString() + \"G\"
-        }
-      }
-      else if(!inputs.memory_per_job && inputs.memory_overhead){
-        return \"-Xmx15G\"
-      }
-      else {
-        return \"-Xmx15G\"
-      }
-    }"
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/abra2.jar
 requirements:
   - class: ResourceRequirement
-    ramMin: "${
-      if(inputs.memory_per_job && inputs.memory_overhead) {
-        return inputs.memory_per_job + inputs.memory_overhead
-      }
-      else if (inputs.memory_per_job && !inputs.memory_overhead){
-        return inputs.memory_per_job + 2000
-      }
-      else if(!inputs.memory_per_job && inputs.memory_overhead){
-        return 15000 + inputs.memory_overhead
-      }
-      else {
-        return 17000
-      }
-    }"
-    coresMin: "${
-          if (inputs.number_of_threads) {
-            return inputs.number_of_threads
-          }
-          else {
-            return 4
-          }
-        }"
+    ramMin: 60000
+    coresMin: 16
   - class: DockerRequirement
-    dockerPull: mskaccess/abra2:2.22
+    dockerPull: 'mskaccess/abra2:2.22'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
