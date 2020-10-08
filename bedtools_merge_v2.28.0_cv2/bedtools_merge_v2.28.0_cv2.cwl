@@ -34,7 +34,7 @@ inputs:
     doc: Maximum distance between features allowed for features to be merged.
 outputs:
   - id: bedtools_merge_bed
-    type: File?
+    type: File
     outputBinding:
       glob: |-
         ${
