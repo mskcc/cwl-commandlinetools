@@ -246,7 +246,7 @@ outputs:
             }
         }
     secondaryFiles:
-      - ^.bai?
+      - ^.bai
 label: gatk_apply_bqsr_4.1.8.1
 arguments:
   - position: 0

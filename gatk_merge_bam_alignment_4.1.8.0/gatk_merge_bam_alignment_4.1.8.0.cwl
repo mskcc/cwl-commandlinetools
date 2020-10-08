@@ -478,6 +478,8 @@ outputs:
                 return inputs.unmapped_bam.basename.replace(/.bam|.sam/, '_merged.bam')
             }
         }
+    secondaryFiles:
+      - ^.bai
 label: GATK-MergeBamAlignment
 arguments:
   - position: 0

@@ -142,7 +142,7 @@ outputs:
             return inputs.input.basename.replace(/.sam$/, '_srt.bam');
         }
     secondaryFiles:
-      - "^.bai?"
+      - ^.bai
 label: picard_add_or_replace_read_groups_4.1.8.1
 arguments:
   - position: 0

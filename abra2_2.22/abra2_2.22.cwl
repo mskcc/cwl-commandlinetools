@@ -169,7 +169,7 @@ outputs:
             return inputs.output_bams
         }
     secondaryFiles:
-      - ^.bai?
+      - ^.bai
 label: abra2_2.22
 arguments:
   - position: 0
