@@ -169,43 +169,43 @@ outputs:
             return inputs.output_bams
         }
     secondaryFiles:
-      - ^.bai
+      - ^.bai?
 label: abra2_2.22
 arguments:
   - position: 0
     valueFrom: |-
       ${
-          if(inputs.memory_per_job && inputs.memory_overhead) {
-           
-            if(inputs.memory_per_job % 1000 == 0) {
-            	
-              return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
-            }
-            else {
-              
-              return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G" 
-            }
-          }
-          else if (inputs.memory_per_job && !inputs.memory_overhead){
-            
-            if(inputs.memory_per_job % 1000 == 0) {
-            	
-              return "-Xmx" + (inputs.memory_per_job/1000).toString() + "G"
-            }
-            else {
-              
-              return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G" 
-            }
-          }
-          else if(!inputs.memory_per_job && inputs.memory_overhead){
-            
-            return "-Xmx15G"
+        if (inputs.memory_per_job && inputs.memory_overhead) {
+
+          if (inputs.memory_per_job % 1000 == 0) {
+
+            return "-Xmx" + (inputs.memory_per_job / 1000).toString() + "G"
           }
           else {
-            
-          	return "-Xmx15G"
+
+            return "-Xmx" + Math.floor((inputs.memory_per_job / 1000)).toString() + "G"
           }
         }
+        else if (inputs.memory_per_job && !inputs.memory_overhead) {
+
+          if (inputs.memory_per_job % 1000 == 0) {
+
+            return "-Xmx" + (inputs.memory_per_job / 1000).toString() + "G"
+          }
+          else {
+
+            return "-Xmx" + Math.floor((inputs.memory_per_job / 1000)).toString() + "G"
+          }
+        }
+        else if (!inputs.memory_per_job && inputs.memory_overhead) {
+
+          return "-Xmx15G"
+        }
+        else {
+
+          return "-Xmx15G"
+        }
+      }
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/abra2.jar
