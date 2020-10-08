@@ -251,7 +251,7 @@ inputs:
       SILENT}
 outputs:
   - id: gatk_sam_to_fastq_fastq
-    type: File?
+    type: File
     outputBinding:
       glob: |-
         ${
