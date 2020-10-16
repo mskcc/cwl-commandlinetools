@@ -88,7 +88,7 @@ outputs:
             return  inputs.input.basename.replace(/.bam/,'_group.bam');
         }
   - id: fgbio_group_reads_by_umi_histogram
-    type: File
+    type: File?
     outputBinding:
       glob: |-
         ${
