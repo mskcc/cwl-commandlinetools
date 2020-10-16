@@ -71,7 +71,7 @@ inputs:
     type: string?
     inputBinding:
       position: 0
-      valueFrom: '--sort-order'
+      prefix: '--sort-order'
     doc: 'The sort order of the output, if :none: then the same as the input.'
   - id: min_reads
     type: 'int[]'
@@ -79,6 +79,7 @@ inputs:
       position: 0
       prefix: '--min-reads'
       itemSeparator: ' '
+      shellQuote: false
     doc: The minimum number of input reads to a consensus read.
   - id: max_reads_per_strand
     type: int?
@@ -131,7 +132,6 @@ doc: >-
 label: fgbio_call_duplex_consensus_reads_1.2.0
 arguments:
   - position: 0
-    prefix: ''
     valueFrom: |-
       ${
         if(inputs.memory_per_job && inputs.memory_overhead) {
@@ -165,7 +165,6 @@ arguments:
     shellQuote: false
     valueFrom: '${ return runtime.tmpdir}'
   - position: 0
-    prefix: ''
     valueFrom: CallDuplexConsensusReads
   - position: 0
     prefix: '--output'

@@ -34,7 +34,7 @@ inputs:
       prefix: '--ref'
     doc: Reference fasta file.
     secondaryFiles:
-      - ^.fai
+      - .fai
       - ^.dict
   - id: reverse_per_base_tags
     type: boolean?
@@ -48,6 +48,7 @@ inputs:
       position: 0
       prefix: '--min-reads'
       itemSeparator: ' '
+      shellQuote: false
     doc: >-
       The minimum number of reads supporting a consensus base/read. (Max 3
       values)
@@ -68,7 +69,7 @@ inputs:
       itemSeparator: ' '
     doc: The maximum error rate for a single consensus base. (Max 3 values)
   - id: min_base_quality
-    type: int?
+    type: int
     inputBinding:
       position: 0
       prefix: '--min-base-quality'
@@ -151,7 +152,6 @@ doc: >-
 label: fgbio_filter_consensus_reads_1.2.0
 arguments:
   - position: 0
-    prefix: ''
     valueFrom: |-
       ${
         if(inputs.memory_per_job && inputs.memory_overhead) {
@@ -185,7 +185,6 @@ arguments:
     shellQuote: false
     valueFrom: '${ return runtime.tmpdir}'
   - position: 0
-    prefix: ''
     valueFrom: FilterConsensusReads
   - position: 0
     prefix: '--output'
@@ -195,14 +194,6 @@ arguments:
           if(inputs.output_file_name)
               return inputs.output_file_name;
             return  inputs.input.basename.replace(/.bam/,'_filtered.bam');
-      }
-  - position: 0
-    prefix: '--threads'
-    valueFrom: |-
-      ${
-          if(inputs.number_of_threads)
-              return inputs.number_of_threads
-          return runtime.cores
       }
 requirements:
   - class: ShellCommandRequirement
