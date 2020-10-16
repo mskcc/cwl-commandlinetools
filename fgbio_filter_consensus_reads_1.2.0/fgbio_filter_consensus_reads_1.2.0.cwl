@@ -34,7 +34,7 @@ inputs:
       prefix: '--ref'
     doc: Reference fasta file.
     secondaryFiles:
-      - ^.fai
+      - .fai
       - ^.dict
   - id: reverse_per_base_tags
     type: boolean?
@@ -48,6 +48,7 @@ inputs:
       position: 0
       prefix: '--min-reads'
       itemSeparator: ' '
+      shellQuote: false
     doc: >-
       The minimum number of reads supporting a consensus base/read. (Max 3
       values)
