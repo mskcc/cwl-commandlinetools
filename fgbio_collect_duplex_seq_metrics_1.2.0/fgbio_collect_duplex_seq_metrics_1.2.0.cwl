@@ -103,14 +103,14 @@ outputs:
             return  inputs.output_prefix + '.umi_counts.txt'
         }
   - id: fgbio_collect_duplex_seq_metrics_duplex_qc
-    type: File
+    type: File?
     outputBinding:
       glob: |-
         ${
             return  inputs.output_prefix + '.duplex_qc.pdf'
         }
   - id: fgbio_collect_duplex_seq_metrics_duplex_umi_counts
-    type: File
+    type: File?
     outputBinding:
       glob: |-
         ${
