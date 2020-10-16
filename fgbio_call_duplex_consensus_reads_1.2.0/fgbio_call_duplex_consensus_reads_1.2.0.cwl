@@ -131,7 +131,6 @@ doc: >-
 label: fgbio_call_duplex_consensus_reads_1.2.0
 arguments:
   - position: 0
-    prefix: ''
     valueFrom: |-
       ${
         if(inputs.memory_per_job && inputs.memory_overhead) {
