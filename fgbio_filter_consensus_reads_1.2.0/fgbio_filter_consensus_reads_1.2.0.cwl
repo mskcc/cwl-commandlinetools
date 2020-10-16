@@ -195,14 +195,6 @@ arguments:
               return inputs.output_file_name;
             return  inputs.input.basename.replace(/.bam/,'_filtered.bam');
       }
-  - position: 0
-    prefix: '--threads'
-    valueFrom: |-
-      ${
-          if(inputs.number_of_threads)
-              return inputs.number_of_threads
-          return runtime.cores
-      }
 requirements:
   - class: ShellCommandRequirement
   - class: ResourceRequirement
