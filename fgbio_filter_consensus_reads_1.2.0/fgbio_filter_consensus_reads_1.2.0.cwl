@@ -69,7 +69,7 @@ inputs:
       itemSeparator: ' '
     doc: The maximum error rate for a single consensus base. (Max 3 values)
   - id: min_base_quality
-    type: int?
+    type: int
     inputBinding:
       position: 0
       prefix: '--min-base-quality'
@@ -81,7 +81,7 @@ inputs:
       prefix: '--max-no-call-fraction'
     doc: Maximum fraction of no-calls in the read after filtering
   - id: min_mean_base_quality
-    type: int
+    type: int?
     inputBinding:
       position: 0
       prefix: '--min-mean-base-quality'
