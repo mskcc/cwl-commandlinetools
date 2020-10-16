@@ -165,7 +165,6 @@ arguments:
     shellQuote: false
     valueFrom: '${ return runtime.tmpdir}'
   - position: 0
-    prefix: ''
     valueFrom: CallDuplexConsensusReads
   - position: 0
     prefix: '--output'
