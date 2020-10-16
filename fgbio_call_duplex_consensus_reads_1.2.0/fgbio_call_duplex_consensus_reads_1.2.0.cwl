@@ -71,7 +71,7 @@ inputs:
     type: string?
     inputBinding:
       position: 0
-      valueFrom: '--sort-order'
+      prefix: '--sort-order'
     doc: 'The sort order of the output, if :none: then the same as the input.'
   - id: min_reads
     type: 'int[]'
