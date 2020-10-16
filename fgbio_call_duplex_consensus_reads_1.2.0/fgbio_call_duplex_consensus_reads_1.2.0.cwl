@@ -79,6 +79,7 @@ inputs:
       position: 0
       prefix: '--min-reads'
       itemSeparator: ' '
+      shellQuote: false
     doc: The minimum number of input reads to a consensus read.
   - id: max_reads_per_strand
     type: int?
