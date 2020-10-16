@@ -152,7 +152,6 @@ doc: >-
 label: fgbio_filter_consensus_reads_1.2.0
 arguments:
   - position: 0
-    prefix: ''
     valueFrom: |-
       ${
         if(inputs.memory_per_job && inputs.memory_overhead) {
@@ -186,7 +185,6 @@ arguments:
     shellQuote: false
     valueFrom: '${ return runtime.tmpdir}'
   - position: 0
-    prefix: ''
     valueFrom: FilterConsensusReads
   - position: 0
     prefix: '--output'
