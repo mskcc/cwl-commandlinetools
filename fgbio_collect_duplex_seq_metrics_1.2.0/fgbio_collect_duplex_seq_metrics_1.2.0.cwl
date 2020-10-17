@@ -249,7 +249,7 @@ arguments:
     valueFrom: |-
       ${
           if(inputs.output_prefix){
-              return input.output_prefix
+              return inputs.output_prefix
           }
           else{
               return inputs.input.basename.replace(/.bam/,'')
