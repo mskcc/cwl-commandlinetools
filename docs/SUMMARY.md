@@ -2,8 +2,8 @@
 
 - [MSK-ACCESS command-line tools](README.md)
   - ABRA2
-    - [v2.17](../abra2_2.17/README.md) \* [v2.19](../abra2_2.19/README.md)
-    - [v2.22](../abra2_2.22/README.md) \* [v2.22](../abra2_2.22/README.md)
+    - [v2.17](../abra2_2.17/README.md)
+    - [v2.22](../abra2_2.22/README.md)
   - Bedtools
     - [genomecov v2.28.0_cv2](../bedtools_genomecov_v2.28.0_cv2/README.md)
     - [merge v2.28.0_cv2](../bedtools_merge_v2.28.0_cv2/README.md)
