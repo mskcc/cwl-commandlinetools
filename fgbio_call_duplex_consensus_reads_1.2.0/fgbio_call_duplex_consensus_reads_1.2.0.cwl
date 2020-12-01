@@ -160,11 +160,6 @@ arguments:
   - position: 0
     valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
-    prefix: '-Djava.io.tmpdir='
-    separate: false
-    shellQuote: false
-    valueFrom: '${ return runtime.tmpdir}'
-  - position: 0
     valueFrom: CallDuplexConsensusReads
   - position: 0
     prefix: '--output'
@@ -186,7 +181,7 @@ arguments:
 requirements:
   - class: ShellCommandRequirement
   - class: ResourceRequirement
-    ramMin: 1000
+    ramMin: 16000
     coresMin: 16
   - class: DockerRequirement
     dockerPull: 'quay.io/biocontainers/fgbio:1.2.0--0'

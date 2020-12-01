@@ -296,9 +296,9 @@ arguments:
                   return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
               }
            } else if(!inputs.memory_per_job && inputs.memory_overhead){
-              return "-Xmx4G"
+              return "-Xmx12G"
            } else {
-              return "-Xmx4G"
+              return "-Xmx12G"
            }
       }
   - position: 1
@@ -318,9 +318,6 @@ arguments:
               return inputs.input.basename.replace(/.bam/, '_bqsr.table')
           }
       }
-  - position: 2
-    prefix: '--verbosity'
-    valueFrom: INFO
 requirements:
   - class: ResourceRequirement
     ramMin: 32000

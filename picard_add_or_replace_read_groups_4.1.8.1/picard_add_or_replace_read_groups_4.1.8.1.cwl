@@ -175,9 +175,6 @@ arguments:
     shellQuote: false
     valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
-    shellQuote: false
-    valueFrom: '-Djava.io.tmpdir=$(runtime.tmpdir)'
-  - position: 0
     prefix: '-jar'
     valueFrom: /gatk/gatk-package-4.1.8.1-local.jar
   - position: 0
@@ -196,7 +193,7 @@ arguments:
 requirements:
   - class: ShellCommandRequirement
   - class: ResourceRequirement
-    ramMin: 16000
+    ramMin: 17000
     coresMin: 2
   - class: DockerRequirement
     dockerPull: 'broadinstitute/gatk:4.1.8.1'

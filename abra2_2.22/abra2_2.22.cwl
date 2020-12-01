@@ -199,11 +199,11 @@ arguments:
         }
         else if (!inputs.memory_per_job && inputs.memory_overhead) {
 
-          return "-Xmx15G"
+          return "-Xmx20G"
         }
         else {
 
-          return "-Xmx15G"
+          return "-Xmx20G"
         }
       }
   - position: 0

@@ -12,19 +12,22 @@ inputs:
   - id: input_bam
     type: File
     inputBinding:
-      prefix: --input_bam
+      position: 0
+      prefix: '--input_bam'
     doc: Input file (bam or sam).  Required.
     secondaryFiles:
       - ^.bai
   - id: output_file_name
     type: string?
     inputBinding:
-      prefix: --output_filename
+      position: 0
+      prefix: '--output_filename'
     doc: Output file (bam or sam).
   - id: min_simplex_reads
     type: int?
     inputBinding:
-      prefix: --min_simplex_reads
+      position: 0
+      prefix: '--min_simplex_reads'
     doc: Minimum number of simplex reads to pass filter for consensus reads
 outputs:
   - id: fgbio_postprocessing_simplex_bam
@@ -43,8 +46,8 @@ outputs:
 label: fgbio_postprocessing_simplex_filter_0.1.8
 requirements:
   - class: ResourceRequirement
-    ramMin: 2000
-    coresMin: 1
+    ramMin: 16000
+    coresMin: 2
   - class: DockerRequirement
     dockerPull: 'mskaccess/fgbio_postprocessing:0.2.0'
   - class: InlineJavascriptRequirement

@@ -202,8 +202,7 @@ inputs:
       -k14 -W20 -r10 -A1 -B1 -O1 -E1 -L0  (Oxford Nanopore 2D-reads to ref)
       intractg: -B9 -O16 -L5  (intra-species contigs to ref)
   - id: H
-    type:
-      - boolean?
+    type: boolean?
     inputBinding:
       position: 0
       prefix: '-H'
@@ -321,16 +320,8 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: >-
-      ${ if(inputs.memory_per_job && inputs.memory_overhead) { return
-      inputs.memory_per_job + inputs.memory_overhead } else if
-      (inputs.memory_per_job && !inputs.memory_overhead){ return
-      inputs.memory_per_job + 2000 } else if(!inputs.memory_per_job &&
-      inputs.memory_overhead){ return 32000 + inputs.memory_overhead } else {
-      return 32000 } }
-    coresMin: >-
-      ${ if (inputs.number_of_threads) { return inputs.number_of_threads } else
-      { return 16 } }
+    ramMin: 34000
+    coresMin: 16
   - class: DockerRequirement
     dockerPull: 'mskaccess/bwa_mem_0.7.17:0.1.0'
   - class: InlineJavascriptRequirement

@@ -266,9 +266,9 @@ arguments:
                   return "-Xmx" + Math.floor((inputs.memory_per_job/1000)).toString() + "G"
               }
            } else if(!inputs.memory_per_job && inputs.memory_overhead){
-              return "-Xmx4G"
+              return "-Xmx12G"
            } else {
-              return "-Xmx4G"
+              return "-Xmx12G"
            }
       }
   - position: 2
@@ -290,8 +290,8 @@ arguments:
     valueFrom: ApplyBQSR
 requirements:
   - class: ResourceRequirement
-    ramMin: 10000
-    coresMin: 8
+    ramMin: 16000
+    coresMin: 4
   - class: DockerRequirement
     dockerPull: 'broadinstitute/gatk:4.1.8.1'
   - class: InlineJavascriptRequirement

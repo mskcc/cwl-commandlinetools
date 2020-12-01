@@ -216,12 +216,6 @@ arguments:
   - position: 0
     prefix: '--TMP_DIR'
     valueFrom: $(runtime.tmpdir)
-  - position: 0
-    prefix: '--COMPRESSION_LEVEL'
-    valueFrom: '2'
-  - position: 0
-    prefix: '--MAX_RECORDS_IN_RAM'
-    valueFrom: '50000'
   - position: 2
     prefix: '-O'
     valueFrom: |-
@@ -234,7 +228,7 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 12000
+    ramMin: 17000
     coresMin: 2
   - class: DockerRequirement
     dockerPull: 'broadinstitute/gatk:4.1.8.0'

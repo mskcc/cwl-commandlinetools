@@ -190,19 +190,14 @@ arguments:
           }
         }
         else if(!inputs.memory_per_job && inputs.memory_overhead){
-          return "-Xmx10G"
+          return "-Xmx12G"
         }
         else {
-            return "-Xmx10G"
+            return "-Xmx12G"
         }
       }
   - position: 0
     valueFrom: '-XX:-UseGCOverheadLimit'
-  - position: 0
-    prefix: '-Djava.io.tmpdir='
-    separate: false
-    shellQuote: false
-    valueFrom: '${ return runtime.tmpdir}'
   - position: 0
     valueFrom: GroupReadsByUmi
   - position: 0
@@ -217,7 +212,7 @@ arguments:
 requirements:
   - class: ShellCommandRequirement
   - class: ResourceRequirement
-    ramMin: 15000
+    ramMin: 16000
     coresMin: 2
   - class: DockerRequirement
     dockerPull: 'quay.io/biocontainers/fgbio:1.2.0--0'

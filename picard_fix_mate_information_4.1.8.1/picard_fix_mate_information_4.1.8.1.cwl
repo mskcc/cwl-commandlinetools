@@ -21,7 +21,7 @@ inputs:
     type: File
     inputBinding:
       position: 0
-      prefix: -I
+      prefix: '-I'
     doc: The input file to fix.  This option may be specified 0 or more times
     secondaryFiles:
       - ^.bai
@@ -32,7 +32,7 @@ inputs:
     type: string?
     inputBinding:
       position: 0
-      prefix: -SO
+      prefix: '-SO'
     doc: >-
       Optional sort order to output in. If not supplied OUTPUT is in the same
       order as INPUT.Default value: null. Possible values: {unsorted, queryname,
@@ -41,7 +41,7 @@ inputs:
     type: string?
     inputBinding:
       position: 0
-      prefix: --VALIDATION_STRINGENCY
+      prefix: '--VALIDATION_STRINGENCY'
     doc: >-
       Validation stringency for all SAM files read by this program.  Setting
       stringency to SILENT can improve performance when processing a BAM file in
@@ -52,7 +52,7 @@ inputs:
     type: int?
     inputBinding:
       position: 0
-      prefix: --COMPRESSION_LEVEL
+      prefix: '--COMPRESSION_LEVEL'
     doc: >-
       Compression level for all compressed files created (e.g. BAM and GELI).
       Default value:5. This option can be set to 'null' to clear the default
@@ -61,22 +61,24 @@ inputs:
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --USE_JDK_DEFLATER
+      prefix: '--USE_JDK_DEFLATER'
     doc: >-
-      Use the JDK Deflater instead of the Intel Deflater for writing compressed output
+      Use the JDK Deflater instead of the Intel Deflater for writing compressed
+      output
   - id: use_jdk_inflater
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --USE_JDK_INFLATER
+      prefix: '--USE_JDK_INFLATER'
     doc: >-
-      Use the JDK Inflater instead of the Intel Inflater for reading compressed input
+      Use the JDK Inflater instead of the Intel Inflater for reading compressed
+      input
   - default: true
     id: create_bam_index
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --CREATE_INDEX
+      prefix: '--CREATE_INDEX'
     doc: >-
       Whether to create a BAM index when writing a coordinate-sorted BAM file.
       Default value:false. This option can be set to 'null' to clear the default
@@ -98,6 +100,7 @@ outputs:
 label: picard_fix_mate_information_4.1.8.1
 arguments:
   - position: 0
+    prefix: ''
     valueFrom: |-
       ${
         if(inputs.memory_per_job && inputs.memory_overhead) {
@@ -117,28 +120,25 @@ arguments:
           }
         }
         else if(!inputs.memory_per_job && inputs.memory_overhead){
-          return "-Xmx15G"
+          return "-Xmx20G"
         }
         else {
-            return "-Xmx15G"
+            return "-Xmx20G"
         }
       }
   - position: 0
-    valueFrom: "-XX:-UseGCOverheadLimit"
     shellQuote: false
-  - position: 0
-    valueFrom: "-Djava.io.tmpdir=$(runtime.tmpdir)"
-    shellQuote: false
+    valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
     prefix: '-jar'
     valueFrom: /gatk/gatk-package-4.1.8.1-local.jar
   - position: 0
     valueFrom: FixMateInformation
   - position: 0
-    prefix: --TMP_DIR
-    valueFrom: "$(runtime.tmpdir)"
+    prefix: '--TMP_DIR'
+    valueFrom: $(runtime.tmpdir)
   - position: 0
-    prefix: -O
+    prefix: '-O'
     valueFrom: |-
       ${
           if(inputs.output_file_name){
@@ -148,9 +148,10 @@ arguments:
           }
       }
 requirements:
+  - class: ShellCommandRequirement
   - class: ResourceRequirement
     ramMin: 25000
-    coresMin: 2
+    coresMin: 4
   - class: DockerRequirement
     dockerPull: 'broadinstitute/gatk:4.1.8.1'
   - class: InlineJavascriptRequirement
