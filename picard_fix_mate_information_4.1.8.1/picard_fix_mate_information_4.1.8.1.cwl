@@ -100,7 +100,6 @@ outputs:
 label: picard_fix_mate_information_4.1.8.1
 arguments:
   - position: 0
-    prefix: ''
     valueFrom: |-
       ${
         if(inputs.memory_per_job && inputs.memory_overhead) {
