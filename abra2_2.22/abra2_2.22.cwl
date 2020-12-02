@@ -17,9 +17,6 @@ inputs:
     doc: Memory overhead per job in megabytes
   - id: number_of_threads
     type: int?
-    inputBinding:
-      position: 0
-      prefix: '--threads'
   - id: input_bam
     type:
       - File
@@ -209,6 +206,14 @@ arguments:
   - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/abra2.jar
+  - position: 0
+    prefix: '--threads'
+    valueFrom: |-
+      ${
+          if(inputs.number_of_threads)
+              return inputs.number_of_threads
+          return runtime.cores
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 60000

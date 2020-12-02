@@ -181,7 +181,7 @@ arguments:
 requirements:
   - class: ShellCommandRequirement
   - class: ResourceRequirement
-    ramMin: 16000
+    ramMin: 20000
     coresMin: 16
   - class: DockerRequirement
     dockerPull: 'quay.io/biocontainers/fgbio:1.2.0--0'
