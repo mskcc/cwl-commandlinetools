@@ -15,7 +15,7 @@ inputs:
   - id: memory_overhead
     type: int?
     doc: Memory overhead per job in megabytes
-    id: number_of_threads
+  - id: number_of_threads
     type: int?
     doc: 'worker thread number, default is 2 (int [=2])'
   - id: read1_input
