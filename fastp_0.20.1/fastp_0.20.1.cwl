@@ -9,6 +9,15 @@ id: fastp_0_20_1
 baseCommand:
   - fastp
 inputs:
+  - id: memory_per_job
+    type: int?
+    doc: Memory per job in megabytes
+  - id: memory_overhead
+    type: int?
+    doc: Memory overhead per job in megabytes
+    id: number_of_threads
+    type: int?
+    doc: 'worker thread number, default is 2 (int [=2])'
   - id: read1_input
     type: File
     inputBinding:
@@ -100,6 +109,28 @@ inputs:
       prefix: '--html'
     doc: |
       the html format report file name
+  - id: disable_quality_filtering
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: '--disable_quality_filtering'
+    doc: >-
+      quality filtering is enabled by default. If this option is specified,
+      quality filtering is disabled
+  - id: disable_trim_poly_g
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: '--disable_trim_poly_g'
+    doc: >-
+      disable polyG tail trimming, by default trimming is automatically enabled
+      for Illumina NextSeq/NovaSeq data
+  - id: verbose
+    type: File?
+    inputBinding:
+      position: 0
+      prefix: '--verbose'
+    doc: output verbose log information (i.e. when every 1M reads are processed)
 outputs:
   - id: fastp_json_output
     type: File
@@ -127,10 +158,19 @@ outputs:
       glob: $(inputs.unpaired2_path)
 doc: Setup and execute Fastp
 label: fastp_0.20.1
+arguments:
+  - position: 0
+    prefix: '--thread'
+    valueFrom: |-
+      ${
+          if(inputs.number_of_threads)
+              return inputs.number_of_threads
+          return runtime.cores
+      }
 requirements:
   - class: ResourceRequirement
-    ramMin: 16000
-    coresMin: 2
+    ramMin: 17000
+    coresMin: 4
   - class: DockerRequirement
     dockerPull: 'quay.io/biocontainers/fastp:0.20.1--h8b12597_0'
   - class: InlineJavascriptRequirement
@@ -143,6 +183,9 @@ requirements:
       - class: 'foaf:Person'
         'foaf:mbox': 'mailto:fraihaa@mskcc.org'
         'foaf:name': Adrian Fraiha
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:shahr2@mskcc.org'
+        'foaf:name': Ronak Shah
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
