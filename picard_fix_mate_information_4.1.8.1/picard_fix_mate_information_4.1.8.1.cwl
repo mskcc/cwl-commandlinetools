@@ -23,8 +23,6 @@ inputs:
       position: 0
       prefix: '-I'
     doc: The input file to fix.  This option may be specified 0 or more times
-    secondaryFiles:
-      - ^.bai
   - id: output_file_name
     type: string?
     doc: Output file name (bam or sam). Not Required
@@ -149,8 +147,8 @@ arguments:
 requirements:
   - class: ShellCommandRequirement
   - class: ResourceRequirement
-    ramMin: 25000
-    coresMin: 4
+    ramMin: 30000
+    coresMin: 12
   - class: DockerRequirement
     dockerPull: 'broadinstitute/gatk:4.1.8.1'
   - class: InlineJavascriptRequirement
