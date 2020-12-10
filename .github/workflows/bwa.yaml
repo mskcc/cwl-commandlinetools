@@ -31,7 +31,7 @@ jobs:
         with:
           context: .
           file: ./bwa_mem_0.7.17/container/Dockerfile
-          platforms: linux/amd64,linux/arm64,linux/386
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: |
             ghcr.io/msk-access/bwa:latest
