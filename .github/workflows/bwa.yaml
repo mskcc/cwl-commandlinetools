@@ -31,11 +31,11 @@ jobs:
         with:
           context: .
           file: ./bwa_mem_0.7.17/container/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: |
             ghcr.io/msk-access/bwa:latest
             ghcr.io/msk-access/bwa:0.7.17
-          repository: msk-access/cwl_commandlinetools
+
 
 
