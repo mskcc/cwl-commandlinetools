@@ -1,4 +1,4 @@
-name: bwa_0.7.17
+name: abra2_2.22
 
 on:
   push:
@@ -30,10 +30,10 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./bwa_mem_0.7.17/container/Dockerfile
+          file: ./abra2_2.22/container/Dockerfile
           push: true
           tags: |
-            ghcr.io/msk-access/bwa:0.7.17
+            ghcr.io/msk-access/abra2:2.22
 
 
 
