@@ -43,15 +43,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/msk-access/abra2:2.22
-      - 
-        name: Build bedtools 2.28 and Push to GitHub Packages
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./abra2_2.22/container/Dockerfile
-          push: true
-          tags: |
-            ghcr.io/msk-access/abra2:2.22
+
 
 
 
