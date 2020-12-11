@@ -4,6 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 id: trim_galore_0_6_2
 baseCommand:
   - trim_galore
@@ -22,10 +23,7 @@ inputs:
     type: int?
     inputBinding:
       position: 0
-      prefix: '--threads'
-  - id: path_to_trim_galore
-    type: File?
-    doc: Path to trim_galore executable file
+      prefix: '--cores'
   - id: adapter
     type: string?
     inputBinding:
@@ -119,6 +117,22 @@ inputs:
     doc: >-
       Maximum allowed error rate (no. of errors divided by the length of the
       matching region) (default: 0.1)
+  - id: trim_galore_basename
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: '--basename'
+    label: trim_galore_output_file_basename
+    doc: >-
+      Use PREFERRED_NAME as the basename for output files, instead of deriving
+      the filenames from the input files. Single-end data would be called
+      PREFERRED_NAME_trimmed.fq(.gz), or
+
+      PREFERRED_NAME_val_1.fq(.gz) and PREFERRED_NAME_val_2.fq(.gz) for
+      paired-end data. --basename
+
+      only works when 1 file (single-end) or 2 files (paired-end) are specified,
+      but not for longer lists.
 outputs:
   - id: clfastq1
     type: File
@@ -138,15 +152,15 @@ outputs:
     type: File
     outputBinding:
       glob: >-
-        $(inputs.fastq1.basename.replace('.fastq.gz',
+        $(inputs.fastq2.basename.replace('.fastq.gz',
         '.fastq.gz_trimming_report.txt'))
 label: trim_galore_0.6.2
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
-    coresMin: 1
+    coresMin: 4
   - class: DockerRequirement
-    dockerPull: 'mskcc/trim_galore:0.1.0'
+    dockerPull: 'mskaccess/trim_galore:0.6.3'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

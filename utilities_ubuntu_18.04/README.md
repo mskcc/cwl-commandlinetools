@@ -1,10 +1,18 @@
-# CWL and Dockerfile for running utilites from Ubuntu 18.04
+# CWL and Dockerfile for running utilities from Ubuntu 18.04
 
 ## Version of tools in docker image (/container/Dockerfile)
 
-| Tool	| Version	| Location	|
-|---	|---	|---	|
-| Ubuntu base image  	| 18.04  	|   -	|
+| Tool              | Version | Location |
+| ----------------- | ------- | -------- |
+| Ubuntu base image | 18.04   | -        |
+
+## Available tools
+
+| Tool     | Description              |
+| -------- | ------------------------ |
+| sort.cwl | sort lines of text files |
+| gzip.cwl | compress or expand files |
+| mv.cwl   | move (rename) files      |
 
 ## CWL
 
@@ -13,5 +21,5 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner gzip.cl example_inputs_gzip.yaml
+    > toil-cwl-runner gzip.cwl example_inputs_gzip.yaml
 ```

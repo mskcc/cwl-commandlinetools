@@ -35,7 +35,8 @@ LABEL org.opencontainers.image.description="This container uses ubuntu ${UBUNTU_
 ################## INSTALL ##########################
 
 #Ubuntu
-RUN apt-get update && apt-get -y upgrade && apt-get install -y build-essential python3 python3-pip python3-dev wget zip default-jre && \
+RUN apt-get update && \
+	apt-get --no-install-recommends install -y build-essential python3 python3-pip pigz python3-dev wget zip unzip default-jre && \
 	apt-get clean && apt-get purge && apt autoremove && apt-get remove --yes --purge build-essential && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

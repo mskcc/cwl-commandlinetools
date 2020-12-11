@@ -1,0 +1,9 @@
+include LICENSE
+include README.md
+
+recursive-include tests *
+recursive-include *.cwl
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include docs *.jpg *.png *.gif

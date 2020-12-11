@@ -3,8 +3,9 @@ cwlVersion: v1.0
 $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
+  edam: 'http://edamontology.org/'
   foaf: 'http://xmlns.com/foaf/0.1/'
-  edam: http://edamontology.org/
+  sbg: 'https://www.sevenbridges.com/'
 id: gatk_apply_bqsr_4_1_2_0
 baseCommand:
   - gatk
@@ -174,10 +175,14 @@ inputs:
       position: 6
       prefix: '--QUIET'
   - id: read_filter
-    type: string?
+    type:
+      - 'null'
+      - type: array
+        items: string
+        inputBinding:
+          prefix: '--read-filter'
     inputBinding:
       position: 6
-      prefix: '--read-filter'
   - id: read_index
     type: string?
     inputBinding:
@@ -264,8 +269,6 @@ requirements:
   - class: ResourceRequirement
     ramMin: 10000
     coresMin: 8
-#     ramMin: "${\r  if(inputs.memory_per_job && inputs.memory_overhead) {\r   \r    return inputs.memory_per_job + inputs.memory_overhead\r  }\r  else if (inputs.memory_per_job && !inputs.memory_overhead){\r    \r   \treturn inputs.memory_per_job + 2000\r  }\r  else if(!inputs.memory_per_job && inputs.memory_overhead){\r    \r    return 8000 + inputs.memory_overhead\r  }\r  else {\r    \r  \treturn 8000 \r  }\r}"
-#     coresMin: "${\r  if (inputs.number_of_threads) {\r    \r   \treturn inputs.number_of_threads \r  }\r  else {\r    \r    return 1\r  }\r}"
   - class: DockerRequirement
     dockerPull: 'broadinstitute/gatk:4.1.2.0'
   - class: InlineJavascriptRequirement

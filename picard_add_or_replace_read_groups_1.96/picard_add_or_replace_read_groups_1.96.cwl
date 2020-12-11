@@ -4,6 +4,7 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 id: picard_add_or_replace_read_groups_1_96
 baseCommand:
   - java
@@ -45,7 +46,7 @@ inputs:
     doc: >-
       Read Group ID  Default value: 1. This option can be set to 'null' to clear
       the default value  Required
-  - id: read_group_sequnecing_center
+  - id: read_group_sequencing_center
     type: string
     inputBinding:
       position: 0
@@ -53,7 +54,7 @@ inputs:
       separate: false
     doc: 'Read Group sequencing center name  Default value: null. Required'
   - id: read_group_library
-    type: int
+    type: string
     inputBinding:
       position: 0
       prefix: RGLB=
@@ -94,13 +95,6 @@ inputs:
       prefix: RGDT=
       separate: false
     doc: 'Read Group run date  Default value: null.'
-  - id: tmp_dir
-    type: string?
-    inputBinding:
-      position: 0
-      prefix: TMP_DIR=
-      separate: false
-    doc: This option may be specified 0 or more times
   - id: validation_stringency
     type: string?
     inputBinding:
@@ -133,6 +127,9 @@ inputs:
       Whether to create a BAM index when writing a coordinate-sorted BAM file. 
       Default value:false. This option can be set to 'null' to clear the default
       value. Possible values:{true, false}
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: bam
     type: File
@@ -174,8 +171,29 @@ arguments:
         }
       }
   - position: 0
+    shellQuote: false
+    valueFrom: '-XX:-UseGCOverheadLimit'
+  - position: 0
+    prefix: '-Djava.io.tmpdir='
+    separate: false
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
+  - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/AddOrReplaceReadGroups.jar
+  - position: 0
+    prefix: TMP_DIR=
+    separate: false
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
   - position: 0
     prefix: O=
     separate: false
@@ -186,11 +204,12 @@ arguments:
             return inputs.input.basename.replace(/.sam$/, '_srt.bam');
       }
 requirements:
+  - class: ShellCommandRequirement
   - class: ResourceRequirement
-    ramMin: 16000
+    ramMin: 25000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'mskcc/picard_1.96:0.1.0'
+    dockerPull: 'mskaccess/picard_1.96:0.6.3'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

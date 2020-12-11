@@ -1,10 +1,12 @@
 class: CommandLineTool
 cwlVersion: v1.0
 $namespaces:
+  cwltool: 'http://commonwl.org/cwltool#'
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
-id: picard_fix_mate_information_1.96
+  sbg: 'https://www.sevenbridges.com/'
+id: picard_fix_mate_information_1_96
 baseCommand:
   - java
 inputs:
@@ -27,8 +29,7 @@ inputs:
       - ^.bai
   - id: output_file_name
     type: string?
-    doc: >-
-        Output file name (bam or sam). Not Required
+    doc: Output file name (bam or sam). Not Required
   - id: sort_order
     type: string?
     inputBinding:
@@ -39,13 +40,6 @@ inputs:
       Optional sort order to output in. If not supplied OUTPUT is in the same
       order as INPUT.Default value: null. Possible values: {unsorted, queryname,
       coordinate}
-  - id: tmp_dir
-    type: string?
-    inputBinding:
-      position: 0
-      prefix: TMP_DIR=
-      separate: false
-    doc: This option may be specified 0 or more times
   - id: validation_stringency
     type: string?
     inputBinding:
@@ -78,6 +72,9 @@ inputs:
       Whether to create a BAM index when writing a coordinate-sorted BAM file. 
       Default value:false. This option can be set to 'null' to clear the default
       value. Possible values:{true, false}
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: bam
     type: File
@@ -121,8 +118,29 @@ arguments:
         }
       }
   - position: 0
+    shellQuote: false
+    valueFrom: '-XX:-UseGCOverheadLimit'
+  - position: 0
+    prefix: '-Djava.io.tmpdir='
+    separate: false
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
+  - position: 0
     prefix: '-jar'
     valueFrom: /usr/local/bin/FixMateInformation.jar
+  - position: 0
+    prefix: TMP_DIR=
+    separate: false
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
   - position: 0
     prefix: O=
     separate: false
@@ -135,11 +153,12 @@ arguments:
           }
       }
 requirements:
+  - class: ShellCommandRequirement
   - class: ResourceRequirement
-    ramMin: 16000
+    ramMin: 25000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'mskcc/picard_1.96:0.1.0'
+    dockerPull: 'mskaccess/picard_1.96:0.6.3'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
