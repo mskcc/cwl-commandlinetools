@@ -114,7 +114,7 @@ jobs:
           tags: |
             ghcr.io/msk-access/waltz:3.1.1
       - 
-        name: Build Waltz 3.1.1 and Push to GitHub Packages
+        name: Build Marianas 1.8.1 and Push to GitHub Packages
         uses: docker/build-push-action@v2
         with:
           context: .
