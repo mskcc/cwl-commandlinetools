@@ -38,7 +38,7 @@ jobs:
       -
         name: Check package version 1
         run: |
-          echo "::set-output name=manifest::$(curl -X GET https://docker.pkg.github.com/v2/msk-access/merge_fastq/manifests/$GITHUB_SHA -u $GITHUB_ACTOR:${{ secrets.RS_PAT }} | jq '.')"
+          echo "::set-output name=manifest::$(curl -X GET https://docker.pkg.github.com/v2/msk-access/cwl_commandlinetools/merge_fastq/manifests/$GITHUB_SHA -u $GITHUB_ACTOR:${{ secrets.RS_PAT }} | jq '.')"
       -       
         name: echo output 1
         run: |
@@ -46,7 +46,7 @@ jobs:
       -
         name: Check package version 2
         run: |
-          echo "::set-output name=manifest::$(curl -X GET https://docker.pkg.github.com/v2/msk-access/cwl_commandlinetools/manifests/$GITHUB_SHA -u $GITHUB_ACTOR:${{ secrets.RS_PAT }} | jq '.')"
+          echo "::set-output name=manifest::$(curl -X GET https://docker.pkg.github.com/v2/msk-access/cwl_commandlinetools/manta/manifests/$GITHUB_SHA -u $GITHUB_ACTOR:${{ secrets.RS_PAT }} | jq '.')"
       -       
         name: echo output 2
         run: |
