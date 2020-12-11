@@ -60,15 +60,6 @@ jobs:
           tags: |
             ghcr.io/msk-access/abra2:2.22
       - 
-        name: Build bcftools 1.6 and Push to GitHub Packages
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./bcftools_1.6/container/Dockerfile
-          push: true
-          tags: |
-            ghcr.io/msk-access/bcftools:1.6
-      - 
         name: Build vcf2maf 1.6.17 and Push to GitHub Packages
         uses: docker/build-push-action@v2
         with:
