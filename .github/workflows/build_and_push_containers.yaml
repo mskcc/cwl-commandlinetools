@@ -60,15 +60,6 @@ jobs:
           tags: |
             ghcr.io/msk-access/abra2:2.22
       - 
-        name: Build Fgbio Postprocessing 0.2.1 and Push to GitHub Packages
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./fgbio_postprocessing_simplex_filter_0.1.8/container/Dockerfile
-          push: true
-          tags: |
-            ghcr.io/msk-access/fgbio_postprocessing:0.2.1
-      - 
         name: Build bcftools 1.6 and Push to GitHub Packages
         uses: docker/build-push-action@v2
         with:
