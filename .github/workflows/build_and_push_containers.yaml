@@ -35,16 +35,31 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.RS_PAT }}
-      - 
-        name: Build merge_fastq 0.1.7 and Push to GitHub Packages
-        if: github.event.registry_package.package.name != 'merge_fastq:0.1.7'
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./merge_fastq_0.1.7/container/Dockerfile
-          push: true
-          tags: |
-            ghcr.io/msk-access/merge_fastq:0.1.7
+      -
+        name: Check package version ABRA2
+        run: |
+          echo "::set-output name=abra2_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/abra2:2.22 | jq '.')"
+      -       
+        name: echo output 1
+        run: |
+          echo ${{ steps.getfile.outputs.abra2_manifest }}
+      -
+        name: Check package version MANTA 
+        run: |
+          echo "::set-output name=manta_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/manta:1.5.1 | jq '.')"
+      -       
+        name: echo output 2
+        run: |
+          echo ${{ steps.getfile.outputs.manta_manifest }}
+      # - 
+      #   name: Build merge_fastq 0.1.7 and Push to GitHub Packages
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: .
+      #     file: ./merge_fastq_0.1.7/container/Dockerfile
+      #     push: true
+      #     tags: |
+      #       ghcr.io/msk-access/merge_fastq:0.1.7
       # - 
       #   name: Build BWA 0.7.17 and Push to GitHub Packages
       #   uses: docker/build-push-action@v2
