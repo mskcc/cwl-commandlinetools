@@ -38,7 +38,7 @@ jobs:
       -
         id: abra2
         run: |
-          echo "::set-output name=abra2_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/abra2:2.22 | jq '.')"
+          echo '::set-output name=abra2_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/abra2:2.22 | jq '.')'
       -       
         name: echo output ABRA2   
         run: |
@@ -46,11 +46,18 @@ jobs:
       -
         id: manta
         run: |
-          echo "::set-output name=manta_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/manta:1.5.1 | jq '.')"
+          echo '::set-output name=manta_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/manta:1.5.1 | jq '.')'
       -       
         name: echo output MANTA
         run: |
           echo ${{ steps.manta.outputs.manta_manifest }}
+      - 
+        name: Set selected color
+        run: echo '::set-output name=SELECTED_COLOR::green'
+        id: random-color-generator
+      - 
+        name: Get color
+        run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
       # - 
       #   name: Build merge_fastq 0.1.7 and Push to GitHub Packages
       #   uses: docker/build-push-action@v2
@@ -69,16 +76,16 @@ jobs:
       #     push: true
       #     tags: |
       #       ghcr.io/msk-access/bwa:0.7.17
-      - 
-        name: Build ABRA2 2.22 and Push to GitHub Packages
-        if: ${{ !steps.abra2.outputs.abra2-manifest }}
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./abra2_2.22/container/Dockerfile
-          push: true
-          tags: |
-            ghcr.io/msk-access/abra2:2.22
+      # - 
+      #   name: Build ABRA2 2.22 and Push to GitHub Packages
+      #   if: ${{ !steps.abra2.outputs.abra2-manifest }}
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: .
+      #     file: ./abra2_2.22/container/Dockerfile
+      #     push: true
+      #     tags: |
+      #       ghcr.io/msk-access/abra2:2.22
       # - 
       #   name: Build vcf2maf 1.6.17 and Push to GitHub Packages
       #   uses: docker/build-push-action@v2
@@ -124,16 +131,16 @@ jobs:
       #     push: true
       #     tags: |
       #       ghcr.io/msk-access/marianas:1.8.1
-      - 
-        name: Build Manta and Push to GitHub Packages
-        if: ${{ !steps.manta.outputs.manta-manifest }}
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./manta_1.5.1/container/Dockerfile
-          push: true
-          tags: |
-            ghcr.io/msk-access/manta:1.5.1
+      # - 
+      #   name: Build Manta and Push to GitHub Packages
+      #   if: ${{ !steps.manta.outputs.manta-manifest }}
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: .
+      #     file: ./manta_1.5.1/container/Dockerfile
+      #     push: true
+      #     tags: |
+      #       ghcr.io/msk-access/manta:1.5.1
 
 
 
