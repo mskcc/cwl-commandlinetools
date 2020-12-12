@@ -55,13 +55,13 @@ jobs:
           echo ${{ steps.manta.outputs.manta_manifest }}
       -
         name: Get Manifest for Marianas
-        id: manta
+        id: marianas
         run: |
           echo ::set-output name=marianas_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/marianas:1.8.1 | jq '.')
       -       
         name: echo output marianas
         run: |
-          echo ${{ steps.manta.outputs.marianas_manifest }}
+          echo ${{ steps.marianas.outputs.marianas_manifest }}
       # - 
       #   name: Build merge_fastq 0.1.7 and Push to GitHub Packages
       #   uses: docker/build-push-action@v2
