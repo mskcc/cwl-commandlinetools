@@ -36,53 +36,41 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.RS_PAT }}
       -
-        name: Get Manifest for ABRA2
-        id: abra2
+        name: Get Manifest
+        id: manifest
         run: |
-          echo ::set-output name=abra2_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/abra2:2.22 | jq '.')
-      -       
-        name: echo output ABRA2   
-        run: |
-          echo ${{ steps.abra2.outputs.abra2_manifest }}
-      -
-        name: Get Manifest for MANTA
-        id: manta
-        run: |
-          echo ::set-output name=manta_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/manta:1.5.1 | jq '.')
-      -       
-        name: echo output MANTA
-        run: |
-          echo ${{ steps.manta.outputs.manta_manifest }}
-      -
-        name: Get Manifest for Marianas
-        id: marianas
-        run: |
-          echo ::set-output name=marianas_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/marianas:1.8.1 | jq '.')
-      -       
-        name: echo output marianas
-        run: |
-          echo ${{ steps.marianas.outputs.marianas_manifest }}
-      # - 
-      #   name: Build merge_fastq 0.1.7 and Push to GitHub Packages
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: .
-      #     file: ./merge_fastq_0.1.7/container/Dockerfile
-      #     push: true
-      #     tags: |
-      #       ghcr.io/msk-access/merge_fastq:0.1.7
-      # - 
-      #   name: Build BWA 0.7.17 and Push to GitHub Packages
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: .
-      #     file: ./bwa_mem_0.7.17/container/Dockerfile
-      #     push: true
-      #     tags: |
-      #       ghcr.io/msk-access/bwa:0.7.17
+          echo ::set-output name=abra2::$(docker buildx imagetools inspect ghcr.io/msk-access/abra2:2.22 | jq '.')
+          echo ::set-output name=manta::$(docker buildx imagetools inspect ghcr.io/msk-access/manta:1.5.1 | jq '.')
+          echo ::set-output name=marianas::$(docker buildx imagetools inspect ghcr.io/msk-access/marianas:1.8.1 | jq '.')
+          echo ::set-output name=bwa::$(docker buildx imagetools inspect ghcr.io/msk-access/bwa:0.7.17 | jq '.')
+          echo ::set-output name=merge_fastq::$(docker buildx imagetools inspect ghcr.io/msk-access/merge_fastq:0.1.7 | jq '.')
+          echo ::set-output name=fgbio_postprocessing::$(docker buildx imagetools inspect ghcr.io/msk-access/fgbio-postprocessing:0.2.1 | jq '.')
+          echo ::set-output name=mutect::$(docker buildx imagetools inspect ghcr.io/msk-access/mutect:1.1.5 | jq '.')
+          echo ::set-output name=trim_galore::$(docker buildx imagetools inspect ghcr.io/msk-access/trim_galore:0.6.2 | jq '.')
+          echo ::set-output name=waltz::$(docker buildx imagetools inspect ghcr.io/msk-access/waltz:3.1.1 | jq '.')
+      - 
+        name: Build merge_fastq 0.1.7 and Push to GitHub Packages
+        if: ${{ !steps.manifest.outputs.merge_fastq }}
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./merge_fastq_0.1.7/container/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/msk-access/merge_fastq:0.1.7
+      - 
+        name: Build BWA 0.7.17 and Push to GitHub Packages
+        if: ${{ !steps.manifest.outputs.bwa }}
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./bwa_mem_0.7.17/container/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/msk-access/bwa:0.7.17
       - 
         name: Build ABRA2 2.22 and Push to GitHub Packages
-        if: ${{ !steps.abra2.outputs.abra2_manifest }}
+        if: ${{ !steps.manifest.outputs.abra2 }}
         uses: docker/build-push-action@v2
         with:
           context: .
@@ -90,61 +78,56 @@ jobs:
           push: true
           tags: |
             ghcr.io/msk-access/abra2:2.22
-      # - 
-      #   name: Build vcf2maf 1.6.17 and Push to GitHub Packages
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: .
-      #     file: ./vcf2maf_1.6.17/container/Dockerfile
-      #     push: true
-      #     tags: |
-      #       ghcr.io/msk-access/vcf2maf:1.6.17
-      # - 
-      #   name: Build MuTect 1.1.5 and Push to GitHub Packages
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: .
-      #     file: ./mutect_1.1.5/container/Dockerfile
-      #     push: true
-      #     tags: |
-      #       ghcr.io/msk-access/mutect:1.1.5
-      # - 
-      #   name: Build Trim Galore 0.6.2 and Push to GitHub Packages
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: .
-      #     file: ./trim_galore_0.6.2/container/Dockerfile
-      #     push: true
-      #     tags: |
-      #       ghcr.io/msk-access/trim_galore:0.6.2
-      # - 
-      #   name: Build Waltz 3.1.1 and Push to GitHub Packages
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: .
-      #     file: ./waltz_count_reads_3.1.1/container/Dockerfile
-      #     push: true
-      #     tags: |
-      #       ghcr.io/msk-access/waltz:3.1.1
-      # - 
-      #   name: Build Marianas 1.8.1 and Push to GitHub Packages
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: .
-      #     file: ./marianas_process_loop_umi_1.8.1/container/Dockerfile
-      #     push: true
-      #     tags: |
-      #       ghcr.io/msk-access/marianas:1.8.1
-      # - 
-      #   name: Build Manta and Push to GitHub Packages
-      #   if: ${{ !steps.manta.outputs.manta-manifest }}
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: .
-      #     file: ./manta_1.5.1/container/Dockerfile
-      #     push: true
-      #     tags: |
-      #       ghcr.io/msk-access/manta:1.5.1
+      - 
+        name: Build MuTect 1.1.5 and Push to GitHub Packages
+        if: ${{ !steps.manifest.outputs.mutect }}
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./mutect_1.1.5/container/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/msk-access/mutect:1.1.5
+      - 
+        name: Build Trim Galore 0.6.2 and Push to GitHub Packages
+        if: ${{ !steps.manifest.outputs.trim_galore }}
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./trim_galore_0.6.2/container/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/msk-access/trim_galore:0.6.2
+      - 
+        name: Build Waltz 3.1.1 and Push to GitHub Packages
+        if: ${{ !steps.manifest.outputs.waltz }}
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./waltz_count_reads_3.1.1/container/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/msk-access/waltz:3.1.1
+      - 
+        name: Build Marianas 1.8.1 and Push to GitHub Packages
+        if: ${{ !steps.manifest.outputs.marianas }}
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./marianas_process_loop_umi_1.8.1/container/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/msk-access/marianas:1.8.1
+      - 
+        name: Build Manta and Push to GitHub Packages
+        if: ${{ !steps.manifest.outputs.manta }}
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./manta_1.5.1/container/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/msk-access/manta:1.5.1
 
 
 
