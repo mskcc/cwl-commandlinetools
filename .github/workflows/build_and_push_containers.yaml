@@ -36,16 +36,14 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.RS_PAT }}
       -
-        name: Check package version ABRA2
         id: abra2
         run: |
           echo "::set-output name=abra2_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/abra2:2.22 | jq '.')"
       -       
-        name: echo output ABRA2
+        name: echo output ABRA2   
         run: |
           echo ${{ steps.abra2.outputs.abra2-manifest }}
       -
-        name: Check package version MANTA
         id: manta
         run: |
           echo "::set-output name=manta_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/manta:1.5.1 | jq '.')"
