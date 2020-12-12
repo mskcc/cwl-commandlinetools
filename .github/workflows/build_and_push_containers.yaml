@@ -38,15 +38,15 @@ jobs:
       -
         id: abra2
         run: |
-          echo '::set-output name=abra2_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/abra2:2.22 | jq '.')'
+          echo "::set-output name=abra2_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/abra2:2.22 | jq '.')"
       -       
         name: echo output ABRA2   
         run: |
-          echo ${{ steps.abra2.outputs.abra2-manifest }}
+          echo ${{ steps.abra2.outputs.abra2_manifest }}
       -
         id: manta
         run: |
-          echo '::set-output name=manta_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/manta:1.5.1 | jq '.')'
+          echo "::set-output name=manta_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/manta:1.5.1 | jq '.')"
       -       
         name: echo output MANTA
         run: |
