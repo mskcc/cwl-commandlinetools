@@ -38,19 +38,19 @@ jobs:
       -
         name: Check package version ABRA2
         run: |
-          echo "::set-output name=abra2_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/abra2:2.22 | jq '.')"
+          echo "::set-output name=abra2-manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/abra2:2.22 | jq '.')"
       -       
-        name: echo output 1
+        name: echo output ABRA2
         run: |
-          echo ${{ steps.getfile.outputs.abra2_manifest }}
+          echo ${{ steps.getfile.outputs.abra2-manifest }}
       -
         name: Check package version MANTA 
         run: |
-          echo "::set-output name=manta_manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/manta:1.5.1 | jq '.')"
+          echo "::set-output name=manta-manifest::$(docker buildx imagetools inspect ghcr.io/msk-access/manta:1.5.1 | jq '.')"
       -       
-        name: echo output 2
+        name: echo output Manta
         run: |
-          echo ${{ steps.getfile.outputs.manta_manifest }}
+          echo ${{ steps.getfile.outputs.manta-manifest }}
       # - 
       #   name: Build merge_fastq 0.1.7 and Push to GitHub Packages
       #   uses: docker/build-push-action@v2
