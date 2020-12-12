@@ -47,7 +47,7 @@ jobs:
           echo ::set-output name=fgbio_postprocessing::$(docker buildx imagetools inspect ghcr.io/msk-access/fgbio-postprocessing:0.2.1 | jq '.')
           echo ::set-output name=mutect::$(docker buildx imagetools inspect ghcr.io/msk-access/mutect:1.1.5 | jq '.')
           echo ::set-output name=trim_galore::$(docker buildx imagetools inspect ghcr.io/msk-access/trim_galore:0.6.2 | jq '.')
-          echo ::set-output name=waltz::$(docker buildx imagetools inspect ghcr.io/msk-access/waltz:3.1.1 | jq '.')
+          echo ::set-output name=waltz::$(docker buildx imagetools inspect ghcr.io/msk-access/waltz:3.2.0 | jq '.')
       - 
         name: Build merge_fastq 0.1.7 and Push to GitHub Packages
         if: ${{ !steps.manifest.outputs.merge_fastq }}
@@ -99,7 +99,7 @@ jobs:
           tags: |
             ghcr.io/msk-access/trim_galore:0.6.2
       - 
-        name: Build Waltz 3.1.1 and Push to GitHub Packages
+        name: Build Waltz 3.2.0 and Push to GitHub Packages
         if: ${{ !steps.manifest.outputs.waltz }}
         uses: docker/build-push-action@v2
         with:
@@ -107,7 +107,7 @@ jobs:
           file: ./waltz_count_reads_3.1.1/container/Dockerfile
           push: true
           tags: |
-            ghcr.io/msk-access/waltz:3.1.1
+            ghcr.io/msk-access/waltz:3.2.0
       - 
         name: Build Marianas 1.8.1 and Push to GitHub Packages
         if: ${{ !steps.manifest.outputs.marianas }}
