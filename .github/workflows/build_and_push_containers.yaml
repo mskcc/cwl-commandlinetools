@@ -35,6 +35,14 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.RS_PAT }}
+      - 
+        uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'abra2'
+      - 
+        uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'mutect'
       -
         name: Get Manifest
         id: manifest
