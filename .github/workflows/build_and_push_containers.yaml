@@ -36,12 +36,12 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.RS_PAT }}
       - 
-        uses: actions/delete-package-versions@v1
+        uses: actions/delete-package-versions@v1.0.3
         with:
           package-name: 'abra2'
           token: ${{ secrets.RS_PAT }}
       - 
-        uses: actions/delete-package-versions@v1
+        uses: actions/delete-package-versions@v1.0.3
         with:
           package-name: 'mutect'
           token: ${{ secrets.RS_PAT }}
