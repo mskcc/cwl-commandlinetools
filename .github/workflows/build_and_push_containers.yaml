@@ -39,10 +39,12 @@ jobs:
         uses: actions/delete-package-versions@v1
         with:
           package-name: 'abra2'
+          token: ${{ secrets.RS_PAT }}
       - 
         uses: actions/delete-package-versions@v1
         with:
           package-name: 'mutect'
+          token: ${{ secrets.RS_PAT }}
       -
         name: Get Manifest
         id: manifest
