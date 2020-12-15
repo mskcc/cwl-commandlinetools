@@ -36,12 +36,9 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.RS_PAT }}
       - 
-        uses: actions/checkout@v2
-      - 
-        uses: actions/setup-node@v2-beta
+        uses: actions/setup-node@v1
         with:
           node-version: '14'
-          check-latest: true
       - 
         uses: actions/delete-package-versions@v1.0.3
         with:
