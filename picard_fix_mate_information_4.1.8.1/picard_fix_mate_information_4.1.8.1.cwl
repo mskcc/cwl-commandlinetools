@@ -150,7 +150,7 @@ requirements:
     ramMin: 30000
     coresMin: 12
   - class: DockerRequirement
-    dockerPull: 'broadinstitute/gatk:4.1.8.1'
+    dockerPull: 'ghcr.io/msk-access/gatk:4.1.8.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

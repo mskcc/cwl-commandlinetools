@@ -55,7 +55,7 @@ requirements:
     ramMin: 20000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'biocontainers/bedtools:v2.28.0_cv2'
+    dockerPull: 'ghcr.io/msk-access/bedtools:v2.28.0_cv2'
   - class: InlineJavascriptRequirement
 stdout: |-
   ${

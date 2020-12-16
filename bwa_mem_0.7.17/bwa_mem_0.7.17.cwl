@@ -323,7 +323,7 @@ requirements:
     ramMin: 34000
     coresMin: 16
   - class: DockerRequirement
-    dockerPull: 'mskaccess/bwa_mem_0.7.17:0.1.0'
+    dockerPull: 'ghcr.io/msk-access/bwa:0.7.17'
   - class: InlineJavascriptRequirement
 stdout: |-
   ${

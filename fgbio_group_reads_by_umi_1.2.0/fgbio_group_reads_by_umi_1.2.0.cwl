@@ -215,7 +215,7 @@ requirements:
     ramMin: 16000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'quay.io/biocontainers/fgbio:1.2.0--0'
+    dockerPull: 'ghcr.io/msk-access/fgbio:1.2.0'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

@@ -172,7 +172,7 @@ requirements:
     ramMin: 17000
     coresMin: 4
   - class: DockerRequirement
-    dockerPull: 'quay.io/biocontainers/fastp:0.20.1--h8b12597_0'
+    dockerPull: 'ghcr.io/msk-access/fastp:0.20.1--h8b12597_0'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

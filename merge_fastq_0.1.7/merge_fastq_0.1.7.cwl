@@ -91,7 +91,7 @@ requirements:
     ramMin: 8000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/merge_fastq:0.6.3'
+    dockerPull: 'ghcr.io/msk-access/merge_fastq:0.1.7'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

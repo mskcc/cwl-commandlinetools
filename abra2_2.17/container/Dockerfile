@@ -20,7 +20,7 @@ LABEL org.opencontainers.image.created=${BUILD_DATE} \
 	org.opencontainers.image.licenses=${LICENSE} \
 	org.opencontainers.image.version.java=${JAVA_VERSION} \
 	org.opencontainers.image.version.abra2=${ABRA2_VERSION} \
-	org.opencontainers.image.source.abra2="https://github.com/mozack/abra2/releases/"
+	org.opencontainers.image.source="https://github.com/mozack/abra2/releases/"
 
 LABEL org.opencontainers.image.description="This container uses OPENJDK ${JAVA_VERSION} as the base image to build abra2 version ${ABRA2_VERSION}"
 

@@ -49,7 +49,7 @@ requirements:
     ramMin: 16000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'mskaccess/fgbio_postprocessing:0.2.1'
+    dockerPull: 'ghcr.io/msk-access/fgbio_postprocessing:0.2.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

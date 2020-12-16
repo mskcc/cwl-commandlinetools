@@ -89,7 +89,7 @@ requirements:
     ramMin: 8000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/waltz:0.6.3'
+    dockerPull: 'ghcr.io/msk-access/waltz:3.1.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

@@ -155,7 +155,7 @@ requirements:
     ramMin: 24000
     coresMin: 12
   - class: DockerRequirement
-    dockerPull: 'mskaccess/manta:0.6.3'
+    dockerPull: 'ghcr.io/msk-access/manta:1.5.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
