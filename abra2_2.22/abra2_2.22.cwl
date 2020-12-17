@@ -219,7 +219,7 @@ requirements:
     ramMin: 60000
     coresMin: 16
   - class: DockerRequirement
-    dockerPull: 'mskaccess/abra2:2.22'
+    dockerPull: 'ghcr.io/msk-access/abra2:2.22'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
