@@ -72,6 +72,9 @@ inputs:
       position: 0
       prefix: '--mi-tag'
     doc: 'The output tag for UMI grouping. [Optional].'
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null.'
 outputs:
   - id: fgbio_collect_duplex_seq_metrics_family_size
     type: File
@@ -239,6 +242,14 @@ arguments:
     valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
     valueFrom: CollectDuplexSeqMetrics
+  - position: 0
+    prefix: '--tmp-dir'
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
   - position: 0
     prefix: '--output'
     valueFrom: |-

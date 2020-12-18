@@ -233,6 +233,9 @@ inputs:
     type: int?
   - id: number_of_threads
     type: int?
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: gatk_apply_bqsr_bam
     type: File
@@ -271,6 +274,17 @@ arguments:
               return "-Xmx12G"
            }
       }
+  - position: 1
+    separate: false
+    valueFrom: ApplyBQSR
+  - position: 2
+    prefix: '--TMP_DIR'
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
   - position: 2
     prefix: '--output'
     valueFrom: |-
@@ -281,13 +295,6 @@ arguments:
               return inputs.input.basename.replace(/.bam/, '_bqsr.bam')
           }
       }
-  - position: 2
-    prefix: '--tmp-dir'
-    valueFrom: $(runtime.tmpdir)
-  - position: 1
-    prefix: ''
-    separate: false
-    valueFrom: ApplyBQSR
 requirements:
   - class: ResourceRequirement
     ramMin: 16000

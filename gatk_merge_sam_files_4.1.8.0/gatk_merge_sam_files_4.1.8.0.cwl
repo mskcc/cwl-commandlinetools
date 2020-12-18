@@ -172,6 +172,9 @@ inputs:
     doc: >-
       Use the JDK Inflater instead of the Intel Inflater for reading compressed
       input
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: gatk_merge_sam_files_bam
     type: File
@@ -215,7 +218,12 @@ arguments:
       }
   - position: 0
     prefix: '--TMP_DIR'
-    valueFrom: $(runtime.tmpdir)
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
   - position: 2
     prefix: '-O'
     valueFrom: |-

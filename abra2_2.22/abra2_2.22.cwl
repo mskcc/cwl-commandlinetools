@@ -29,10 +29,7 @@ inputs:
     secondaryFiles:
       - ^.bai
   - id: working_directory
-    type: Directory?
-    inputBinding:
-      position: 0
-      prefix: '--tmpdir'
+    type: string?
     doc: Set the temp directory (overrides java.io.tmpdir)
   - id: reference_fasta
     type: File
@@ -213,6 +210,14 @@ arguments:
           if(inputs.number_of_threads)
               return inputs.number_of_threads
           return runtime.cores
+      }
+  - position: 0
+    prefix: '--tmpdir'
+    valueFrom: |-
+      ${
+          if(inputs.working_directory)
+              return inputs.working_directory;
+            return runtime.tmpdir
       }
 requirements:
   - class: ResourceRequirement

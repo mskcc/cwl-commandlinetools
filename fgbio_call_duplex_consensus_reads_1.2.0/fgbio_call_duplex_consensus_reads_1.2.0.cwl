@@ -90,6 +90,9 @@ inputs:
       The maximum number of reads to use when building a single-strand
       consensus. If more than this many reads are present in a tag family, the
       family is randomly downsampled to exactly max-reads reads.
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null.'
 outputs:
   - id: fgbio_call_duplex_consensus_reads_bam
     type: File
@@ -161,6 +164,14 @@ arguments:
     valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
     valueFrom: CallDuplexConsensusReads
+  - position: 0
+    prefix: '--tmp-dir'
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
   - position: 0
     prefix: '--output'
     shellQuote: false

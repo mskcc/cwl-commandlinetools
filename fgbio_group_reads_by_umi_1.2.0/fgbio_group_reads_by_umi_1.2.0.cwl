@@ -77,6 +77,9 @@ inputs:
       The minimum UMI length. If not specified then all UMIs must have the same
       length, otherwise discard reads with UMIs shorter than this length and
       allow for differing UMI lengths.
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null.'
 outputs:
   - id: fgbio_group_reads_by_umi_bam
     type: File
@@ -200,6 +203,14 @@ arguments:
     valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
     valueFrom: GroupReadsByUmi
+  - position: 0
+    prefix: '--tmp-dir'
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
   - position: 0
     prefix: '--output'
     shellQuote: false

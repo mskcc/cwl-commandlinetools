@@ -265,6 +265,9 @@ inputs:
     type: int?
   - id: memory_overhead
     type: int?
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: gatk_base_recalibrator_output
     type: File
@@ -306,8 +309,13 @@ arguments:
     separate: false
     valueFrom: BaseRecalibrator
   - position: 2
-    prefix: '--tmp-dir'
-    valueFrom: $(runtime.tmpdir)
+    prefix: '--TMP_DIR'
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
   - position: 2
     prefix: '--output'
     valueFrom: |-

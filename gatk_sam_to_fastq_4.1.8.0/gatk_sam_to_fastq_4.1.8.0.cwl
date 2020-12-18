@@ -249,6 +249,9 @@ inputs:
       which variable-length data (read, qualities, tags) do not otherwise need
       to be decoded.  Default value: STRICT. Possible values: {STRICT, LENIENT,
       SILENT}
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: gatk_sam_to_fastq_fastq
     type: File
@@ -314,8 +317,13 @@ arguments:
       }
   - position: 0
     prefix: '--TMP_DIR'
-    valueFrom: $(runtime.tmpdir)
-  - position: 2
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
+  - position: 0
     prefix: '--FASTQ'
     valueFrom: |-
       ${

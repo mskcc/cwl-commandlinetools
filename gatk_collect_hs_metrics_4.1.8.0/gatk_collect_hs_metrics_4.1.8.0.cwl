@@ -187,6 +187,9 @@ inputs:
     doc: Memory overhead per job in megabytes
   - id: number_of_threads
     type: int?
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: gatk_collect_hs_metrics_txt
     type: File
@@ -252,14 +255,13 @@ arguments:
       }
   - position: 0
     prefix: '--TMP_DIR'
-    valueFrom: $(runtime.tmpdir)
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
   - position: 0
-    prefix: '--COMPRESSION_LEVEL'
-    valueFrom: '2'
-  - position: 0
-    prefix: '--MAX_RECORDS_IN_RAM'
-    valueFrom: '50000'
-  - position: 2
     prefix: '-O'
     valueFrom: |-
       ${
@@ -269,7 +271,7 @@ arguments:
               return inputs.input.basename.replace(/.bam/, '_hs_metrics.txt')
           }
       }
-  - position: 2
+  - position: 0
     prefix: '--PER_TARGET_COVERAGE'
     valueFrom: |-
       ${
@@ -279,7 +281,7 @@ arguments:
               return inputs.input.basename.replace(/.bam/, '_per_target_coverage.txt')
           }
       }
-  - position: 2
+  - position: 0
     prefix: '--PER_BASE_COVERAGE'
     valueFrom: |-
       ${

@@ -146,6 +146,9 @@ inputs:
       is moreappropriate. For other platforms and models, users should
       experiment to find what works best.  Default value: 100. This option can
       be set to 'null' to clear the default value.
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
   - id: picard_mark_duplicates_bam
     type: File
@@ -214,8 +217,13 @@ arguments:
           }
       }
   - position: 0
-    prefix: --TMP_DIR
-    valueFrom: $(runtime.tmpdir)
+    prefix: '--TMP_DIR'
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 17000

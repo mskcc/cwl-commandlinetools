@@ -130,6 +130,9 @@ inputs:
       prefix: '--run-date'
       shellQuote: false
     doc: 'Date the run was produced, to insert into the read group header'
+  - id: temporary_directory
+    type: string?
+    doc: 'Default value: null.'
 outputs:
   - id: fgbio_fastq_to_bam_ubam
     type: File
@@ -198,6 +201,14 @@ arguments:
     valueFrom: '-XX:-UseGCOverheadLimit'
   - position: 0
     valueFrom: FastqToBam
+  - position: 0
+    prefix: '--tmp-dir'
+    valueFrom: |-
+      ${
+          if(inputs.temporary_directory)
+              return inputs.temporary_directory;
+            return runtime.tmpdir
+      }
   - position: 0
     prefix: '--output'
     shellQuote: false
