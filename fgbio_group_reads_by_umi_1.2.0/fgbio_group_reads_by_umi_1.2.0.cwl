@@ -20,7 +20,7 @@ inputs:
   - id: input
     type: File
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--input'
       shellQuote: false
     doc: The input BAM file.
@@ -30,48 +30,48 @@ inputs:
   - id: family_size_histogram
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--family-size-histogram'
     doc: Optional output of tag family size counts.
   - id: raw_tag
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--raw-tag'
     doc: The tag containing the raw UMI.
   - id: assign_tag
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--assign-tag'
     doc: The output tag for UMI grouping.
   - id: min_map_q
     type: int?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--min-map-q'
     doc: Minimum mapping quality.
   - id: include_non_pf_reads
     type: boolean?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--include-non-pf-reads'
   - id: strategy
     type: string
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--strategy'
     doc: 'The UMI assignment strategy. (identity,edit,adjacency,paired)'
   - id: edits
     type: int?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--edits'
     doc: The allowable number of edits between UMIs.
   - id: min_umi_length
     type: int?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--min-umi-length'
     doc: >-
       The minimum UMI length. If not specified then all UMIs must have the same
@@ -80,6 +80,14 @@ inputs:
   - id: temporary_directory
     type: string?
     doc: 'Default value: null.'
+  - id: async_io
+    type: string?
+    inputBinding:
+      position: 0
+      separate: false
+      prefix: '--async-io='
+    doc: >-
+      'Use asynchronous I/O where possible, e.g. for SAM and BAM files [=true|false].'
 outputs:
   - id: fgbio_group_reads_by_umi_bam
     type: File
@@ -201,17 +209,18 @@ arguments:
       }
   - position: 0
     valueFrom: '-XX:-UseGCOverheadLimit'
-  - position: 0
+  - position: 1
     valueFrom: GroupReadsByUmi
   - position: 0
-    prefix: '--tmp-dir'
+    prefix: '--tmp-dir='
+    separate: false
     valueFrom: |-
       ${
           if(inputs.temporary_directory)
               return inputs.temporary_directory;
             return runtime.tmpdir
       }
-  - position: 0
+  - position: 2
     prefix: '--output'
     shellQuote: false
     valueFrom: |-

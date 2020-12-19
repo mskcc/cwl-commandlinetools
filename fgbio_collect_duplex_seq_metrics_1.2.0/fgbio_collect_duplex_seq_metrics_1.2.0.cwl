@@ -29,13 +29,13 @@ inputs:
   - id: intervals
     type: File?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--intervals'
     doc: 'Optional set of intervals over which to restrict analysis. [Optional].'
   - id: description
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--description'
     doc: >-
       Description of data set used to label plots. Defaults to sample/library.
@@ -43,7 +43,7 @@ inputs:
   - id: duplex_umi_counts
     type: boolean?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--duplex-umi-counts'
     doc: >-
       If true, produce the .duplex_umi_counts.txt file with counts of duplex UMI
@@ -51,30 +51,38 @@ inputs:
   - id: min_ab_reads
     type: int?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--min-ab-reads'
     doc: 'Minimum AB reads to call a tag family a ''duplex''. [Optional].'
   - id: min_ba_reads
     type: int?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--min-ba-reads'
     doc: 'Minimum BA reads to call a tag family a ''duplex''. [Optional].'
   - id: umi_tag
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--umi-tag'
     doc: 'The tag containing the raw UMI. [Optional].'
   - id: mi_tag
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--mi-tag'
     doc: 'The output tag for UMI grouping. [Optional].'
   - id: temporary_directory
     type: string?
     doc: 'Default value: null.'
+  - id: async_io
+    type: string?
+    inputBinding:
+      position: 0
+      separate: false
+      prefix: '--async-io='
+    doc: >-
+      'Use asynchronous I/O where possible, e.g. for SAM and BAM files [=true|false].'
 outputs:
   - id: fgbio_collect_duplex_seq_metrics_family_size
     type: File
@@ -240,17 +248,18 @@ arguments:
       }
   - position: 0
     valueFrom: '-XX:-UseGCOverheadLimit'
-  - position: 0
+  - position: 1
     valueFrom: CollectDuplexSeqMetrics
   - position: 0
-    prefix: '--tmp-dir'
+    prefix: '--tmp-dir='
+    separate: false
     valueFrom: |-
       ${
           if(inputs.temporary_directory)
               return inputs.temporary_directory;
             return runtime.tmpdir
       }
-  - position: 0
+  - position: 2
     prefix: '--output'
     valueFrom: |-
       ${

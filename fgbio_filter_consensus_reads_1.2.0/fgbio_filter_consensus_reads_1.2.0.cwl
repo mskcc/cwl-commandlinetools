@@ -30,7 +30,7 @@ inputs:
   - id: reference_fasta
     type: File
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--ref'
     doc: Reference fasta file.
     secondaryFiles:
@@ -39,13 +39,13 @@ inputs:
   - id: reverse_per_base_tags
     type: boolean?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--reverse-per-base-tags'
     doc: 'Reverse [complement] per base tags on reverse strand reads.'
   - id: min_reads
     type: 'int[]?'
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--min-reads'
       itemSeparator: ' '
       shellQuote: false
@@ -55,7 +55,7 @@ inputs:
   - id: max_read_error_rate
     type: 'float[]?'
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--max-read-error-rate'
       itemSeparator: ' '
     doc: >-
@@ -64,32 +64,32 @@ inputs:
   - id: max_base_error_rate
     type: 'float[]?'
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--max-base-error-rate'
       itemSeparator: ' '
     doc: The maximum error rate for a single consensus base. (Max 3 values)
   - id: min_base_quality
     type: int
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--min-base-quality'
     doc: Mask (make N) consensus bases with quality less than this threshold.
   - id: max_no_call_fraction
     type: float?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--max-no-call-fraction'
     doc: Maximum fraction of no-calls in the read after filtering
   - id: min_mean_base_quality
     type: int?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--min-mean-base-quality'
     doc: The minimum mean base quality across the consensus read
   - id: require_single_strand_agreement
     type: boolean?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--require-single-strand-agreement'
     doc: >-
       Mask (make N) consensus bases where the AB and BA consensus reads disagree
@@ -97,6 +97,14 @@ inputs:
   - id: temporary_directory
     type: string?
     doc: 'Default value: null.'
+  - id: async_io
+    type: string?
+    inputBinding:
+      position: 0
+      separate: false
+      prefix: '--async-io='
+    doc: >-
+      'Use asynchronous I/O where possible, e.g. for SAM and BAM files [=true|false].'
 outputs:
   - id: fgbio_filter_consensus_reads_bam
     type: File
@@ -182,17 +190,18 @@ arguments:
       }
   - position: 0
     valueFrom: '-XX:-UseGCOverheadLimit'
-  - position: 0
+  - position: 1
     valueFrom: FilterConsensusReads
   - position: 0
-    prefix: '--tmp-dir'
+    prefix: '--tmp-dir='
+    separate: false
     valueFrom: |-
       ${
           if(inputs.temporary_directory)
               return inputs.temporary_directory;
             return runtime.tmpdir
       }
-  - position: 0
+  - position: 2
     prefix: '--output'
     shellQuote: false
     valueFrom: |-

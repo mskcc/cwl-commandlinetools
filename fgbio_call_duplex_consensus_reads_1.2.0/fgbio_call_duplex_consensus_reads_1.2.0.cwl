@@ -20,7 +20,7 @@ inputs:
   - id: input
     type: File
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--input'
       shellQuote: false
     doc: The input SAM or BAM file.
@@ -30,19 +30,19 @@ inputs:
   - id: read_name_prefix
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--read-name-prefix'
     doc: The prefix all consensus read names
   - id: read_group_id
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--read-group-id'
     doc: The new read group ID for all the consensus reads.
   - id: error_rate_pre_umi
     type: int?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--error-rate-pre-umi'
     doc: >-
       The Phred-scaled error rate for an error prior to the UMIs being
@@ -50,7 +50,7 @@ inputs:
   - id: error_rate_post_umi
     type: int?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--error-rate-post-umi'
     doc: >-
       The Phred-scaled error rate for an error post the UMIs have been
@@ -58,25 +58,25 @@ inputs:
   - id: min_input_base_quality
     type: int?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--min-input-base-quality'
     doc: Ignore bases in raw reads that have Q below this value.
   - id: trim
     type: boolean?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--trim'
     doc: 'If true, quality trim input reads in addition to masking low Q bases'
   - id: sort_order
     type: string?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--sort-order'
     doc: 'The sort order of the output, if :none: then the same as the input.'
   - id: min_reads
     type: 'int[]'
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--min-reads'
       itemSeparator: ' '
       shellQuote: false
@@ -84,7 +84,7 @@ inputs:
   - id: max_reads_per_strand
     type: int?
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--max-reads-per-strand'
     doc: >-
       The maximum number of reads to use when building a single-strand
@@ -93,6 +93,14 @@ inputs:
   - id: temporary_directory
     type: string?
     doc: 'Default value: null.'
+  - id: async_io
+    type: string?
+    inputBinding:
+      position: 0
+      separate: false
+      prefix: '--async-io='
+    doc: >-
+      'Use asynchronous I/O where possible, e.g. for SAM and BAM files [=true|false].'
 outputs:
   - id: fgbio_call_duplex_consensus_reads_bam
     type: File
@@ -162,17 +170,18 @@ arguments:
       }
   - position: 0
     valueFrom: '-XX:-UseGCOverheadLimit'
-  - position: 0
+  - position: 1
     valueFrom: CallDuplexConsensusReads
   - position: 0
-    prefix: '--tmp-dir'
+    prefix: '--tmp-dir='
+    separate: false
     valueFrom: |-
       ${
           if(inputs.temporary_directory)
               return inputs.temporary_directory;
             return runtime.tmpdir
       }
-  - position: 0
+  - position: 2
     prefix: '--output'
     shellQuote: false
     valueFrom: |-
@@ -181,7 +190,7 @@ arguments:
               return inputs.output_file_name;
             return  inputs.input.basename.replace(/.bam/,'_cons.bam');
       }
-  - position: 0
+  - position: 2
     prefix: '--threads'
     valueFrom: |-
       ${
