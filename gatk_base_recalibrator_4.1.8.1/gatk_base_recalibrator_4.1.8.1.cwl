@@ -309,7 +309,7 @@ arguments:
     separate: false
     valueFrom: BaseRecalibrator
   - position: 2
-    prefix: '--TMP_DIR'
+    prefix: '--tmp-dir'
     valueFrom: |-
       ${
           if(inputs.temporary_directory)
