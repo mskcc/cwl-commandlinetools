@@ -8,6 +8,7 @@ $namespaces:
 id: gatk_apply_bqsr_4_1_8_1
 baseCommand:
   - gatk
+  - ApplyBQSR
 inputs:
   - id: reference
     type: File
@@ -274,9 +275,6 @@ arguments:
               return "-Xmx12G"
            }
       }
-  - position: 1
-    separate: false
-    valueFrom: ApplyBQSR
   - position: 2
     prefix: '--tmp-dir'
     valueFrom: |-

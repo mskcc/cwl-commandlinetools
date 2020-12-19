@@ -8,6 +8,7 @@ $namespaces:
 id: gatk_base_recalibrator_4_1_8_1
 baseCommand:
   - gatk
+  - BaseRecalibrator
 inputs:
   - id: input
     type: File
@@ -304,10 +305,6 @@ arguments:
               return "-Xmx12G"
            }
       }
-  - position: 1
-    prefix: ''
-    separate: false
-    valueFrom: BaseRecalibrator
   - position: 2
     prefix: '--tmp-dir'
     valueFrom: |-
