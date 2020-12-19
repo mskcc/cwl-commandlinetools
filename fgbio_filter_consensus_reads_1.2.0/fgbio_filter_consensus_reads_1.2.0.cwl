@@ -20,7 +20,7 @@ inputs:
   - id: input
     type: File
     inputBinding:
-      position: 0
+      position: 2
       prefix: '--input'
       shellQuote: false
     doc: The input SAM or BAM file.
