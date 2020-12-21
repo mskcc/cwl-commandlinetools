@@ -717,7 +717,7 @@ requirements:
     ramMin: 34000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/mutect:0.6.3'
+    dockerPull: 'ghcr.io/msk-access/mutect:1.1.5'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

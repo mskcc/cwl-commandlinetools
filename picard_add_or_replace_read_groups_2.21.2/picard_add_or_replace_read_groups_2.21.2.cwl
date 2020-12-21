@@ -128,7 +128,7 @@ inputs:
       Default value:false. This option can be set to 'null' to clear the default
       value. Possible values:{true, false}
 outputs:
-  - id: bam
+  - id: picard_add_or_replace_read_groups_bam
     type: File
     outputBinding:
       glob: |-

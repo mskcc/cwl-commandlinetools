@@ -45,19 +45,19 @@ inputs:
       - .fai
       - ^.dict
 outputs:
-  - id: first_pass_output_file
+  - id: marianas_first_pass_output_file
     type: File
     outputBinding:
       glob: first-pass.txt
-  - id: alt_allele_file
+  - id: marianas_first_pass_alt_allele_file
     type: File
     outputBinding:
       glob: first-pass-alt-alleles.txt
-  - id: first_pass_insertions
+  - id: marianas_first_pass_insertions
     type: File
     outputBinding:
       glob: first-pass-insertions.txt
-  - id: first_pass_output_dir
+  - id: marianas_first_pass_output_dir
     type: Directory
     outputBinding:
       glob: .
@@ -126,7 +126,7 @@ requirements:
     ramMin: 20000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/marianas:0.6.3'
+    dockerPull: 'ghcr.io/msk-access/marianas:1.8.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

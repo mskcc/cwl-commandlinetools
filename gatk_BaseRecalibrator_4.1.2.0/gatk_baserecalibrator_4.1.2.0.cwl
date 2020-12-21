@@ -266,7 +266,7 @@ inputs:
     secondaryFiles:
       - .idx
 outputs:
-  - id: output
+  - id: gatk_base_recalibrator_output
     type: File
     outputBinding:
       glob: |-

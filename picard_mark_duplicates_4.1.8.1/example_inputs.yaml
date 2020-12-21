@@ -1,0 +1,19 @@
+assume_sort_order: coordinate
+bam_compression_level: null
+create_bam_index: true
+use_jdk_deflater: true
+use_jdk_inflater: true
+sorting_collection_size_ratio: 0.25
+read_name_regex: 'null'
+duplicate_scoring_strategy: null
+duplication_metrics: test_metrics.txt
+input:
+  class: File
+  path: /path/to/file.bam
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null
+optical_duplicate_pixel_distance: null
+output_file_name: null
+validation_stringency: null
+

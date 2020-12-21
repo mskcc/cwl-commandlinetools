@@ -20,7 +20,7 @@ LABEL org.opencontainers.image.created=${BUILD_DATE} \
 	org.opencontainers.image.licenses=${LICENSE} \
 	org.opencontainers.image.version.java=${JAVA_VERSION} \
 	org.opencontainers.image.version.marianas=${MARIANAS_VERSION} \
-	org.opencontainers.image.source.marianas="https://github.com/mskcc/Marianas/releases/"
+	org.opencontainers.image.source="https://github.com/msk-access/cwl_commandlinetools"
 
 LABEL org.opencontainers.image.description="This container uses OPENJDK ${JAVA_VERSION} as the base image to use Marianas version ${MARIANAS_VERSION}"
 
@@ -30,5 +30,5 @@ ENV MARIANAS_VERSION 1.8.1
 
 WORKDIR /usr/src/
 
-RUN wget https://github.com/juberpatel/Marianas/releases/download/v1.8.1/Marianas-1.8.1.jar
+RUN wget https://github.com/mskcc/Marianas/releases/download/v1.8.1/Marianas-1.8.1.jar
 RUN cp -s /usr/src/Marianas-1.8.1.jar /usr/local/bin/Marianas-1.8.1.jar

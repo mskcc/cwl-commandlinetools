@@ -1,0 +1,22 @@
+input:
+  class: File
+  metadata: {}
+  path: "/path/to/bam"
+  secondaryFiles:
+    - class: File
+      path: "/path/to/bam.bai"
+output_file_name: "insert_size_metrics.txt"
+histogram_file: "histogram.pdf"
+deviations: 10.0
+histogram_width: 800
+minimum_pct: 0
+metrics_acciumulation_level: null
+include_duplicates: null
+validation_stringency: null
+assume_sorted: null
+stop_after: null
+create_index: null
+create_md5_file: null
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null

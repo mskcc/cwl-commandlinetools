@@ -11,7 +11,7 @@ inputs:
       position: 2
     doc: Input array containing files to be merged
 outputs:
-  - id: output_file
+  - id: samtools_merge_bam
     type: File
     outputBinding:
       glob: '*merged.bam'

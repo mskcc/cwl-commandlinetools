@@ -234,7 +234,7 @@ inputs:
       position: 0
       prefix: '--use-original-qualities'
 outputs:
-  - id: output
+  - id: gatk_base_recalibrator_output
     type: File?
     outputBinding:
       glob: '$(inputs.input.basename.replace(''.bam'', '''')).recal.table'

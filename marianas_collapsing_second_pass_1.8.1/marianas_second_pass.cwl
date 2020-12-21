@@ -49,19 +49,19 @@ inputs:
     inputBinding:
       position: 9
 outputs:
-  - id: collapsed_fastq_1
+  - id: marianas_second_pass_collapsed_fastq_1
     type: File
     outputBinding:
       glob: collapsed_R1_.fastq
-  - id: collapsed_fastq_2
+  - id: marianas_second_pass_collapsed_fastq_2
     type: File
     outputBinding:
       glob: collapsed_R2_.fastq
-  - id: second_pass_alt_alleles
+  - id: marianas_second_pass_alt_alleles
     type: File
     outputBinding:
       glob: second-pass-alt-alleles.txt
-  - id: second_pass_insertions
+  - id: marianas_second_pass_insertions
     type: File
     outputBinding:
       glob: second-pass-insertions.txt
@@ -130,7 +130,7 @@ requirements:
     ramMin: 20000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/marianas:0.6.3'
+    dockerPull: 'ghcr.io/msk-access/marianas:1.8.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

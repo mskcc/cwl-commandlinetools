@@ -1,0 +1,14 @@
+bam_compression_level:
+create_bam_index: true
+use_jdk_deflater: true
+use_jdk_inflater: true
+input:
+  class: File
+  path: "/path/to/bam"
+memory_overhead:
+memory_per_job:
+number_of_threads:
+output_file_name: somename_fm.bam
+sort_order:
+tmp_dir:
+validation_stringency:

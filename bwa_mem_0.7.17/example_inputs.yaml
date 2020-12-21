@@ -1,0 +1,9 @@
+reads:
+- class: File
+  path: "path/to/fastq_R1.fastq"
+- class: File
+  path: "path/to/fastq_R2.fastq"
+reference:
+  class: File
+  path: "/path/to/reference.fasta"
+sample_id: test_sample_id

@@ -1,6 +1,5 @@
 class: CommandLineTool
 cwlVersion: v1.0
-$namespaces:
 baseCommand:
   - samtools
   - sort
@@ -43,7 +42,7 @@ inputs:
       position: 0
       prefix: '-O'
 outputs:
-  - id: output_file
+  - id: samtools_sort_bam
     type: File
     outputBinding:
       glob: '$(inputs.input.basename.replace(''bam'', ''sorted.bam''))'

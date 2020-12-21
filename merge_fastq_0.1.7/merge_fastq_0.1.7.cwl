@@ -64,7 +64,7 @@ inputs:
       Name of the merged output READ2 fastq file(default:
       merged_fastq_R2.fastq.gz)
 outputs:
-  - id: mergedfastq1
+  - id: merge_fastq_1
     type: File
     outputBinding:
       glob: |-
@@ -75,7 +75,7 @@ outputs:
                 return 'merged_fastq_R1.fastq.gz'
             }
         }
-  - id: mergedfastq2
+  - id: merge_fastq_2
     type: File
     outputBinding:
       glob: |-
@@ -91,7 +91,7 @@ requirements:
     ramMin: 8000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/merge_fastq:0.6.3'
+    dockerPull: 'ghcr.io/msk-access/merge_fastq:0.1.7'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

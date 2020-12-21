@@ -149,71 +149,71 @@ inputs:
       Default value: false. This option can be set to 'null' to clear the
       default value. Possible values: {true, false}
 outputs:
-  - id: alignment_summary_metrics
+  - id: picard_collectmultiplemetrics_alignment_summary_metrics
     type: File?
     outputBinding:
       glob: '*alignment_summary_metrics'
-  - id: bait_bias_detail_metrics
+  - id: picard_collectmultiplemetrics_bait_bias_detail_metrics
     type: File?
     outputBinding:
       glob: '*bait_bias_detail_metrics'
-  - id: bait_bias_summary_metrics
+  - id: picard_collectmultiplemetrics_bait_bias_summary_metrics
     type: File?
     outputBinding:
       glob: '*bait_bias_summary_metrics'
-  - id: base_distribution_by_cycle_metrics
+  - id: picard_collectmultiplemetrics_base_distribution_by_cycle_metrics
     type: File?
     outputBinding:
       glob: '*base_distribution_by_cycle_metrics'
-  - id: base_distribution_by_cycle_pdf
+  - id: picard_collectmultiplemetrics_base_distribution_by_cycle_pdf
     type: File?
     outputBinding:
       glob: '*base_distribution_by_cycle.pdf'
-  - id: error_summary_metrics
+  - id: picard_collectmultiplemetrics_error_summary_metrics
     type: File?
     outputBinding:
       glob: '*error_summary_metrics'
-  - id: gc_bias_detail_metrics
+  - id: picard_collectmultiplemetrics_gc_bias_detail_metrics
     type: File?
     outputBinding:
       glob: '*gc_bias.detail_metrics'
-  - id: gc_bias_pdf
+  - id: picard_collectmultiplemetrics_gc_bias_pdf
     type: File?
     outputBinding:
       glob: '*gc_bias.pdf'
-  - id: gc_bias_summary_metrics
+  - id: picard_collectmultiplemetrics_gc_bias_summary_metrics
     type: File?
     outputBinding:
       glob: '*gc_bias.summary_metrics'
-  - id: insert_size_histogram_pdf
+  - id: picard_collectmultiplemetrics_insert_size_histogram_pdf
     type: File?
     outputBinding:
       glob: '*insert_size_histogram.pdf'
-  - id: insert_size_metrics
+  - id: picard_collectmultiplemetrics_insert_size_metrics
     type: File?
     outputBinding:
       glob: '*insert_size_metrics'
-  - id: pre_adapter_detail_metrics
+  - id: picard_collectmultiplemetrics_pre_adapter_detail_metrics
     type: File?
     outputBinding:
       glob: '*pre_adapter_detail_metrics'
-  - id: pre_adapter_summary_metrics
+  - id: picard_collectmultiplemetrics_pre_adapter_summary_metrics
     type: File?
     outputBinding:
       glob: '*pre_adapter_summary_metrics'
-  - id: quality_by_cycle_metrics
+  - id: picard_collectmultiplemetrics_quality_by_cycle_metrics
     type: File?
     outputBinding:
       glob: '*quality_by_cycle_metrics'
-  - id: quality_by_cycle_pdf
+  - id: picard_collectmultiplemetrics_quality_by_cycle_pdf
     type: File?
     outputBinding:
       glob: '*quality_by_cycle.pdf'
-  - id: quality_distribution_metrics
+  - id: picard_collectmultiplemetrics_quality_distribution_metrics
     type: File?
     outputBinding:
       glob: '*quality_distribution_metrics'
-  - id: quality_distribution_pdf
+  - id: picard_collectmultiplemetrics_quality_distribution_pdf
     type: File?
     outputBinding:
       glob: '*quality_distribution.pdf'

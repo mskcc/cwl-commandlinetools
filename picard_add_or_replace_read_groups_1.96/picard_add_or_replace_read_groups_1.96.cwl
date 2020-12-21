@@ -131,7 +131,7 @@ inputs:
     type: string?
     doc: 'Default value: null. This option may be specified 0 or more times.'
 outputs:
-  - id: bam
+  - id: picard_add_or_replace_read_groups_bam
     type: File
     outputBinding:
       glob: |-

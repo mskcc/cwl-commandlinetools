@@ -115,7 +115,7 @@ inputs:
       experiment to find what works best.  Default value: 100. This option can
       be set to 'null' to clear the default value.
 outputs:
-  - id: bam
+  - id: picard_mark_duplicates_bam
     type: File
     outputBinding:
       glob: |-

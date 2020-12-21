@@ -38,19 +38,19 @@ inputs:
     inputBinding:
       position: 13
 outputs:
-  - id: pileup
+  - id: waltz_pileupmetrics_pileup
     type: File
     outputBinding:
       glob: '*-pileup.txt'
-  - id: pileup_without_duplicates
+  - id: waltz_pileupmetrics_pileup_without_duplicates
     type: File
     outputBinding:
       glob: '*-pileup-without-duplicates.txt'
-  - id: intervals
+  - id: waltz_pileupmetrics_intervals
     type: File
     outputBinding:
       glob: '*-intervals.txt'
-  - id: intervals_without_duplicates
+  - id: waltz_pileupmetrics_intervals_without_duplicates
     type: File
     outputBinding:
       glob: '*-intervals-without-duplicates.txt'
@@ -89,7 +89,7 @@ requirements:
     ramMin: 8000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/waltz:0.6.3'
+    dockerPull: 'ghcr.io/msk-access/waltz:3.1.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

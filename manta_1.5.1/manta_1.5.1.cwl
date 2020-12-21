@@ -93,37 +93,37 @@ inputs:
       separate: false
     doc: Generate a bam of supporting reads for all SVs
 outputs:
-  - id: all_candidates
+  - id: manta_all_candidates_vcf_gz
     type: File
     outputBinding:
       glob: results/variants/candidateSV.vcf.gz
     secondaryFiles:
       - .tbi
-  - id: diploid_variants
+  - id: manta_diploid_variants_vcf_gz
     type: File?
     outputBinding:
       glob: results/variants/diploidSV.vcf.gz
     secondaryFiles:
       - .tbi
-  - id: small_candidates
+  - id: manta_small_candidates_vcf_gz
     type: File
     outputBinding:
       glob: results/variants/candidateSmallIndels.vcf.gz
     secondaryFiles:
       - .tbi
-  - id: somatic_variants
+  - id: manta_somatic_variants_vcf_gz
     type: File?
     outputBinding:
       glob: results/variants/somaticSV.vcf.gz
     secondaryFiles:
       - .tbi
-  - id: tumor_only_variants
+  - id: manta_tumor_only_variants_vcf_gz
     type: File?
     outputBinding:
       glob: results/variants/tumorSV.vcf.gz
     secondaryFiles:
       - .tbi
-  - id: evidence_bams
+  - id: manta_evidence_bams
     type: 'File[]?'
     outputBinding:
       glob: |-
@@ -155,7 +155,7 @@ requirements:
     ramMin: 24000
     coresMin: 12
   - class: DockerRequirement
-    dockerPull: 'mskaccess/manta:0.6.3'
+    dockerPull: 'ghcr.io/msk-access/manta:1.5.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'

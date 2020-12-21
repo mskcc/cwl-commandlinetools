@@ -33,8 +33,8 @@ inputs:
       shellQuote: false
     doc: Maximum distance between features allowed for features to be merged.
 outputs:
-  - id: output_file
-    type: File?
+  - id: bedtools_merge_bed
+    type: File
     outputBinding:
       glob: |-
         ${
@@ -49,7 +49,7 @@ requirements:
     ramMin: 20000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'biocontainers/bedtools:v2.28.0_cv2'
+    dockerPull: 'ghcr.io/msk-access/bedtools:v2.28.0_cv2'
   - class: InlineJavascriptRequirement
 stdout: |-
   ${
