@@ -1,4 +1,4 @@
-# CWL and Dockerfile for running biometrics major tool.
+# CWL and Dockerfile for running biometrics minor tool.
 
 | Tool | Version | Location |
 |--- |--- |--- |
@@ -11,7 +11,7 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner biometrics_major_0.2.4.cwl example_inputs.yaml
+    > toil-cwl-runner biometrics_minor_0.2.4.cwl example_inputs.yaml
 ```
 
 ### Usage

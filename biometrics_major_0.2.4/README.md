@@ -11,7 +11,7 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner biometrics_sexmismatch_0.2.4.cwl example_inputs.yaml
+    > toil-cwl-runner biometrics_major_0.2.4.cwl example_inputs.yaml
 ```
 
 ### Usage
