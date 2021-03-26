@@ -7,6 +7,12 @@
   - Bedtools
     - [genomecov v2.28.0_cv2](../bedtools_genomecov_v2.28.0_cv2/README.md)
     - [merge v2.28.0_cv2](../bedtools_merge_v2.28.0_cv2/README.md)
+  - Biometrics
+    - [extract v0.2.4](../biometrics_extract_0.2.4/README.md)
+    - [minor v0.2.4](../biometrics_minor_0.2.4/README.md)
+    - [major v0.2.4](../biometrics_major_0.2.4/README.md)
+    - [genotype v0.2.4](../biometrics_genotype_0.2.4/README.md)
+    - [sexmismatch v0.2.4](../biometrics_sexmismatch_0.2.4/README.md)
   - Disambiguate
     - [v1.0.0](../disambiguate_1.0.0/README.md)
   - Fgbio
