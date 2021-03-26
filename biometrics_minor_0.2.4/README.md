@@ -2,7 +2,7 @@
 
 | Tool | Version | Location |
 |--- |--- |--- |
-| biometrics   | 0.2.4   |  <https://pypi.org/project/biometrics/> |
+| biometrics   | 0.2.4   |  <https://github.com/msk-access/biometrics/blob/master/Dockerfile> |
 
 ## CWL
 

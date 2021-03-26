@@ -121,10 +121,10 @@ outputs:
         }
 requirements:
   - class: ResourceRequirement
-    ramMin: 8000
+    ramMin: 16000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'biometrics:0.2.4'
+    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.4'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
