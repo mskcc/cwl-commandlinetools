@@ -2,7 +2,7 @@
 
 | Tool | Version | Location |
 |--- |--- |--- |
-| biometrics   | 0.2.4   |  <https://github.com/msk-access/biometrics/blob/master/Dockerfile> |
+| biometrics   | 0.2.5   |  <https://github.com/msk-access/biometrics/blob/master/Dockerfile> |
 
 ## CWL
 
@@ -11,13 +11,13 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner biometrics_extract_0.2.4.cwl example_inputs.yaml
+    > toil-cwl-runner biometrics_extract_0.2.5.cwl example_inputs.yaml
 ```
 
 ### Usage
 
 ```bash
-usage: biometrics_extract_0.2.4.cwl [-h] [--sample_bam SAMPLE_BAM]
+usage: biometrics_extract_0.2.5.cwl [-h] [--sample_bam SAMPLE_BAM]
                                     [--sample_type SAMPLE_TYPE]
                                     [--sample_sex SAMPLE_SEX]
                                     [--sample_group SAMPLE_GROUP]

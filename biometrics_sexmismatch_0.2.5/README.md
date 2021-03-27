@@ -2,7 +2,7 @@
 
 | Tool | Version | Location |
 |--- |--- |--- |
-| biometrics   | 0.2.4   |  <https://github.com/msk-access/biometrics/blob/master/Dockerfile> |
+| biometrics   | 0.2.5   |  <https://github.com/msk-access/biometrics/blob/master/Dockerfile> |
 
 ## CWL
 
@@ -11,13 +11,13 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner biometrics_sexmismatch_0.2.4.cwl example_inputs.yaml
+    > toil-cwl-runner biometrics_sexmismatch_0.2.5.cwl example_inputs.yaml
 ```
 
 ### Usage
 
 ```bash
-usage: biometrics_sexmismatch_0.2.4.cwl [-h] --input INPUT
+usage: biometrics_sexmismatch_0.2.5.cwl [-h] --input INPUT
                                         [--database DATABASE]
                                         [--coverage_threshold COVERAGE_THRESHOLD]
                                         [--prefix PREFIX] [--json]

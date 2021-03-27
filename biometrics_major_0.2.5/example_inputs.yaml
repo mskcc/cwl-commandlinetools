@@ -1,8 +1,8 @@
 input:
   - class: File
-    path: "../biometrics_extract_0.2.4/test.pk"
+    path: "../biometrics_extract_0.2.5/test.pk"
   - class: File
-    path: "../biometrics_extract_0.2.4/test2.pk"
+    path: "../biometrics_extract_0.2.5/test2.pk"
 database: null
 minor_threshold: null
 prefix: null
