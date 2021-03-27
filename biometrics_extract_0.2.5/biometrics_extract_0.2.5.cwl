@@ -64,14 +64,14 @@ inputs:
     doc: >-
       VCF file containing the SNPs to be queried.
   - id: bed_file
-    type: File
+    type: File?
     inputBinding:
       position: 0
       prefix: --bed
     doc: >-
       BED file containing the intervals to be queried.
   - id: database
-    type: string
+    type: string?
     inputBinding:
       position: 0
       prefix: --database
