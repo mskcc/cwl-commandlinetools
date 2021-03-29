@@ -1,0 +1,22 @@
+sample_type: Tumor
+sample_sex: M
+sample_name: test
+sample_group: test_patient
+fafile:
+  class: File
+  path: /path/to/fafile
+sample_bam:
+  class: File
+  path: /path/to/bam
+bed_file:
+  class: File
+  path: /path/to/bed
+vcf_file:
+  class: File
+  path: /path/to/vcf
+database: null
+min_mapping_quality: null
+min_base_quality: null
+min_coverage: null
+min_homozygous_thresh: null
+default_genotype: null
