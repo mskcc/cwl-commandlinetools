@@ -1,8 +1,10 @@
-# CWL and Dockerfile for running biometrics extract tool.
+# CWL for running biometrics extract tool.
 
 | Tool | Version | Location |
 |--- |--- |--- |
-| biometrics   | 0.2.5   |  <https://github.com/msk-access/biometrics/blob/master/Dockerfile> |
+| biometrics   | 0.2.5   |  <https://github.com/msk-access/biometrics> |
+
+The python package source code and Docker file are located on GitHub.
 
 ## CWL
 
