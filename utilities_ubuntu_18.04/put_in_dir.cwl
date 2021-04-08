@@ -1,17 +1,18 @@
 #!/usr/bin/env cwl-runner
-cwlVersion: v1.0
+# originally from https://github.com/mskcc/pluto-cwl
 
+cwlVersion: v1.0
+$namespaces:
+  dct: 'http://purl.org/dc/terms/'
+  doap: 'http://usefulinc.com/ns/doap#'
+  foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 class: ExpressionTool
 # class: CommandLineTool
 id: put-in-dir
 
-requirements:
-  - class: InlineJavascriptRequirement
-
 inputs:
-
   output_directory_name: string
-
   files:
     type:
       type: array
@@ -21,9 +22,7 @@ inputs:
         - string
         - 'null'
 
-
 outputs:
-
   directory:
     type: Directory
 
@@ -34,7 +33,6 @@ expression: |
   ${
     var output_files = [];
     var input_files = inputs.files.filter(single_file => String(single_file).toUpperCase() != 'NONE');
-
 
     for (var i = 0; i < inputs.files.length; i++) {
       if(input_files[i]){
@@ -50,3 +48,27 @@ expression: |
       }
     };
   }
+
+requirements:
+  - class: ResourceRequirement
+    ramMin: 2000
+    coresMin: 1
+  - class: InlineJavascriptRequirement
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:murphyc4@mskcc.org'
+        'foaf:name': Charlie Murphy
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:murphyc4@mskcc.org'
+        'foaf:name': Charlie Murphy
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'doap:release':
+  - class: 'doap:Version'
+    'doap:name': put_in_dir
+    'doap:revision': 18.04
