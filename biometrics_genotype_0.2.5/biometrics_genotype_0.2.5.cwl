@@ -12,12 +12,11 @@ baseCommand:
 inputs:
   - id: input
     type:
-      type: array
-      items: File
-      inputBinding:
-        prefix: --input
-    inputBinding:
-      position: 0
+      - type: array
+        items: File
+        inputBinding:
+          position: 0
+          prefix: --input
     doc: >-
       Can be one of three types: (1) path to a CSV file containing sample information (one per line). For example: sample_name,sample_bam,sample_type,sample_sex,sample_group. (2) Path to a '*.pk' file that was produced by the 'extract' tool. (3) Name of the sample to analyze; this assumes there is a file named '{sample_name}.pk' in your database directory. Can be specified more than once.
   - id: database

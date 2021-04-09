@@ -1,16 +1,18 @@
-sample_type: Tumor
-sample_sex: M
-sample_name: test
-sample_group: test_patient
+sample_type:
+  - "Normal"
+sample_sex:
+  - "M"
+sample_name:
+  - "test"
+sample_group:
+  - "test"
 fafile:
   class: File
-  path: /path/to/fafile
+  path: /path/to/fasta
 sample_bam:
-  class: File
-  path: /path/to/bam
-bed_file:
-  class: File
-  path: /path/to/bed
+  - class: File
+    path: /path/to/bam
+bed_file: null
 vcf_file:
   class: File
   path: /path/to/vcf
