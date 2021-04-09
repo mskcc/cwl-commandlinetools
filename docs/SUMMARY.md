@@ -8,11 +8,11 @@
     - [genomecov v2.28.0_cv2](../bedtools_genomecov_v2.28.0_cv2/README.md)
     - [merge v2.28.0_cv2](../bedtools_merge_v2.28.0_cv2/README.md)
   - Biometrics
-    - [extract v0.2.5](../biometrics_extract_0.2.5/README.md)
-    - [minor v0.2.5](../biometrics_minor_0.2.5/README.md)
-    - [major v0.2.5](../biometrics_major_0.2.5/README.md)
-    - [genotype v0.2.5](../biometrics_genotype_0.2.5/README.md)
-    - [sexmismatch v0.2.5](../biometrics_sexmismatch_0.2.5/README.md)
+    - [extract](../biometrics_extract/README.md)
+    - [minor](../biometrics_minor/README.md)
+    - [major](../biometrics_major/README.md)
+    - [genotype](../biometrics_genotype/README.md)
+    - [sexmismatch](../biometrics_sexmismatch/README.md)
   - Disambiguate
     - [v1.0.0](../disambiguate_1.0.0/README.md)
   - Fgbio

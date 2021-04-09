@@ -1,8 +1,8 @@
-# CWL for running biometrics major tool.
+# CWL for running biometrics genotype tool.
 
-| Tool | Version | Location |
+| Tool | Latest version | Location |
 |--- |--- |--- |
-| biometrics   | 0.2.5   |  <https://github.com/msk-access/biometrics> |
+| biometrics   | 0.2.7   |  <https://github.com/msk-access/biometrics> |
 
 The python package source code and Docker file are located on GitHub.
 
@@ -13,17 +13,17 @@ The python package source code and Docker file are located on GitHub.
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner biometrics_major_0.2.5.cwl example_inputs.yaml
+    > toil-cwl-runner biometrics_genotype.cwl example_inputs.yaml
 ```
 
 ### Usage
 
 ```bash
-usage: biometrics_major_0.2.5.cwl [-h] --input INPUT [--database DATABASE]
-                                  [--major_threshold MAJOR_THRESHOLD]
-                                  [--prefix PREFIX] [--plot] [--json]
-                                  [--no_db_comparison]
-                                  [job_order]
+usage: biometrics_genotype.cwl [-h] --input INPUT [--database DATABASE]
+                                     [--discordance_threshold DISCORDANCE_THRESHOLD]
+                                     [--prefix PREFIX] [--plot] [--json]
+                                     [--no_db_comparison] [--threads THREADS]
+                                     [job_order]
 
 positional arguments:
   job_order             Job input json file
@@ -40,12 +40,14 @@ optional arguments:
                         specified more than once.
   --database DATABASE   Directory to store the intermediate files after
                         running the extraction step.
-  --major_threshold MAJOR_THRESHOLD
-                        Major contamination threshold for bad sample.
+  --discordance_threshold DISCORDANCE_THRESHOLD
+                        Discordance values less than this are regarded as
+                        matching samples. (default: 0.05)
   --prefix PREFIX       Output file prefix.
   --plot                Also output plots of the data.
   --json                Also output data in JSON format.
   --no_db_comparison    Do not compare the sample(s) you provided to all
                         samples in the database, only compare them with each
                         other.
+  --threads THREADS     Number of threads to use.
 ```
