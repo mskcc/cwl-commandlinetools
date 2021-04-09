@@ -20,7 +20,7 @@
 ### Usage
 
 ```bash
-usage: ./GitHub/cwl-commandlinetools/gatk_mean_quality_by_cycle/4.1.8.0/gatk_mean_quality_by_cycle_4.1.8.0.cwl
+usage: gatk_mean_quality_by_cycle_4.1.8.0.cwl
        [-h] --input INPUT [--output_file_name OUTPUT_FILE_NAME]
        [--chart_output CHART_OUTPUT] [--assume_sorted] [--pf_reads_only]
        [--reference REFERENCE] [--validation_stringency VALIDATION_STRINGENCY]
