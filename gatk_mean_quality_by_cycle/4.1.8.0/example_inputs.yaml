@@ -2,9 +2,6 @@ input:
   class: File
   metadata: {}
   path: "/path/to/bam"
-  secondaryFiles:
-    - class: File
-      path: "/path/to/bam.bai"
 output_file_name: null
 chart_output: null
 validation_stringency: null
