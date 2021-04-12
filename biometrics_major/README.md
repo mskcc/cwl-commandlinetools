@@ -1,8 +1,8 @@
-# CWL for running biometrics minor tool.
+# CWL for running biometrics major tool.
 
-| Tool | Version | Location |
+| Tool | Latest version | Location |
 |--- |--- |--- |
-| biometrics   | 0.2.5   |  <https://github.com/msk-access/biometrics> |
+| biometrics   | 0.2.7   |  <https://github.com/msk-access/biometrics> |
 
 The python package source code and Docker file are located on GitHub.
 
@@ -13,14 +13,14 @@ The python package source code and Docker file are located on GitHub.
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner biometrics_minor_0.2.5.cwl example_inputs.yaml
+    > toil-cwl-runner biometrics_major.cwl example_inputs.yaml
 ```
 
 ### Usage
 
 ```bash
-usage: biometrics_minor_0.2.5.cwl [-h] --input INPUT [--database DATABASE]
-                                  [--minor_threshold MINOR_THRESHOLD]
+usage: biometrics_major.cwl [-h] --input INPUT [--database DATABASE]
+                                  [--major_threshold MAJOR_THRESHOLD]
                                   [--prefix PREFIX] [--plot] [--json]
                                   [--no_db_comparison]
                                   [job_order]
@@ -40,8 +40,8 @@ optional arguments:
                         specified more than once.
   --database DATABASE   Directory to store the intermediate files after
                         running the extraction step.
-  --minor_threshold MINOR_THRESHOLD
-                        Minor contamination threshold for bad sample.
+  --major_threshold MAJOR_THRESHOLD
+                        Major contamination threshold for bad sample.
   --prefix PREFIX       Output file prefix.
   --plot                Also output plots of the data.
   --json                Also output data in JSON format.

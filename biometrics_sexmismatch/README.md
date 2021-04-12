@@ -1,8 +1,8 @@
 # CWL for running biometrics sexmismatch tool.
 
-| Tool | Version | Location |
+| Tool | Latest version | Location |
 |--- |--- |--- |
-| biometrics   | 0.2.5   |  <https://github.com/msk-access/biometrics> |
+| biometrics   | 0.2.7   |  <https://github.com/msk-access/biometrics> |
 
 The python package source code and Docker file are located on GitHub.
 
@@ -13,13 +13,13 @@ The python package source code and Docker file are located on GitHub.
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner biometrics_sexmismatch_0.2.5.cwl example_inputs.yaml
+    > toil-cwl-runner biometrics_sexmismatch.cwl example_inputs.yaml
 ```
 
 ### Usage
 
 ```bash
-usage: biometrics_sexmismatch_0.2.5.cwl [-h] --input INPUT
+usage: biometrics_sexmismatch.cwl [-h] --input INPUT
                                         [--database DATABASE]
                                         [--coverage_threshold COVERAGE_THRESHOLD]
                                         [--prefix PREFIX] [--json]
