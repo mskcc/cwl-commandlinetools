@@ -19,7 +19,6 @@ inputs:
       items:
         - File
         - Directory
-        - string
         - 'null'
 
 outputs:
