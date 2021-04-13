@@ -86,7 +86,8 @@ inputs:
     type: int?
   - id: temporary_directory
     type: string?
-    doc: 'Default value: null. This option may be specified 0 or more times.'
+    doc: >-
+      Directory with space available to be used by this program for temporary storage of working files.
 outputs:
   - id: gatk_mean_quality_by_cycle_output
     type: File
@@ -143,9 +144,10 @@ arguments:
     prefix: '--TMP_DIR'
     valueFrom: |-
       ${
-          if(inputs.temporary_directory)
-              return inputs.temporary_directory;
-            return runtime.tmpdir
+          if(inputs.temporary_directory) {
+            return inputs.temporary_directory;
+          }
+          return runtime.tmpdir;
       }
   - position: 0
     prefix: '-O'
