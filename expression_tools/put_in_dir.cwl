@@ -31,7 +31,9 @@ outputs:
 expression: |
   ${
     var output_files = [];
-    var input_files = inputs.files.filter(single_file => String(single_file).toUpperCase() != 'NONE');
+    var input_files = inputs.files.filter(function(single_file) {
+      return String(single_file).toUpperCase() != 'NONE';
+    });
 
     for (var i = 0; i < input_files.length; i++) {
       if(input_files[i]){
