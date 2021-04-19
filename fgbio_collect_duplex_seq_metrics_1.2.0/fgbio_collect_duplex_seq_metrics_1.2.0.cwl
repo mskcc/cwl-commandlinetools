@@ -149,13 +149,10 @@ outputs:
     outputBinding:
       glob: |-
         ${
-            if(inputs.duplex_umi_counts){
-                if(inputs.output_prefix){
-                    return  inputs.output_prefix + '.duplex_umi_counts.txt'
-                }
-                else{
-                    return inputs.input.basename.replace('.bam','.duplex_umi_counts.txt')
-                }
+            if (inputs.output_prefix) {
+                return  inputs.output_prefix + '.duplex_umi_counts.txt'
+            } else {
+                return inputs.input.basename.replace('.bam','.duplex_umi_counts.txt')
             }
         }
 doc: >-
