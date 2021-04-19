@@ -117,7 +117,7 @@ requirements:
     ramMin: 8000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'mskaccess/sequence_qc:0.1.16'
+    dockerPull: 'ghcr.io/msk-access/sequence_qc:0.1.19'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -136,4 +136,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': sesquence_qc
-    'doap:revision': 0.1.16
+    'doap:revision': 0.1.19
