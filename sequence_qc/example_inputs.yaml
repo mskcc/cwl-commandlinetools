@@ -1,0 +1,17 @@
+reference:
+  class: File
+  metadata: {}
+  path: /Users/charlesmurphy/Desktop/data/ref/hg19/Homo_sapiens_assembly19.fasta
+bam_file:
+  class: File
+  metadata: {}
+  path: /Users/charlesmurphy/Desktop/mskcc-analyses/210414_qc_workflow/downsample/MSK-L-225-T_collapsed_duplex.bam
+bed_file:
+  class: File
+  metadata: {}
+  path: /Users/charlesmurphy/Desktop/data/innovation/resources/MSK-ACCESS-v1.0/MSK-ACCESS-v1_0-probe-B.sorted.bed
+sample_id: test_sample_
+threshold: 0.01
+truncate: 1
+min_mapq: 10
+min_basq: 10
