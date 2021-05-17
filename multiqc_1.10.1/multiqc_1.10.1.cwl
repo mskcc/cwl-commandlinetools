@@ -20,6 +20,7 @@ requirements:
         // "{type: array, items: [File, Directory]}"
 
         var qc_files_directory = inputs.qc_files_directory;
+        var qc_list_of_dirs = inputs.qc_list_of_dirs;
         var qc_files_array = inputs.qc_files_array;
         var qc_files_array_of_array = inputs.qc_files_array_of_array;
         var output_array = [];
@@ -49,6 +50,14 @@ requirements:
         if ( qc_files_directory != null ){
           for ( var i=0; i<qc_files_directory.listing.length; i++ ){
             output_array.push(qc_files_directory.listing[i]);
+          }
+        }
+
+        if ( qc_list_of_dirs != null){
+          for ( var i=0; i<qc_list_of_dirs.length; i++ ){
+            for ( var ii=0; i<qc_list_of_dirs[i].listing.length; ii++ ){
+              output_array.push(qc_list_of_dirs[i].listing[ii]);
+            }
           }
         }
 
@@ -83,6 +92,12 @@ inputs:
     type:
     - "null"
     - Directory
+  qc_list_of_dirs:
+    doc: |
+      qc files in multiple directories
+    type:
+    - "null"
+    - Directory[]
   qc_files_array:
     doc: |
       qc files which shall be part of the multiqc summary;
