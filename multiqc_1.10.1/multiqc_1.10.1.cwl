@@ -8,13 +8,9 @@ doc: |
 requirements:
   InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
-    # This step is necessary since the input files
-    # must be loaded into the working directory as there
-    # is no way to specify the input file directly on the
-    # command line.
     listing: |
       ${
-        // script merges the input arrays
+        // script merges the inputs
         // into one array that fulfills the type
         // requirement for "listing", which is
         // "{type: array, items: [File, Directory]}"
@@ -25,7 +21,6 @@ requirements:
         var qc_files_array_of_array = inputs.qc_files_array_of_array;
         var output_array = [];
 
-        // add items of the qc_files_array to the output_array
         if ( qc_files_array != null ){
           // Fix to allow single qc_file_array
           if (qc_files_array.length === undefined){
@@ -38,7 +33,6 @@ requirements:
           }
         }
 
-        // add items of the qc_files_array_of_array to the output_array
         if ( qc_files_array_of_array != null ){
           for (var i=0; i<qc_files_array_of_array.length; i++){
             for (var ii=0; ii<qc_files_array_of_array[i].length; ii++){
