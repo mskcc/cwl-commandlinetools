@@ -102,12 +102,12 @@ requirements:
           }
 
           if ( qc_files_directory != null ){
-              output_array = output_array.concat(qc_files_directory.listing);
+              output_array = output_array.concat(qc_files_directory);
           }
 
           if ( qc_list_of_dirs != null ){
               for (var i=0; i<qc_list_of_dirs.length; i++){
-                  output_array = output_array.concat(qc_list_of_dirs[i].listing);
+                  output_array = output_array.concat(qc_list_of_dirs[i]);
               }
           }
 
