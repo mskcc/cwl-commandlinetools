@@ -105,7 +105,11 @@ requirements:
               output_array = output_array.concat(qc_files_directory.listing);
           }
 
-
+          if ( qc_list_of_dirs != null ){
+              for (var i=0; i<qc_list_of_dirs.length; i++){
+                  output_array = output_array.concat(qc_list_of_dirs[i].listing);
+              }
+          }
 
           return output_array
         }
