@@ -62,13 +62,9 @@ outputs:
 doc: |
   Run multiqc on log files from supported bioinformatic tools.
 arguments:
-  - position: 1
-    valueFrom: '--zip-data-dir'
-  - position: 2
-    prefix: '--outdir'
-    valueFrom: $(runtime.outdir)
-  - position: 4
-    valueFrom: $(runtime.outdir)
+  - position: 0
+    prefix: ''
+    valueFrom: .
 requirements:
   - class: InitialWorkDirRequirement
     listing:
@@ -79,7 +75,7 @@ requirements:
           // requirement for "listing", which is
           // "{type: array, items: [File, Directory]}"
 
-          var qc_files_directory = inputs.qc_files_directory;
+          var qc_files_directory = inputs.qc_files_dir;
           var qc_list_of_dirs = inputs.qc_list_of_dirs;
           var qc_files_array = inputs.qc_files_array;
           var qc_files_array_of_array = inputs.qc_files_array_of_array;
@@ -106,18 +102,10 @@ requirements:
           }
 
           if ( qc_files_directory != null ){
-            for ( var i=0; i<qc_files_directory.listing.length; i++ ){
-              output_array.push(qc_files_directory.listing[i]);
-            }
+              output_array = output_array.concat(qc_files_directory.listing);
           }
 
-          if ( qc_list_of_dirs != null){
-            for ( var i=0; i<qc_list_of_dirs.length; i++ ){
-              for ( var ii=0; i<qc_list_of_dirs[i].listing.length; ii++ ){
-                output_array.push(qc_list_of_dirs[i].listing[ii]);
-              }
-            }
-          }
+
 
           return output_array
         }
@@ -127,4 +115,4 @@ hints:
     ramMin: 10000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: ghcr.io/msk-access/multiqc_1.10.1
+    dockerPull: 'ghcr.io/msk-access/multiqc:v1.10.1.2'
