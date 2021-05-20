@@ -56,14 +56,13 @@ outputs:
     outputBinding:
       glob: $(inputs.report_name).html
   - id: multiqc_zip
-    type: File
+    type: File?
     outputBinding:
       glob: $(inputs.report_name)_data.zip
 doc: |
   Run multiqc on log files from supported bioinformatic tools.
 arguments:
   - position: 0
-    prefix: ''
     valueFrom: .
 requirements:
   - class: InitialWorkDirRequirement
@@ -119,4 +118,4 @@ hints:
     ramMin: 10000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/multiqc:v1.10.1.2'
+    dockerPull: 'ghcr.io/msk-access/multiqc:v1.10.1.3'
