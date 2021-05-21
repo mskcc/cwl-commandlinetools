@@ -18,6 +18,9 @@ inputs:
       type: array
       items:
         - File
+        - type: array
+          items:
+            - File
         - Directory
         - 'null'
 
@@ -36,7 +39,13 @@ expression: |
     });
 
     for (var i = 0; i < input_files.length; i++) {
-      if(input_files[i]){
+      // Handle list of list of files
+      if (input_files[i] && input_files[i].length) {
+        for (var ii = 0; ii < input_files[i].length; ii++) {
+          output_files.push(input_files[i][ii]);
+        }
+      // Handle list of files
+      } else if (input_files[i]) {
         output_files.push(input_files[i]);
       }
     }
