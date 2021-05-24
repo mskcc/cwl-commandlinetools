@@ -1,0 +1,26 @@
+input:
+  class: File
+  path: "/path"
+output: null
+output_map: null
+attribute_to_clear: null
+max_discard_fraction: null
+library_name: null
+max_records_in_ram: null
+output_by_readgroup: null
+output_by_readgroup_file_format: null
+remove_alignment_information: 'false'
+remove_duplicate_information: 'true'
+restore_hardclips: 'false'
+restore_original_qualities: 'false'
+sample_alias: null
+sanitize: null
+sort_order: 'unsorted'
+reference_sequence: null
+validation_stringency: 'SILENT'
+compression_level: null
+create_index: null
+create_md5_file: null
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null
