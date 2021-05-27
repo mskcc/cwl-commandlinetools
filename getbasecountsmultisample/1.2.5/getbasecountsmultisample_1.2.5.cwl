@@ -18,10 +18,16 @@ inputs:
   - id: number_of_threads
     type: int?
   - id: genotyping_bams
-    type: 'File[]'
+    type:
+      - File
+      - type: array
+        items: File
     doc: Input bam file
   - id: genotyping_bams_ids
-    type: 'string[]'
+    type:
+      - string
+      - type: array
+        items: string
     doc: >-
       Input bam, sample identifier to be used for "Tumor Sample Barcode" for maf
       or Sample name in the header for vcf
