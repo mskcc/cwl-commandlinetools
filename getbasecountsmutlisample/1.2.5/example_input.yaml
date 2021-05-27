@@ -1,0 +1,27 @@
+filter_duplicate: 0
+fragment_count: 1
+generic_counting: true
+genotyping_bams:
+  - class: File
+    path: /Users/shahr2/Documents/test_reference/bam/duplex/SeraCare_0-5.bam
+  - class: File
+    path: /Users/shahr2/Documents/test_reference/bam/SeraCare_0-5.bam
+genotyping_bams_ids:
+  - test1
+  - test2
+maf:
+  class: File
+  path: >-
+    /Users/shahr2/Downloads/SeraCare_0-5.F22.combined-variants.vep_keptrmv_taggedHotspots.maf
+maq: null
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null
+omaf: true
+output: test.maf
+ref_fasta:
+  class: File
+  path: >-
+    /Users/shahr2/Documents/test_reference/reference/versions/hg19/Homo_sapiens_assembly19.fasta
+vcf: null
+
