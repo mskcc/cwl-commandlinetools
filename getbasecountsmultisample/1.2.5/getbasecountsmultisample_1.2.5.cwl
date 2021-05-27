@@ -122,12 +122,16 @@ requirements:
     listing:
       - entryname: bam_fof.tsv
         entry: |-
-          $(
-            inputs.genotyping_bams_ids.map(function(sid, i) {
-              return sid + "\t" +
-                inputs.genotyping_bams[i].path
-            }).join("\n")
-          )
+          ${
+            if (typeof(inputs.genotyping_bams_ids) == 'object') {
+                return inputs.genotyping_bams_ids.map(function(sid, i) {
+                  return sid + "\t" +
+                    inputs.genotyping_bams[i].path
+                }).join("\n")
+            } else {
+                return inputs.genotyping_bams_ids + "\t" + inputs.genotyping_bams.path + "\n"
+            }
+          }
         writable: false
   - class: InlineJavascriptRequirement
 'dct:contributor':
