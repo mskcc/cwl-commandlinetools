@@ -81,12 +81,12 @@ inputs:
       or --vcf need to be specified at least once. But --maf and --vcf are
       mutually exclusive
   - id: generic_counting
-    type: File?
+    type: boolean?
     inputBinding:
       position: 0
       prefix: '--generic_counting'
     doc: >-
-      se the newly implemented generic counting algorithm. Works better for
+      Use the newly implemented generic counting algorithm. Works better for
       complex variants. You may get different allele count result from the
       default counting algorithm
 outputs:
@@ -101,11 +101,7 @@ arguments:
     prefix: ''
     shellQuote: false
     valueFrom: |
-      ${
-        return inputs.genotyping_bams_ids.map(function(b, i) {
-          return '--bam ' + b + ':' + inputs.genotyping_bams[i].path
-        }).join(' ')
-      }
+      $('--bam_fof bam_fof.tsv')
   - position: 0
     prefix: '--thread'
     valueFrom: $(runtime.cores)
@@ -116,6 +112,17 @@ requirements:
     coresMin: 2
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/gbcms:1.2.5'
+  - class: InitialWorkDirRequirement
+    listing:
+      - entryname: bam_fof.tsv
+        entry: |-
+          $(
+            inputs.genotyping_bams_ids.map(function(sid, i) {
+              return sid + "\t" +
+                inputs.genotyping_bams[i].path
+            }).join("\n")
+          )
+        writable: false
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
