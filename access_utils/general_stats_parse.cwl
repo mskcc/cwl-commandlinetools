@@ -22,11 +22,11 @@ inputs:
     doc: Sample JSON file.
 outputs:
   - id: sample_meta_tumor
-    type: File
+    type: File?
     outputBinding:
       glob: genstats_qc_status_plasma.csv
   - id: sample_meta_normal
-    type: File
+    type: File?
     outputBinding:
       glob: genstats_qc_status_buffy.csv
 arguments: []
