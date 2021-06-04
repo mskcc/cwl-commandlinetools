@@ -5,18 +5,19 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: biometrics_genotype_0_2_9
+id: biometrics_sexmismatch_0_2_11
 baseCommand:
   - biometrics
-  - genotype
+  - sexmismatch
 inputs:
   - id: input
     type:
-      - type: array
-        items: File
-        inputBinding:
-          position: 0
-          prefix: --input
+      type: array
+      items: File
+      inputBinding:
+        prefix: --input
+    inputBinding:
+      position: 0
     doc: >-
       Can be one of three types: (1) path to a CSV file containing sample information (one per line). For example: sample_name,sample_bam,sample_type,sample_sex,sample_group. (2) Path to a '*.pk' file that was produced by the 'extract' tool. (3) Name of the sample to analyze; this assumes there is a file named '{sample_name}.pk' in your database directory. Can be specified more than once.
   - id: database
@@ -26,14 +27,14 @@ inputs:
       prefix: --database
     doc: >-
       Directory to store the intermediate files after running the extraction step.
-  - id: discordance_threshold
-    type: float?
-    default: 0.05
+  - id: coverage_threshold
+    type: int?
+    default: 50
     inputBinding:
       position: 0
-      prefix: --discordance-threshold
+      prefix: --coverage-threshold
     doc: >-
-      Discordance values less than this are regarded as matching samples. (default: 0.05)
+      Samples with Y chromosome above this value will be considered male.
   - id: prefix
     type: string?
     inputBinding:
@@ -41,13 +42,6 @@ inputs:
       prefix: --prefix
     doc: >-
       Output file prefix.
-  - id: plot
-    type: boolean?
-    inputBinding:
-      position: 0
-      prefix: --plot
-    doc: >-
-      Also output plots of the data.
   - id: json
     type: boolean?
     inputBinding:
@@ -62,68 +56,35 @@ inputs:
       prefix: --no-db-compare
     doc: >-
       Do not compare the sample(s) you provided to all samples in the database, only compare them with each other.
-  - id: threads
-    type: int?
-    default: 2
-    inputBinding:
-      position: 0
-      prefix: --threads
-    doc: >-
-      Number of threads to use.
 outputs:
-  - id: biometrics_genotype_comparisons
+  - id: biometrics_sexmismatch_csv
     type: File
     outputBinding:
       glob: |-
         ${
-          if (inputs.prefix) {
-            return inputs.prefix + '_genotype_comparison.csv'
-          } else {
-            return 'genotype_comparison.csv'
-          }
+            if (inputs.prefix) {
+              return inputs.prefix + '_sex_mismatch.csv'
+            } else {
+              return 'sex_mismatch.csv'
+            }
         }
-  - id: biometrics_genotype_cluster_input
-    type: File
-    outputBinding:
-      glob: |-
-        ${
-          if (inputs.prefix) {
-            return inputs.prefix + '_genotype_clusters_input.csv'
-          } else {
-            return 'genotype_clusters_input.csv'
-          }
-        }
-  - id: biometrics_genotype_cluster_input_database
+  - id: biometrics_sexmismatch_json
     type: File?
     outputBinding:
       glob: |-
         ${
-          if (inputs.prefix) {
-            return inputs.prefix + '_genotype_clusters_database.csv'
-          } else {
-            return 'genotype_clusters_database.csv'
-          }
-        }
-  - id: biometrics_genotype_plot_input
-    type: File?
-    outputBinding:
-      glob: |-
-        ${
-          return 'genotype_comparison_input.html'
-        }
-  - id: biometrics_genotype_plot_input_database
-    type: File?
-    outputBinding:
-      glob: |-
-        ${
-          return 'genotype_comparison_database.html'
+            if (inputs.prefix) {
+              return inputs.prefix + '_sex_mismatch.json'
+            } else {
+              return 'sex_mismatch.json'
+            }
         }
 requirements:
   - class: ResourceRequirement
     ramMin: 16000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.9'
+    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.11'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -142,4 +103,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': biometrics
-    'doap:revision': 0.2.9
+    'doap:revision': 0.2.11
