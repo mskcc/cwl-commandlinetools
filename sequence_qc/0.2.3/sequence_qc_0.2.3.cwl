@@ -75,35 +75,35 @@ outputs:
     outputBinding:
       glob: |-
         ${
-            return inputs.sample_id + 'pileup.tsv'
+            return inputs.sample_id + '_pileup.tsv'
         }
   - id: sequence_qc_noise_positions
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.sample_id + 'noise_positions.tsv'
+            return inputs.sample_id + '_noise_positions.tsv'
         }
   - id: sequence_qc_noise_acgt
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.sample_id + 'noise_acgt.tsv'
+            return inputs.sample_id + '_noise_acgt.tsv'
         }
   - id: sequence_qc_noise_n
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.sample_id + 'noise_n.tsv'
+            return inputs.sample_id + '_noise_n.tsv'
         }
   - id: sequence_qc_noise_del
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.sample_id + 'noise_del.tsv'
+            return inputs.sample_id + '_noise_del.tsv'
         }
   - id: sequence_qc_figures
     type: File
