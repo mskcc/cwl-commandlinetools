@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: calculate_noise_0_1_16
+id: calculate_noise_0_2_3
 baseCommand:
   - calculate_noise
 inputs:
@@ -117,8 +117,12 @@ requirements:
     ramMin: 8000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/sequence_qc:0.1.19'
+    dockerPull: 'ghcr.io/msk-access/sequence_qc:0.2.3'
   - class: InlineJavascriptRequirement
+  - class: EnvVarRequirement
+    envDef:
+      LC_ALL: en_US.utf-8
+      LANG: en_US.utf-8
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
@@ -136,4 +140,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': sesquence_qc
-    'doap:revision': 0.1.19
+    'doap:revision': 0.2.3
