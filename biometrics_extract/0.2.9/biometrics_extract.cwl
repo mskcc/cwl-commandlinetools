@@ -21,16 +21,6 @@ inputs:
       - ^.bai
     doc: >-
       BAM file.
-  - id: sample_type
-    type:
-      - "null"
-      - type: array
-        items: string
-        inputBinding:
-          position: 0
-          prefix: --sample-type
-    doc: >-
-      Sample types: Normal or Tumor.
   - id: sample_sex
     type:
       - "null"
