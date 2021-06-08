@@ -38,6 +38,7 @@ requirements:
       - |
         ${
           var directories = inputs.directories;
+          var output_array = [];
           if ( directories != null ){
               for (var i = 0; i < directories.length; i++){
                 output_array.push(directories[i])
