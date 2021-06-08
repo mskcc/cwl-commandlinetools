@@ -126,6 +126,10 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/sequence_qc:0.2.2'
   - class: InlineJavascriptRequirement
+  - class: EnvVarRequirement
+    envDef:
+      LC_ALL: en_US.utf-8
+      LANG: en_US.utf-8
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':

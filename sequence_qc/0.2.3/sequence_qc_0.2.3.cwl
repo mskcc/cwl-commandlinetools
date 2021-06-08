@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: calculate_noise_0_1_16
+id: calculate_noise_0_2_3
 baseCommand:
   - calculate_noise
 inputs:
@@ -75,35 +75,42 @@ outputs:
     outputBinding:
       glob: |-
         ${
-            return inputs.sample_id + 'pileup.tsv'
+            return inputs.sample_id + '_pileup.tsv'
         }
   - id: sequence_qc_noise_positions
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.sample_id + 'noise_positions.tsv'
+            return inputs.sample_id + '_noise_positions.tsv'
+        }
+  - id: sequence_qc_noise_by_substitution
+    type: File
+    outputBinding:
+      glob: |-
+        ${
+            return inputs.sample_id + '_noise_by_substitution.tsv'
         }
   - id: sequence_qc_noise_acgt
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.sample_id + 'noise_acgt.tsv'
+            return inputs.sample_id + '_noise_acgt.tsv'
         }
   - id: sequence_qc_noise_n
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.sample_id + 'noise_n.tsv'
+            return inputs.sample_id + '_noise_n.tsv'
         }
   - id: sequence_qc_noise_del
     type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.sample_id + 'noise_del.tsv'
+            return inputs.sample_id + '_noise_del.tsv'
         }
   - id: sequence_qc_figures
     type: File
@@ -117,8 +124,12 @@ requirements:
     ramMin: 8000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/sequence_qc:0.1.19'
+    dockerPull: 'ghcr.io/msk-access/sequence_qc:0.2.3'
   - class: InlineJavascriptRequirement
+  - class: EnvVarRequirement
+    envDef:
+      LC_ALL: en_US.utf-8
+      LANG: en_US.utf-8
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
@@ -136,4 +147,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': sesquence_qc
-    'doap:revision': 0.1.19
+    'doap:revision': 0.2.3
