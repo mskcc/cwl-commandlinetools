@@ -84,6 +84,13 @@ outputs:
         ${
             return inputs.sample_id + '_noise_positions.tsv'
         }
+  - id: sequence_qc_noise_by_substitution
+    type: File
+    outputBinding:
+      glob: |-
+        ${
+            return inputs.sample_id + '_noise_by_substitution.tsv'
+        }
   - id: sequence_qc_noise_acgt
     type: File
     outputBinding:
