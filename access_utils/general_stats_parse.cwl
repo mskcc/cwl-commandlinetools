@@ -6,13 +6,10 @@ $namespaces:
   foaf: 'http://xmlns.com/foaf/0.1/'
 id: general_stats_parse
 label: general_stats_parse
-baseCommand: general_stats_parse.py .
+baseCommand: general_stats_parse.py --dir .
 inputs:
   - id: directories
     type: Directory[]
-    inputBinding:
-      position: 0
-      prefix: '--dir'
     doc: Directory containing results.
   - id: samples-json
     type: File
