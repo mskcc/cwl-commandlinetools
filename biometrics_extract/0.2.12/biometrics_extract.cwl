@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: biometrics_extract_0_2_11
+id: biometrics_extract_0_2_12
 baseCommand:
   - biometrics
   - extract
@@ -129,9 +129,9 @@ outputs:
         ${
             return inputs.sample_name.map(val => {
               if (inputs.database) {
-                return inputs.database + '/' + val + '.pk';
+                return inputs.database + '/' + val + '.pickle';
               } else {
-                return val + '.pk';
+                return val + '.pickle';
               }
             });
         }
@@ -140,7 +140,7 @@ requirements:
     ramMin: 16000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.11'
+    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.12'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -159,4 +159,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': biometrics
-    'doap:revision': 0.2.11
+    'doap:revision': 0.2.12
