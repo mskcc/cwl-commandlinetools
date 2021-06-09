@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: biometrics_sexmismatch_0_2_11
+id: biometrics_sexmismatch_0_2_12
 baseCommand:
   - biometrics
   - sexmismatch
@@ -84,7 +84,7 @@ requirements:
     ramMin: 16000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.11'
+    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.12'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -103,4 +103,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': biometrics
-    'doap:revision': 0.2.11
+    'doap:revision': 0.2.12
