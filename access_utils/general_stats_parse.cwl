@@ -28,6 +28,7 @@ outputs:
       glob: genstats_qc_status_buffy.csv
 arguments: []
 requirements:
+  - class: InlineJavascriptRequirement
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/access_utils:0.1.0'
   - class: InitialWorkDirRequirement
