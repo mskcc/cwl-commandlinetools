@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: biometrics_extract_0_2_12
+id: biometrics_extract_0_2_13
 baseCommand:
   - biometrics
   - extract
@@ -14,101 +14,92 @@ inputs:
     type: File
     inputBinding:
       position: 0
-      prefix: --sample-bam
+      prefix: '--sample-bam'
+    doc: BAM file.
     secondaryFiles:
       - ^.bai
-    doc: >-
-      BAM file.
   - id: sample_sex
     type: string?
     inputBinding:
       position: 0
-      prefix: --sample-sex
-    doc: >-
-      Expected sample sex (i.e. M or F).
+      prefix: '--sample-sex'
+    doc: Expected sample sex (i.e. M or F).
   - id: sample_group
     type: string?
     inputBinding:
       position: 0
-      prefix: --sample-group
-    doc: >-
-      The sample group (e.g. the sample patient ID).
+      prefix: '--sample-group'
+    doc: The sample group (e.g. the sample patient ID).
   - id: sample_name
     type: string
     inputBinding:
       position: 0
-      prefix: --sample-name
+      prefix: '--sample-name'
     doc: >-
-      Sample name. If not specified, sample name is automatically figured out from the BAM file.
+      Sample name. If not specified, sample name is automatically figured out
+      from the BAM file.
   - id: fafile
     type: File
     inputBinding:
       position: 0
-      prefix: --fafile
+      prefix: '--fafile'
+    doc: Path to reference fasta.
     secondaryFiles:
       - ^.fasta.fai
-    doc: >-
-      Path to reference fasta.
   - id: vcf_file
     type: File
     inputBinding:
       position: 0
-      prefix: --vcf
-    doc: >-
-      VCF file containing the SNPs to be queried.
+      prefix: '--vcf'
+    doc: VCF file containing the SNPs to be queried.
   - id: bed_file
     type: File?
     inputBinding:
       position: 0
-      prefix: --bed
-    doc: >-
-      BED file containing the intervals to be queried.
+      prefix: '--bed'
+    doc: BED file containing the intervals to be queried.
   - id: database
     type: string?
     inputBinding:
       position: 0
-      prefix: --database
+      prefix: '--database'
     doc: >-
-      Directory to store the intermediate files after running the extraction step.
-  - id: min_mapping_quality
+      Directory to store the intermediate files after running the extraction
+      step.
+  - default: 1
+    id: min_mapping_quality
     type: int?
-    default: 1
     inputBinding:
       position: 0
-      prefix: --min-mapping-quality
-    doc: >-
-      Minimum mapping quality of reads to be used for pileup.
-  - id: min_base_quality
+      prefix: '--min-mapping-quality'
+    doc: Minimum mapping quality of reads to be used for pileup.
+  - default: 1
+    id: min_base_quality
     type: int?
-    default: 1
     inputBinding:
       position: 0
-      prefix: --min-base-quality
-    doc: >-
-      Minimum base quality of reads to be used for pileup.
-  - id: min_coverage
+      prefix: '--min-base-quality'
+    doc: Minimum base quality of reads to be used for pileup.
+  - default: 10
+    id: min_coverage
     type: int?
-    default: 10
     inputBinding:
       position: 0
-      prefix: --min-coverage
-    doc: >-
-      Minimum coverage to count a site.
-  - id: min_homozygous_thresh
+      prefix: '--min-coverage'
+    doc: Minimum coverage to count a site.
+  - default: 0.1
+    id: min_homozygous_thresh
     type: float?
-    default: 0.1
     inputBinding:
       position: 0
-      prefix: --min-homozygous-thresh
-    doc: >-
-      Minimum threshold to define homozygous.
+      prefix: '--min-homozygous-thresh'
+    doc: Minimum threshold to define homozygous.
   - id: default_genotype
     type: string?
     inputBinding:
       position: 0
-      prefix: --default-genotype
-    doc: >-
-      Default genotype if coverage is too low (options are Het or Hom).
+      prefix: '--default-genotype'
+    doc: Default genotype if coverage is too low (options are Het or Hom).
 outputs:
   - id: biometrics_extract_pickle
     type: File
@@ -126,7 +117,7 @@ requirements:
     ramMin: 16000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.12'
+    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.13'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -145,4 +136,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': biometrics
-    'doap:revision': 0.2.12
+    'doap:revision': 0.2.13

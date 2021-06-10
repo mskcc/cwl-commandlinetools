@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: biometrics_sexmismatch_0_2_12
+id: biometrics_sexmismatch_0_2_13
 baseCommand:
   - biometrics
   - sexmismatch
@@ -15,47 +15,51 @@ inputs:
       type: array
       items: File
       inputBinding:
-        prefix: --input
+        prefix: '--input'
     inputBinding:
       position: 0
     doc: >-
-      Can be one of three types: (1) path to a CSV file containing sample information (one per line). For example: sample_name,sample_bam,sample_type,sample_sex,sample_group. (2) Path to a '*.pk' file that was produced by the 'extract' tool. (3) Name of the sample to analyze; this assumes there is a file named '{sample_name}.pk' in your database directory. Can be specified more than once.
+      Can be one of three types: (1) path to a CSV file containing sample
+      information (one per line). For example:
+      sample_name,sample_bam,sample_type,sample_sex,sample_group. (2) Path to a
+      '*.pk' file that was produced by the 'extract' tool. (3) Name of the
+      sample to analyze; this assumes there is a file named '{sample_name}.pk'
+      in your database directory. Can be specified more than once.
   - id: database
     type: string?
     inputBinding:
       position: 0
-      prefix: --database
+      prefix: '--database'
     doc: >-
-      Directory to store the intermediate files after running the extraction step.
-  - id: coverage_threshold
+      Directory to store the intermediate files after running the extraction
+      step.
+  - default: 50
+    id: coverage_threshold
     type: int?
-    default: 50
     inputBinding:
       position: 0
-      prefix: --coverage-threshold
-    doc: >-
-      Samples with Y chromosome above this value will be considered male.
+      prefix: '--coverage-threshold'
+    doc: Samples with Y chromosome above this value will be considered male.
   - id: prefix
     type: string?
     inputBinding:
       position: 0
-      prefix: --prefix
-    doc: >-
-      Output file prefix.
+      prefix: '--prefix'
+    doc: Output file prefix.
   - id: json
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --json
-    doc: >-
-      Also output data in JSON format.
+      prefix: '--json'
+    doc: Also output data in JSON format.
   - id: no_db_comparison
     type: boolean?
     inputBinding:
       position: 0
-      prefix: --no-db-compare
+      prefix: '--no-db-compare'
     doc: >-
-      Do not compare the sample(s) you provided to all samples in the database, only compare them with each other.
+      Do not compare the sample(s) you provided to all samples in the database,
+      only compare them with each other.
 outputs:
   - id: biometrics_sexmismatch_csv
     type: File
@@ -84,7 +88,7 @@ requirements:
     ramMin: 16000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.12'
+    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.13'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -103,4 +107,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': biometrics
-    'doap:revision': 0.2.12
+    'doap:revision': 0.2.13
