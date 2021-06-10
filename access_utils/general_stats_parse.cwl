@@ -6,13 +6,10 @@ $namespaces:
   foaf: 'http://xmlns.com/foaf/0.1/'
 id: general_stats_parse
 label: general_stats_parse
-baseCommand: general_stats_parse.py
+baseCommand: general_stats_parse.py --dir .
 inputs:
-  - id: dir
-    type: Directory
-    inputBinding:
-      position: 0
-      prefix: '--dir'
+  - id: directories
+    type: Directory[]
     doc: Directory containing results.
   - id: samples-json
     type: File
@@ -33,6 +30,19 @@ arguments: []
 requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/access_utils:0.1.0'
+  - class: InitialWorkDirRequirement
+    listing:
+      - |
+        ${
+          var directories = inputs.directories;
+          var output_array = [];
+          if ( directories != null ){
+              for (var i = 0; i < directories.length; i++){
+                output_array.push(directories[i])
+              }
+          }
+          return output_array
+        }
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
