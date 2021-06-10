@@ -5,49 +5,39 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: biometrics_extract_0_2_11
+id: biometrics_extract_0_2_12
 baseCommand:
   - biometrics
   - extract
 inputs:
   - id: sample_bam
-    type:
-      - type: array
-        items: File
-        inputBinding:
-          position: 0
-          prefix: --sample-bam
+    type: File
+    inputBinding:
+      position: 0
+      prefix: --sample-bam
     secondaryFiles:
       - ^.bai
     doc: >-
       BAM file.
   - id: sample_sex
-    type:
-      - "null"
-      - type: array
-        items: string
-        inputBinding:
-          position: 0
-          prefix: --sample-sex
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: --sample-sex
     doc: >-
       Expected sample sex (i.e. M or F).
   - id: sample_group
-    type:
-      - "null"
-      - type: array
-        items: string
-        inputBinding:
-          position: 0
-          prefix: --sample-group
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: --sample-group
     doc: >-
       The sample group (e.g. the sample patient ID).
   - id: sample_name
-    type:
-      - type: array
-        items: string
-        inputBinding:
-          position: 0
-          prefix: --sample-name
+    type: string
+    inputBinding:
+      position: 0
+      prefix: --sample-name
     doc: >-
       Sample name. If not specified, sample name is automatically figured out from the BAM file.
   - id: fafile
@@ -121,26 +111,22 @@ inputs:
       Default genotype if coverage is too low (options are Het or Hom).
 outputs:
   - id: biometrics_extract_pickle
-    type:
-      type: array
-      items: File
+    type: File
     outputBinding:
       glob: |-
         ${
-            return inputs.sample_name.map(val => {
-              if (inputs.database) {
-                return inputs.database + '/' + val + '.pk';
-              } else {
-                return val + '.pk';
-              }
-            });
+          if (inputs.database) {
+            return inputs.database + '/' + inputs.sample_name + '.pickle';
+          } else {
+            return inputs.sample_name + '.pickle';
+          }
         }
 requirements:
   - class: ResourceRequirement
     ramMin: 16000
     coresMin: 2
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.11'
+    dockerPull: 'ghcr.io/msk-access/biometrics:0.2.12'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
@@ -159,4 +145,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': biometrics
-    'doap:revision': 0.2.11
+    'doap:revision': 0.2.12
