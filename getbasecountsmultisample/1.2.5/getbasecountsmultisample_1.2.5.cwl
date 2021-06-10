@@ -66,10 +66,20 @@ inputs:
       prefix: '--omaf'
     doc: Output the result in maf format
   - id: output
-    type: string
+    type: string?
     inputBinding:
       position: 0
       prefix: '--output'
+      valueFrom: |-
+        ${
+            if (inputs.genotyping_bams.length) {
+                return inputs.genotyping_bams.map(function(b){
+                    return b.basename.replace('.bam', '.maf')
+                })
+            } else {
+                return inputs.genotyping_bams.basename.replace('.bam', '.maf')
+            }
+        }
     doc: Filename for output of raw fillout data in MAF/VCF format
   - id: ref_fasta
     type: File
