@@ -224,7 +224,7 @@ outputs:
               return inputs.input.basename.replace(/.bam|.sam/, '_revertsam.tsv')
           }
         }
-label: GATK-CollectHsMetrics
+label: GATK-RevertSam
 arguments:
   - position: 0
     prefix: '--java-options'
