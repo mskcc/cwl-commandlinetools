@@ -8,7 +8,6 @@ $namespaces:
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
 class: ExpressionTool
-# class: CommandLineTool
 id: put-in-dir
 
 inputs:
