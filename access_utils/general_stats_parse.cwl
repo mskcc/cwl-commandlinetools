@@ -4,12 +4,16 @@ $namespaces:
   dct: 'http://purl.org/dc/terms/'
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
+  sbg: 'https://www.sevenbridges.com/'
 id: general_stats_parse
-label: general_stats_parse
-baseCommand: general_stats_parse.py --dir .
+baseCommand:
+  - general_stats_parse.py
 inputs:
-  - id: directories
-    type: Directory[]
+  - id: directory
+    type: Directory
+    inputBinding:
+      position: 0
+      prefix: '--dir'
     doc: Directory containing results.
   - id: samples-json
     type: File
@@ -26,24 +30,27 @@ outputs:
     type: File?
     outputBinding:
       glob: genstats_qc_status_buffy.csv
-arguments: []
+  - id: sequence_qc_mqc
+    type: File?
+    outputBinding:
+      glob: sequence_qc_mqc.html
+  - id: sequence_qc_substitution_mqc
+    type: File?
+    outputBinding:
+      glob: sequence_qc_substitution_mqc.yaml
+  - id: sequence_qc_mqc_yaml
+    type: File?
+    outputBinding:
+      glob: sequence_qc_mqc.yaml
+  - id: minor_contamination_sites_mqc
+    type: File?
+    outputBinding:
+      glob: minor_contamination_sites_mqc.html
+label: general_stats_parse
 requirements:
-  - class: InlineJavascriptRequirement
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/access_utils:0.1.0'
-  - class: InitialWorkDirRequirement
-    listing:
-      - |
-        ${
-          var directories = inputs.directories;
-          var output_array = [];
-          if ( directories != null ){
-              for (var i = 0; i < directories.length; i++){
-                output_array.push(directories[i])
-              }
-          }
-          return output_array
-        }
+    dockerPull: 'ghcr.io/msk-access/access_utils:0.1.1'
+  - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
