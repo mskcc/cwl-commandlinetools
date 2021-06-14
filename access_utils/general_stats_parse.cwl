@@ -30,7 +30,7 @@ outputs:
 label: general_stats_parse
 requirements:
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/access_utils:0.1.0'
+    dockerPull: 'ghcr.io/msk-access/access_utils:0.1.1'
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
