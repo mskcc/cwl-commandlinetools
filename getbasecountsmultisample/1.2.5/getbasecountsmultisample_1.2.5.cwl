@@ -72,12 +72,12 @@ inputs:
       prefix: '--output'
       valueFrom: |-
         ${
-            if (inputs.genotyping_bams.length) {
-                return inputs.genotyping_bams.map(function(b){
-                    return b.basename.replace('.bam', '.maf')
-                })
+            if (inputs.output) {
+                return inputs.output
+            } else if (inputs.genotyping_bams.length) {
+                return inputs.maf.basename.replace('.maf', '_fillout.maf')
             } else {
-                return inputs.genotyping_bams.basename.replace('.bam', '.maf')
+                return inputs.genotyping_bams.basename.replace('.bam', '_fillout.maf')
             }
         }
     doc: Filename for output of raw fillout data in MAF/VCF format
@@ -109,8 +109,16 @@ outputs:
   - id: fillout
     type: File
     outputBinding:
-      glob: |
-        $(inputs.output)
+      glob: |-
+        ${
+            if (inputs.output) {
+                return inputs.output
+            } else if (inputs.genotyping_bams.length) {
+                return inputs.maf.basename.replace('.maf', '_fillout.maf')
+            } else {
+                return inputs.genotyping_bams.basename.replace('.bam', '_fillout.maf')
+            }
+        }
 label: getbasecountsmultisample_1.2.5
 arguments:
   - position: 0
