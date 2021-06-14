@@ -43,6 +43,6 @@ hints:
     ramMin: 10000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/multiqc:v1.10.1.3'
+    dockerPull: 'ghcr.io/msk-access/multiqc:v1.10.1.7'
 requirements:
   - class: InlineJavascriptRequirement
