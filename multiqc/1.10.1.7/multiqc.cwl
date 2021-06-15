@@ -11,7 +11,7 @@ inputs:
       position: 999
     doc: |
       qc files in a Directory
-  - default: multiqc_1.10.1
+  - default: multiqc_1.10.1.7
     id: report_name
     type: string
     inputBinding:
@@ -24,14 +24,26 @@ inputs:
       position: 0
       prefix: '--config'
 outputs:
-  - id: diree
+  - id: multiqc_output_dir
     type: Directory
     outputBinding:
       glob: .
+      outputEval: |-
+        ${
+            self[0].basename = inputs.report_name.replace('.html', '');
+            return self[0]
+        }
   - id: multiqc_html
     type: File
     outputBinding:
-      glob: $(inputs.report_name).html
+      glob: |-
+        ${
+            if (inputs.report_name) {
+                return inputs.report_name + ".html"
+            } else {
+                return "multiqc_1.10.1.7.html"
+            }
+        }
   - id: multiqc_zip
     type: File?
     outputBinding:
