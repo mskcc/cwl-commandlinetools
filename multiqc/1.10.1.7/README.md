@@ -4,7 +4,7 @@
 
 | Tool | Version | Location |
 |--- |--- |--- |
-| multiqc   | 1.10.1   |  <https://pypi.org/project/multiqc/> |
+| multiqc   | 1.10.1.7  |  <https://github.com/msk-access/MultiQC/> |
 
 ## CWL
 
@@ -13,12 +13,12 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner multiqc_1.10.1.cwl example_inputs.json
+    > toil-cwl-runner multiqc.cwl example_inputs.json
 ```
 
 ```bash
 #Using CWLTOOL
-> cwltool --singularity --non-strict /path/to/multiqc_1.10.1/multiqc_1.10.1.cwl /path/to/example_inputs.json
+> cwltool --singularity --non-strict /path/to/multiqc_1.10.1.7/multiqc.cwl /path/to/example_inputs.json
 
 #Using toil-cwl-runner
 > mkdir tool_toil_log
@@ -28,7 +28,7 @@
 ### Usage
 
 ```bash
-> toil-cwl-runner multiqc_1.10.1.cwl --helpusage: multiqc_1.10.1.cwl [-h]
+> toil-cwl-runner multiqc.cwl --helpusage: multiqc_1.10.1.cwl [-h]
                           [--qc_files_array_of_array QC_FILES_ARRAY_OF_ARRAY]
                           [--qc_files_dir QC_FILES_DIR]
                           [--qc_list_of_dirs QC_LIST_OF_DIRS]

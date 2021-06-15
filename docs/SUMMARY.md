@@ -4,6 +4,8 @@
   - ABRA2
     - [v2.17](../abra2_2.17/README.md)
     - [v2.22](../abra2_2.22/README.md)
+  - access_utils
+    - [0.1.1](../access_utils/0.1.1/README.md)
   - Bedtools
     - [genomecov v2.28.0_cv2](../bedtools_genomecov_v2.28.0_cv2/README.md)
     - [merge v2.28.0_cv2](../bedtools_merge_v2.28.0_cv2/README.md)
@@ -41,6 +43,8 @@
     - [Collapsing Second Pass v1.8.1](../marianas_collapsing_second_pass_1.8.1/README.md)
     - [Process Loop UMI v1.8.1](../marianas_process_loop_umi_1.8.1/README.md)
     - [Seprate BAMs v1.8.1](../marianas_separate_bams_1.8.1/README.md)
+  - MultiQC
+    - [MultiQC v1.10.1.7](../multiqc/1.10.1.7/README.md)
   - MuTect
     - [MuTect 1.1.5](../mutect_1.1.5/README.md)
   - Merge Fastq
