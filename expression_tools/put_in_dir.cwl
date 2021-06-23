@@ -11,7 +11,10 @@ class: ExpressionTool
 id: put-in-dir
 
 inputs:
-  output_directory_name: string
+  output_directory_name:
+    type: string
+    doc: >-
+      Put all `files` in a directory called `output_directory_name`.
   output_subdirectory_name:
     type: string?
     doc: >-
