@@ -152,6 +152,7 @@ requirements:
           }
         writable: false
   - class: InlineJavascriptRequirement
+  - class: StepInputExpressionRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
