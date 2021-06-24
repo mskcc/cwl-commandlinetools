@@ -11,7 +11,14 @@ class: ExpressionTool
 id: put-in-dir
 
 inputs:
-  output_directory_name: string
+  output_directory_name:
+    type: string
+    doc: >-
+      Put all `files` in a directory called `output_directory_name`.
+  output_subdirectory_name:
+    type: string?
+    doc: >-
+      If specified, nest all `files` within a directory called `output_subdirectory_name`, which itself is within `output_directory_name`.
   files:
     type:
       type: array
@@ -49,13 +56,30 @@ expression: |
       }
     }
 
-    return {
-      'directory': {
-        'class': 'Directory',
-        'basename': inputs.output_directory_name,
-        'listing': output_files
-      }
-    };
+    if (inputs.output_subdirectory_name) {
+      return {
+        'directory': {
+          'class': 'Directory',
+          'basename': inputs.output_directory_name,
+          'listing': [
+          {
+            'class': 'Directory',
+            'basename': inputs.output_subdirectory_name,
+            'listing': output_files
+          }
+          ]
+        }
+      };
+    } else {
+      return {
+        'directory': {
+          'class': 'Directory',
+          'basename': inputs.output_directory_name,
+          'listing': output_files
+        }
+      };
+    }
+
   }
 
 requirements:
