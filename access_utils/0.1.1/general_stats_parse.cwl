@@ -21,6 +21,12 @@ inputs:
       position: 0
       prefix: '--samples-json'
     doc: Sample JSON file.
+  - id: config
+    type: File?
+    inputBinding:
+      position: 0
+      prefix: '--config'
+    doc: MultQC config file.
 outputs:
   - id: sample_meta_tumor
     type: File?
@@ -46,6 +52,10 @@ outputs:
     type: File?
     outputBinding:
       glob: minor_contamination_sites_mqc.html
+  - id: qc_criterion
+    type: File?
+    outputBinding:
+      glob: qc_criterion.csv
 label: general_stats_parse
 requirements:
   - class: DockerRequirement
