@@ -52,10 +52,10 @@ outputs:
     type: File?
     outputBinding:
       glob: minor_contamination_sites_mqc.html
-  - id: qc_criterion
+  - id: qc_criteria
     type: File?
     outputBinding:
-      glob: qc_criterion.csv
+      glob: qc_criteria.csv
 label: general_stats_parse
 requirements:
   - class: DockerRequirement
