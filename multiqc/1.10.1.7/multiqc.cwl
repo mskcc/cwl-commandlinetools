@@ -58,3 +58,7 @@ hints:
     dockerPull: 'ghcr.io/msk-access/multiqc:v1.10.1.7'
 requirements:
   - class: InlineJavascriptRequirement
+  - class: EnvVarRequirement
+    envDef:
+      LC_ALL: en_US.utf-8
+      LANG: en_US.utf-8
