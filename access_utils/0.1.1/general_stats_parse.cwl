@@ -61,8 +61,6 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/access_utils:0.1.1'
   - class: InlineJavascriptRequirement
-  - class: InitialWorkDirRequirement
-    listing: $(inputs.directory.listing)
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
