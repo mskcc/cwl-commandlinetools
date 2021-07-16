@@ -7,7 +7,10 @@ $namespaces:
   sbg: 'https://www.sevenbridges.com/'
 id: general_stats_parse
 baseCommand:
-  - general_stats_parse.py --dir .
+  - general_stats_parse.py
+arguments:
+  - --dir
+  - .
 inputs:
   - id: directory
     type: Directory
@@ -15,13 +18,11 @@ inputs:
   - id: samples-json
     type: File
     inputBinding:
-      position: 0
       prefix: '--samples-json'
     doc: Sample JSON file.
   - id: config
     type: File?
     inputBinding:
-      position: 0
       prefix: '--config'
     doc: MultQC config file.
 outputs:
@@ -41,7 +42,8 @@ requirements:
     dockerPull: 'ghcr.io/msk-access/access_utils:0.1.1'
   - class: InitialWorkDirRequirement
     listing:
-      - $(inputs.directory.listing)
+      - entry: $(inputs.directory)
+        writable: true
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
