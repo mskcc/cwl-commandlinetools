@@ -7,13 +7,10 @@ $namespaces:
   sbg: 'https://www.sevenbridges.com/'
 id: general_stats_parse
 baseCommand:
-  - general_stats_parse.py
+  - general_stats_parse.py --dir .
 inputs:
   - id: directory
     type: Directory
-    inputBinding:
-      position: 0
-      prefix: '--dir'
     doc: Directory containing results.
   - id: samples-json
     type: File
@@ -28,38 +25,23 @@ inputs:
       prefix: '--config'
     doc: MultQC config file.
 outputs:
-  - id: sample_meta_tumor
-    type: File?
+  - id: aggregate_parsed_stats
+    label: aggregate_parsed_stats
+    type: Directory
     outputBinding:
-      glob: genstats_qc_status_plasma.csv
-  - id: sample_meta_normal
-    type: File?
-    outputBinding:
-      glob: genstats_qc_status_buffy.csv
-  - id: sequence_qc_mqc
-    type: File?
-    outputBinding:
-      glob: sequence_qc_mqc.html
-  - id: sequence_qc_substitution_mqc
-    type: File?
-    outputBinding:
-      glob: sequence_qc_substitution_mqc.yaml
-  - id: sequence_qc_mqc_yaml
-    type: File?
-    outputBinding:
-      glob: sequence_qc_mqc.yaml
-  - id: minor_contamination_sites_mqc
-    type: File?
-    outputBinding:
-      glob: minor_contamination_sites_mqc.html
-  - id: qc_criteria
-    type: File?
-    outputBinding:
-      glob: qc_criteria.csv
+      glob: .
+      outputEval: |-
+        ${
+            self[0].basename = "aggregate_qc_stats";
+            return self[0]
+        }
 label: general_stats_parse
 requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/access_utils:0.1.1'
+  - class: InitialWorkDirRequirement
+    listing:
+      - $(inputs.directory.listing)
   - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
