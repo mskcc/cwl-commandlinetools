@@ -4,11 +4,12 @@ $namespaces:
   sbg: 'https://www.sevenbridges.com/'
 baseCommand:
   - multiqc
+arguments:
+  - valueFrom: .
+    position: 999
 inputs:
   - id: qc_files_dir
     type: Directory?
-    inputBinding:
-      position: 999
     doc: |
       qc files in a Directory
   - default: multiqc_1.10.1.7
@@ -62,3 +63,8 @@ requirements:
     envDef:
       LC_ALL: en_US.utf-8
       LANG: en_US.utf-8
+  - class: InitialWorkDirRequirement
+    listing:
+      - entry: $(inputs.qc_files_dir)
+        writable: true
+  - class: InlineJavascriptRequirement
