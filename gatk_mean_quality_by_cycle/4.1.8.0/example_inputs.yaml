@@ -1,0 +1,18 @@
+input:
+  class: File
+  metadata: {}
+  path: "/path/to/bam"
+output_file_name: null
+chart_output: null
+validation_stringency: null
+assume_sorted: null
+pf_reads_only: null
+reference:
+  class: File
+  metadata: {}
+  path: ref.fasta
+create_index: null
+create_md5_file: null
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null

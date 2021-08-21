@@ -4,9 +4,17 @@
 * [ABRA2](abra2/README.md)
   * [v2.17](abra2/abra2_2.17.md)
   * [v2.22](abra2/abra2_2.22.md)
+* access_utils
+  * [0.1.1](../access_utils/0.1.1/README.md)
 * [Bedtools](bedtools/README.md)
   * [genomecov v2.28.0\_cv2](bedtools/bedtools_genomecov_v2.28.0_cv2.md)
   * [merge v2.28.0\_cv2](bedtools/bedtools_merge_v2.28.0_cv2.md)
+* Biometrics
+  * [extract](../biometrics_extract/README.md)
+  * [minor](../biometrics_minor/README.md)
+  * [major](../biometrics_major/README.md)
+  * [genotype](../biometrics_genotype/README.md)
+  * [sexmismatch](../biometrics_sexmismatch/README.md)
 * [Disambiguate](disambiguate/README.md)
   * [v1.0.0](disambiguate/disambiguate_1.0.0.md)
 * [Fgbio](fgbio/README.md)
@@ -24,6 +32,8 @@
   * [MergeBamAlignment v4.1.8.0](gatk/gatk_merge_bam_alignment_4.1.8.0.md)
   * [MergeSamFiles v4.1.8.0](gatk/gatk_merge_sam_files_4.1.8.0.md)
   * [SamToFastq v4.1.8.0](gatk/samtofastq-v4.1.8.0.md)
+* GetBaseCountsMultiSample
+  * [1.2.5](../getbasecountsmultisample/1.2.5/README.md)
 * [Manta](manta/README.md)
   * [Manta v1.5.1](manta/manta_1.5.1.md)
 * [Marianas](marianas/README.md)
@@ -31,6 +41,8 @@
   * [Collapsing Second Pass v1.8.1](marianas/marianas_collapsing_second_pass_1.8.1.md)
   * [Process Loop UMI v1.8.1](marianas/marianas_process_loop_umi_1.8.1.md)
   * [Seprate BAMs v1.8.1](marianas/marianas_separate_bams_1.8.1.md)
+* MultiQC
+  * [MultiQC v1.10.1.7](../multiqc/1.10.1.7/README.md)
 * [MuTect](mutect/README.md)
   * [MuTect 1.1.5](mutect/mutect_1.1.5.md)
 * [Merge Fastq](merge-fastq/README.md)
@@ -59,4 +71,3 @@
 * [Waltz](waltz/README.md)
   * [CountReads v3.1.1](waltz/waltz_count_reads_3.1.1.md)
   * [PileupMetrics v3.1.1](waltz/waltz_pileupmatrices_3.1.1.md)
-
