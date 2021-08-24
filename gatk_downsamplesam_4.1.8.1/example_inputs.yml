@@ -1,17 +1,10 @@
 QUIET: null
 arguments_file: null
-cloud-index-prefetch-buffer: null
-cloud_prefetch_buffer: null
 create_output_bam_index: null
 create_output_bam_md5: null
-disable_bam_index_caching: null
-disable_read_filter: null
-disable_sequence_dictionary_validation: null
-exclude_intervals: null
-gatk_config_file: null
-gcs_max_retries: null
-gcs_project_for_requester_pays: null
-input: null
+input:
+  class: File
+  path: input.bam
 lenient: null
 memory_overhead: null
 memory_per_job: null
@@ -20,10 +13,9 @@ output_file_name: null
 output_file_name_metrics: null
 probability: null
 random_seed: null
-read_filter: null
-read_index: null
-reference: null
-seconds_between_progress_updates: null
+reference:
+  class: File
+  path: reference.fasta
 strategy: null
 temporary_directory: null
 

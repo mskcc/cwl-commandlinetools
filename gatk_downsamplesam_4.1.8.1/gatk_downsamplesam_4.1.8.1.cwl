@@ -40,7 +40,7 @@ inputs:
       prefix: '--PROBABILITY'
     doc: 'The probability of keeping any individual read, between 0 and 1.'
   - id: random_seed
-    type: float?
+    type: int?
     inputBinding:
       position: 4
       prefix: '--RANDOM_SEED'
@@ -72,16 +72,6 @@ inputs:
         inputBinding:
           position: 0
           prefix: '--arguments_file'
-  - id: cloud-index-prefetch-buffer
-    type: int?
-    inputBinding:
-      position: 10
-      prefix: '--cloud-index-prefetch-buffer'
-  - id: cloud_prefetch_buffer
-    type: int?
-    inputBinding:
-      position: 10
-      prefix: '--cloud-prefetch-buffer'
   - id: create_output_bam_index
     type: boolean?
     inputBinding:
@@ -92,70 +82,11 @@ inputs:
     inputBinding:
       position: 10
       prefix: '--create-output-bam-md5'
-  - id: disable_bam_index_caching
-    type: boolean?
-    inputBinding:
-      position: 10
-      prefix: '--disable-bam-index-caching'
-  - id: disable_read_filter
-    type:
-      - 'null'
-      - type: array
-        items: string
-        inputBinding:
-          prefix: '--disable-read-filter'
-    inputBinding:
-      position: 10
-    doc: Read filters to be disabled before analysis
-  - id: disable_sequence_dictionary_validation
-    type: boolean?
-    inputBinding:
-      position: 10
-      prefix: '--disable-sequence-dictionary-validation'
-  - id: exclude_intervals
-    type: string?
-    inputBinding:
-      position: 10
-      prefix: '--exclude-intervals'
-  - id: gatk_config_file
-    type: File?
-    inputBinding:
-      position: 10
-      prefix: '--gatk-config-file'
-  - id: gcs_max_retries
-    type: int?
-    inputBinding:
-      position: 10
-      prefix: '--gcs-max-retries'
-  - id: gcs_project_for_requester_pays
-    type: string?
-    inputBinding:
-      position: 10
-      prefix: '--gcs-project-for-requester-pays'
   - id: QUIET
     type: boolean?
     inputBinding:
       position: 10
       prefix: '--QUIET'
-  - id: read_filter
-    type:
-      - 'null'
-      - type: array
-        items: string
-        inputBinding:
-          prefix: '--read-filter'
-    inputBinding:
-      position: 10
-  - id: read_index
-    type: string?
-    inputBinding:
-      position: 10
-      prefix: '--read-index'
-  - id: seconds_between_progress_updates
-    type: float?
-    inputBinding:
-      position: 10
-      prefix: '--seconds-between-progress-updates'
   - id: lenient
     type: boolean?
     inputBinding:
