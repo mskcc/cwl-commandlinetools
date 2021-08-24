@@ -76,22 +76,22 @@ inputs:
     type: boolean?
     inputBinding:
       position: 10
-      prefix: '--create-output-bam-index'
+      prefix: '--CREATE_INDEX'
   - id: create_output_bam_md5
     type: boolean?
     inputBinding:
       position: 10
-      prefix: '--create-output-bam-md5'
+      prefix: '--CREATE_MD5_FILE'
   - id: QUIET
     type: boolean?
     inputBinding:
       position: 10
       prefix: '--QUIET'
-  - id: lenient
-    type: boolean?
+  - id: "validation_stringency"
+    type: string?
     inputBinding:
       position: 6
-      prefix: '--lenient'
+      prefix: '--VALIDATION_STRINGENCY'
   - id: number_of_threads
     type: int?
   - id: memory_per_job
@@ -151,7 +151,7 @@ arguments:
            }
       }
   - position: 2
-    prefix: '--tmp-dir'
+    prefix: '--TMP_DIR'
     valueFrom: |-
       ${
           if(inputs.temporary_directory)
@@ -159,7 +159,7 @@ arguments:
             return runtime.tmpdir
       }
   - position: 2
-    prefix: '--output'
+    prefix: '--OUTPUT'
     valueFrom: |-
       ${
           if(inputs.output_file_name){
