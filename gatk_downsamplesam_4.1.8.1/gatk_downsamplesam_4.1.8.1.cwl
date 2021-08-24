@@ -30,7 +30,7 @@ inputs:
   - id: output_file_name
     type: string?
     doc: Output file name. Not Required
-  - id: output_file_name_metrics
+  - id: output_metrics_file_name
     type: string?
     doc: Output file name for metrics file. Not Required
   - id: probability
