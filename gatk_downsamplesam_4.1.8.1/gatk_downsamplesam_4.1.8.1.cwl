@@ -22,7 +22,7 @@ inputs:
     type: File
     inputBinding:
       position: 3
-      prefix: '--REFERENCE'
+      prefix: '--REFERENCE_SEQUENCE'
     doc: Reference sequence file
     secondaryFiles:
       - .fai
