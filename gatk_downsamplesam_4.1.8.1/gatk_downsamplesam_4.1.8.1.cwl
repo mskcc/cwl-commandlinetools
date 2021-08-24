@@ -14,7 +14,7 @@ inputs:
     type: File
     inputBinding:
       position: 3
-      prefix: '--input'
+      prefix: '--INPUT'
     doc: BAM/SAM file containing reads
     secondaryFiles:
       - ^.bai
@@ -22,7 +22,7 @@ inputs:
     type: File
     inputBinding:
       position: 3
-      prefix: '--reference'
+      prefix: '--REFERENCE'
     doc: Reference sequence file
     secondaryFiles:
       - .fai
