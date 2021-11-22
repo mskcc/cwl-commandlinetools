@@ -1,0 +1,21 @@
+QUIET: null
+arguments_file: null
+create_output_bam_index: null
+create_output_bam_md5: null
+input:
+  class: File
+  path: input.bam
+lenient: null
+memory_overhead: null
+memory_per_job: null
+number_of_threads: null
+output_file_name: null
+output_file_name_metrics: null
+probability: null
+random_seed: null
+reference:
+  class: File
+  path: reference.fasta
+strategy: null
+temporary_directory: null
+

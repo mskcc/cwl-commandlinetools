@@ -93,6 +93,13 @@ inputs:
       prefix: '--length_required'
     doc: |
       reads shorter than length_required will be discarded, default is 15.
+  - id: maximum_read_length
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '--length_limit'
+    doc: |
+      reads longer than length_limit will be discarded, default 0 means no limitation.
   - default: fastp.json
     id: json_output_path
     type: string
