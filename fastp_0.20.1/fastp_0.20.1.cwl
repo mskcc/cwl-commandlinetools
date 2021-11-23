@@ -98,8 +98,26 @@ inputs:
     inputBinding:
       position: 0
       prefix: '--length_limit'
-    doc: |
-      reads longer than length_limit will be discarded, default 0 means no limitation.
+    doc: >
+      reads longer than length_limit will be discarded, default 0 means no
+      limitation.
+  - id: max_len_read1
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '--max_len1'
+    doc: >-
+      if read1 is longer than max_len1, then trim read1 at its tail to make it
+      as long as max_len1. Default 0 means no limitation
+  - id: max_len_read2
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '--max_len2'
+    doc: >-
+      if read2 is longer than max_len2, then trim read2 at its tail to make it 
+      as long as max_len2. Default 0 means no limitation. If it's not specified,
+      it will follow read1's settings
   - default: fastp.json
     id: json_output_path
     type: string
