@@ -1,0 +1,18 @@
+G:
+  class: File
+  path: "b37.fasta"
+b:
+  class: File
+  path: "/path/to/normal/bam"
+b2:
+  class: File
+  path: "/path/to/tumor/bam"
+bedfile:
+  class: File
+  path: "/path/to/bed/file"
+c: "1"
+S: "2"
+E: "3"
+g: "4"
+th: "4"
+vcf: "output.vcf"
