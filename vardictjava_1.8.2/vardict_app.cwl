@@ -24,7 +24,7 @@ requirements:
     coresMin: 4
     ramMin: 64000
   DockerRequirement:
-    dockerPull: ghcr.io/msk-access/vardictjava
+    dockerPull: ghcr.io/msk-access/vardictjava:1.8.2
 
 inputs:
 
