@@ -1,18 +1,52 @@
 G:
   class: File
-  path: "b37.fasta"
+  path: "/work/access/production/resources/reference/current/Homo_sapiens_assembly19.fasta"
 b:
   class: File
-  path: "/path/to/normal/bam"
-b2:
-  class: File
-  path: "/path/to/tumor/bam"
+  path: "/work/ci/vurals/vardict_resources/Myeloid200-1-05500HJ_cl_aln_srt_MD_IR_FX_BR__aln_srt_IR_FX-duplex.bam"
 bedfile:
   class: File
-  path: "/path/to/bed/file"
+  path: "/work/ci/vurals/vardict_resources/picard_baits.bed"
 c: "1"
+f: "0"
 S: "2"
 E: "3"
-g: "4"
+g: "5"
 th: "4"
-vcf: "output.vcf"
+vcf: "test.vcf"
+N: "testMyeloidtest"
+f_1: "0"
+# N: "tumor_sample_name"
+# N2: "normal_sample_name"
+
+#
+# bam_index: true
+# no_edge_complex_indel: true
+# consensus_sequence:
+# contig_anchor:
+# ignore_bad_assembly:
+# input_bam:
+#   class: File
+#   path: "path/to/alignment.bam"
+# input_vcf:
+# kmer_size:
+# maximum_average_depth:
+# maximum_mixmatch_rate:
+# memory_overhead:
+# memory_per_job:
+# no_sort:
+# number_of_threads:
+# output_bam: name_of_realigned_abra.bam
+# path_to_abra:
+# reference_fasta:
+#   class: File
+#   path: "/path/to/reference.fasta"
+# scoring_gap_alignments:
+# soft_clip_contig:
+# targets:
+#   class: File
+#   metadata: {}
+#   path: "/path/to/target.bed"
+#   secondaryFiles: []
+# window_size:
+# working_directory:

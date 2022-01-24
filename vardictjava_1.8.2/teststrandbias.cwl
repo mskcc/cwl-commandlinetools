@@ -3,8 +3,8 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand:
 - Rscript
-- /usr/bin/vardict/testsomatic.R
-id: testsomatic
+- /usr/bin/vardict/bin/teststrandbias.R
+id: teststrandbias
 
 requirements:
   InlineJavascriptRequirement: {}
@@ -12,7 +12,7 @@ requirements:
     coresMin: 2
     ramMin: 12000
   DockerRequirement:
-    dockerPull: mskcc/roslin-variant-vardict:1.5.1
+    dockerPull: ghcr.io/msk-access/vardictjava:1.8.2
 
 
 inputs:
@@ -22,7 +22,7 @@ outputs:
   output_var:
     type: File?
     outputBinding:
-      glob: output_testsomatic.var
+      glob: output_teststrandbias.var
 
 stdin: $(inputs.input_vardict.path)
-stdout: output_testsomatic.var
+stdout: output_teststrandbias.var
