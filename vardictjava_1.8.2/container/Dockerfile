@@ -12,9 +12,6 @@ LABEL maintainer="Nikhil Kumar (kumarn1@mskcc.org)" \
 
 ENV VARDICT_VERSION 1.8.2
 
-COPY runscript.sh /usr/bin/runscript.sh
-COPY run_test.sh /run_test.sh
-
 RUN apk add --update \
       && apk add ca-certificates openssl bash perl \
       && apk add openjdk8-jre-base \
@@ -22,9 +19,4 @@ RUN apk add --update \
       && cd /tmp && wget https://github.com/AstraZeneca-NGS/VarDictJava/releases/download/v${VARDICT_VERSION}/VarDict-${VARDICT_VERSION}.zip \
       && unzip VarDict-${VARDICT_VERSION}.zip \
       && mv /tmp/VarDict-${VARDICT_VERSION} /usr/bin/vardict \
-      && rm -rf /var/cache/apk/* /tmp/* \
-      && chmod +x /usr/bin/runscript.sh \
-      && exec /run_test.sh
-
-COPY testsomatic.R /usr/bin/vardict/
-COPY var2vcf_paired.pl /usr/bin/vardict/
+      && rm -rf /var/cache/apk/* /tmp/*
