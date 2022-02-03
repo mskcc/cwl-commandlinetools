@@ -1,4 +1,8 @@
 # Vardict v1.8.3 - Single sample mode
+To run VarDistJava in single sample mode vardict_workflow_single_sample.cwl should be run. vardict_workflow_single_sample.cwl will run 3 workflows to implement the example command in the original documentations as explained here
+https://github.com/AstraZeneca-NGS/VarDictJava#single-sample-mode
+
+
 
 ## Version of tools in docker image \(/container/Dockerfile\)
 
@@ -6,7 +10,8 @@
 | :--- | :--- | :--- |
 | ubuntu base image (alpine) | 3.8 | - |
 | vardict | 1.8.3 | [https://github.com/AstraZeneca-NGS/VarDictJava/releases/tag/v1.8.2](https://github.com/AstraZeneca-NGS/VarDictJava/releases/tag/v1.8.2) |
-
+| perl | 5.26.2-r1 | [https://pkgs.alpinelinux.org/package/edge/main/aarch64/perl](https://pkgs.alpinelinux.org/package/edge/main/aarch64/perl) |
+| r | 3.5.1 | [https://pkgs.alpinelinux.org/package/edge/community/x86/R](https://pkgs.alpinelinux.org/package/edge/community/x86/R) |
 
 ## CWL
 
@@ -51,14 +56,15 @@ optional arguments:
                 The column for the region start, e.g. gene start
 -b B
                 The indexed BAM file.
---bedfile BEDFILE
 -c C
                 The column for chromosome
 -f F
                 The threshold for allele frequency, default: 0.01 or 1%
 --f_1 F_1
+                The minimum allele frequency. Used for var2vcf_valid.pl
 -g G
                 The column for a gene name, or segment annotation
 --vcf VCF
-
+                vcf file name given to var2vcf_valid.pl
+--bedfile BEDFILE
 ```
