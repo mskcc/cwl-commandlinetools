@@ -1,5 +1,5 @@
 # Vardict v1.8.3 - Single sample mode
-To run VarDistJava in single sample mode vardict_workflow_single_sample.cwl should be run. vardict_workflow_single_sample.cwl will run 3 workflows to implement the example command in the original documentations as explained here
+To run VarDistJava in single sample mode vardict_workflow_single_sample.cwl should be run. vardict_workflow_single_sample.cwl will run 3 workflows to implement the example command in the original documentations as explained here:
 https://github.com/AstraZeneca-NGS/VarDictJava#single-sample-mode
 
 
@@ -29,9 +29,6 @@ https://github.com/AstraZeneca-NGS/VarDictJava#single-sample-mode
 #Using CWLTOOL
 > cwltool --singularity --non-strict /path/to/vardict_1.8.3/vardict_workflow_single_sample.cwl /path/to/inputs.yaml
 
-#Using toil-cwl-runner
-> mkdir toil_log
-> toil-cwl-runner --singularity --logFile /path/to/toil_log/cwltoil.log  --jobStore /path/to/jobStore --batchSystem lsf --workDir /path/to =toil_log --outdir . --writeLogs /path/to/toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --maxLogFileSize 20000000000 /path/to/vardict_1.8.3/vardict_workflow_single_sample.cwl /path/to/inputs.yaml > toil.stdout 2> toil.stderr &
 ```
 
 ### Usage
