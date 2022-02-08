@@ -29,6 +29,8 @@ https://github.com/AstraZeneca-NGS/VarDictJava#single-sample-mode
 #Using CWLTOOL
 > cwltool --singularity --non-strict /path/to/vardict_1.8.3/vardict_workflow_single_sample.cwl /path/to/inputs.yaml
 
+#Using Toil-cwl-runner
+toil-cwl-runner --singularity vardict_workflow_single_sample.cwl example_inputs.yaml
 ```
 
 ### Usage
