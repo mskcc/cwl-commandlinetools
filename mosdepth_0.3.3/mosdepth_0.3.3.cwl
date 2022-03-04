@@ -1,6 +1,9 @@
 class: CommandLineTool
 cwlVersion: v1.0
 $namespaces:
+  dct: 'http://purl.org/dc/terms/'
+  doap: 'http://usefulinc.com/ns/doap#'
+  foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
 id: mosdepth_0_3_3
 baseCommand:
@@ -58,3 +61,22 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/mosdepth:0.3.3'
   - class: InlineJavascriptRequirement
+  
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:shahr2@mskcc.org'
+        'foaf:name': Carmelina 
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
+        'foaf:name': Carmelina 
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'doap:release':
+  - class: 'doap:Version'
+    'doap:name': mosdepth
+    'doap:revision': 0.3.3
