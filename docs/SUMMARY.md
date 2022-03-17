@@ -71,3 +71,6 @@
 * [Waltz](waltz/README.md)
   * [CountReads v3.1.1](waltz/waltz_count_reads_3.1.1.md)
   * [PileupMetrics v3.1.1](waltz/waltz_pileupmatrices_3.1.1.md)
+* [Mosdepth](mosdepth/README.md)
+  * [0.3.3](mosdepth/mosdepth_0.3.3.md)
+  
