@@ -32,17 +32,73 @@ inputs:
       shellQuote: false
     doc: chromosome to restrict depth calculation.
   - id: input_bam
-    type: File
+    type:
+      - File
+      - type: array
+        items: File
+    doc: Required list of input bam file (s) separated by comma
     secondaryFiles:
       - ^.bai
   - id: prefix
-    type: File
+    type: string?
     doc: Prefix for the output files
+  - id: flag
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '-F'
+    doc: exclude reads with any of the bits in FLAG set
+  - id: mapq
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '-Q'
+    doc: mapping quality threshold. reads with a mapping quality less than this are ignored
 outputs:
-  - id: mosdepth_output
+  - id: per_base_bed
+    type: File
+    outputBinding:
+      glob: |-
+        ${
+            if (inputs.prefix) {
+              return inputs.prefix + '.per-base.bed.gz'
+            } else {
+              return 'per-base.bed.gz'
+            }
+        }
+  - id: per_region_bed
     type: File?
     outputBinding:
-      glob: $(inputs.prefix).*
+      glob: |-
+        ${
+            if (inputs.prefix) {
+              return inputs.prefix + '.regions.bed.gz'
+            } else {
+              return 'regions.bed.gz'
+            }
+        }
+  - id: global_distribution
+    type: File?
+    outputBinding:
+      glob: |-
+        ${
+            if (inputs.prefix) {
+              return inputs.prefix + '.mosdepth.global.dist.txt'
+            } else {
+              return 'mosdepth.global.dist.txt'
+            }
+        }
+  - id: region_distribution
+    type: File?
+    outputBinding:
+      glob: |-
+        ${
+            if (inputs.prefix) {
+              return inputs.prefix + '.mosdepth.region.dist.txt'
+            } else {
+              return 'mosdepth.region.dist.txt'
+            }
+        }
 doc: 'fast BAM/CRAM depth calculation for WGS, exome, or targeted sequencing.'
 label: mosdepth_0.3.3
 arguments:
@@ -61,20 +117,19 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/mosdepth:0.3.3'
   - class: InlineJavascriptRequirement
-  
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
         'foaf:mbox': 'mailto:shahr2@mskcc.org'
-        'foaf:name': Carmelina 
+        'foaf:name': Carmelina
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
-        'foaf:name': Carmelina 
+        'foaf:mbox': 'mailto:charalk@mskcc.org'
+        'foaf:name': Carmelina
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
