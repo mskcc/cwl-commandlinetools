@@ -2,6 +2,9 @@ class: CommandLineTool
 cwlVersion: v1.0
 $namespaces:
   sbg: 'https://www.sevenbridges.com/'
+  dct: 'http://purl.org/dc/terms/'
+  doap: 'http://usefulinc.com/ns/doap#'
+  foaf: 'http://xmlns.com/foaf/0.1/'
 id: octopus_0_7_4
 baseCommand:
   - octopus
@@ -99,3 +102,22 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/octopus:0.7.4'
   - class: InlineJavascriptRequirement
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:kumarn1@mskcc.org'
+        'foaf:name': Nikhil Kumar
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:shahr2@mskcc.org'
+        'foaf:name': Ronak Shah
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'doap:release':
+  - class: 'doap:Version'
+    'doap:name': abra2
+    'doap:revision': 2.22 
+ 
