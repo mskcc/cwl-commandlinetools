@@ -6,24 +6,13 @@ id: octopus_0_7_4
 baseCommand:
   - octopus
 inputs:
-  - id: Reference
-    type: File
-    inputBinding:
-      position: 0
-      prefix: '-R'
-    secondaryFiles:
-      - .fai
   - id: input
-    type:
-      - File
-      - type: array
-        items: File
+    type: 'File[]'
     inputBinding:
       position: 0
       prefix: '-I'
+    secondaryFiles: ^.bai
     doc: Tumor and normal  bam files with .bai
-    secondaryFiles:
-      - ^.bai
   - id: normalId
     type: string?
     inputBinding:
@@ -42,7 +31,7 @@ inputs:
       position: 0
       prefix: '--somatics-only'
     doc: if somatics only call is required. Use this with -f ON parameter
-  - id: targettedCalling.singleEntry
+  - id: targettedCalling_singleEntry
     type: string?
     inputBinding:
       position: 0
@@ -59,25 +48,25 @@ inputs:
       4. chr4:100,000,000-200,000,000: everything between chr4:100,000,000 and
       chr4:200,000,000. The interval is half open so position chr4:200,000,000
       is not included.
-  - id: skipRegions.singleEntry
+  - id: skipRegions_singleEntry
     type: string?
     inputBinding:
       position: 0
       prefix: '-K'
     doc: to skip a set of regions
-  - id: targettedCalling.file
+  - id: targettedCalling_file
     type: File?
     inputBinding:
       position: 0
       prefix: '-t'
     doc: regions in a text or bed file
-  - id: skipRegions.file
+  - id: skipRegions_file
     type: File?
     inputBinding:
       position: 0
       prefix: '-k'
     doc: regions in text or bed file format
-  - id: error.models
+  - id: error_models
     type: string?
     inputBinding:
       position: 0
@@ -85,11 +74,23 @@ inputs:
     doc: >-
       error model will be in the format - [library preparation]<.sequencer>  
       eg: PCR.NOVASEQ
+  - id: reference
+    type: File
+    inputBinding:
+      position: 0
+      prefix: '-R'
+    secondaryFiles:
+      - .fai
+  - id: output_file_name
+    type: string
+    inputBinding:
+      position: 0
+      prefix: '-o'
 outputs:
   - id: outputVCF
-    type: File?
+    type: File
     outputBinding:
-      glob: '*.vcf'
+      glob: '${   if (inputs.output)     return inputs.output;   return null; }'
 label: octopus
 requirements:
   - class: ResourceRequirement
@@ -97,3 +98,4 @@ requirements:
     coresMin: 2
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/octopus:0.7.4'
+  - class: InlineJavascriptRequirement
