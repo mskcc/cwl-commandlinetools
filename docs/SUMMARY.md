@@ -47,6 +47,8 @@
   * [MuTect 1.1.5](mutect/mutect_1.1.5.md)
 * [Merge Fastq](merge-fastq/README.md)
   * [v0.1.7](merge-fastq/merge_fastq_0.1.7.md)
+* [Octopus](octopus/README.md)
+  * [v0.7.4](octopus/octopus_0.7.4.md)
 * [Picard Tools](picard-tools/README.md)
   * [AddOrReplaceReadGroups v1.96](picard-tools/picard_add_or_replace_read_groups_1.96.md)
   * [AddOrReplaceReadGroups v2.21.2](picard-tools/picard_add_or_replace_read_groups_2.21.2.md)
