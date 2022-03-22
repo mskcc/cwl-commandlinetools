@@ -47,6 +47,8 @@
   * [MuTect 1.1.5](mutect/mutect_1.1.5.md)
 * [Merge Fastq](merge-fastq/README.md)
   * [v0.1.7](merge-fastq/merge_fastq_0.1.7.md)
+* [Mosdepth](mosdepth/README.md)
+  * [0.3.3](mosdepth/mosdepth_0.3.3.md)
 * [Octopus](octopus/README.md)
   * [v0.7.4](octopus/octopus_0.7.4.md)
 * [Picard Tools](picard-tools/README.md)
@@ -70,6 +72,10 @@
   * [v0.6.2](trim-galore/trim_galore_0.6.2.md)
 * [Ubuntu utilites](ubuntu-utilites/README.md)
   * [v18.04](ubuntu-utilites/utilities_ubuntu_18.04.md)
+* [VarDictJava](vardict/README.md)
+  * [v18.04](vardict/vardict_1.8.3.md)
 * [Waltz](waltz/README.md)
   * [CountReads v3.1.1](waltz/waltz_count_reads_3.1.1.md)
   * [PileupMetrics v3.1.1](waltz/waltz_pileupmatrices_3.1.1.md)
+
+  
