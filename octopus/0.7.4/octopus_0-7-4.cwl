@@ -106,18 +106,18 @@ requirements:
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:kumarn1@mskcc.org'
-        'foaf:name': Nikhil Kumar
+        'foaf:mbox': 'mailto:sivaprk@mskcc.org'
+        'foaf:name': Karthigayini Sivaprakasam
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:shahr2@mskcc.org'
-        'foaf:name': Ronak Shah
+        'foaf:mbox': 'mailto:sivaprk@mskcc.org'
+        'foaf:name': Karthigayini Sivaprakasam
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': abra2
-    'doap:revision': 2.22 
+    'doap:name': octopus
+    'doap:revision': 0.7.4
  
