@@ -2,9 +2,9 @@
 
 ## Version of tools in [docker image](https://hub.docker.com/r/biocontainers/bedtools)
 
-| Tool    | Version | Location                         |
-| ------- | ------- | -------------------------------- |
-| Octopus | v0.7.4  | ghcr.io/msk-access/octopus:0.7.4 |
+| Tool    | Version | Location                                                   |
+| ------- | ------- | ---------------------------------------------------------- |
+| Octopus | v0.7.4  | https://github.com/luntergroup/octopus/releases/tag/v0.7.4 |
 
 ### CWL
 
