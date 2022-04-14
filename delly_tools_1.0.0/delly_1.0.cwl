@@ -14,11 +14,13 @@ inputs:
       inputBinding:
         position: 0
         prefix: '-o'
+      doc: The name to be used for the output bcf file
     - id: input_bam 
       type: string[]
       inputBinding:
         prefix: -g
         position: 1
+      doc: a list of strings naming directories for the reference genome fasta file, an indexed bam tumor file, an indexed bam control file
 outputs:
   bcf_out:
     type: File
