@@ -1,6 +1,6 @@
 # taken from: https://github.com/dellytools/delly/blob/main/Dockerfile
 # modify for additional functionality 
-# use the ubuntu base image
+################## Base Image ##########
 FROM ubuntu:18.04
 ################## ARGUMENTS/Environments ##########
 
@@ -24,7 +24,7 @@ LABEL org.opencontainers.image.description="This container uses ubuntu:18.04 as 
     DELLY version ${DELLY_VERSION}"
 
 
-# install required packages
+################## INSTALL ##########################
 RUN apt-get update && apt-get install -y \
     autoconf \
     build-essential \

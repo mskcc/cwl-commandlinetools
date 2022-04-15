@@ -64,6 +64,36 @@ inputs:
       prefix: '-t'
       shellQuote: false
     doc: 'SV type to compute [DEL, INS, DUP, INV, BND, ALL]'
+  - id: geno_qual
+    type: int?
+    inputBinding:
+      position: 71
+      prefix: '-u'
+    doc: min. mapping quality for genotyping
+  - id: dump
+    type: File?
+    inputBinding:
+      position: 0
+      prefix: '-d'
+    doc: gzipped output file for SV-reads (optional)
+  - id: map_qual
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '-q'
+    doc: min. paired-end (PE) mapping quality
+  - id: qual_tra
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '-r'
+    doc: min. PE quality for translocation
+  - id: mad_cutoff
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '-s'
+    doc: 'insert size cutoff, median+s*MAD (deletions only)'
 outputs:
   - id: bcf_out
     type: File
@@ -76,7 +106,6 @@ requirements:
   - class: ResourceRequirement
     ramMin: 60000
     coresMin: 16
-  - class: InlineJavascriptRequirement
 hints:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/delly:0.9.1'
@@ -84,8 +113,8 @@ hints:
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:kumarn1@mskcc.org'
-        'foaf:name': Eric Buehlere
+        'foaf:mbox': 'mailto:buehlere@mskcc.org'
+        'foaf:name': Eric Buehler
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
