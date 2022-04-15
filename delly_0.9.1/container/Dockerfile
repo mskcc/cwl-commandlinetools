@@ -2,6 +2,27 @@
 # modify for additional functionality 
 # use the ubuntu base image
 FROM ubuntu:18.04
+################## ARGUMENTS/Environments ##########
+
+ARG BUILD_DATE
+ARG BUILD_VERSION
+ARG LICENSE="Apache-2.0"
+ARG DELLY_VERSION
+ARG VCS_REF
+################## METADATA ########################
+LABEL org.opencontainers.image.vendor="MSKCC"
+LABEL org.opencontainers.image.authors="Eric Buehlere (buehlere@mskcc.org)"
+
+LABEL org.opencontainers.image.created=${BUILD_DATE} \
+    org.opencontainers.image.version=${BUILD_VERSION} \
+    org.opencontainers.image.licenses=${LICENSE} \
+    org.opencontainers.image.version.delly=${DELLY_VERSION} \
+    org.opencontainers.image.vcs-url="https://github.com/dellytools/delly.git" \
+    org.opencontainers.image.vcs-ref=${VCS_REF}
+
+LABEL org.opencontainers.image.description="This container uses ubuntu:18.04 as the base image to build \
+    DELLY version ${DELLY_VERSION}"
+
 
 # install required packages
 RUN apt-get update && apt-get install -y \
@@ -33,6 +54,7 @@ ENV BOOST_ROOT /usr
 RUN cd /opt \
     && git clone --recursive https://github.com/dellytools/delly.git \
     && cd /opt/delly/ \
+    && git checkout ${DELLY_VERSION} \
     && make STATIC=1 all \
     && make install
 
