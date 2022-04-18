@@ -9,7 +9,7 @@ https://github.com/AstraZeneca-NGS/VarDictJava#single-sample-mode
 | Tool | Version | Location |
 | :--- | :--- | :--- |
 | ubuntu base image (alpine) | 3.8 | - |
-| vardict | 1.8.3 | [https://github.com/AstraZeneca-NGS/VarDictJava/releases/tag/v1.8.2](https://github.com/AstraZeneca-NGS/VarDictJava/releases/tag/v1.8.2) |
+| vardict | 1.8.2 | [https://github.com/AstraZeneca-NGS/VarDictJava/releases/tag/v1.8.2](https://github.com/AstraZeneca-NGS/VarDictJava/releases/tag/v1.8.2) |
 | perl | 5.26.2-r1 | [https://pkgs.alpinelinux.org/package/edge/main/aarch64/perl](https://pkgs.alpinelinux.org/package/edge/main/aarch64/perl) |
 | r | 3.5.1 | [https://pkgs.alpinelinux.org/package/edge/community/x86/R](https://pkgs.alpinelinux.org/package/edge/community/x86/R) |
 
