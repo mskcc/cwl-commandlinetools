@@ -1,3 +1,3 @@
-#VCF2MAF
+# VCF2MAF
 
 
