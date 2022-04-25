@@ -9,6 +9,8 @@
 * [Bedtools](bedtools/README.md)
   * [genomecov v2.28.0\_cv2](bedtools/bedtools_genomecov_v2.28.0_cv2.md)
   * [merge v2.28.0\_cv2](bedtools/bedtools_merge_v2.28.0_cv2.md)
+* [BCFTOOLS](bcftools/README.md)
+  * [bcftools concat v1.6](bcftools/bcftools_concat_1.6.md)
 * Biometrics
   * [extract](../biometrics_extract/README.md)
   * [minor](../biometrics_minor/README.md)
