@@ -1,0 +1,6 @@
+file:
+  class: File
+  metadata: {}
+  path: ../../../vep.vcf.gz
+  secondaryFiles: []
+preset: vcf
