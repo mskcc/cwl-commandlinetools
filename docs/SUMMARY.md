@@ -9,7 +9,7 @@
 * [bcftools](bcftools/README.md)
 
   * [bcftools bgzip v1.15.1](bcftools/bcftools_bgzip_v1.15.1.md)
-  * [bcftools taxi v1.15.1](bcftools/bcftools_tabix_v1.15.1.md)
+  * [bcftools tabix v1.15.1](bcftools/bcftools_tabix_v1.15.1.md)
 
 * [Bedtools](bedtools/README.md)
 
