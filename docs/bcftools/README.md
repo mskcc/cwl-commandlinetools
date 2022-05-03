@@ -1,2 +1,1 @@
-# BCFTOOLS v1.15.1
-
+# BCFTOOLS

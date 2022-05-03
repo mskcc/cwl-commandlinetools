@@ -7,12 +7,10 @@
 * access_utils
   * [0.1.1](../access_utils/0.1.1/README.md)
 * [bcftools](bcftools/README.md)
-
+  * [bcftools concat v1.6](bcftools/bcftools_concat_1.6.md)
   * [bcftools bgzip v1.15.1](bcftools/bcftools_bgzip_v1.15.1.md)
   * [bcftools tabix v1.15.1](bcftools/bcftools_tabix_v1.15.1.md)
-
 * [Bedtools](bedtools/README.md)
-
   * [genomecov v2.28.0\_cv2](bedtools/bedtools_genomecov_v2.28.0_cv2.md)
   * [merge v2.28.0\_cv2](bedtools/bedtools_merge_v2.28.0_cv2.md)
   * [sortVcf v2.28.0\_cv2](bedtools/bedtools_sortvcf_v2.28.0_cv2.md)
@@ -22,6 +20,8 @@
   * [major](../biometrics_major/README.md)
   * [genotype](../biometrics_genotype/README.md)
   * [sexmismatch](../biometrics_sexmismatch/README.md)
+* [Delly](delly/README.md)
+  * [delly call 0.9.1](delly/delly_call_0.9.1.md)
 * [Disambiguate](disambiguate/README.md)
   * [v1.0.0](disambiguate/disambiguate_1.0.0.md)
 * [Fgbio](fgbio/README.md)
@@ -79,8 +79,10 @@
   * [v0.6.2](trim-galore/trim_galore_0.6.2.md)
 * [Ubuntu utilites](ubuntu-utilites/README.md)
   * [v18.04](ubuntu-utilites/utilities_ubuntu_18.04.md)
-* [VarDictJava](vardict/README.md)
-  * [v18.04](vardict/vardict_1.8.3.md)
+* [VarDictJava](vardictjava/README.md)
+  * [v1.8.2](vardictjava/vardictjava_1.8.2.md)
+* [VCF2MAF](vcf2maf/README.md)
+  * [1.6.21](vcf2maf/vcf2maf_1.6.21.md)
 * [Waltz](waltz/README.md)
   * [CountReads v3.1.1](waltz/waltz_count_reads_3.1.1.md)
   * [PileupMetrics v3.1.1](waltz/waltz_pileupmatrices_3.1.1.md)

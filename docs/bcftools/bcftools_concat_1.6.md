@@ -4,8 +4,8 @@
 
 | Tool	| Version	| Location	|
 |---	|---	|---	|
-| alpine:3.8 base image  	| 3.8  	|   -	|
-| bcftools  	| 1.6	|  quay.io/biocontainers/bcftools:1.6--0	|
+| bcftools  	| 1.6  	|   quay.io/biocontainers/bcftools:1.6--0	|
+| bcftools  	| 1.6	|  https://github.com/samtools/bcftools/archive/1.6.zip	|
 
 ## CWL
 
