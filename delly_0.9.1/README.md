@@ -24,7 +24,7 @@
 > cwltool --singularity --non-strict /path/to/bwa_mem_0.7.17.cwl /path/to/inputs.yaml
 
 #Using toil-cwl-runner
-> toil-cwl-runner --singularity --logFile /path/to/bwa_mem_toil.log  --jobStore /path/to/bwa_mem_jobStore --batchSystem lsf --workDir /path/to/bwa_mem_toil_log --outdir . --writeLogs /path/to/bwa_mem_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --disableChaining --maxLogFileSize 20000000000 /path/to/bwa_mem_0.7.17.cwl /path/to/inputs.yaml > bwa_mem_toil.stdout 2> bwa_mem_toil.stderr &
+> toil-cwl-runner --singularity --logFile /path/to/delly_toil.log  --jobStore /path/to/delly_jobStore --batchSystem lsf --workDir /path/to/delly_toil_log --outdir . --writeLogs /path/to/delly_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --disableChaining --maxLogFileSize 20000000000 /path/to/delly_0.7.17.cwl /path/to/inputs.yaml > delly_toil.stdout 2> delly_toil.stderr &
 ```
 
 ### Usage 

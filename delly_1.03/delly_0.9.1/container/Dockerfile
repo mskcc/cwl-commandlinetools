@@ -7,7 +7,7 @@ FROM --platform=linux/amd64 ubuntu:18.04
 ARG BUILD_DATE
 ARG BUILD_VERSION
 ARG LICENSE="Apache-2.0"
-ARG DELLY_VERSION="0.9.1"
+ARG DELLY_VERSION="1.0.3"
 ARG VCS_REF
 ################## METADATA ########################
 LABEL org.opencontainers.image.vendor="MSKCC"

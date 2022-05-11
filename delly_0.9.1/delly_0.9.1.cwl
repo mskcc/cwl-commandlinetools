@@ -30,6 +30,8 @@ inputs:
       prefix: '-g'
       shellQuote: false
     doc: reference genome fasta file
+    secondaryFiles:
+      - ^.fasta.fai
   - id: input_bams
     type:
       - File
