@@ -11,7 +11,7 @@ ARG DELLY_VERSION="1.0.3"
 ARG VCS_REF
 ################## METADATA ########################
 LABEL org.opencontainers.image.vendor="MSKCC"
-LABEL org.opencontainers.image.authors="Eric Buehlere (buehlere@mskcc.org)"
+LABEL org.opencontainers.image.authors="Eric Buehler (buehlere@mskcc.org)"
 
 LABEL org.opencontainers.image.created=${BUILD_DATE} \
     org.opencontainers.image.version=${BUILD_VERSION} \
@@ -50,7 +50,7 @@ RUN apt-get update && apt-get install -y \
 # set environment
 ENV BOOST_ROOT /usr
 
-# Download delly
+# Install delly
 RUN cd /opt \
     && git clone --recursive https://github.com/dellytools/delly.git \
     && cd /opt/delly/ \
