@@ -59,7 +59,7 @@ RUN cd /opt \
     && make install
 
 # Add Delly to PATH
-ENV PATH="/opt/delly-${DELLY_VERSION}/bin:${PATH}"
+ENV PATH="/opt/delly/bin:${PATH}"
 
 # by default /bin/sh
 CMD ["/bin/sh"]
