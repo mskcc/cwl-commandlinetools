@@ -5,7 +5,7 @@
 | Tool	| Version	| Location	|
 |---	|---	|---	|
 | ubuntu  	| 18.04  	|  -	|
-| DELLY  	| 0.9.1	|  https://github.com/dellytools/delly	|
+| DELLY  	| 1.0.3 	|  https://github.com/dellytools/delly	|
 
 
 ## CWL
@@ -15,13 +15,13 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner delly_0.9.1.cwl example_inputs.yaml
+    > toil-cwl-runner delly_1.0.3 .cwl example_inputs.yaml
 ```
 **If at MSK, using the JUNO cluster having installed toil-msk version 3.21.1 you can use the following command**
 
 ```bash
 #Using CWLTOOL
-> cwltool --singularity --non-strict /path/to/bwa_mem_0.7.17.cwl /path/to/inputs.yaml
+> cwltool --singularity --non-strict /path/to/delly_1.0.3 .cwl /path/to/inputs.yaml
 
 #Using toil-cwl-runner
 > toil-cwl-runner --singularity --logFile /path/to/delly_toil.log  --jobStore /path/to/delly_jobStore --batchSystem lsf --workDir /path/to/delly_toil_log --outdir . --writeLogs /path/to/delly_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --disableChaining --maxLogFileSize 20000000000 /path/to/delly_0.7.17.cwl /path/to/inputs.yaml > delly_toil.stdout 2> delly_toil.stderr &
@@ -30,7 +30,7 @@
 ### Usage 
 
 ```
-usage: delly_0.9.1.cwl [-h] [--memory_per_job MEMORY_PER_JOB]
+usage: delly_1.0.3 .cwl [-h] [--memory_per_job MEMORY_PER_JOB]
                        [--memory_overhead MEMORY_OVERHEAD]
                        [--number_of_threads NUMBER_OF_THREADS]
                        [--out_file OUT_FILE] --reference_genome

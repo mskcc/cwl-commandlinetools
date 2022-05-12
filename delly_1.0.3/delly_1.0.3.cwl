@@ -110,7 +110,7 @@ requirements:
     coresMin: 4
 hints:
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/delly:0.9.1'
+    dockerPull: 'ghcr.io/msk-access/delly:1.0.3'
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
@@ -128,4 +128,4 @@ hints:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': delly
-    'doap:revision': 0.9.1
+    'doap:revision': 1.0.3 
