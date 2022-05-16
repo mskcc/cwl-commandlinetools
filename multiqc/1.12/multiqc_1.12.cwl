@@ -68,3 +68,17 @@ requirements:
       - entry: $(inputs.qc_files_dir)
         writable: true
   - class: InlineJavascriptRequirement
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:charalk@mskcc.org'
+        'foaf:name': Carmelina Charalambous
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:charalk@mskcc.org'
+        'foaf:name': Carmelina Charalambous
+    'foaf:name': Memorial Sloan Kettering Cancer Center

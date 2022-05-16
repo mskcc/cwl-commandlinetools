@@ -22,6 +22,7 @@
   * [sexmismatch](../biometrics_sexmismatch/README.md)
 * [Delly](delly/README.md)
   * [delly call 0.9.1](delly/delly_call_0.9.1.md)
+  * [delly call 1.0.3](delly/delly_call_1.0.3.md)
 * [Disambiguate](disambiguate/README.md)
   * [v1.0.0](disambiguate/disambiguate_1.0.0.md)
 * [Fgbio](fgbio/README.md)
@@ -50,6 +51,7 @@
   * [Seprate BAMs v1.8.1](marianas/marianas_separate_bams_1.8.1.md)
 * MultiQC
   * [MultiQC v1.10.1.7](../multiqc/1.10.1.7/README.md)
+  * [MultiQC v1.12](../multiqc/1.12/multiqc_1.12.md)
 * [MuTect](mutect/README.md)
   * [MuTect 1.1.5](mutect/mutect_1.1.5.md)
 * [Merge Fastq](merge-fastq/README.md)
