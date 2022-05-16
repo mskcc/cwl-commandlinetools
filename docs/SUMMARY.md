@@ -49,9 +49,9 @@
   * [Collapsing Second Pass v1.8.1](marianas/marianas_collapsing_second_pass_1.8.1.md)
   * [Process Loop UMI v1.8.1](marianas/marianas_process_loop_umi_1.8.1.md)
   * [Seprate BAMs v1.8.1](marianas/marianas_separate_bams_1.8.1.md)
-* MultiQC
-  * [MultiQC v1.10.1.7](../multiqc/1.10.1.7/README.md)
-  * [MultiQC v1.12](../multiqc/1.12/multiqc_1.12.md)
+* [MultiQC](multiqc/README.md)
+  * [MultiQC v1.10.1.7](multiqc/multiqc_1.10.1.7.md)
+  * [MultiQC v1.12](multiqc/multiqc_1.12.md)
 * [MuTect](mutect/README.md)
   * [MuTect 1.1.5](mutect/mutect_1.1.5.md)
 * [Merge Fastq](merge-fastq/README.md)
