@@ -15,16 +15,16 @@
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner postprocessing_variant_calls.cwl example_inputs.yaml
+    > toil-cwl-runner case-control_filter_0.0.1.cwl example_inputs.yaml
 ```
 **If at MSK, using the JUNO cluster having installed toil-msk version 3.21.1 you can use the following command**
 
 ```bash
 #Using CWLTOOL
-> cwltool --singularity --non-strict /path/to/postprocessing_variant_calls.cwl /path/to/inputs.yaml
+> cwltool --singularity --non-strict /path/to/case-control_filter_0.0.1.cwl /path/to/inputs.yaml
 
 #Using toil-cwl-runner
-> toil-cwl-runner --singularity --logFile /path/to/postprocessing_variant_calls_toil.log  --jobStore /path/to/postprocessing_variant_calls_jobStore --batchSystem lsf --workDir /path/to/postprocessing_variant_calls_toil_log --outdir . --writeLogs /path/to/postprocessing_variant_calls_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --disableChaining --maxLogFileSize 20000000000 /path/to/postprocessing_variant_calls_0.7.17.cwl /path/to/inputs.yaml > postprocessing_variant_calls_toil.stdout 2> postprocessing_variant_calls_toil.stderr &
+> toil-cwl-runner --singularity --logFile /path/to/case-control_filter_0.0.1_toil.log  --jobStore /path/to/case-control_filter_0.0.1_jobStore --batchSystem lsf --workDir /path/to/case-control_filter_0.0.1_toil_log --outdir . --writeLogs /path/to/case-control_filter_0.0.1_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --disableChaining --maxLogFileSize 20000000000 /path/to/case-control_filter_0.0.1.cwl /path/to/inputs.yaml > case-control_filter_0.0.1_toil.stdout 2> case-control_filter_0.0.1_toil.stderr &
 ```
 
 ### Usage 

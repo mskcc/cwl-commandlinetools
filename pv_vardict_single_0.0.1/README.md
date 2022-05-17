@@ -21,10 +21,10 @@
 
 ```bash
 #Using CWLTOOL
-> cwltool --singularity --non-strict /path/to/postprocessing_variant_calls.cwl /path/to/inputs.yaml
+> cwltool --singularity --non-strict /path/to/single_filter_0.0.1.cwl /path/to/inputs.yaml
 
 #Using toil-cwl-runner
-> toil-cwl-runner --singularity --logFile /path/to/postprocessing_variant_calls_toil.log  --jobStore /path/to/postprocessing_variant_calls_jobStore --batchSystem lsf --workDir /path/to/postprocessing_variant_calls_toil_log --outdir . --writeLogs /path/to/postprocessing_variant_calls_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --disableChaining --maxLogFileSize 20000000000 /path/to/postprocessing_variant_calls_0.7.17.cwl /path/to/inputs.yaml > postprocessing_variant_calls_toil.stdout 2> postprocessing_variant_calls_toil.stderr &
+> toil-cwl-runner --singularity --logFile /path/to/single_filter_0.0.1_toil.log  --jobStore /path/to/single_filter_0.0.1_jobStore --batchSystem lsf --workDir /path/to/single_filter_0.0.1_toil_log --outdir . --writeLogs /path/to/single_filter_0.0.1_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --disableChaining --maxLogFileSize 20000000000 /path/to/single_filter_0.0.1.cwl /path/to/inputs.yaml > single_filter_0.0.1_toil.stdout 2> single_filter_0.0.1_toil.stderr &
 ```
 
 ### Usage 
