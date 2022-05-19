@@ -92,7 +92,7 @@ requirements:
   - class: InlineJavascriptRequirement
 hints:
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/postprocessing_variant_calls:latest'
+    dockerPull: 'ghcr.io/msk-access/postprocessing_variant_calls:v0.0.1'
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
