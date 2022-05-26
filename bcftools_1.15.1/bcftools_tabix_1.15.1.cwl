@@ -9,7 +9,7 @@ id: tabix_1_3_1
 baseCommand:
   - tabix
 inputs:
-  - 'sbg:toolDefaultValue': vcf
+  - default: vcf
     id: preset
     type: string?
     inputBinding:
@@ -21,7 +21,6 @@ inputs:
     inputBinding:
       position: 1
     doc: Input bgziped vcf file
-    'sbg:fileTypes': .gz
 outputs: []
 label: tabix_1.3.1
 requirements:

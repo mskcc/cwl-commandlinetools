@@ -16,7 +16,7 @@ inputs:
       position: 0
       prefix: '-o'
     doc: filename should contain .vcf.gz
-  - 'sbg:toolDefaultValue': z
+  - default: z
     id: output_type
     type: string?
     inputBinding:

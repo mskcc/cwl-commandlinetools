@@ -10,21 +10,20 @@ baseCommand:
   - bcftools
   - norm
 inputs:
-  - 'sbg:toolDefaultValue': s
+  - default: s
     id: check-ref
     type: string?
     inputBinding:
       position: 99
       prefix: '--check-ref'
-  - 'sbg:toolDefaultValue': +
+  - default: +
     id: multiallelics
     type: string?
     inputBinding:
       position: 99
       prefix: '-m'
     doc: use any
-    'sbg:fileTypes': fasta
-  - 'sbg:toolDefaultValue': z
+  - default: z
     id: output-type
     type: string?
     inputBinding:
