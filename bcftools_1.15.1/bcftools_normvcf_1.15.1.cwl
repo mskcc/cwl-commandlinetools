@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: access_utils_normvcf
+id: bcftools_normvcf
 baseCommand:
   - bcftools
   - norm
@@ -86,4 +86,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': normvcf
-    'doap:revision': 2.28.0
+    'doap:revision': 1.15.1
