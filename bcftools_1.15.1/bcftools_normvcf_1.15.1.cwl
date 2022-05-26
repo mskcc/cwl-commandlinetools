@@ -40,6 +40,8 @@ inputs:
     inputBinding:
       position: 100
     doc: input vcf file
+    secondaryFiles:
+      - .tbi
   - id: fastaRef
     type: File
     inputBinding:
@@ -51,7 +53,14 @@ outputs:
   - id: outvcf
     type: File
     outputBinding:
-      glob: '${   if (inputs.output)     return inputs.output;   return null; }'
+      glob: |-
+        ${
+            if (inputs.prefix) {
+              return inputs.prefix + '*.gz'
+            } else {
+              return '*.gz'
+            }
+        } 
 label: access_utils_normvcf
 requirements:
   - class: ResourceRequirement
