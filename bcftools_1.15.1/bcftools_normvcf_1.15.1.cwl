@@ -5,32 +5,29 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: bcftools_normvcf
+id: norm
 baseCommand:
   - bcftools
   - norm
 inputs:
-  - default: s
-    id: check-ref
+  - id: check_ref
     type: string?
     inputBinding:
       position: 99
       prefix: '--check-ref'
-  - default: +
-    id: multiallelics
+  - id: multiallelics
     type: string?
     inputBinding:
       position: 99
       prefix: '-m'
     doc: use any
-  - default: z
-    id: output-type
-    type: string?
+  - id: output_type
+    type: string
     inputBinding:
       position: 99
       prefix: '-O'
-  - id: output-name
-    type: string
+  - id: output_name
+    type: string?
     inputBinding:
       position: 99
       prefix: '-o'
@@ -49,18 +46,14 @@ inputs:
     secondaryFiles:
       - .fai
 outputs:
-  - id: outvcf
+  - id: normalized_vcf
     type: File
     outputBinding:
       glob: |-
         ${
-            if (inputs.prefix) {
-              return inputs.prefix + '*.gz'
-            } else {
-              return '*.gz'
-            }
+            return inputs.output_name
         } 
-label: access_utils_normvcf
+label: norm
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
@@ -84,5 +77,5 @@ requirements:
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': normvcf
+    'doap:name': bcftools norm
     'doap:revision': 1.15.1
