@@ -5,11 +5,10 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: tabix_1_3_1
+id: tabix
 baseCommand:
   - tabix
 inputs:
-  - default: vcf
     id: preset
     type: string?
     inputBinding:
@@ -19,16 +18,21 @@ inputs:
   - id: file
     type: File
     inputBinding:
-      position: 1
-    doc: Input bgziped vcf file
-outputs: []
-label: tabix_1.3.1
+      position: 99
+    doc: Input bgziped file
+outputs:
+  - id: tabixIndex
+    type: File?
+    outputBinding:
+      glob: |-
+        $(inputs.file.basename.replace('gz', 'gz.tbi'))
+label: tabix
 requirements:
   - class: ResourceRequirement
     ramMin: 4000
     coresMin: 1
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/tabix:1.3.1'
+    dockerPull: 'ghcr.io/msk-access/bcftools:1.15.1'
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
@@ -46,4 +50,4 @@ requirements:
 'doap:release':
   - class: 'doap:Version'
     'doap:name': tabix
-    'doap:revision': 1.3.1
+    'doap:revision': 1.15.1

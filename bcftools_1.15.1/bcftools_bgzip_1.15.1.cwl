@@ -67,5 +67,5 @@ stdout: >-
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': bcftools bgzip
+    'doap:name': bgzip
     'doap:revision': 1.15.1
