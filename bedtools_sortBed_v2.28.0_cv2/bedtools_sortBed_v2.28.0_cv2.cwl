@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: sortvcf
+id: sortbed
 baseCommand:
   - sortBed
 inputs:
@@ -14,16 +14,23 @@ inputs:
     inputBinding:
       position: 0
       prefix: '-i'
-    doc: input VCF file
+    doc: input file
+  - id: output_file_name
+    type: string?
+    doc: Name of the output file
 outputs:
-  - id: sorted.vcf
+  - id: sorted_file
     type: File?
     outputBinding:
-      glob: >-
-        ${     if(inputs.output_file_name){         return
-        inputs.output_file_name     } else {         return
-        inputs.input.basename.replace(/.vcf/,'.sorted.vcf')     } }
-label: sortvcf
+      glob: |-
+        ${
+            if(inputs.output_file_name) {
+                return inputs.output_file_name
+            } else {
+                return inputs.input.basename + '.sorted'
+            } 
+        }
+label: sortBed
 requirements:
   - class: ResourceRequirement
     ramMin: 2000
@@ -32,8 +39,13 @@ requirements:
     dockerPull: 'ghcr.io/msk-access/bedtools:v2.28.0_cv2'
   - class: InlineJavascriptRequirement
 stdout: >-
-  ${     if (inputs.output_file_name)       return inputs.output_file_name;    
-  return inputs.input.basename.replace('.vcf','.sorted.vcf');   }
+        ${
+            if(inputs.output_file_name) {
+                return inputs.output_file_name
+            } else {
+                return inputs.input.basename + '.sorted'
+            } 
+        }
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
