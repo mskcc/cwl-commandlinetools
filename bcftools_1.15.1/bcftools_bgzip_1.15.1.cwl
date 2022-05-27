@@ -5,28 +5,37 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: tabix
+id: bgzip
 baseCommand:
   - bgzip
 inputs:
+  - id: stdout
+    type: boolean?
+    inputBinding:
+      position: 0
+      prefix: '-c'
+    doc: Stdandard output for bgzip
   - id: input
     type: File
     inputBinding:
-      position: 0
+      position: 10
     doc: input VCF file
+  - id: output_file_name
+    type: string?
+    doc: Name of the output file
 outputs:
   - id: zippedVcf
     type: File?
     outputBinding:
-      glob: >-
-        ${     if(inputs.output_file_name){         return
-        inputs.output_file_name     } else {         return
-        inputs.input.basename.replace(/.vcf/,'.vcf.gz')     } }
-label: tabix
-arguments:
-  - position: 0
-    prefix: ''
-    valueFrom: '-c'
+      glob: |-
+        ${ 
+            if (inputs.output_file_name) { 
+                return inputs.output_file_name 
+            } else { 
+                return inputs.input.basename.replace(/.vcf/, '.vcf.gz') 
+            } 
+        }
+label: bgzip
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
@@ -35,8 +44,13 @@ requirements:
     dockerPull: 'ghcr.io/msk-access/bcftools:1.15.1'
   - class: InlineJavascriptRequirement
 stdout: >-
-  ${     if (inputs.output_file_name)       return inputs.output_file_name;    
-  return inputs.input.basename.replace('.vcf','.vcf.gz');   }
+        ${ 
+            if (inputs.output_file_name) { 
+                return inputs.output_file_name 
+            } else { 
+                return inputs.input.basename.replace(/.vcf/, '.vcf.gz') 
+            } 
+        }
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
@@ -53,5 +67,5 @@ stdout: >-
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': bcftools
+    'doap:name': bcftools bgzip
     'doap:revision': 1.15.1
