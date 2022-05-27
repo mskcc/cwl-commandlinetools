@@ -5,44 +5,55 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: bcftools_concat
+id: norm
 baseCommand:
   - bcftools
-  - concat
+  - norm
 inputs:
-  - id: output_name
-    type: string
-    inputBinding:
-      position: 0
-      prefix: '-o'
-    doc: filename should contain .vcf.gz
-  - default: z
-    id: output_type
+  - id: check_ref
     type: string?
     inputBinding:
-      position: 84
+      position: 99
+      prefix: '--check-ref'
+  - id: multiallelics
+    type: string?
+    inputBinding:
+      position: 99
+      prefix: '-m'
+    doc: use any
+  - id: output_type
+    type: string
+    inputBinding:
+      position: 99
       prefix: '-O'
+  - id: output_name
+    type: string?
+    inputBinding:
+      position: 99
+      prefix: '-o'
   - id: input
-    type: 'File[]'
+    type: File
     inputBinding:
       position: 100
+    doc: input vcf file
+    secondaryFiles:
+      - .tbi
+  - id: fastaRef
+    type: File
+    inputBinding:
+      position: 99
+      prefix: '-f'
+    secondaryFiles:
+      - .fai
 outputs:
-  - id: output_vcf
+  - id: normalized_vcf
     type: File
     outputBinding:
       glob: |-
         ${
-            if (inputs.prefix) {
-              return inputs.prefix + '*.gz'
-            } else {
-              return '*.gz'
-            }
+            return inputs.output_name
         } 
-label: access_merge
-arguments:
-  - position: 0
-    prefix: ''
-    valueFrom: '-a'
+label: bcftools_norm
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
@@ -66,5 +77,5 @@ requirements:
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': normvcf
+    'doap:name': bcftools norm
     'doap:revision': 1.15.1

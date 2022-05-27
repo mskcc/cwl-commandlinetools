@@ -9,13 +9,13 @@ id: tabix
 baseCommand:
   - tabix
 inputs:
-    id: preset
+  - id: preset
     type: string?
     inputBinding:
       position: 0
       prefix: '-p'
     doc: 'gff, bed, sam, vcf'
-  - id: file
+  - id: input
     type: File
     inputBinding:
       position: 99
@@ -25,7 +25,7 @@ outputs:
     type: File?
     outputBinding:
       glob: |-
-        $(inputs.file.basename.replace('gz', 'gz.tbi'))
+        $(inputs.input.basename.replace('gz', 'gz.tbi'))
 label: tabix
 requirements:
   - class: ResourceRequirement

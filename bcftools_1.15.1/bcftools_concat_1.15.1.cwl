@@ -5,55 +5,41 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: norm
+id: bcftools_concat
 baseCommand:
   - bcftools
-  - norm
+  - concat
 inputs:
-  - id: check_ref
-    type: string?
+  - id: allow_overlaps
+    type: boolean?
     inputBinding:
-      position: 99
-      prefix: '--check-ref'
-  - id: multiallelics
-    type: string?
-    inputBinding:
-      position: 99
-      prefix: '-m'
-    doc: use any
-  - id: output_type
+      position: 0
+      prefix: '-a'
+  - id: output_name
     type: string
+    inputBinding:
+      position: 0
+      prefix: '-o'
+    doc: Output file name
+  - id: output_type
+    type: string?
     inputBinding:
       position: 99
       prefix: '-O'
-  - id: output_name
-    type: string?
-    inputBinding:
-      position: 99
-      prefix: '-o'
   - id: input
-    type: File
+    type: 'File[]'
     inputBinding:
       position: 100
-    doc: input vcf file
-    secondaryFiles:
-      - .tbi
-  - id: fastaRef
-    type: File
-    inputBinding:
-      position: 99
-      prefix: '-f'
-    secondaryFiles:
-      - .fai
+      itemSeparator: ' '
 outputs:
-  - id: normalized_vcf
+  - id: concatenated_vcf
     type: File
     outputBinding:
       glob: |-
         ${
             return inputs.output_name
         } 
-label: norm
+label: bcftools_concat
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
@@ -77,5 +63,5 @@ requirements:
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': bcftools norm
+    'doap:name': bcftools concat
     'doap:revision': 1.15.1
