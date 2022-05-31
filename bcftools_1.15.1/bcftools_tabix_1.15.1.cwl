@@ -25,7 +25,7 @@ outputs:
     type: File?
     outputBinding:
       glob: |-
-        $(inputs.input*)
+        $(inputs.input) + '*'
 label: tabix
 requirements:
   - class: ResourceRequirement
