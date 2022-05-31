@@ -33,6 +33,8 @@ requirements:
     coresMin: 1
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/bcftools:1.15.1'
+  - class: InitialWorkDirRequirement:
+    listing: [ $(inputs.input) ]
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
