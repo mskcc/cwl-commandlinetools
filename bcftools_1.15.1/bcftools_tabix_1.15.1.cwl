@@ -25,7 +25,8 @@ outputs:
     type: File?
     outputBinding:
       glob: |-
-        $(inputs.input) + '*'
+        $(inputs.input.basename)
+    secondaryFiles: [".tbi"]
 label: tabix
 requirements:
   - class: ResourceRequirement
