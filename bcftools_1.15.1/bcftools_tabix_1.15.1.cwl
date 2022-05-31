@@ -25,7 +25,7 @@ outputs:
     type: File?
     outputBinding:
       glob: |-
-        $(inputs.input.basename.replace('gz', 'gz.tbi'))
+        $(inputs.input*)
 label: tabix
 requirements:
   - class: ResourceRequirement
