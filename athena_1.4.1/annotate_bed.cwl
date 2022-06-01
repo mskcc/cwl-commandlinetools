@@ -7,9 +7,9 @@ $namespaces:
   sbg: 'https://www.sevenbridges.com/'
 id: general_stats_parse
 baseCommand:
-  - general_stats_parse.py
+  - python
 inputs:
-  - id: 'panel_bed'
+  - id: panel_bed
     type: File
     inputBinding:
       position: 0
@@ -17,7 +17,7 @@ inputs:
     doc: >-
       Input panel bed file; must have ONLY the following 4 columns chromosome,
       start position, end position, gene/transcript
-  - id: 'transcript_file'
+  - id: transcript_file
     type: File
     inputBinding:
       position: 0
@@ -27,18 +27,18 @@ inputs:
       Must have ONLY the following 6 columns:
 
       chromosome, start, end, gene, transcript, exon
-  - id: 'coverage_file'
+  - id: coverage_file
     type: File
     inputBinding:
       position: 0
       prefix: '-c'
     doc: Per base coverage file (output from mosdepth or similar)
-  - id: 'chunk_size'
+  - id: chunk_size
     type: int?
     inputBinding:
       position: 999
       prefix: '-s'
-  - id: 'output_name'
+  - id: output_name
     type: string?
     inputBinding:
       position: 960
@@ -58,6 +58,10 @@ outputs:
             return self[0]
         }
 label: general_stats_parse
+arguments:
+  - position: 0
+    prefix: ''
+    valueFrom: bin/general_stats_parse.py
 requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/athena:1.4.2'
