@@ -10,11 +10,25 @@ baseCommand:
   - bcftools
   - concat
 inputs:
+  - id: memory_per_job
+    type: int?
+    doc: Memory per job in megabytes
+  - id: memory_overhead
+    type: int?
+    doc: Memory overhead per job in megabytes
+  - id: number_of_threads
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '--threads'
   - id: allow_overlaps
     type: boolean?
     inputBinding:
       position: 0
       prefix: '-a'
+    doc: >-
+      First coordinate of the next file can precede last record of the current
+      file.
   - id: output_name
     type: string
     inputBinding:
@@ -26,11 +40,15 @@ inputs:
     inputBinding:
       position: 99
       prefix: '-O'
+    doc: >-
+      compressed BCF (b), uncompressed BCF (u), compressed VCF (z), uncompressed
+      VCF (v)
   - id: input
     type: 'File[]'
     inputBinding:
       position: 100
-      itemSeparator: ' '
+    secondaryFiles:
+      - .tbi
 outputs:
   - id: concatenated_vcf
     type: File

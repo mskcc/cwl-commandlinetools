@@ -9,8 +9,19 @@ id: bgzip
 baseCommand:
   - bgzip
 inputs:
+  - id: memory_per_job
+    type: int?
+    doc: Memory per job in megabytes
+  - id: memory_overhead
+    type: int?
+    doc: Memory overhead per job in megabytes
+  - id: number_of_threads
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '--threads'
   - id: stdout
-    type: boolean?
+    type: boolean
     inputBinding:
       position: 0
       prefix: '-c'
@@ -43,14 +54,14 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/bcftools:1.15.1'
   - class: InlineJavascriptRequirement
-stdout: >-
-        ${ 
-            if (inputs.output_file_name) { 
-                return inputs.output_file_name 
-            } else { 
-                return inputs.input.basename.replace(/.vcf/, '.vcf.gz') 
-            } 
-        }
+stdout: |-
+  ${ 
+      if (inputs.output_file_name) { 
+          return inputs.output_file_name 
+      } else { 
+          return inputs.input.basename.replace(/.vcf/, '.vcf.gz') 
+      } 
+  }
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':

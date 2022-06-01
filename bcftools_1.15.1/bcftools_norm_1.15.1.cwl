@@ -10,6 +10,17 @@ baseCommand:
   - bcftools
   - norm
 inputs:
+  - id: memory_per_job
+    type: int?
+    doc: Memory per job in megabytes
+  - id: memory_overhead
+    type: int?
+    doc: Memory overhead per job in megabytes
+  - id: number_of_threads
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '--threads'
   - id: check_ref
     type: string?
     inputBinding:
@@ -22,7 +33,7 @@ inputs:
       prefix: '-m'
     doc: use any
   - id: output_type
-    type: string
+    type: string?
     inputBinding:
       position: 99
       prefix: '-O'
@@ -51,8 +62,12 @@ outputs:
     outputBinding:
       glob: |-
         ${
-            return inputs.output_name
-        } 
+            if(inputs.output_name) {
+                return inputs.output_name
+            } else {
+                return inputs.input.basename.replace(/.vcf/, '_norm.vcf') 
+            } 
+        }
 label: bcftools_norm
 requirements:
   - class: ResourceRequirement
@@ -61,6 +76,14 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/bcftools:1.15.1'
   - class: InlineJavascriptRequirement
+stdout: |-
+  ${
+            if(inputs.output_name) {
+                return inputs.output_name
+            } else {
+                return inputs.input.basename.replace(/.vcf/, '_norm.vcf') 
+            } 
+        }
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':

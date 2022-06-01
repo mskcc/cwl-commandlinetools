@@ -1,3 +1,4 @@
 input:
   class: File
-  path: /Users/ksivaprakasam/Documents/vep.vcf
+  path: /path/to/input.vcf
+stdout: True

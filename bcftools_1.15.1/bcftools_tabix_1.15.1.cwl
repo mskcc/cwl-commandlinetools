@@ -9,12 +9,23 @@ id: tabix
 baseCommand:
   - tabix
 inputs:
+  - id: memory_per_job
+    type: int?
+    doc: Memory per job in megabytes
+  - id: memory_overhead
+    type: int?
+    doc: Memory overhead per job in megabytes
+  - id: number_of_threads
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '--threads'
   - id: preset
     type: string?
     inputBinding:
       position: 0
       prefix: '-p'
-    doc: 'gff, bed, sam, vcf'
+    doc: 'input file type can be gff, bed, sam or vcf'
   - id: input
     type: File
     inputBinding:
@@ -24,9 +35,9 @@ outputs:
   - id: tabixIndex
     type: File?
     outputBinding:
-      glob: |-
-        $(inputs.input.basename)
-    secondaryFiles: [".tbi"]
+      glob: $(inputs.input.basename)
+    secondaryFiles:
+      - .tbi
 label: tabix
 requirements:
   - class: ResourceRequirement
@@ -35,8 +46,9 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/bcftools:1.15.1'
   - class: InitialWorkDirRequirement
-    listing: [ $(inputs.input) ]
-  - class: InlineJavascriptRequirement 
+    listing:
+      - $(inputs.input)
+  - class: InlineJavascriptRequirement
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':

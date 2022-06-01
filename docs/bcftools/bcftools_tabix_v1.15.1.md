@@ -2,10 +2,9 @@
 
 ## Version of tools in docker image (/container/Dockerfile)
 
-| Tool                  | Version | Location                              |
-| --------------------- | ------- | ------------------------------------- |
-| alpine:3.8 base image | 3.8     | -                                     |
-| bcftools              | 1.6     | quay.io/biocontainers/bcftools:1.6--0 |
+| Tool     | Version | Location                                                 |
+| -------- | ------- | -------------------------------------------------------- |
+| bcftools | 1.15.1  | https://github.com/samtools/bcftools/releases/tag/1.15.1 |
 
 ## CWL
 
@@ -31,7 +30,7 @@ toil-cwl-runner --singularity --logFile /path/to/bcftools_toil_log/cwltoil.log  
 ### Usage
 
 ```shell
-usage: bcftools_tabix_1.15.1.cwl [-h] --input INPUT [job_order]
+usage: bcftools_tabix_1.15.1.cwl [-h] 
 
 positional arguments:
   job_order      Job input json file
