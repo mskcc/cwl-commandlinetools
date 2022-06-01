@@ -20,6 +20,7 @@
 * [Bedtools](bedtools/README.md)
   * [genomecov v2.28.0\_cv2](bedtools/bedtools_genomecov_v2.28.0_cv2.md)
   * [merge v2.28.0\_cv2](bedtools/bedtools_merge_v2.28.0_cv2.md)
+  * [genomecov v2.28.0\_cv2](bedtools/bedtools_genomecov_v2.28.0_cv2.md)
   
 * Biometrics
   * [extract](../biometrics_extract/README.md)

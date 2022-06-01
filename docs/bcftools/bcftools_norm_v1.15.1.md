@@ -1,4 +1,4 @@
-# CWL and Dockerfile for running bcftools v1.6
+# CWL and Dockerfile for running bcftools v1.15.1
 
 ## Version of tools in docker image (/container/Dockerfile)
 
@@ -30,7 +30,7 @@ toil-cwl-runner --singularity --logFile /path/to/bcftools_toil_log/cwltoil.log  
 ### Usage
 
 ```
-usage: toil-cwl-runner bcftools_norm_1.15.1.cwl [-h] 
+usage: toil-cwl-runner bcftools_norm_1.15.1.cwl [-h]
 positional arguments:
   job_order             Job input json file
 

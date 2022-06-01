@@ -18,9 +18,6 @@ inputs:
     doc: Memory overhead per job in megabytes
   - id: number_of_threads
     type: int?
-    inputBinding:
-      position: 0
-      prefix: '--threads'
   - id: check_ref
     type: string?
     inputBinding:
