@@ -1,0 +1,3 @@
+panel_bed: path/to/panel_bed.bed
+transcript_file: path/to/transcript.bed
+coverage_file: path/to/coverage.per-base.bed.gz
