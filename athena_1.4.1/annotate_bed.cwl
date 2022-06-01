@@ -8,7 +8,7 @@ $namespaces:
 id: general_stats_parse
 baseCommand:
   - python
-  - bin/annotate_bed.py
+  - app/bin/annotate_bed.py
 inputs:
   - id: panel_bed
     type: File
