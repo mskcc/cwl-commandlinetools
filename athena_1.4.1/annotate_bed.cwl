@@ -7,7 +7,8 @@ $namespaces:
   sbg: 'https://www.sevenbridges.com/'
 id: general_stats_parse
 baseCommand:
-  - python3
+  - python
+  - bin/annotate_bed.py
 inputs:
   - id: panel_bed
     type: File
@@ -58,10 +59,6 @@ outputs:
             return self[0]
         }
 label: general_stats_parse
-arguments:
-  - position: 0
-    prefix: ''
-    valueFrom: bin/general_stats_parse.py
 requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/athena:1.4.2'
