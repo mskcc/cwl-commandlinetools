@@ -1,3 +1,3 @@
-panel_bed: path/to/panel_bed.bed
-transcript_file: path/to/transcript.bed
-coverage_file: path/to/coverage.per-base.bed.gz
+panel_bed: {class: File, path: path/to/panel_bed.bed}
+transcript_file: {class: File, path: path/to/transcript.bed}
+coverage_file: {class: File, path: path/to/coverage.per-base.bed.gz}
