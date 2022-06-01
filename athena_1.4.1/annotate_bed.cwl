@@ -7,7 +7,7 @@ $namespaces:
   sbg: 'https://www.sevenbridges.com/'
 id: general_stats_parse
 baseCommand:
-  - python
+  - python3
 inputs:
   - id: panel_bed
     type: File
