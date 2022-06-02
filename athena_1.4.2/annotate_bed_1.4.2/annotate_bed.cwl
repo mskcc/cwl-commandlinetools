@@ -50,14 +50,9 @@ inputs:
 outputs:
   - id: annotated_bed
     label: annotated_bed
-    type: Directory
+    type: File
     outputBinding:
-      glob: .
-      outputEval: |-
-        ${
-            self[0].basename = "annotated_bed";
-            return self[0]
-        }
+      glob: '*.bed'
 label: general_stats_parse
 requirements:
   - class: DockerRequirement
