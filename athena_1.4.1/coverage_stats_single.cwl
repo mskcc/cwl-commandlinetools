@@ -17,7 +17,7 @@ inputs:
       prefix: '--file'
     doc: annotated bed file on which to generate report from
   - id: build
-    type: File
+    type: File?
     inputBinding:
       position: 0
       prefix: '--build'
