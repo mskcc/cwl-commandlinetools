@@ -3,25 +3,19 @@
 cwlVersion: v1.0
 class: Workflow
 inputs:
-  tarball: File
-  name_of_file_to_extract: string
+    panel_bed: File
+    transcript_file: File
+    coverage_file: File
 
 outputs:
-  compiled_class:
+  annotated_bed
     type: File
-    outputSource: compile/classfile
-
+    outputSource: annotate/annotated_bed
 steps:
-  untar:
-    run: tar-param.cwl
+  annotate:
+    run: ../athena/1.4.2/annotate_bed/annotate_bed.cwl
     in:
-      tarfile: tarball
-      extractfile: name_of_file_to_extract
-    out: [extracted_file]
-
-  compile:
-    run: arguments.cwl
-    in:
-      src: untar/extracted_file
-    out: [classfile]
-
+      panel_bed: panel_bed
+      transcript_file: transcript_file
+      coverage_file: coverage_file
+    out: [annotated_bed]
