@@ -5,9 +5,10 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: bgzip
+id: norm
 baseCommand:
-  - bgzip
+  - bcftools
+  - norm
 inputs:
   - id: memory_per_job
     type: int?
@@ -17,33 +18,54 @@ inputs:
     doc: Memory overhead per job in megabytes
   - id: number_of_threads
     type: int?
-  - id: stdout
-    type: boolean
+  - id: check_ref
+    type: string?
     inputBinding:
-      position: 0
-      prefix: '-c'
-    doc: Stdandard output for bgzip
+      position: 99
+      prefix: '--check-ref'
+  - id: multiallelics
+    type: string?
+    inputBinding:
+      position: 99
+      prefix: '-m'
+    doc: use any
+  - id: output_type
+    type: string?
+    inputBinding:
+      position: 99
+      prefix: '-O'
+  - id: output_name
+    type: string?
+    inputBinding:
+      position: 99
+      prefix: '-o'
   - id: input
     type: File
     inputBinding:
-      position: 10
-    doc: input VCF file
-  - id: output_file_name
-    type: string?
-    doc: Name of the output file
+      position: 100
+    doc: input vcf file
+    secondaryFiles:
+      - .tbi
+  - id: fastaRef
+    type: File
+    inputBinding:
+      position: 99
+      prefix: '-f'
+    secondaryFiles:
+      - .fai
 outputs:
-  - id: zippedVcf
-    type: File?
+  - id: normalized_vcf
+    type: File
     outputBinding:
       glob: |-
-        ${ 
-            if (inputs.output_file_name) { 
-                return inputs.output_file_name 
-            } else { 
-                return inputs.input.basename.replace(/.vcf/, '.vcf.gz') 
+        ${
+            if(inputs.output_name) {
+                return inputs.output_name
+            } else {
+                return inputs.input.basename.replace(/.vcf/, '_norm.vcf') 
             } 
         }
-label: bgzip
+label: bcftools_norm
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
@@ -52,13 +74,13 @@ requirements:
     dockerPull: 'ghcr.io/msk-access/bcftools:1.15.1'
   - class: InlineJavascriptRequirement
 stdout: |-
-  ${ 
-      if (inputs.output_file_name) { 
-          return inputs.output_file_name 
-      } else { 
-          return inputs.input.basename.replace(/.vcf/, '.vcf.gz') 
-      } 
-  }
+  ${
+            if(inputs.output_name) {
+                return inputs.output_name
+            } else {
+                return inputs.input.basename.replace(/.vcf/, '_norm.vcf') 
+            } 
+        }
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
@@ -75,5 +97,5 @@ stdout: |-
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': bgzip
+    'doap:name': bcftools norm
     'doap:revision': 1.15.1

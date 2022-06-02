@@ -5,9 +5,10 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: bgzip
+id: bcftools_concat
 baseCommand:
-  - bgzip
+  - bcftools
+  - concat
 inputs:
   - id: memory_per_job
     type: int?
@@ -17,33 +18,43 @@ inputs:
     doc: Memory overhead per job in megabytes
   - id: number_of_threads
     type: int?
-  - id: stdout
-    type: boolean
+  - id: allow_overlaps
+    type: boolean?
     inputBinding:
       position: 0
-      prefix: '-c'
-    doc: Stdandard output for bgzip
-  - id: input
-    type: File
+      prefix: '-a'
+    doc: >-
+      First coordinate of the next file can precede last record of the current
+      file.
+  - id: output_name
+    type: string
     inputBinding:
-      position: 10
-    doc: input VCF file
-  - id: output_file_name
+      position: 0
+      prefix: '-o'
+    doc: Output file name
+  - id: output_type
     type: string?
-    doc: Name of the output file
+    inputBinding:
+      position: 99
+      prefix: '-O'
+    doc: >-
+      compressed BCF (b), uncompressed BCF (u), compressed VCF (z), uncompressed
+      VCF (v)
+  - id: input
+    type: 'File[]'
+    inputBinding:
+      position: 100
+    secondaryFiles:
+      - .tbi
 outputs:
-  - id: zippedVcf
-    type: File?
+  - id: concatenated_vcf
+    type: File
     outputBinding:
       glob: |-
-        ${ 
-            if (inputs.output_file_name) { 
-                return inputs.output_file_name 
-            } else { 
-                return inputs.input.basename.replace(/.vcf/, '.vcf.gz') 
-            } 
-        }
-label: bgzip
+        ${
+            return inputs.output_name
+        } 
+label: bcftools_concat
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
@@ -51,14 +62,6 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/bcftools:1.15.1'
   - class: InlineJavascriptRequirement
-stdout: |-
-  ${ 
-      if (inputs.output_file_name) { 
-          return inputs.output_file_name 
-      } else { 
-          return inputs.input.basename.replace(/.vcf/, '.vcf.gz') 
-      } 
-  }
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
@@ -75,5 +78,5 @@ stdout: |-
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'doap:release':
   - class: 'doap:Version'
-    'doap:name': bgzip
+    'doap:name': bcftools concat
     'doap:revision': 1.15.1
