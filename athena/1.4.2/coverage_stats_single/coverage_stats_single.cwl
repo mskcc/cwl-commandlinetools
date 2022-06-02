@@ -71,12 +71,12 @@ outputs:
     label: exon_stats_output
     type: File
     outputBinding:
-      glob: .*_exon_stats.tsv
+      glob: '*_exon_stats.tsv'
   - id: _gene_stats_output
     label: _gene_stats_output
     type: File
     outputBinding:
-      glob: .*_gene_stats.tsv
+      glob: '*_gene_stats.tsv'
 
 label: general_stats_parse
 requirements:
