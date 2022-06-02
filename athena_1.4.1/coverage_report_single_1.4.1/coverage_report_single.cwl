@@ -103,7 +103,7 @@ outputs:
       glob: .
       outputEval: |-
         ${
-            self[0].basename = "coverage_stats_single";
+            self[0].basename = "coverage_report_single";
             return self[0]
         }
 label: general_stats_parse
