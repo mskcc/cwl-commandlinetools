@@ -8,7 +8,7 @@ inputs:
     coverage_file: File
 
 outputs:
-  annotated_bed
+  annotated_bed:
     type: File
     outputSource: annotate/annotated_bed
 steps:
