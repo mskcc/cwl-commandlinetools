@@ -72,8 +72,8 @@ outputs:
     type: File
     outputBinding:
       glob: '*_exon_stats.tsv'
-  - id: _gene_stats_output
-    label: _gene_stats_output
+  - id: gene_stats_output
+    label: gene_stats_output
     type: File
     outputBinding:
       glob: '*_gene_stats.tsv'

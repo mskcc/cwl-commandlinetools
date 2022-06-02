@@ -25,12 +25,12 @@ steps:
   stats:
     run: ../athena/1.4.2/coverage_stats_single/coverage_stats_single.cwl
     in:
-      file: annotate/annotated_bed/.*bed
-    out: [single_stats_output]
+      file: annotate/annotated_bed
+    out: [gene_stats_output, exon_stats_output]
   report:
     run: ../athena/1.4.2/coverage_report_single/coverage_report_single.cwl
     in:
-      raw_coverage: stats/single_stats_output 
-      gene_stats: stats/single_stats_output
-      exon_stats: stats/single_stats_output 
+      raw_coverage: annotate/annotated_bed 
+      gene_stats: stats/gene_stats_output
+      exon_stats: stats/exon_stats_output 
     out: [coverage_report_single]
