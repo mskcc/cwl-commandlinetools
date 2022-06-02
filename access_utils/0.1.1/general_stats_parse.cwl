@@ -56,7 +56,7 @@ requirements:
     'foaf:member':
       - class: 'foaf:Person'
         'foaf:mbox': 'mailto:shahr2@mskcc.org'
-        'foaf:name': Ronak Shaw 
+        'foaf:name': Ronak Shah 
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
