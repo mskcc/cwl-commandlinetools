@@ -1,1 +1,3 @@
-file: {class: File, path: /path/to/annotated_bed/file.bed} 
+raw_coverage: {class: File, path: /path/to/annotated_bed/file.bed} 
+gene_stats: {class: File, path: /path/to/gene_stats.tsv} 
+exon_stats: {class: File, path: /path/to/exon_stats.tsv} 
