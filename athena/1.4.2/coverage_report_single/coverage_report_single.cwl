@@ -96,8 +96,8 @@ inputs:
       Number of CPU cores to utilise, for larger numbers of genes this will
       drastically reduce run time. If not given will use maximum available
 outputs:
-  - id: single_stats_output
-    label: single_stats_output
+  - id: coverage_report_single
+    label: coverage_report_single
     type: Directory
     outputBinding:
       glob: .

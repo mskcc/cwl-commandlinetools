@@ -67,16 +67,17 @@ inputs:
       Number of CPU cores to utilise, for larger numbers of genes this will
       drastically reduce run time. If not given will use maximum available
 outputs:
-  - id: single_stats_output
-    label: single_stats_output
-    type: Directory
+  - id: exon_stats_output
+    label: exon_stats_output
+    type: File
     outputBinding:
-      glob: .
-      outputEval: |-
-        ${
-            self[0].basename = "coverage_stats_single";
-            return self[0]
-        }
+      glob: .*_exon_stats.tsv
+  - id: _gene_stats_output
+    label: _gene_stats_output
+    type: File
+    outputBinding:
+      glob: .*_gene_stats.tsv
+
 label: general_stats_parse
 requirements:
   - class: DockerRequirement
