@@ -4,7 +4,7 @@
 
 | Tool | Version | Location |
 |--- |--- |--- |
-| access_utils   | 0.1.1   |  <https://github.com/msk-access/access_utils/> |
+| access_utils   | 0.1.7   |  <https://github.com/msk-access/access_utils/> |
 
 ## CWL
 
