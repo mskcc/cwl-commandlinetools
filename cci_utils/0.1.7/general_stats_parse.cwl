@@ -39,7 +39,7 @@ outputs:
 label: general_stats_parse
 requirements:
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/access_utils:0.1.1'
+    dockerPull: 'ghcr.io/msk-access/cci_utils:0.1.7'
   - class: InitialWorkDirRequirement
     listing:
       - entry: $(inputs.directory)
@@ -49,19 +49,13 @@ requirements:
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:buehlere@mskcc.org'
-        'foaf:name': Eric Buehler
-    'foaf:name': Memorial Sloan Kettering Cancer Center
-  - class: 'foaf:Organization'
-    'foaf:member':
-      - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:shahr2@mskcc.org'
-        'foaf:name': Ronak Shah 
+        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
+        'foaf:name': Ian Johnson
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:buehlere@mskcc.org'
-        'foaf:name': Eric Buehler
+        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
+        'foaf:name': Ian Johnson
     'foaf:name': Memorial Sloan Kettering Cancer Center
