@@ -59,7 +59,7 @@ inputs:
       prefix: '--flagstat'
     doc: 'file for sample, required for generating run statistics (in development)'
   - id: cores
-    type: string?
+    type: int?
     inputBinding:
       position: 900
       prefix: '--cores'
