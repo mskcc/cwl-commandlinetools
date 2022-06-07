@@ -34,8 +34,6 @@ inputs:
       the name prefix
   - id: thresholds
     type:
-      - 'null'
-      - int
       - type: array
         items: int
     inputBinding:
