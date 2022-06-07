@@ -39,11 +39,14 @@ inputs:
       Per-base coverage bed file from mosdepth. (Optional; if not submitted,
       plots displaying global coverage per chromosome will not be displayed)
   - id: snps
-    type: File?
+    type:
+      - File
+      - type: array
+        items: File
     inputBinding:
-      position: 0
+      position: 999
       prefix: '-s'
-    doc: 'VCF(s) of known SNPs to check coverage of (optional; i.e. HGMD, ClinVar)'
+    doc: VCF(s) of known SNPs to check coverage of (optional; i.e. HGMD, ClinVar)
   - id: threshold
     type: int?
     inputBinding:
@@ -88,7 +91,7 @@ inputs:
       boolean flag to add clinical report summary text in summary section,
       includes list of all genes with transcripts (optional; default False)
   - id: cores
-    type: File?
+    type: int?
     inputBinding:
       position: 0
       prefix: '--cores'
