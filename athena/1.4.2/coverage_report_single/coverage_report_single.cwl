@@ -75,7 +75,7 @@ inputs:
       panel bed file used for initial annotation, name will be displayed in
       summary of report (optional)
   - id: limit
-    type: File?
+    type: int?
     inputBinding:
       position: 0
       prefix: '-l'
