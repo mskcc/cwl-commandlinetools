@@ -1,6 +1,6 @@
 raw_coverage: {class: File, path: /work/access/testing/users/buehlere/athena_test/Myeloid200-1-05500HJ_annotated.bed} 
-gene_stats: {class: File, path: /work/access/testing/users/buehlere/athena_test/coverage_stats_single/Myeloid200-1-05500HJ_gene_stats.tsv} 
-exon_stats: {class: File, path: /work/access/testing/users/buehlere/athena_test/coverage_stats_single/Myeloid200-1-05500HJ_exon_stats.tsv} 
+gene_stats: {class: File, path: /work/access/testing/users/buehlere/athena_test/Myeloid200-1-05500HJ_gene_stats.tsv} 
+exon_stats: {class: File, path: /work/access/testing/users/buehlere/athena_test/Myeloid200-1-05500HJ_exon_stats.tsv} 
 threshold: 20
 sample_name: 'report1'
 output: 'report1'
