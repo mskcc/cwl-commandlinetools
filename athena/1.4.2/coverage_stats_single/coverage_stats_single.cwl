@@ -33,9 +33,7 @@ inputs:
       output file name prefix, if not given the input file name will be used as
       the name prefix
   - id: thresholds
-    type:
-      - type: array
-        items: int
+    type: 'int[]?'
     inputBinding:
       position: 999
       prefix: '--thresholds'
@@ -75,7 +73,6 @@ outputs:
     type: File
     outputBinding:
       glob: '*_gene_stats.tsv'
-
 label: general_stats_parse
 requirements:
   - class: DockerRequirement
