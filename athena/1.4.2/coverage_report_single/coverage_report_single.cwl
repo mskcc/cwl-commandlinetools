@@ -40,7 +40,7 @@ inputs:
       plots displaying global coverage per chromosome will not be displayed)
   - id: snps
     type:
-      - File
+      - File?
       - type: array
         items: File
     inputBinding:
