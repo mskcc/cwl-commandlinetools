@@ -21,7 +21,7 @@ inputs:
       prefix: '--samples-json'
     doc: Sample JSON file.
   - id: config
-    type: File?
+    type: File
     inputBinding:
       prefix: '--config'
     doc: MultQC config file.
@@ -33,7 +33,7 @@ outputs:
       glob: .
       outputEval: |-
         ${
-            self[0].basename = "aggregate_qc_stats";
+            self[0].basename = "aggregate_parsed_stats";
             return self[0]
         }
 label: general_stats_parse
