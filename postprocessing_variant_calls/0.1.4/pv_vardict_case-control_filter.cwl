@@ -74,12 +74,14 @@ outputs:
     type: File
     outputBinding:
       glob: '*_STDfilter.txt'
-  - id: vcf
-    type:
-      - type: array
-        items: File
+  - id: vcf_complex
+    type: File
     outputBinding:
-      glob: '*.vcf'
+      glob: '*_STDfilter_complex.vcf'
+  - id: vcf
+    type: File
+    outputBinding:
+      glob: '*_STDfilter.vcf'
 arguments:
   - vardict
   - case-control
