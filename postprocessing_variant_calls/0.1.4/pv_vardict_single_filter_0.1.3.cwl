@@ -74,15 +74,17 @@ outputs:
     type: File
     outputBinding:
       glob: '*_STDfilter.txt'
-  - id: vcf
-    type:
-      - type: array
-        items: File
+  - id: vcf_complex
+    type: File
     outputBinding:
-      glob: '*.vcf'
+      glob: '*_complex_STDfilter.vcf'
+  - id: vcf
+    type: File
+    outputBinding:
+      glob: '*_STDfilter.vcf'
 arguments:
   - vardict
-  - case-control
+  - single
   - filter
 requirements:
   - class: ShellCommandRequirement
@@ -92,7 +94,7 @@ requirements:
   - class: InlineJavascriptRequirement
 hints:
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/postprocessing_variant_calls:0.1.3'
+    dockerPull: 'ghcr.io/msk-access/postprocessing_variant_calls:0.1.4'
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
