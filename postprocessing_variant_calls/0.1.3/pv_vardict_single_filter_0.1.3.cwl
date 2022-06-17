@@ -75,11 +75,13 @@ outputs:
     outputBinding:
       glob: '*_STDfilter.txt'
   - id: vcf
-    type:
-      - type: array
-        items: File
+    type: File
     outputBinding:
-      glob: '*.vcf'
+      glob: '_STDfilter.vcf'
+  - id: vcf_complex
+    type: File
+    outputBinding:
+      glob: '_complex_STDfilter.vcf'
 arguments:
   - vardict
   - single
