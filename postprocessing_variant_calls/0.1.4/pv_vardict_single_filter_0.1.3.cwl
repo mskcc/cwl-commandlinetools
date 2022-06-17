@@ -77,7 +77,7 @@ outputs:
   - id: vcf_complex
     type: File
     outputBinding:
-      glob: '*_complex_STDfilter.vcf'
+      glob: '*_STDfilter_complex.vcf'
   - id: vcf
     type: File
     outputBinding:
