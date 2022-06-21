@@ -1,20 +1,20 @@
-## CWL pv_vardict_case-control_filter_0.0.1.cwl
+## CWL pv_vardict_case-control_filter.cwl
 
 - CWL specification 1.0
 - Use example_inputs_case-control_filter.yaml to see the inputs to the cwl
 - Example Command using [toil](https://toil.readthedocs.io):
 
 ```bash
-    > toil-cwl-runner pv_vardict_case-control_filter_0.0.1.cwl example_inputs_case-control_filter.yaml
+    > toil-cwl-runner pv_vardict_case-control_filter.cwl example_inputs_case-control_filter.yaml
 ```
 **If at MSK, using the JUNO cluster having installed toil-msk version 3.21.1 you can use the following command**
 
 ```bash
 #Using CWLTOOL
-> cwltool --singularity --non-strict /path/to/pv_vardict_case-control_filter_0.0.1.cwl /path/to/inputs.yaml
+> cwltool --singularity --non-strict /path/to/pv_vardict_case-control_filter.cwl /path/to/inputs.yaml
 
 #Using toil-cwl-runner
-> toil-cwl-runner --singularity --logFile /path/to/pv_vardict_case-control_filter_0.0.1_toil.log  --jobStore /path/to/pv_vardict_case-control_filter_0.0.1_jobStore --batchSystem lsf --workDir /path/to/pv_vardict_case-control_filter_0.0.1_toil_log --outdir . --writeLogs /path/to/pv_vardict_case-control_filter_0.0.1_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --disableChaining --maxLogFileSize 20000000000 /path/to/pv_vardict_case-control_filter_0.0.1.cwl /path/to/inputs.yaml > pv_vardict_case-control_filter_0.0.1_toil.stdout 2> pv_vardict_case-control_filter_0.0.1_toil.stderr &
+> toil-cwl-runner --singularity --logFile /path/to/pv_vardict_case-control_filter_toil.log  --jobStore /path/to/pv_vardict_case-control_filter_jobStore --batchSystem lsf --workDir /path/to/pv_vardict_case-control_filter_toil_log --outdir . --writeLogs /path/to/pv_vardict_case-control_filter_toil_log --logLevel DEBUG --stats --retryCount 2 --disableCaching --disableChaining --maxLogFileSize 20000000000 /path/to/pv_vardict_case-control_filter.cwl /path/to/inputs.yaml > pv_vardict_case-control_filter_toil.stdout 2> pv_vardict_case-control_filter_toil.stderr &
 ```
 
 ### Usage: 
