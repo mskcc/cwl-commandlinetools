@@ -39,7 +39,7 @@ outputs:
 label: general_stats_parse
 requirements:
   - class: DockerRequirement
-    dockerPull: 'ghcr.io/msk-access/cci_utils:0.1.8'
+    dockerPull: 'ghcr.io/msk-access/cci_utils:0.1.9'
   - class: InitialWorkDirRequirement
     listing:
       - entry: $(inputs.directory)
