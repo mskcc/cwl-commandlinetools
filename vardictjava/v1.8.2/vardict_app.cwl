@@ -50,7 +50,7 @@ inputs:
   b:
     type: File?
     secondaryFiles:
-      - .bai
+      - ^.bai
     doc: Tumor bam
 
   c:
