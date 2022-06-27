@@ -51,7 +51,7 @@ inputs:
     'sbg:x': 0
     'sbg:y': 853.25
   - id: control_sample_name
-    type: string
+    type: string?
     'sbg:x': 742.6807250976562
     'sbg:y': 639.90625
   - id: filter_variants
