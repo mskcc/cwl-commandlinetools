@@ -22,7 +22,7 @@ inputs:
       position: 0
       prefix: '--threads'
   - id: output_name
-    type: string
+    type: string?
     inputBinding:
       position: 0
       prefix: '-o'

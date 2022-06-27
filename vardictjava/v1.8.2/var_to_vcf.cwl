@@ -14,7 +14,7 @@ inputs:
     type: string
     doc: The case sample name to be used directly.
   - id: control_sample_name
-    type: string
+    type: string?
     doc: The case sample name to be used directly.
   - id: filter_variants
     type: boolean?
@@ -31,13 +31,18 @@ inputs:
   - id: input_vcf
     type: File
   - id: output_vcf
-    type: string
+    type: string?
     doc: output vcf file
 outputs:
   - id: output
     type: File
     outputBinding:
-      glob: '${ return inputs.output_vcf; }'
+      glob: |-
+        ${ 
+            if(inputs.output_vcf)
+                return inputs.output_vcf; 
+            return inputs.case_sample_name + "_vardict.vcf"
+        }
 arguments:
   - position: 0
     prefix: '-N'
