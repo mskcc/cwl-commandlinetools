@@ -31,7 +31,7 @@ inputs:
     'sbg:x': 0
     'sbg:y': 106.609375
   - id: sample_name
-    type: string?
+    type: string
     'sbg:x': 0
     'sbg:y': 0
   - id: bed_file_column_for_region_start
