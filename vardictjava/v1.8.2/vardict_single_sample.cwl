@@ -27,7 +27,7 @@ inputs:
   - id: reference_fasta
     type: File
     secondaryFiles:
-      - ^.fai
+      - .fai
     'sbg:x': 0
     'sbg:y': 106.609375
   - id: sample_name
