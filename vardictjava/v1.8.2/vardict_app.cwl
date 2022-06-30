@@ -22,7 +22,7 @@ inputs:
       prefix: '-G'
     doc: The reference fasta. Should be indexed (.fai)
     secondaryFiles:
-      - ^.fai
+      - .fai
   - id: sample_name
     type: string?
     inputBinding:
