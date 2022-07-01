@@ -44,7 +44,7 @@ inputs:
       - .tbi
 outputs:
   - id: sorted_file
-    type: File
+    type: File?
     outputBinding:
       glob: |-
         ${
