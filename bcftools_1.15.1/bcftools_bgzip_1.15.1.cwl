@@ -32,7 +32,7 @@ inputs:
     type: string?
     doc: Name of the output file
   - id: output_directory
-    type: string?
+    type: Directory?
     inputBinding:
       position: 0
 outputs:
