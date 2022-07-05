@@ -51,6 +51,10 @@ requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/bcftools:1.15.1'
   - class: InlineJavascriptRequirement
+  - class: InitialWorkDirRequirement
+    listing:
+      - entry: $(inputs.directory)
+        writable: true
 stdout: |-
   ${ 
       if (inputs.output_file_name) { 
