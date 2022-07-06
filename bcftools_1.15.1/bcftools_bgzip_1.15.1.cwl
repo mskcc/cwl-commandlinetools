@@ -31,10 +31,6 @@ inputs:
   - id: output_file_name
     type: string?
     doc: Name of the output file
-  - id: output_directory
-    type: Directory?
-    inputBinding:
-      position: 0
 outputs:
   - id: zippedVcf
     type: File?
@@ -56,8 +52,7 @@ requirements:
     dockerPull: 'ghcr.io/msk-access/bcftools:1.15.1'
   - class: InitialWorkDirRequirement
     listing:
-      - entry: $(inputs.output_directory)
-        writable: true
+      - entry: $(inputs.input)
   - class: InlineJavascriptRequirement
 stdout: |-
   ${ 
