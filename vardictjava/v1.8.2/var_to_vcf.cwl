@@ -60,7 +60,12 @@ requirements:
     dockerPull: 'ghcr.io/msk-access/vardictjava:1.8.2'
   - class: InlineJavascriptRequirement
 stdin: $(inputs.input_vcf.path)
-stdout: '${ return inputs.vcf; }'
+stdout: |-
+  ${ 
+      if(inputs.output_vcf)
+          return inputs.output_vcf; 
+      return inputs.case_sample_name + "_vardict.vcf"
+  }
 'dct:contributor':
   - class: 'foaf:Organization'
     'foaf:member':
