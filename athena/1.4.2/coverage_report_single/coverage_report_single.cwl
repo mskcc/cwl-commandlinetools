@@ -101,16 +101,17 @@ inputs:
       drastically reduce run time. If not given will use maximum available
 outputs:
   - id: coverage_report_single
-    label: coverage_report_single
     type: File
     outputBinding:
-      glob: '*_report.html'
-      outputEval: |-
+      glob: |-
         ${
-            self[0].basename = "coverage_report_single";
-            return self[0]
+            if (inputs.prefix) {
+              return inputs.prefix + '*_report.html'
+            } else {
+              return '*_report.html'
+            }
         }
-label: general_stats_parse
+label: coverage_report_single
 requirements:
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/athena:1.4.2'
@@ -119,13 +120,13 @@ requirements:
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
-        'foaf:name': Ian Johnson
+        'foaf:mbox': 'mailto:buehlere@mskcc.org'
+        'foaf:name': Eric Buehler
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
-        'foaf:name': Ian Johnson
+        'foaf:mbox': 'mailto:buehlere@mskcc.org'
+        'foaf:name': Eric Buehler
     'foaf:name': Memorial Sloan Kettering Cancer Center
