@@ -47,7 +47,7 @@ inputs:
     inputBinding:
       position: 999
       prefix: '-s'
-    doc: VCF(s) of known SNPs to check coverage of (optional; i.e. HGMD, ClinVar)
+    doc: 'VCF(s) of known SNPs to check coverage of (optional; i.e. HGMD, ClinVar)'
   - id: threshold
     type: int?
     inputBinding:
@@ -102,9 +102,9 @@ inputs:
 outputs:
   - id: coverage_report_single
     label: coverage_report_single
-    type: Directory
+    type: File
     outputBinding:
-      glob: .
+      glob: '*_report.html'
       outputEval: |-
         ${
             self[0].basename = "coverage_report_single";
