@@ -23,9 +23,6 @@ inputs:
       prefix: '--threads'
   - id: output_name
     type: string?
-    inputBinding:
-      position: 0
-      prefix: '-o'
     doc: Output file name
   - id: output_type
     type: string?
@@ -55,6 +52,17 @@ outputs:
             } 
         }
 label: bcftools_sort
+arguments:
+  - position: 0
+    prefix: '-o'
+    valueFrom: |-
+      ${
+          if(inputs.output_name) {
+              return inputs.output_name
+          } else {
+              return inputs.input.basename.replace(/.vcf/, '.sorted.vcf') 
+              } 
+          }
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
