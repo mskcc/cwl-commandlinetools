@@ -121,6 +121,15 @@ outputs:
             }
         }
 label: coverage_report_single
+arguments:
+  - position: 0
+    prefix: '--thread'
+    valueFrom: |-
+      ${
+          if(inputs.number_of_threads)
+              return inputs.number_of_threads
+          return runtime.cores
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 17000

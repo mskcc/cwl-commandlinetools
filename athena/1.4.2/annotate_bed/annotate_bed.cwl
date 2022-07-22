@@ -63,6 +63,15 @@ outputs:
     outputBinding:
       glob: '*.bed'
 label: general_stats_parse
+arguments:
+  - position: 0
+    prefix: '--thread'
+    valueFrom: |-
+      ${
+          if(inputs.number_of_threads)
+              return inputs.number_of_threads
+          return runtime.cores
+      }
 requirements:
   - class: ResourceRequirement
     ramMin: 17000
