@@ -18,7 +18,7 @@ inputs:
     doc: Memory overhead per job in megabytes
   - id: number_of_threads
     type: int?
-    doc: 'worker thread number, default is 2 (int [=2])'
+    doc: 'worker thread number'
   - id: panel_bed
     type: File
     inputBinding:
@@ -63,19 +63,10 @@ outputs:
     outputBinding:
       glob: '*.bed'
 label: general_stats_parse
-arguments:
-  - position: 0
-    prefix: '--thread'
-    valueFrom: |-
-      ${
-          if(inputs.number_of_threads)
-              return inputs.number_of_threads
-          return runtime.cores
-      }
 requirements:
   - class: ResourceRequirement
     ramMin: 17000
-    coresMin: 4
+    coresMin: 2
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/athena:1.4.2'
   - class: InlineJavascriptRequirement
@@ -83,13 +74,13 @@ requirements:
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
-        'foaf:name': Ian Johnson
+        'foaf:mbox': 'mailto:charlk@mskcc.org'
+        'foaf:name': Carmelina Charlambous
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
-        'foaf:name': Ian Johnson
+        'foaf:mbox': 'mailto:charlk@mskcc.org'
+        'foaf:name': Carmelina Charlambous
     'foaf:name': Memorial Sloan Kettering Cancer Center
