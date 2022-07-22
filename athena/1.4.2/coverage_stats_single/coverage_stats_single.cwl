@@ -10,6 +10,15 @@ baseCommand:
   - python
   - /app/bin/coverage_stats_single.py
 inputs:
+  - id: memory_per_job
+    type: int?
+    doc: Memory per job in megabytes
+  - id: memory_overhead
+    type: int?
+    doc: Memory overhead per job in megabytes
+  - id: number_of_threads
+    type: int?
+    doc: 'worker thread number'
   - id: file
     type: File
     inputBinding:
@@ -54,14 +63,6 @@ inputs:
       position: 900
       prefix: '--flagstat'
     doc: 'file for sample, required for generating run statistics (in development)'
-  - id: cores
-    type: int?
-    inputBinding:
-      position: 900
-      prefix: '--cores'
-    doc: >-
-      Number of CPU cores to utilise, for larger numbers of genes this will
-      drastically reduce run time. If not given will use maximum available
 outputs:
   - id: exon_stats_output
     label: exon_stats_output
@@ -74,7 +75,19 @@ outputs:
     outputBinding:
       glob: '*_gene_stats.tsv'
 label: general_stats_parse
+arguments:
+  - position: 0
+    prefix: '--cores'
+    valueFrom: |-
+      ${
+          if(inputs.number_of_threads)
+              return inputs.number_of_threads
+          return runtime.cores
+      }
 requirements:
+  - class: ResourceRequirement
+    ramMin: 25000
+    coresMin: 6
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/athena:1.4.2'
   - class: InlineJavascriptRequirement
@@ -82,13 +95,25 @@ requirements:
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
-        'foaf:name': Ian Johnson
+        'foaf:mbox': 'mailto:charlk@mskcc.org'
+        'foaf:name': Carmelina Charlambous
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:buehlere@mskcc.org'
+        'foaf:name': Eric Buehler
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
-        'foaf:name': Ian Johnson
+        'foaf:mbox': 'mailto:charlk@mskcc.org'
+        'foaf:name': Carmelina Charlambous
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:buehlere@mskcc.org'
+        'foaf:name': Eric Buehler
     'foaf:name': Memorial Sloan Kettering Cancer Center

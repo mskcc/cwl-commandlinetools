@@ -5,11 +5,20 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: general_stats_parse
+id: annotate_bed
 baseCommand:
   - python
   - /app/bin/annotate_bed.py
 inputs:
+  - id: memory_per_job
+    type: int?
+    doc: Memory per job in megabytes
+  - id: memory_overhead
+    type: int?
+    doc: Memory overhead per job in megabytes
+  - id: number_of_threads
+    type: int?
+    doc: 'worker thread number'
   - id: panel_bed
     type: File
     inputBinding:
@@ -53,8 +62,11 @@ outputs:
     type: File
     outputBinding:
       glob: '*.bed'
-label: general_stats_parse
+label: annotate_bed
 requirements:
+  - class: ResourceRequirement
+    ramMin: 17000
+    coresMin: 2
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/athena:1.4.2'
   - class: InlineJavascriptRequirement
@@ -62,13 +74,25 @@ requirements:
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
-        'foaf:name': Ian Johnson
+        'foaf:mbox': 'mailto:charlk@mskcc.org'
+        'foaf:name': Carmelina Charlambous
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:buehlere@mskcc.org'
+        'foaf:name': Eric Buehler
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
-        'foaf:mbox': 'mailto:johnsoni@mskcc.org'
-        'foaf:name': Ian Johnson
+        'foaf:mbox': 'mailto:charlk@mskcc.org'
+        'foaf:name': Carmelina Charlambous
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:buehlere@mskcc.org'
+        'foaf:name': Eric Buehler
     'foaf:name': Memorial Sloan Kettering Cancer Center

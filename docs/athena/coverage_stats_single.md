@@ -7,6 +7,8 @@
 | python:8 base image | 8 | - |
 | Athena | 1.4.2 | https://github.com/msk-access/athena/archive/refs/tags/1.4.2.zip |
 
+## Explanation
+The coverage_stats_single.cwl uses the annotated coverage bed file generated from the previous step, annotate_bed.cwl. The output of coverage_stats_single.cwl are tsv files of per per exon and per gene coverage statistics. This gives a minimum, mean and maxmimum coverage for each region, along with coverage at defined thresholds. The output tsv files are used as input files in the next step, coverage_report_single.cwl.
 
 ## CWL
 
@@ -31,19 +33,39 @@
 
 ## Usage
 
-The coverage_stats_single.py script generates both a tsv of per per exon and per gene coverage statistics. This gives a minimum, mean and maxmimum coverage for each region, along with coverage at defined thresholds.
+```
+usage: coverage_stats_single.cwl [-h] [--memory_per_job MEMORY_PER_JOB]
+                                 [--memory_overhead MEMORY_OVERHEAD]
+                                 [--number_of_threads NUMBER_OF_THREADS]
+                                 --file FILE [--build BUILD]
+                                 [--outfile OUTFILE] [--thresholds THRESHOLDS]
+                                 [--output_name OUTPUT_NAME]
+                                 [--flagstat FLAGSTAT]
+                                 [job_order]
 
-Expected inputs:
+positional arguments:
+  job_order             Job input json file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --memory_per_job MEMORY_PER_JOB
+                        Memory per job in megabytes
+  --memory_overhead MEMORY_OVERHEAD
+                        Memory overhead per job in megabytes
+  --number_of_threads NUMBER_OF_THREADS
+                        worker thread number
+  --file FILE           annotated bed file on which to generate report from
+  --build BUILD         text file with build number used for alignment, output
+                        from mosdepth (optional) chromosome, start, end, gene,
+                        transcript, exon
+  --outfile OUTFILE     output file name prefix, if not given the input file
+                        name will be used as the name prefix
+  --thresholds THRESHOLDS
+                        threshold values to calculate coverage for as comma
+                        seperated integers (default: 10, 20, 30, 50, 100)
+  --output_name OUTPUT_NAME
+                        (optional) Prefix for naming output file, if not given
+                        will use name from per base coverage file
+  --flagstat FLAGSTAT   file for sample, required for generating run
+                        statistics (in development)
 ```
---file: annotated bed file on which to generate report from
---build: text file with build number used for alignment, output from mosdepth (optional)
---outfile: output file name prefix, if not given the input file name will be used as the name prefix
---thresholds: threshold values to calculate coverage for as comma seperated integers (default: 10, 20, 30, 50, 100)
---flagstat: flagstat file for sample, required for generating run statistics (in development)
---cores: Number of CPU cores to utilise, for larger numbers of genes this will drastically reduce run time. If not given will use maximum available
-```
-Example usage:
-```
-$ python3 bin/coverage_stats_single.py  --file annotated_bed_file --build {sample}_reference_build.txt --thresholds 20, 40, 60, 80 --outfile example_sample
-Example output files are given in /data/example/
-``
