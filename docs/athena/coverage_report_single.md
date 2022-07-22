@@ -7,6 +7,16 @@
 | python:8 base image | 8 | - |
 | Athena | 1.4.2 | https://github.com/msk-access/athena/archive/refs/tags/1.4.2.zip |
 
+## Explanation
+The coverage_report_single.cwl generates a full HTML report  on a per sample-level. The user can define the threshold to display.
+The output html report contains the following:
++ Summary including per gene coverage chart
++ Table of exons with sub-optimal coverage
++ Interactive plots of exons with sub-optimal coverage
++ A summary table of average coverage across all genes
++ Full gene coverage plots
++ Table of per exon coverage across all genes
++ Coverage of known variants (if specified)
 
 ## CWL
 
@@ -31,31 +41,55 @@
 
 ## Usage
 
-The coverage_report_single.py script generates the full HTML report. It requires several files as input (some optional):
-
 ```
--e / --exon_stats: per exon statistics file (from `coverage_stats_single.py`)
--g / --gene_stats: per gene statistics file (from `coverage_stats_single.py`)
--r / --raw_coverage: annotated bed file with coverage data (generated from annotate_bed.sh / bedtools intersect)
--b / --per_base_coverage: Per-base coverage bed file from mosdepth. (Optional; if not submitted, plots displaying global coverage per chromosome will not be displayed)
--s / --snps: VCF(s) of known SNPs to check coverage of (optional; i.e. HGMD, ClinVar)
--t / --threshold: threshold value defining sub-optimal coverage (optional; default if not given: 20)
--n / --sample_name: name for title of report (optional; gene_stats file name will be used if not given)
--o / --output: name for output report (optional; sample name will be used if not given)
--p / --panel: panel bed file used for initial annotation, name will be displayed in summary of report (optional)
--l / --limit: number of genes at which to limit including full gene plots, large numbers of genes may take a long time to generate the plots (optional)
--m / --summary: boolean flag to add clinical report summary text in summary section, includes list of all genes with transcripts (optional; default False)
---cores: Number of CPU cores to utilise, for larger numbers of genes this will drastically reduce run time. If not given will use maximum available
-```
+usage: coverage_report_single.cwl [-h] [--memory_per_job MEMORY_PER_JOB]
+                                  [--memory_overhead MEMORY_OVERHEAD]
+                                  [--number_of_threads NUMBER_OF_THREADS]
+                                  --exon_stats EXON_STATS --gene_stats
+                                  GENE_STATS --raw_coverage RAW_COVERAGE
+                                  [--per_base_coverage PER_BASE_COVERAGE]
+                                  [--threshold THRESHOLD]
+                                  [--sample_name SAMPLE_NAME]
+                                  [--output OUTPUT] [--panel PANEL]
+                                  [--limit LIMIT] [--summary]
+                                  [job_order]
 
-Example usage:
+positional arguments:
+  job_order             Job input json file
 
-```
-$ python3 bin/coverage_report_single.py --gene_stats output/sample1-exon-coverage_gene_stats.tsv --exon_stats output/sample1-exon-coverage_exon_stats.tsv --raw_coverage sample1_gene_exon_coverage.bed -t 30 -n sample1
-```
-
-Example including coverage per chromosome:
-
-```
-$ python3 bin/coverage_report_single.py --gene_stats output/sample1-exon-coverage_gene_stats.tsv --exon_stats output/sample1-exon-coverage_exon_stats.tsv --raw_coverage sample1_gene_exon_coverage.bed --per_base_coverage sample_1.per-base.bed.gz -t 30 -n sample1
+optional arguments:
+  -h, --help            show this help message and exit
+  --memory_per_job MEMORY_PER_JOB
+                        Memory per job in megabytes
+  --memory_overhead MEMORY_OVERHEAD
+                        Memory overhead per job in megabytes
+  --number_of_threads NUMBER_OF_THREADS
+                        worker thread number
+  --exon_stats EXON_STATS
+                        per exon statistics file (from
+                        `coverage_stats_single.py`)
+  --gene_stats GENE_STATS
+                        per gene statistics file (from
+                        `coverage_stats_single.py`)
+  --raw_coverage RAW_COVERAGE
+                        annotated bed file with coverage data (generated from
+                        annotate_bed.sh / bedtools intersect)
+  --per_base_coverage PER_BASE_COVERAGE
+                        Per-base coverage bed file from mosdepth. (Optional;
+                        if not submitted, plots displaying global coverage per
+                        chromosome will not be displayed)
+  --threshold THRESHOLD
+                        threshold value defining sub-optimal coverage
+                        (optional; default if not given: 20)
+  --sample_name SAMPLE_NAME
+  --output OUTPUT       name for output report (optional; sample name will be
+                        used if not given)
+  --panel PANEL         panel bed file used for initial annotation, name will
+                        be displayed in summary of report (optional)
+  --limit LIMIT         number of genes at which to limit including full gene
+                        plots, large numbers of genes may take a long time to
+                        generate the plots (optional)
+  --summary             boolean flag to add clinical report summary text in
+                        summary section, includes list of all genes with
+                        transcripts (optional; default False)
 ```

@@ -7,6 +7,9 @@
 | python:8 base image | 8 | - |
 | Athena | 1.4.2 | https://github.com/msk-access/athena/archive/refs/tags/1.4.2.zip |
 
+## Explanation
+
+The annotate_bed.cwl annotates the given bed file with transcript and coverage information required for the next step coverage_stats_single.cwl. Specifically, this is done using BEDtools intersect, with a file containing transcript to gene and exon information, and then the per base coverage data using the mosdepth output (*per_based.bed.gz). Currently, 100% overlap is required between coordinates in the panel bed file and the transcript annotation file, therefore you must ensure any added flank regions etc. are the same.
 
 ## CWL
 
@@ -31,25 +34,42 @@
 
 ## Usage
 
-The BED file containing regions of interest is first required to be annotated with gene, exon and coverage information prior to analysis. This may be done using BEDtools intersect, with a file containing transcript to gene and exon information, and then the per base coverage data. Currently, 100% overlap is required between coordinates in the panel bed file and the transcript annotation file, therefore you must ensure any added flank regions etc. are the same.
-
-Included is a Python script (annotate_bed.py) to perform the required BED file annotation.
-
-Expected inputs:
 ```
--p / --panel_bed : Input panel bed file; must have ONLY the following 4 columns chromosome, start position, end position, gene/transcript
+toil-cwl-runner annotate_bed.cwl --help
 
--t / --transcript_file : Transcript annotation file, contains required gene and exon information. Must have ONLY the following 6 columns:
-chromosome, start, end, gene, transcript, exon
+usage: annotate_bed.cwl [-h] [--memory_per_job MEMORY_PER_JOB]
+                        [--memory_overhead MEMORY_OVERHEAD]
+                        [--number_of_threads NUMBER_OF_THREADS] --panel_bed
+                        PANEL_BED --transcript_file TRANSCRIPT_FILE
+                        --coverage_file COVERAGE_FILE
+                        [--chunk_size CHUNK_SIZE] [--output_name OUTPUT_NAME]
+                        [job_order]
 
--c / --coverage_file : Per base coverage file (output from mosdepth or similar)
+positional arguments:
+  job_order             Job input json file
 
--s / -chunk_size : (optional) nrows to split per-base coverage file for intersecting, with <16GB RAM can lead to bedtools intersect failing. Reccomended values: 16GB RAM -> 20000000; 8GB RAM -> 10000000
-
--n / --output_name : (optional) Prefix for naming output file, if not given will use name from per base coverage file
-```
-
-Example usage:
-```
-$ annotate_bed.py -p panel_bed_file.bed -t transcript_file.tsv -c {input_file}.per_base.bed
+optional arguments:
+  -h, --help            show this help message and exit
+  --memory_per_job MEMORY_PER_JOB
+                        Memory per job in megabytes
+  --memory_overhead MEMORY_OVERHEAD
+                        Memory overhead per job in megabytes
+  --number_of_threads NUMBER_OF_THREADS
+                        worker thread number
+  --panel_bed PANEL_BED
+                        Input panel bed file; must have ONLY the following 4
+                        columns chromosome, start position, end position,
+                        gene/transcript
+  --transcript_file TRANSCRIPT_FILE
+                        Transcript annotation file, contains required gene and
+                        exon information. Must have ONLY the following 6
+                        columns: chromosome, start, end, gene, transcript,
+                        exon
+  --coverage_file COVERAGE_FILE
+                        Per base coverage file (output from mosdepth or
+                        similar)
+  --chunk_size CHUNK_SIZE
+  --output_name OUTPUT_NAME
+                        (optional) Prefix for naming output file, if not given
+                        will use name from per base coverage file
 ```
