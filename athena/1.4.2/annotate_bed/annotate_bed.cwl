@@ -10,6 +10,15 @@ baseCommand:
   - python
   - /app/bin/annotate_bed.py
 inputs:
+  - id: memory_per_job
+    type: int?
+    doc: Memory per job in megabytes
+  - id: memory_overhead
+    type: int?
+    doc: Memory overhead per job in megabytes
+  - id: number_of_threads
+    type: int?
+    doc: 'worker thread number, default is 2 (int [=2])'
   - id: panel_bed
     type: File
     inputBinding:
@@ -55,6 +64,9 @@ outputs:
       glob: '*.bed'
 label: general_stats_parse
 requirements:
+  - class: ResourceRequirement
+    ramMin: 17000
+    coresMin: 4
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/athena:1.4.2'
   - class: InlineJavascriptRequirement
