@@ -5,7 +5,7 @@ $namespaces:
   doap: 'http://usefulinc.com/ns/doap#'
   foaf: 'http://xmlns.com/foaf/0.1/'
   sbg: 'https://www.sevenbridges.com/'
-id: general_stats_parse
+id: annotate_bed
 baseCommand:
   - python
   - /app/bin/annotate_bed.py
@@ -62,7 +62,7 @@ outputs:
     type: File
     outputBinding:
       glob: '*.bed'
-label: general_stats_parse
+label: annotate_bed
 requirements:
   - class: ResourceRequirement
     ramMin: 17000
