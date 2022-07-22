@@ -77,10 +77,22 @@ requirements:
         'foaf:mbox': 'mailto:charlk@mskcc.org'
         'foaf:name': Carmelina Charlambous
     'foaf:name': Memorial Sloan Kettering Cancer Center
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:buehlere@mskcc.org'
+        'foaf:name': Eric Buehler
+    'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
         'foaf:mbox': 'mailto:charlk@mskcc.org'
         'foaf:name': Carmelina Charlambous
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:buehlere@mskcc.org'
+        'foaf:name': Eric Buehler
     'foaf:name': Memorial Sloan Kettering Cancer Center

@@ -18,7 +18,7 @@ inputs:
     doc: Memory overhead per job in megabytes
   - id: number_of_threads
     type: int?
-    doc: 'worker thread number, default is 2 (int [=2])'
+    doc: 'worker thread number'
   - id: exon_stats
     type: File
     inputBinding:
@@ -100,14 +100,6 @@ inputs:
     doc: >-
       boolean flag to add clinical report summary text in summary section,
       includes list of all genes with transcripts (optional; default False)
-  - id: cores
-    type: int?
-    inputBinding:
-      position: 0
-      prefix: '--cores'
-    doc: >-
-      Number of CPU cores to utilise, for larger numbers of genes this will
-      drastically reduce run time. If not given will use maximum available
 outputs:
   - id: coverage_report_single
     type: File
@@ -123,7 +115,7 @@ outputs:
 label: coverage_report_single
 arguments:
   - position: 0
-    prefix: '--thread'
+    prefix: '--cores'
     valueFrom: |-
       ${
           if(inputs.number_of_threads)
@@ -132,8 +124,8 @@ arguments:
       }
 requirements:
   - class: ResourceRequirement
-    ramMin: 17000
-    coresMin: 4
+    ramMin: 25000
+    coresMin: 6
   - class: DockerRequirement
     dockerPull: 'ghcr.io/msk-access/athena:1.4.2'
   - class: InlineJavascriptRequirement
@@ -141,10 +133,22 @@ requirements:
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:charlk@mskcc.org'
+        'foaf:name': Carmelina Charlambous
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
         'foaf:mbox': 'mailto:buehlere@mskcc.org'
         'foaf:name': Eric Buehler
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:charlk@mskcc.org'
+        'foaf:name': Carmelina Charlambous
+    'foaf:name': Memorial Sloan Kettering Cancer Center
   - class: 'foaf:Organization'
     'foaf:member':
       - class: 'foaf:Person'
