@@ -4,7 +4,7 @@
 
 | Tool | Version | Location |
 |--- |--- |--- |
-| cci_utils   | 0.2.5   |  <https://github.com/msk-access/cci_utils> |
+| cci_utils   | 0.2.7   |  <https://github.com/msk-access/cci_utils> |
 
 ## CWL
 
