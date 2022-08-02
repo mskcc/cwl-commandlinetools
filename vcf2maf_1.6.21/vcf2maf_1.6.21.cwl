@@ -182,7 +182,7 @@ inputs:
             inputBinding:
               position: 0
           - name: forceReportCoordinate
-            type: string?
+            type: boolean?
             inputBinding:
               position: 0
           - name: vcfField
