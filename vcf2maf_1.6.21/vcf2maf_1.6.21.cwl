@@ -159,6 +159,12 @@ inputs:
       position: 0
       prefix: '--vep-path'
     doc: Folder containing variant_effect_predictor.pl or vep binary
+  - id: vep-custom
+    type: File?
+    inputBinding:
+      position: 0
+      prefix: '--vep-custom'
+    doc: Annotate and filter based on custom vcf file
 outputs:
   - id: vcf2maf_maf
     type: File
