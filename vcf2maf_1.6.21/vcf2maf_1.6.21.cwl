@@ -169,7 +169,6 @@ inputs:
             type: File?
             inputBinding:
               position: 0
-              shellQuote: false
           - name: shortname
             type: string?
             inputBinding:
