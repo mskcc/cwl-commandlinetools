@@ -164,7 +164,31 @@ inputs:
       - 'null'
       - &ref_0
         type: record
-        fields: []
+        fields:
+          - name: vcfFile
+            type: File?
+            inputBinding:
+              position: 0
+          - name: shortname
+            type: string?
+            inputBinding:
+              position: 0
+          - name: filetype
+            type: string?
+            inputBinding:
+              position: 0
+          - name: annotationtype
+            type: string?
+            inputBinding:
+              position: 0
+          - name: forceReportCoordinate
+            type: string?
+            inputBinding:
+              position: 0
+          - name: vcfField
+            type: string?
+            inputBinding:
+              position: 0
         name: vep-custom
       - type: array
         items: *ref_0
