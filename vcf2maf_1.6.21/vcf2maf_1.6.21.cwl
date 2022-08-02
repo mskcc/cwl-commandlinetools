@@ -160,11 +160,17 @@ inputs:
       prefix: '--vep-path'
     doc: Folder containing variant_effect_predictor.pl or vep binary
   - id: vep-custom
-    type: File?
+    type: 'string[]?'
     inputBinding:
       position: 0
       prefix: '--vep-custom'
-    doc: Annotate and filter based on custom vcf file
+      itemSeparator: ','
+    doc: >-
+      Annotate and filter based on custom vcf file. Value should be in the
+      following order and comma separated
+
+      Filename , Short_name , File_type , Annotation_type ,
+      Force_report_coordinates , VCF_fields
 outputs:
   - id: vcf2maf_maf
     type: File
