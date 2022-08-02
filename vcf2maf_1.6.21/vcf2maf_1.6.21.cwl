@@ -160,20 +160,22 @@ inputs:
       prefix: '--vep-path'
     doc: Folder containing variant_effect_predictor.pl or vep binary
   - id: vep-custom
-    type: 'string[]?'
+    type:
+      - 'null'
+      - &ref_0
+        type: record
+        fields: []
+        name: vep-custom
+      - type: array
+        items: *ref_0
     inputBinding:
       position: 0
       prefix: '--vep-custom'
-      itemSeparator: ','
     doc: >-
       Annotate and filter based on custom vcf file. Value should be in the
-      following order and comma separated
-
-      Filename , Short_name , File_type , Annotation_type ,
-      Force_report_coordinates , VCF_fields
-
-
-      use with retain-ann option
+      following order and comma separated Filename , Short_name , File_type ,
+      Annotation_type , Force_report_coordinates , VCF_fields use with
+      retain-ann option
   - id: retain-ann
     type: 'string[]?'
     inputBinding:
@@ -182,7 +184,6 @@ inputs:
       itemSeparator: ','
     doc: |-
       --retain-ann I<MY_Ann>B<_>I<AD>,I<MY_Ann>B<_>I<TOPMED>
-
       use to custom option to retain the enteries
 outputs:
   - id: vcf2maf_maf
