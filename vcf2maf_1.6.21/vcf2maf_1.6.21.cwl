@@ -171,11 +171,19 @@ inputs:
 
       Filename , Short_name , File_type , Annotation_type ,
       Force_report_coordinates , VCF_fields
+
+
+      use with retain-ann option
   - id: retain-ann
     type: 'string[]?'
     inputBinding:
       position: 0
       prefix: '--retain-ann'
+      itemSeparator: ','
+    doc: |-
+      --retain-ann I<MY_Ann>B<_>I<AD>,I<MY_Ann>B<_>I<TOPMED>
+
+      use to custom option to retain the enteries
 outputs:
   - id: vcf2maf_maf
     type: File
