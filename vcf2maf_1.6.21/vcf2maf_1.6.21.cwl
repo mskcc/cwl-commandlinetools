@@ -169,26 +169,43 @@ inputs:
             type: File?
             inputBinding:
               position: 0
+              separate: false
+              shellQuote: false
           - name: shortname
             type: string?
             inputBinding:
-              position: 0
+              position: 1
+              prefix: ','
+              separate: false
+              shellQuote: false
           - name: filetype
             type: string?
             inputBinding:
-              position: 0
+              position: 2
+              prefix: ','
+              separate: false
+              shellQuote: false
           - name: annotationtype
             type: string?
             inputBinding:
-              position: 0
+              position: 3
+              prefix: ','
+              separate: false
+              shellQuote: false
           - name: forceReportCoordinate
             type: boolean?
             inputBinding:
-              position: 0
+              position: 4
+              prefix: ','
+              separate: false
+              shellQuote: false
           - name: vcfField
             type: string?
             inputBinding:
-              position: 0
+              position: 5
+              prefix: ','
+              separate: false
+              shellQuote: false
         name: vep-custom
       - type: array
         items: *ref_0
