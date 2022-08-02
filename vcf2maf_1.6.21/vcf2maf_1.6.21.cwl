@@ -43,7 +43,7 @@ inputs:
     inputBinding:
       position: 0
       prefix: '--input-vcf'
-    doc: Path to input file in VCF format
+    doc: 'Path to input file in VCF format , gzipped'
   - default: mskcc.org
     id: maf_center
     type: string?
@@ -171,6 +171,11 @@ inputs:
 
       Filename , Short_name , File_type , Annotation_type ,
       Force_report_coordinates , VCF_fields
+  - id: retain-ann
+    type: 'string[]?'
+    inputBinding:
+      position: 0
+      prefix: '--retain-ann'
 outputs:
   - id: vcf2maf_maf
     type: File
