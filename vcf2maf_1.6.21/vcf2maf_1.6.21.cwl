@@ -162,8 +162,7 @@ inputs:
   - id: vep-custom
     type:
       - 'null'
-      - &ref_0
-        type: record
+      - type: record
         fields:
           - name: vcfFile
             type: File?
@@ -206,8 +205,6 @@ inputs:
               separate: false
               shellQuote: false
         name: vep-custom
-      - type: array
-        items: *ref_0
     inputBinding:
       position: 0
       prefix: '--vep-custom'
