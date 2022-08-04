@@ -159,69 +159,6 @@ inputs:
       position: 0
       prefix: '--vep-path'
     doc: Folder containing variant_effect_predictor.pl or vep binary
-  - id: vep-custom
-    type:
-      - 'null'
-      - type: record
-        fields:
-          - name: vcfFile
-            type: File?
-            inputBinding:
-              position: 0
-              shellQuote: false
-          - name: shortname
-            type: string?
-            inputBinding:
-              position: 1
-              prefix: ','
-              separate: false
-              shellQuote: false
-          - name: filetype
-            type: string?
-            inputBinding:
-              position: 2
-              prefix: ','
-              separate: false
-              shellQuote: false
-          - name: annotationtype
-            type: string?
-            inputBinding:
-              position: 3
-              prefix: ','
-              separate: false
-              shellQuote: false
-          - name: forceReportCoordinate
-            type: boolean?
-            inputBinding:
-              position: 4
-              prefix: ','
-              separate: false
-              shellQuote: false
-          - name: vcfField
-            type: string?
-            inputBinding:
-              position: 5
-              prefix: ','
-              separate: false
-              shellQuote: false
-        name: vep-custom
-    inputBinding:
-      position: 0
-      prefix: '--vep-custom'
-    doc: >-
-      Annotate and filter based on custom vcf file. Value should be in the
-      following order and comma separated Filename , Short_name , File_type ,
-      Annotation_type , Force_report_coordinates , VCF_fields use with
-      retain-ann option
-  - id: retain-ann
-    type: 'string[]?'
-    inputBinding:
-      position: 0
-      prefix: '--retain-ann'
-      itemSeparator: ','
-    doc: |-
-      --retain-ann I<MY_Ann>B<_>I<AD>,I<MY_Ann>B<_>I<TOPMED>
-      use to custom option to retain the enteries
 outputs:
   - id: vcf2maf_maf
     type: File
@@ -251,6 +188,13 @@ requirements:
       - class: 'foaf:Person'
         'foaf:mbox': 'mailto:vurals@mskcc.org'
         'foaf:name': Suleyman Vural
+    'foaf:name': Memorial Sloan Kettering Cancer Center
+'dct:contributor':
+  - class: 'foaf:Organization'
+    'foaf:member':
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:sivaprk@mskcc.org'
+        'foaf:name': Karthigayini Sivaprakasam
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
