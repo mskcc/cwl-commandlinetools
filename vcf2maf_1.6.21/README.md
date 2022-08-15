@@ -37,40 +37,69 @@
 ### Usage
 
 ```
-Usage:
-     perl vcf2maf.pl --help
-     perl vcf2maf.pl --input-vcf input.vcf --output-maf output.maf --tumor-id TUMOR_ID --normal-id NORMAL_ID
+usage: vcf2maf_1.6.21.cwl [-h] [--any_allele ANY_ALLELE] [--buffer_size BUFFER_SIZE] [--cache_version CACHE_VERSION]
+                          [--custom_enst CUSTOM_ENST] [--maf_center MAF_CENTER] [--memory_overhead MEMORY_OVERHEAD]
+                          [--memory_per_job MEMORY_PER_JOB] [--min_hom_vaf MIN_HOM_VAF] [--ncbi_build NCBI_BUILD] [--normal_id NORMAL_ID]
+                          [--output_maf OUTPUT_MAF] [--ref_fasta REF_FASTA] [--remap_chain REMAP_CHAIN] [--retain_fmt RETAIN_FMT]
+                          [--retain_info RETAIN_INFO] [--species SPECIES] [--tumor_id TUMOR_ID] [--vcf_normal_id VCF_NORMAL_ID]
+                          [--vcf_tumor_id VCF_TUMOR_ID] [--vep_data VEP_DATA] [--vep_forks VEP_FORKS] [--vep_path VEP_PATH]
+                          [--vep-custom.vcfFile VEP_CUSTOM.VCFFILE] [--vep-custom.shortname VEP_CUSTOM.SHORTNAME]
+                          [--vep-custom.filetype VEP_CUSTOM.FILETYPE] [--vep-custom.annotationtype VEP_CUSTOM.ANNOTATIONTYPE]
+                          [--vep-custom.forceReportCoordinate] [--vep-custom.vcfField VEP_CUSTOM.VCFFIELD] [--retain-ann RETAIN_ANN]
+                          [job_order]
 
---input-vcf      Path to input file in VCF format
---output-maf     Path to output MAF file
---tmp-dir        Folder to retain intermediate VCFs after runtime [Default: Folder containing input VCF]
---tumor-id       Tumor_Sample_Barcode to report in the MAF [TUMOR]
---normal-id      Matched_Norm_Sample_Barcode to report in the MAF [NORMAL]
---vcf-tumor-id   Tumor sample ID used in VCF's genotype columns [--tumor-id]
---vcf-normal-id  Matched normal ID used in VCF's genotype columns [--normal-id]
---custom-enst    List of custom ENST IDs that override canonical selection
---vep-path       Folder containing the vep script [~/miniconda3/bin]
---vep-data       VEP's base cache/plugin directory [~/.vep]
---vep-forks      Number of forked processes to use when running VEP [4]
---vep-custom     String to pass into VEP's --custom option []
---vep-config     Config file to pass into VEP's --config option []
---vep-overwrite  Allow VEP to overwrite output VCF if it exists
---buffer-size    Number of variants VEP loads at a time; Reduce this for low memory systems [5000]
---any-allele     When reporting co-located variants, allow mismatched variant alleles too
---inhibit-vep    Skip running VEP, but extract VEP annotation in VCF if found
---online         Use useastdb.ensembl.org instead of local cache (supports only GRCh38 VCFs listing <100 events)
---ref-fasta      Reference FASTA file [~/.vep/homo_sapiens/102_GRCh37/Homo_sapiens.GRCh37.dna.toplevel.fa.gz]
---max-subpop-af  Add FILTER tag common_variant if gnomAD reports any subpopulation AFs greater than this [0.0004]
---species        Ensembl-friendly name of species (e.g. mus_musculus for mouse) [homo_sapiens]
---ncbi-build     NCBI reference assembly of variants MAF (e.g. GRCm38 for mouse) [GRCh37]
---cache-version  Version of offline cache to use with VEP (e.g. 75, 91, 102) [Default: Installed version]
---maf-center     Variant calling center to report in MAF [.]
---retain-info    Comma-delimited names of INFO fields to retain as extra columns in MAF []
---retain-fmt     Comma-delimited names of FORMAT fields to retain as extra columns in MAF []
---retain-ann     Comma-delimited names of annotations (within the VEP CSQ/ANN) to retain as extra columns in MAF []
---min-hom-vaf    If GT undefined in VCF, minimum allele fraction to call a variant homozygous [0.7]
---remap-chain    Chain file to remap variants to a different assembly before running VEP
---verbose        Print more things to log progress
---help           Print a brief help message and quit
---man            Print the detailed manual
+positional arguments:
+  job_order             Job input json file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --any_allele ANY_ALLELE
+                        When reporting co-located variants, allow mismatched variant alleles too
+  --buffer_size BUFFER_SIZE
+                        Number of variants VEP loads at a time; Reduce this for low memory systems
+  --cache_version CACHE_VERSION
+                        Version of VEP and its cache to use
+  --custom_enst CUSTOM_ENST
+                        List of custom ENST IDs that override canonical selection, in a file
+  --maf_center MAF_CENTER
+                        Variant calling center to report in MAF
+  --memory_overhead MEMORY_OVERHEAD
+                        Memory overhead per job in megabytes
+  --memory_per_job MEMORY_PER_JOB
+                        Memory per job in megabytes
+  --min_hom_vaf MIN_HOM_VAF
+                        If GT undefined in VCF, minimum allele fraction to call a variant homozygous
+  --ncbi_build NCBI_BUILD
+                        Genome build of variants in input
+  --normal_id NORMAL_ID
+                        Matched_Norm_Sample_Barcode to report in the MAF
+  --output_maf OUTPUT_MAF
+                        Path to output MAF file
+  --ref_fasta REF_FASTA
+                        Reference FASTA file
+  --remap_chain REMAP_CHAIN
+                        Chain file to remap variants to a different assembly before running VEP
+  --retain_fmt RETAIN_FMT
+                        Comma-delimited names of FORMAT fields to retain as extra columns in MAF []
+  --retain_info RETAIN_INFO
+                        Comma-delimited names of INFO fields to retain as extra columns in MAF
+  --species SPECIES     Species of variants in input
+  --tumor_id TUMOR_ID   Tumor_Sample_Barcode to report in the MAF
+  --vcf_normal_id VCF_NORMAL_ID
+                        Matched normal ID used in VCFs genotype columns
+  --vcf_tumor_id VCF_TUMOR_ID
+                        Tumor sample ID used in VCFs genotype columns
+  --vep_data VEP_DATA   VEPs base cache/plugin directory
+  --vep_forks VEP_FORKS
+                        Number of forked processes to use when running VEP
+  --vep_path VEP_PATH   Folder containing variant_effect_predictor.pl or vep binary
+  --vep-custom.vcfFile VEP_CUSTOM.VCFFILE
+  --vep-custom.shortname VEP_CUSTOM.SHORTNAME
+  --vep-custom.filetype VEP_CUSTOM.FILETYPE
+  --vep-custom.annotationtype VEP_CUSTOM.ANNOTATIONTYPE
+  --vep-custom.forceReportCoordinate
+  --vep-custom.vcfField VEP_CUSTOM.VCFFIELD
+  --retain-ann RETAIN_ANN
+                        --retain-ann I<MY_Ann>B<_>I<AD>,I<MY_Ann>B<_>I<TOPMED> use to custom option to retain the enteries
+
 ```
