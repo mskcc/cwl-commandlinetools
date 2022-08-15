@@ -86,7 +86,8 @@ inputs:
       position: 0
       prefix: '--output-maf'
     doc: Path to output MAF file
-  - id: ref_fasta
+  - default: '/.vep/homo_sapiens/105_GRCh37/Homo_sapiens.GRCh37.dna.toplevel.fa.gz'
+    id: ref_fasta
     type: string?
     inputBinding:
       position: 0
@@ -140,7 +141,8 @@ inputs:
       position: 0
       prefix: '--vcf-tumor-id'
     doc: Tumor sample ID used in VCFs genotype columns
-  - id: vep_data
+  - default: '/.vep/ '
+    id: vep_data
     type: string?
     inputBinding:
       position: 0
@@ -153,7 +155,8 @@ inputs:
       position: 0
       prefix: '--vep-forks'
     doc: Number of forked processes to use when running VEP
-  - id: vep_path
+  - default: '/usr/local/bin/'
+    id: vep_path
     type: string?
     inputBinding:
       position: 0
@@ -188,10 +191,6 @@ requirements:
       - class: 'foaf:Person'
         'foaf:mbox': 'mailto:vurals@mskcc.org'
         'foaf:name': Suleyman Vural
-    'foaf:name': Memorial Sloan Kettering Cancer Center
-'dct:contributor':
-  - class: 'foaf:Organization'
-    'foaf:member':
       - class: 'foaf:Person'
         'foaf:mbox': 'mailto:sivaprk@mskcc.org'
         'foaf:name': Karthigayini Sivaprakasam
