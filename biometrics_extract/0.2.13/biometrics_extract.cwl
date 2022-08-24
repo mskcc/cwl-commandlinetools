@@ -100,6 +100,11 @@ inputs:
       position: 0
       prefix: '--default-genotype'
     doc: Default genotype if coverage is too low (options are Het or Hom).
+  - id: file_type
+    type: string?
+    doc: >-
+      Specify the type of bam file you are generating the pickle for to be
+      incorporated in pickle file name (Myeloid_1_L001_duplex.pickle)
 outputs:
   - id: biometrics_extract_pickle
     type: File
@@ -108,7 +113,10 @@ outputs:
         ${
           if (inputs.database) {
             return inputs.database + '/' + inputs.sample_name + '.pickle';
-          } else {
+          } else if (inputs.file_type) {
+            return inputs.sample_name + '_' + inputs.file_type + '.pickle'; 
+          }
+          else {
             return inputs.sample_name + '.pickle';
           }
         }
