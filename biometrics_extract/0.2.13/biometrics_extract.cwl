@@ -142,6 +142,10 @@ requirements:
         'foaf:mbox': 'mailto:murphyc4@mskcc.org'
         'foaf:name': Charlie Murphy
     'foaf:name': Memorial Sloan Kettering Cancer Center
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:shahr2@mskcc.org'
+        'foaf:name': Ronak Shah
+    'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
     'foaf:member':
