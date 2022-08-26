@@ -146,7 +146,7 @@ requirements:
         'foaf:name': Ronak Shah
       - class: 'foaf:Person'
         'foaf:mbox': 'mailto:charlk@mskcc.org'
-        'foaf:name': Carmelina Cha  rlambous
+        'foaf:name': Carmelina Charlambous
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
