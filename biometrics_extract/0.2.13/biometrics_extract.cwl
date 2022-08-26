@@ -113,13 +113,21 @@ outputs:
         ${
           if (inputs.database) {
             return inputs.database + '/' + inputs.sample_name + '.pickle';
-          } else if (inputs.file_type) {
-            return inputs.sample_name + '_' + inputs.file_type + '.pickle'; 
           }
           else {
             return inputs.sample_name + '.pickle';
           }
         }
+    outputEval: |-
+     ${
+        if (inputs.file_type) {
+            self[0].basename = inputs.sample_name + '_' + inputs.file_type;
+            return self[0];
+        }
+        else {
+        return self[0];
+        }
+     }
 requirements:
   - class: ResourceRequirement
     ramMin: 16000
