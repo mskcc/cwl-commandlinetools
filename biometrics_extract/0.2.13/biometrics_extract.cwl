@@ -113,12 +113,20 @@ outputs:
         ${
           if (inputs.database) {
             return inputs.database + '/' + inputs.sample_name + '.pickle';
-          } else if (inputs.file_type) {
-            return inputs.sample_name + '_' + inputs.file_type + '.pickle'; 
           }
           else {
             return inputs.sample_name + '.pickle';
           }
+        }
+      outputEval: |-
+        ${
+           if (inputs.file_type) {
+             self[0].basename = inputs.sample_name + '_' + inputs.file_type + ".pickle";
+             return self;
+           }
+           else {
+             return self;
+           }
         }
 requirements:
   - class: ResourceRequirement
@@ -133,6 +141,12 @@ requirements:
       - class: 'foaf:Person'
         'foaf:mbox': 'mailto:murphyc4@mskcc.org'
         'foaf:name': Charlie Murphy
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:shahr2@mskcc.org'
+        'foaf:name': Ronak Shah
+      - class: 'foaf:Person'
+        'foaf:mbox': 'mailto:charlk@mskcc.org'
+        'foaf:name': Carmelina Charlambous
     'foaf:name': Memorial Sloan Kettering Cancer Center
 'dct:creator':
   - class: 'foaf:Organization'
