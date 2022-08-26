@@ -122,10 +122,10 @@ outputs:
        ${
           if (inputs.file_type) {
             self[0].basename = inputs.sample_name + '_' + inputs.file_type;
-            return self[0];
+            return self;
           }
           else {
-            return self[0];
+            return self;
           }
        }
 requirements:
