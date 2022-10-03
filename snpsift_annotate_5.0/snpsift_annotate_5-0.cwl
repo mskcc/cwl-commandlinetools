@@ -64,7 +64,7 @@ inputs:
     doc: debug
 outputs:
   - id: annotatedOutput
-    type: File?
+    type: File
     outputBinding:
       glob: |-
         ${ 
