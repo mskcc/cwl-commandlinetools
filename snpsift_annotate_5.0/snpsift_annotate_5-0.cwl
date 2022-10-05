@@ -7,7 +7,7 @@ $namespaces:
   sbg: 'https://www.sevenbridges.com/'
 id: snpsift_annotate_5_0
 baseCommand:
-  - java
+  - java -jar Snpsift.jar
 inputs:
   - id: memory_per_job
     type: int?
@@ -76,12 +76,6 @@ outputs:
         }
 label: snpsift_annotate_5.0
 arguments:
-  - position: 0
-    prefix: ''
-    valueFrom: '-jar'
-  - position: 0
-    prefix: ''
-    valueFrom: SnpSift.jar
   - position: 0
     prefix: ''
     valueFrom: annotate
