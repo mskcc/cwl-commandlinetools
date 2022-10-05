@@ -7,7 +7,7 @@ $namespaces:
   sbg: 'https://www.sevenbridges.com/'
 id: snpsift_annotate_5_0
 baseCommand:
-  - java -jar Snpsift.jar annotate
+  - java
 inputs:
   - id: memory_per_job
     type: int?
@@ -75,6 +75,13 @@ outputs:
             } 
         }
 label: snpsift_annotate_5.0
+arguments:
+  - position: 0
+    prefix: '-jar'
+    valueFrom: /snpsift/snpsift-package-5.0-SnpSift.jar
+  - position: 0
+    prefix: ''
+    valueFrom: annotate
 requirements:
   - class: ResourceRequirement
     ramMin: 8000
