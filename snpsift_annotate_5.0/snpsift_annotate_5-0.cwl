@@ -21,7 +21,9 @@ inputs:
     type: File
     inputBinding:
       position: 25
-    'sbg:fileTypes': VCF
+    'sbg:fileTypes': .vcf.gz
+    secondaryFiles:
+      - '.tbi '
   - id: input_vcf
     type: File
     inputBinding:
@@ -78,9 +80,8 @@ label: snpsift_annotate_5.0
 arguments:
   - position: 0
     prefix: '-jar'
-    valueFrom: /snpsift/snpsift-package-5.0-SnpSift.jar
+    valueFrom: /snpEff/SnpSift.jar
   - position: 0
-    prefix: ''
     valueFrom: annotate
 requirements:
   - class: ResourceRequirement
