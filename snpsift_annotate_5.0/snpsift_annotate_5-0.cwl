@@ -23,7 +23,7 @@ inputs:
       position: 25
     'sbg:fileTypes': .vcf.gz
     secondaryFiles:
-      - '.tbi '
+      - '.tbi'
   - id: input_vcf
     type: File
     inputBinding:
