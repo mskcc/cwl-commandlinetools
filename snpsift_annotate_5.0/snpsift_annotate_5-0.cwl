@@ -111,4 +111,4 @@ stdout: >-
 'doap:release':
   - class: 'doap:Version'
     'doap:name': snpsift
-    'doap:revision': 5
+    'doap:revision': 5.0
