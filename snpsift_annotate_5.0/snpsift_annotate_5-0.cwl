@@ -21,17 +21,14 @@ inputs:
     type: File
     inputBinding:
       position: 25
-    'sbg:fileTypes': .vcf.gz
     secondaryFiles:
-      - '.tbi'
+      - .tbi
   - id: input_vcf
     type: File
     inputBinding:
       position: 26
-    'sbg:fileTypes': VCF
   - id: output_file_name
     type: string?
-  - 'sbg:toolDefaultValue': 'TRUE'
     id: id
     type: boolean?
     inputBinding:
@@ -45,7 +42,6 @@ inputs:
       position: 0
       prefix: '-sorted'
     doc: 'VCF database is sorted and uncompressed. Default: false'
-  - 'sbg:toolDefaultValue': 'False'
     id: tabix
     type: boolean?
     inputBinding:
@@ -111,4 +107,4 @@ stdout: >-
 'doap:release':
   - class: 'doap:Version'
     'doap:name': snpsift
-    'doap:revision': 5.0
+    'doap:revision': 5
