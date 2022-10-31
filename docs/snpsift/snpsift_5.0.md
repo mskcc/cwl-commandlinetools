@@ -1,4 +1,4 @@
-## CWL and Docker for Running Octopus
+## CWL and Docker for Running Snpsift
 
 ## Version of tools in [docker image](https://hub.docker.com/r/dancooke/octopus/tags)
 
