@@ -98,18 +98,18 @@
   * [MarkDuplicates v2.8.1](picard-tools/picard_mark_duplicates_2.8.1.md)
   * [MarkDuplicates v2.21.2](picard-tools/picard_mark_duplicates_2.21.2.md)
   * [MarkDuplicates v4.1.8.1](picard-tools/picard_mark_duplicates_4.1.8.1.md)
+
 * [Postprocessing variant calls](postprocessing_variant_calls/README.md)
   * [vardict_filter_case-control 0.1.3](postprocessing_variant_calls/vardict_filter_case-control_0.1.3.md)
   * [vardict_filter_single-sample 0.1.3](postprocessing_variant_calls/vardict_filter_single-sample_0.1.3.md)
-* [SnpSift](snpsift/README.md)
 
+* [SnpSift](snpsift/README.md)
   * [v5.0](snpsift/snpsift_5.0.md)
 
 * [Trim Galore](trim-galore/README.md)
   * [v0.6.2](trim-galore/trim_galore_0.6.2.md)
 
 * [Ubuntu utilites](ubuntu-utilites/README.md)
-
   * [v18.04](ubuntu-utilites/utilities_ubuntu_18.04.md)
 
 * [VarDictJava](vardictjava/README.md)
