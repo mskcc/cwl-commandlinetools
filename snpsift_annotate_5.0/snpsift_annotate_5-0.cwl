@@ -35,7 +35,6 @@ inputs:
       position: 0
       prefix: '-id'
     doc: 'Only annotate ID field (do not add INFO field). Default: true'
-  - 'sbg:toolDefaultValue': 'False'
     id: sorted
     type: boolean?
     inputBinding:
